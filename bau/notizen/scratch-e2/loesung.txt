@@ -1,0 +1,292 @@
+1.Aufgabe (26 Punkte)
+
+aa) 4 Punkte
+
+                            Gewichtung  Unternehmen 1       Unternehmen 2            Unternehmen 3  Unternehmen 4
+                                  20    Punkte Gew.         Punkte Gew.
+                                  25                                                 Punkte Gew.    Punkte Gew.
+                                   40
+Grafikkarte                         15  3   60               2            40              4   80    3   60
+
+Arbeitsspeicher (RAM)                   4   100              3            75              4
+Monitor
+Preis                                                                                         100   3   75
+
+                                        2   80                            40              4   160   4   160
+
+                                        3   45               4            60                  15        15
+
+                                100     12  285              10           215             13  355   11  310
+
+                                                                       3 Punkte (je richtige Zahl 0,5 Punkte) plus 1 Punkt für die Rangfolge
+
+                                                                                              3 14 1 1/ 2 Folgefehlersind zu berücksichtigen
+
+ab) 2 Punkte
+
+Unternehmen4, Unternehmen3 erfüllt nicht die KO-Bedingungen
+
+I Punkt für die richtige Nennung der Unternehmung4
+1 Punkt für den Ausschluss der Unternehmung3 wegen der KO-Bedingung
+
+b) 7 Punkte
+
+(5 x 450 EUR) - 5 % 2.137.50 EUR 148 Monate= 44,53 EUR (2 Punkte)
+
+(5 x 720 EI-JR)- 5 %            EUR136 Monate= 95,00 EUR(2 Punkte)
+
+Wartungspauschale 100,00 EUR (l Punkt)
+
+Softwareleasing 250,00 EUR (I Punkt)
+
+Summe 489,53 EUR (1 Punkt)
+
+Ein Folgefehler bei der Summe ist ggfs. zu berücksichtigen
+
+c) 4 Punkte
+
+     Nach der Beschaffung und Lieferung sollen die Büros vor Ort eingerichtetwerden
+
+Die gelieferten Monitore besitzen eventuell die folgenden Anschlüsse:
+
+HDMI                   3
+
+USB-C                  4
+
+DVI                    1
+
+Displayport (DP) 2
+
+d) 2 Punkte                                                                                                                           I Punkt
+                                                                                                                                      I Punkt
+     Der Kaufvertrag ist mit der Lieferung 7. Oktober zustande gekommen.
+     Begründung: Die Bestellung gilt hierbeials Antrag (1. Willenserklärung),die
+     Lieferung (schlüssiges Handeln, 2. ÜbereinstimmendeWillenserklärung)als Annahme.
+
+e) 3 Punkte                                                                                         Je Nennung 1 Punkt, maximal 3 Punkte
+
+    — Kaufgegenstand (oder auch Sache, Kaufsache, BeschaffenheitderWare)
+    — Menge
+
+          Kaufpreis
+    — Zahlungsbedingungen
+    — Lieferbedingungen
+
+         Liefertermin
+
+fa) 2 Punkte
+
+    — Lieferverzug
+         Mangelhafte Lieferung
+
+fb) 2 Punkte                            Analyse der Lieferkette...
+                                        Kontrolleder Lieferung, sorgfältigeAuswahl
+Lieferverzug     sofortige  Mahnung,                                                 der  Lieferanten,Konventionalstrafevnereinbaren
+Mangelhafte   Lieferung      sofortige
+
+Andere Maßnahmensind möglich
+2. Aufgabe (24 Punkte)
+
+a) 4 Punkte
+
+    LED leuchtetdurchgehend:Es wurde eine erfolgreiche physikalische Netzwetkverbindung zwischen zwei Netzwerkports (der Netzwerkkarte
+    und einem Switch) hergestellt.
+    Mögliche weitereLösung: Übertragungsgeschwindigkeit/link Speed wird angezeigt.
+
+    LED blinkt unregelmäßig:Es findet eine Netzwerkkommunikation/einDatenaustausch zwischen Ihrem PC und einem anderen Netzwerkgerät
+
+     statt.
+    Weitere richtige hetstellerabhångige Lösungen sind möglich.
+
+b) 4 Punkte
+
+       OSI-Schicht Nameder Schicht                      Begriff
+
+             7       Anwendung / Application DHCP
+
+                     Transport                     TCP
+
+       3             VermittlungI Network VerbindungslokaIlMe -Adresse
+
+       2             Sicherung/ Data Link          Physische Adresse
+
+                     Bitübertragung / Physical Buchse mit LED
+
+c) 5 Punkte
+
+    — Länge der IPv6-Adresse in Bits: 128 (1 Punkt)
+    —  Ungekürzte
+       Präfixlänge:  Darstellung der IPv6-Adresse  in  Hexadezimalschreibweise:fe80:OOOO:OOOO:0000:521a:c5ff:fef2:38b(72  Punkte)
+                     64 Bits (I Punkt)
+
+    — Interface-Identifier.                (1 Punkt)
+
+d) 2 Punkte
+
+     IPv4-Adresse, Subnetzmaske, Angabe der konkreten Werte ist auch möglich
+
+e) 3 Punkte
+
+    Ermittlung der zugehörigen  MAC-Adresse (hier nur: d4-3f-cb-8c-37-8b)  zu den IP-Adressen  (hier nur: 192.168.0.1).
+    2 Punkte
+f)
+
+    ping 192.168.0.1
+
+    odertracert192.168.0.1
+
+    oder andere geeignete Netzwerkbefehle
+
+g) 4 Punkte
+
+    Eigener PC                                          Weiterer PC in Netzwerk
+
+JP-Adresse:          192.168.0.52                       JP-Adresse:
+
+Physische Adresse: 50- la-c5-f2-38-b7                                         192.168.0.1
+
+                                                        Physische Adresse: d4-3f-cb-8c-37-8b
+3. Aufgabe (24 Punkte)
+
+a) 3 Punkte
+
+    — Online-Recherche mit Suchmaschine
+         Frage in Forenoder Online-Communities
+         Anfrage beim Hersteller
+         Fachliteratur
+
+    — Handbücher
+
+    — Chatbotwie z. B. ChatGPT
+   — u.a.
+
+b) 2 Punkte
+         Importmöglichkeiten des CAD-Programms
+         Exportmöglichkeiteines CAO-Programms
+
+    — Dateiformatkonverter benutzen (online oder offline)
+         Eigenen Konverter programmieren
+
+c) 4 Punkte
+
+    ASCII-Format: Eine Datei im ASCII-Format speichert Daten als ASCII-Zeichen, die mit jedem Texteditor geöffnet und bearbeitet werden kön-
+
+    nen. (2 Punkte)
+    Binärdatei: Eine Binärdatei speichert Daten in einem binären Format, die nur mit der entsprechenden Anwendung verarbeitet werden kann.
+
+   (2 Punkte)
+
+da) 3 Punkte
+    3 (32 Bit 18 Bit) 3.840 46.080 Byte/ 1024-45 KiB
+
+db) 2 Punkte  256 • 256 256 = 16.777.216 mögliche Farben
+    28 • 28
+
+dc) 3 Punkte
+    12 Byte (3 • 4 Byte) » 15 (12 Byte + 3 Byte RGB) Byte 25 % mehr
+
+e) 4 Punkte (3 Punkte Berechnung Leistungsaufnahme, 1 Punkt Auswahl Netzteil)  650Wqewählt
+
+   20W+
+
+f) 3 Punkte                                  t 0,40 EURIkWh= 260,00EUR
+    200 9h (0,650kW/90%)
+
+Alternativ: Rechnung mit 750W                0,40 EURIkWh= 300,00 EUR
+200 • 9 h * (0,750 kW 190%)
+
+4. Aufgabe (26 Punkte)
+
+a) 6 Punkte                                                Folge der Nichtbeachtung
+                                                           Bildschirminhaltkann vonUnberechtigtengelesen werden
+     MaßnahmenoderVerhaltensweisen
+                                                           UnberechtigtenPersonenist die Nutzung von Geräten und der Zugriff
+      Beispiel:Nutzung einer Blickschutzfolie              auf Daten möglich
+      Nutzung geeigneter Zugangs- und Zugriffskontrolle,
+      z. B. durch sicheres Passwort
+
+        Verschlüsselung der Daten                          Unberechtigter Zugriff auf Daten möglich
+        Sicherung lokal gespeicherter Daten                Verfügbarkeit der Daten ist nicht mehr gegeben,
+        Nutzung einer VPN-Verbindung                       Datenübertragungkönnte von Unberechtigtenabgegriffen werden
+
+Weitere sinnvolle Lösungen möglich!
+
+b) 2 Punkte
+    VPN (Virtual PrivateNetwork):Eine Netzwerkverbindungohne eigene physischeVerbindung, die von Unberechtigtennicht einsehbar ist.
+    Sinngemäß auch gültig:
+
+   — Verschlüsselte Verbindung unter Nutzung des öffentlichen Netzes (Internet)
+   — Eine Technologie, die eine sichere Verbindung über das Internet zwischen einem Gerät (z. B. Computer, Smartphone) und einem ent-
+
+        fernten Netzwerk herstellt.
+
+ZPAlT4
+                                                                                                                noch
+
+weitere Sicherungsstånde zu haben.
+ Auch der Hinweis auf die Anwendung des -Generationsprinzips• (.GroBvater-Vater•Sohn-PrinzipØ)ist möglich!
+
+   andereLösungensind zulässig.
+
+6 Punkte
+
+— Viren:Softwate.diedenProgrammcodeeinesursprünglichunschädlåen Programmsbefä\ttundsich selbstverbteitet.
+
+—  Wurm•.W1tdnach Infektion selbst aktiv und breitet sich aus.     durch Start dieser Software aktiv.
+—  Trojaner.Eingebettetineinemeistnützliche Software;Ttoianetwird
+
+   Spyware.SpioniertInhalteundAktivitätenaus
+— Hintertür(Backdoot)ermOgIichtDtitteneinenunbefugteZnugang (-Hintertür")zum Computer,jedochversteckt und unter Umgehung
+
+— Scarewateistdaraufangelegt.den Benutzetzuverunsichernundihndazuzuvetleiten.schäd\iche Software zu installierenoder fürein
+
+   —  unnützes Produktzu bezahlen           das  Betriebssystembzw.vetsch\üsseltpotenzielwichtigeDateien und    fordert den  Benutzet zur
+      RansomwateblockiertdenZugriffauf
+
+      ZKtauehrylleuoingnggeesvroCsnoinmLdöpseueitngeeerslUdznautueptrrkolatosskeoldlieerreSnpyuwndareei.nSeiemsDinrdittPernogbrearmeitmzuesdteielledna.zDuavbeeriwweenrddeetnwuenrdteerna, nddieerEeimngaebinegnegdeebsenBeenuBtezneurstzearnnadmeteTnasutan-d
+
+          Passwörtererfasst,
+
+   — RiskwareistSoftware.diefüt legale Zwecke beworbenwird, aberdabeierheblicheSicherheitsproblemeaufwerfenkann. Beispielsweise
+
+          der Missbrauchvon Fernwanungsprogrammen als Backdoor-Troianet.
+
+      — ArchivbombensindstarkkomprimiertDeateien.wie beispielsweiseeinfarbigeBitmap-Dateienin Gigabyte-Größe.Nach dem Packen
+
+          haben diese eine Größe von wenigen 100 Kilobyte. Das bringt möglicherweise den Systemspeicher beim Entpacken an seine Grenzen.
+      — Dropper
+                              die einenVqrus aussetzen. Meistens handeltessichdabeiumeinen Bootsektorvirus.Siedienenzu Erstfreisetzung
+          oderzur gezieltenInfektion.
+
+   da) Nennent (3 x 1 Punkt) nach der Liste, siehe oben
+
+   db) Merkmal: (3 x Punkt) nach der Liste, siehe oben
+   e) 3 Punkte
+
+          — Keine unbekannten Datenträger benutzen, die infizierte Dateien enthalten könnten
+          — Kein Download von unsicheren Quellen
+          — KeineAusführungaktiverInhaltevon Dateien(z. B. Makros,E-Mail-Anhänge)
+
+               AdBIocker nutzen
+
+                Regelmäßig Updates von Betriebssystem und Anwendungen installieren
+           — Mitarbeiter sensibilisieren
+           — etc.
+
+      f) 6 Punkte
+          1 GiB • 1.024*1.024 1.024 81 (50,02 Mbps 1.000*1.000)
+           = 171,73 s, gerundet 172 s
+           Entspricht2 Minutenund 52 Sekunden
+
+          Punkteverteilung:
+
+          UmrechnunvgonGiB auf Byte:I GiB* 1.024*1.024 1.024:1 Punkt
+          Umrechnungvon Byte auf bitt 8 bit: I Punkt
+
+          Umrechnungder Übertragungsdauer von Mbps auf bit/s•5.0,02         Mbps* 1.000 *I    .000)•.  Punkt
+          Berechnungder Übertragungsdauer:
+                                                         I Punkt
+          Ermittlungdes Gesamtergebnisses•. -—171,73 s: 1 Punkt
+          Umrechnungauf Minuten
+          (Teilpunktemöglich)          und  Sekunden:    172  Sekunden  (2  Minuten und  52  Sekunden).  Punkt
+

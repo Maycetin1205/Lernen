@@ -1,0 +1,299 @@
+Abschlussprüfung Frühjahr 2024
+1201
+Einrichten eines _ Fachinformatiker
+I-gestützten Arbeitsplatzes Fachinformatikerin
+Anwendungsentwicklung
+Teil 1 der Abschlussprüfung Bearbeitungshinweise
+1. B Sie mit der Bearbeiti der Aufgaben begi , überprüfen Sie bitt
+4 A ufg a be n die Vollständigkeit. dieses Aufgal ae ‘Die Anzahl ie een
+i 1 j Aufgaben ist auf dem Deckblatt link: ben. Wenden'Sie sich bei Unstim-
+90 Minuten Prüfungszeit ra fe am die Aub, wel Resiernentigt an Ende der Prüfung
+100 Punkte nicht anerkannt werden können.
+2. Füllen Sie zuerst die Kopfzeile aus. Tragen Sie Ihren Familiennamen, Ihren
+Vornamen und Ihre Prüflings-Nr. in die oben stehenden Felder ein.
+3. Lesen Sie bitte den Text der Aufgaben ganz durch, bevor Sie mit der Bear-
+beitung beginnen.
+4. Halten Sie sich bei der Bearbeitung der Aufgaben genau an die Vorgaben
+der Aufgabenstellung zum Umfang der Lösung. Wenn z. B. vier Angaben
+gefordert werden und Sie sechs Angaben anführen, werden nur die ersten vier
+Angaben bewertet.
+5. Tragen Sie die frei zu formulierenden Antworten dieser offenen Aufgaben
+in die dafür It. Aufgabenstellung vorgesehenen Bereiche (Lösungszeilen, For-
+mulare, Tabellen u. a.) des Arbeitsbogens ein.
+6. Sofern nicht ausdrücklich ein Brief oder eine Formulierung in ganzen Sätzen
+gefordert werden, ist eine stichwortartige Beantwortung zulässig.
+7. Schreiben Sie deutlich und gut lesbar. Ein nicht eindeutig zuzuordnendes oder
+unleserliches Ergebnis wird als falsch gewertet.
+8. Zur Lösung der Rechenaufgaben darf ein nicht programmierter, netzunab-
+hängiger Taschenrechner ohne Kommunikationsmöglichkeit mit Dritten
+verwendet werden.
+9. Wenn Sie ein gerundetes Ergebnis eintragen und damit weiterrechnen müssen,
+rechnen Sie (auch im Taschenrechner) nur mit diesem gerundeten Ergebnis weiter.
+10. Für Hilfsaufzeichnungen können Sie das in der Tasche beigelegte Konzept-
+papier verwenden. Bewertet werden jedoch grundsätzlich nur Ihre Eintragungen
+in diesem Aufgabensatz.
+Wird vom oe un ı 4
+Für die Bewertung gilt die Vorgabe der Punkte in den lösungshinweien. E : 2
+M18 2 wen LS =2- Se Een =
+Gesamtpunktzahl
+3% nn =
+Gemeinsame Prüfungsaufgaben der Industrie- und Handelskammern. en Vn ean ee der entsprechend
+§ 40 Berufsbildungsgesetz zusammengesetzt ist, beschlossen. en a ee
+‚Angaben zur Aufgabenstellung nur die männliche Form (generisches Maskulinum) verwendet. Die verkürzte Sprachform beinhaltet keine Wertung und die
+gewählten männlichen ee engen auch für die wees ‚Geschlechter.
+Die Vervielfältig: Prüfungsaufgaben ist gestattet. Zuwiderhandiu werden zivil-und
+‚<trafrerhtlich gung, Verbreitun 106 ig und Sn ee eWi IDA. iedergabe der Pr INIA - Alla Barhia uarksh: und Lösungen is nicht Ingen’
+Im Unternehmen KustoFlex GmbH werden fünf CAD-Arbeitpätze gerichtet.
+Sie sind in dem Projektteam, das geeignete Systeme auswählt.
+a) Nach der Auswertung von vier Firmenangeboten ergibt sich die folgende Tabelle. Unternehmen 3 bietet ausschließlich eine
+Software as a Service (SaaS) Lösung an.
+aa) Ermitteln Sie die fehlenden Werte und eine Reihenfolge der vier Unternehmen beginnend mit der höchsten Punktzahl.
+4 Punkte
+ab) In einem Meeting wurde neu festgelegt, dass nur eine on-premise Lösung in Frage kommt.
+Wählen Sie unter Berücksichtigung des Meetings das Unternehmen aus, das den Auftrag bekommen sollte. 2 Punkte °
+b) Das ausgewählte Unternehmen legt folgendes ‚Angebot vor:
+Monitor 450 EUR.
+PC 720 EUR
+Softwareleasing, 50 EUR... pro Monat und Arbeitsplatz
+Wartungspauschale 1200 EUR. pro Jahr für alle Geräte
+Rabatt 5 % auf PC und Monitor
+Berechnen Sie die laufenden Kosten pro Monat für die gesamten CAD-Arbeitsplätze unter der Voraussetzung, dass die
+Nutzungsdauer der Monitore vier Jahre und der PCs drei Jahre beträgt. Geben Sie den Rechenweg an. 7 Punkte ©
+ZPAIT2
+c) Nach der Beschaffung und Lieferung sollen die Büros vor Ort eingerichtet werden.
+Die gelieferten Monitore besitzen eventuell die nachstehenden Anschlüsse.
+Ordnen Sie die Anschlüsse den Abbildungen zu: 4 Punkte
+Anschlüsse:
+HDMI:
+_ USB-C:
+DVI:
+Displayport (DP):
+‚Abbildungen:
+Sea &
+Be
+OY |
+12.10
+Die Monitore wurden am 1. September 2023 bestellt. Es gibt keine Auftragsbestätigung und sie wurden am 7. Oktober 2023
+geliefert. Die Rechnung haben Sie am 9. Oktober 2023 erhalten.
+Erläutern Sie, zu welchem Zeitpunkt der Kaufvertrag zustande gekommen ist und begründen Sie Ihre Entscheidung. 2 Punkte
+d
+=
+Nennen Sie drei fr
+2
+€) "Kaufvertrag geregelt sind (Abgrenzung von den juristischen Bestandteilen
+"
+Die ordnungsgemäße Abwicklung des Kaufvertrages ist dem Kunden sehr wichtig.
+fa) Nennen Sie zwei Kaufvertragsstörungen. 2 Punkte =
+fb) Geben Sie bei Ihren genannten Kaufvertragsstörungen je eine Maßnahme an, die der Kunde ergreifen kann, um diesen
+Störungen zu vermeiden. 2 Punkte
+ZPAIT3
+2. Aufgabe (24 Punkte) - Korrekturrand
+Nach der Konfiguration des CAD-Arbeitsplatzes prüfen Sie nun die Netzwerkeinstellungen. Dazu führen Sie verschiedene Tests
+durch und interpretieren die Ergebnisse.
+a) Bei einem Blick auf die Buchse der Netzwerkkarte Ihres PCs erkennen Sie rechts oben eine grüne Leuchtdiode (LED, vergl. Bild 1).
+Interpretieren Sie die hier zur Verfügung gestellten Informationen bzgl. der Netzwerkfunktionalität Ihres PCs. 4 Punkte
+Bild 1
+LED leuchtet durchgehend:
+LED blinkt unregelmäßig:
+b
+Nach der Eingabe des Befehls „ipconfig /all” auf der Kommandozeile Ihres PCs erhalten Sie u. a. die folgenden weiteren Infor-
+mationen (Abb. 1).
+Abb. 1
+Benennen Sie die in der folgenden Tabelle aufgeführten OSI-Schichten und ordnen Sie zur Strukturierung die vorliegenden
+Begriffe den richtigen Schichten zu: 4 Punkte
+— Physische Adresse,
+— DHCP,
+— Verbindungslokale IPv6-Adresse,
+— Buchse mit LED.
+Name der Schicht
+(deutsche oder englische Bezeichnung) Begriff
+ZPAIT 4
+c) Sie analysieren nun die in Abb. 1 angezeigte IPv6 Adresse „fe80::521a:c5ff:fef2:38b7”. Korrekturrand:
+Nennen Sie die folgenden zugehörigen Werte: 5 Punkte 3
+— Länge der IPv6-Adresse in Bits:
+— Ungekiirzte Darstellung der IPv6-Adresse in Hexadezimalschreibweise:
+- Prafixlange: See SS
+- Interface-Identifier:
+au
+»©
+©
+i
+.8.52(Bevor
+~255.255.9
+NF hu
+nom
+vn ©
+Abb. 1 (Wiederholung)
+Nennen Sie unter Bezugnahme auf Abb.1 die Informationen, die der DHCP-Server Ihrem Client zur Verfügung stellt. 2 Punkte
+&
+NS
+11
+=
+oO
+3
+eu
+®
+=
+>
+=}
+Ey
+<=
+a
+®»
+=
+©
+ro
+®
+3
+sy
+~
+~
+So
+=
+=
+ve]
+=
+a
+=
+©
+S
+(ro)
+®
+>
+®
+=
+nm
+©
+Q
+®
+=
+oo
+®
+2.
+®
+=
+%
+=
+&
+2,
+=]
+ec
+=;
+a
+2
+Er
+©
+=
+o
+=
+=
+oO
+=
+a
+a
+®
+=]
+a
+©
+>
+i
+ia
+ro}
+f=}
+>
+®
+>
+om
+fom
+N
+Abb.2: Ausschnitt aus der Ergebnisanzeige
+Erläutern Sie anhand des Beispiels in Abb. 2 die grundlegende Aufgabe des Address Resolution Protocol (ARP) bei der Netzwerk- =
+kommunikation in einem LAN. 3 Punkte ==
+Fortsetzung 2. Aufgabe >
+ZPAITS
+Fortsetzung 2. Aufgabe
+f) Geben Sie einen geeigneten Befehl an, um von Ihrem PC aus die Erreichbarkeit der Internetadresse (siehe Abb. 2) zur prüfen.
+2 Punkte
+g) In den Abbildungen 1 und 2 haben Sie Informationen zu dem Datenverkehr der ARP-Kommunikation zwischen Ihrem PC und
+dem weiteren PC in Ihrem Netzwerk erhalten.
+Ordnen Sie in der folgenden Skizze die IP-Adressen und die Physischen Adressen richtig zu. 4 Punkte
+Eigener PC Weiterer PC in Netzwerk
+IP-Adresse: —————— IP-Adresse:
+PhysischeAdresse? "u. 0 0. Physische Adresse:
+3. Aufgabe (24 Punkte)
+Ein Kunde sendet seine Daten für ein Bauteil im PLY-Format. Da Ihnen das Format nicht bekannt ist, suchen Sie nach Informationen
+über das Dateiformat und seinen Aufbau.
+a) Nennen Sie drei Möglichkeiten, um Informationen über das unbekannte Dateiformat erhalten zu können.
+b). Sie haben erfahren, dass es sich bei dem Polygon File Format uy) um ein Dateiformat zur Speicherung dreidimensionaler
+Daten handelt. Ihr betriebseigenes CAD-System benötigt aber die Daten im OBJ oder STL-Format.
+Nennen Sie eine Möglichkeit, wie Sie die Kundendaten in Ihrem CAD-System dennoch verwenden können. 2 Punkte
+c) Sie haben Informationen über den Aufbau ei
+gespeichert sein. ö
+Erläutern Sie den Unterschied zwischen einer |
+| Format und einer Datei im BinärFormat.
+ZPAIT6
+d) In einer PLY-Datei sind 3840 Punkte gespeichert. Jeder Punkt wird durch x, y und z Koordinaten bestimmt. Jede Koordinate
+wird durch einen 32-Bit-Float-Wert codiert.
+da) Berechnen Sie, wie viele Kibibyte Sie benötigen, um die 3.840 Punkte zu speichern. Der Speicherbedarf des Datei-Headers
+und Farbcodierungen sollen nicht berücksichtigt werden. 3 Punkte
+EEE EEE
+db) Jeder Punkt soll jetzt im RGB-Farbraum mit je 8 Bit pro Farbkanal codiert werden.
+Berechnen Sie, wie viele verschiedene Farben sich damit darstellen lassen. 2 Punkte
+dc) Berechnen Sie, wie viel Prozent Speicher Sie pro Bildpunkt zusätzlich benötigen, um die Farbwerte zu speichern. 3 Punkte
+||
+e) Sie werden beauftragt, das Netzteil für einen CAD-Rechner auszuwählen. Es stehen Netzteile von 400 W in 50-W-Schritten bis
+1200 W zur Verfügung. Die folgenden Komponenten wurden bereits ausgewählt.
+Zu der ermittelten Leistungsaufnahme ist ein Puffer von 10 % hinzuzurechnen.
+| Komponente _| Maximale Leistungsaufnahme in Watt je Stück | Anzahl |
+||
+172 EEE
+12 KEN
+|4
+||
+|2|
+Grafikkarte:
+Gehäuselüfter
+f) Der PC wird an 200 Arbeitstagen je 9 Stunden laufen. Das Netzteil hat einen Wirkungsgrad von 90 % und wird im Schnitt zu
+50 % ausgelastet sein.
+Berechnen Sie die Stromkosten bei einem Preis von 0,40 EUR pro kWh. 3 Punkte
+Hinweis: Konnten Sie in e) kein Netzteil ermitteln, rechnen Sie mit 750 Watt weiter.
+4. Aufgabe (26 Punkte)
+Mit Herrn Müller wurde ein neuer Mitarbeiter eingestellt, der mit dem hausinternen CAD-Programm die Realisierungsmöglichkei-
+ten der Aufträge überprüfen soll, um eine für alle Seiten optimale Lösung zu finden.
+In einigen Fällen wird von ihm erwartet, dass er für wenige Tage beim Kunden vor Ort tätig wird. Zu diesen Terminen wird ihm ein
+leistungsfähiger Laptop zur Verfügung gestellt.
+Die Erstellung und das Bearbeiten einer Konstruktionszeichnung erfordert eine große Rechnerleistung und einen hohen Speicher-
+bedarf, sodass bei Außenterminen dies auf der lokalen Festplatte des Laptops erfolgen muss.
+a) Herr Müller möchte seine berufsbedingten Fahrten mit Bus und Bahn und die Aufenthalte auf öffentlichen Plätzen zur Erle-
+digung betrieblicher Arbeiten nutzen. Allerdings sind dabei zur Gewährleistung der Geheimhaltung besondere Vorsichtsmaß-
+nahmen erforderlich.
+Nennen Sie Herrn Müller drei geeignete Maßnahmen oder Verhaltensweisen zur Gewährleistung der Geheimhaltung. Weisen
+Sie dabei auf eine mögliche Folge einer Nichtbeachtung hin.
+Ergänzen Sie dazu die nachfolgende Tabelle. 6 Punkte ©
+Maßnahmen oder Verhaltensweisen Folge der Nichtbeachtung
+Beispiel: Nutzung einer Blickschutzfolie Bildschirminhalt kann von Unberechtigten gelesen werden
+b
+Herr Müller sichert seine Daten möglichst auf dem Server der KustoFlex GmbH über VPN.
+Erklären Sie die Funktionalität des Begriffs VPN. 2 Punkte
+c) Herr Müller kritisiert, dass im Außendienst nicht immer eine stabile Internetverbindung zur Verfügung steht.
+- Nach den Sicherheitsrichtlinien der KustoFlex GmbH sind für lokal gespeicherte Daten Tagesvollsicherungen auf mehreren
+(nummerierten) externen Festplatten vorgesehen.
+Nennen Sie Herrn Müller drei Punkte, die zu beachten sind, wenn die lokal gespeicherten Daten mithilfe von externen Festplat-
+ten möglichst zuverlässig gesichert werden sollen. Berücksichtigen Sie dabei die Datensicherheitsaspekte. - 3 Punkte
+ZPAIT8
+d) Sie informieren Herrn Müller über „Malware” als Oberbegriff für Schadsoftware. 1
+da) Nennen Sie drei Arten von Malware. 3 Punkte =~ =
+db) Weisen Sie den in Aufgabe da) genannten Arten jeweils ein spezifisches Merkmal zu. 3 Punkte
+e) Eine Antivirensoftware ist bereits auf dem Laptop installiert.
+Erläutern Sie Herrn Müller drei weitere organisatorische oder technische Empfehlungen, wie man sich vor Malware schützen
+kann. 3 Punkte
+f) Berechnen Sie zur Verdeutlichung des Zeitaufwands für Herrn Müller die Übertragungsdauer, wenn er Daten mit einem Um-
+fang von 1 GiB aufgrund des Ergebnisses des Speedtests abspeichern möchte. Der Rechenweg ist mit anzugeben.
+Ergebnis des Speedtests:
+Download Upload
+75.78 50.02
+Mbps Mbps
+Runden Sie das Ergebnis auf volle Sekunden auf und stellen Sie das Ergebnis in Minuten und Sekunden dar. 6 Punkte
+bitte wenden!
+ZPAIT9
+

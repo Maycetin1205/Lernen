@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>AP1 Lerndatei · Einrichten eines IT-gestützten Arbeitsplatzes</title>
+<style>
+/* STIL B · Werkstatt, Fassung 2026-09-07: breiter Rahmen, Karten statt schwarzer Balken, ruhige Linien, ein warmer Akzent. */
+:root{
+  --papier:#ffffff; --grund:#FAFAF9; --flaeche:#F5F4F2;
+  --tinte:#0D0F14; --grau:#5A5F6B; --linie:#E3E2DF; --linie-stark:#0D0F14;
+  --akzent:#C4400C; --akzent-hell:#FDF0E8; --akzent-tief:#8F2E08;
+  --nav-b:18.5rem; --inhalt-b:78rem; --text-b:74ch; --radius:12px;
+  --sans:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,"Inter",Roboto,Arial,sans-serif;
+  --anz:"Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,"Inter",Roboto,Arial,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--papier);color:var(--tinte);font:17.5px/1.62 var(--sans);-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:2rem;-webkit-font-smoothing:antialiased}
+body{margin:0;display:grid;grid-template-columns:var(--nav-b) minmax(0,1fr)}
+
+nav.inhalt{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;min-width:0;background:var(--grund);border-right:1px solid var(--linie);padding:1.75rem 1.1rem 4rem;font-size:.8438rem;line-height:1.35}
+nav.inhalt .nav-titel{margin:0 .6rem 1.75rem;font:780 1.125rem/1.15 var(--anz);letter-spacing:-.03em;text-transform:uppercase}
+nav.inhalt .nav-titel a{color:var(--tinte);text-decoration:none}
+nav.inhalt .nav-gruppe{margin:1.75rem .6rem .5rem;font-size:.6875rem;font-weight:780;letter-spacing:.12em;text-transform:uppercase;color:var(--grau)}
+nav.inhalt ol{list-style:none;margin:0;padding:0}
+nav.inhalt li a{display:flex;gap:.5rem;padding:.4rem .6rem;border-radius:8px;color:var(--grau);text-decoration:none;font-weight:500}
+nav.inhalt li a:hover{color:var(--tinte);background:var(--flaeche)}
+nav.inhalt li a.aktuell{color:var(--tinte);font-weight:750;background:var(--akzent-hell)}
+nav.inhalt .nr{flex:0 0 2.2em;font-weight:780;color:#B9BCC4;font-variant-numeric:tabular-nums}
+nav.inhalt li a:hover .nr,nav.inhalt li a.aktuell .nr{color:var(--akzent)}
+nav.inhalt li.sitzt>a .nr::after{content:"✓";margin-left:.1em;color:var(--akzent)}
+nav.inhalt ol.nav-schnell{margin:0 0 1.6rem;padding-bottom:1.2rem;border-bottom:1px solid var(--linie)}
+nav.inhalt ol.nav-schnell li a{font-weight:750;color:var(--tinte)}
+nav.inhalt ol.nav-schnell li a:hover{color:var(--akzent)}
+
+/* min-width:0 ist der Kern: ohne das wächst main auf die Breite seines breitesten
+   Inhalts (der Matrix-Tabelle) und schiebt die ganze Seite über den Bildschirm. */
+main{min-width:0;max-width:min(var(--inhalt-b),100%);padding:3.5rem clamp(1.5rem,4vw,4.5rem) 10rem;margin:0 auto}
+main p,main ul:not(.glossar),main ol,main .unter{max-width:min(var(--text-b),100%)}
+header.titel{padding-bottom:2.5rem;border-bottom:1px solid var(--linie);margin-bottom:1rem}
+header.titel+.teil{margin-top:2.5rem;border-top:0;padding-top:1rem}
+h1{font:800 clamp(2.2rem,3.4vw,3rem)/1.04 var(--anz);letter-spacing:-.04em;margin:0 0 1.1rem;text-wrap:balance}
+h2{font:780 2.35rem/1.08 var(--anz);letter-spacing:-.035em;margin:0 0 1.1rem;text-wrap:balance}
+h3{font:740 1.3125rem/1.3 var(--anz);letter-spacing:-.02em;margin:3rem 0 1rem;padding-bottom:.45rem;border-bottom:1px solid var(--linie)}
+h4{font:780 .8125rem/1.5 var(--sans);letter-spacing:.11em;text-transform:uppercase;color:var(--akzent);margin:2rem 0 .6rem}
+p{margin:0 0 1.1rem}
+.unter{font-size:1.1875rem;line-height:1.5;color:var(--grau)}
+.klein{font-size:.9375rem}
+a{color:var(--akzent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;text-decoration-color:#F0C4AD}
+a:hover{text-decoration-color:var(--akzent)}
+strong{font-weight:730}
+ol,ul{padding-left:1.4rem;margin:0 0 1.1rem}
+li{margin-bottom:.42rem}
+li>ul,li>ol{margin-top:.42rem}
+hr{border:0;border-top:1px solid var(--linie);margin:2.5rem 0}
+code{font:.9em var(--mono);background:var(--flaeche);padding:.1em .3em}
+mark{background:#FFE9A8;color:inherit;padding:.05em .2em}
+
+.kapitel,.teil{padding-top:3.5rem;margin-top:5rem;border-top:1px solid var(--linie)}
+.kapitel-kopf{margin-bottom:2.5rem;padding:1.75rem 2rem 1.9rem;background:var(--grund);border:1px solid var(--linie);border-radius:var(--radius)}
+.kapitel-kopf h2{margin-bottom:.9rem}
+.kapitel-nr{margin:0 0 .6rem;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--akzent)}
+.kam-dran{margin:1rem 0 0;font-size:.875rem;font-weight:550;color:var(--grau)}
+.kam-dran span{white-space:nowrap}
+.kam-dran span+span::before{content:"·";margin:0 .55em;color:#B9BCC4;font-weight:700}
+
+/* Sprunglink-Zeilen: Wegweiser, keine Überschriften. Zurückgenommen und einzeilig gedacht. */
+nav.kapitel-wege{margin:.95rem 0 0;font-size:.8438rem;line-height:1.95}
+nav.kapitel-wege a{color:var(--grau);text-decoration:none;font-weight:650}
+nav.kapitel-wege a:hover{color:var(--akzent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+nav.kapitel-wege a+a::before{content:"·";margin:0 .6em;color:#B9BCC4;font-weight:700}
+nav.begriffsliste{margin:.85rem 0 .1rem;max-width:min(62rem,100%);font-size:.8438rem;line-height:1.95}
+nav.begriffsliste a{color:var(--akzent);text-decoration:none;font-weight:650}
+nav.begriffsliste a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+nav.begriffsliste a+a::before{content:"·";margin:0 .55em;color:#B9BCC4;font-weight:700}
+.sitzt{display:inline-flex;gap:.55rem;align-items:center;margin-top:1.25rem;padding:.45rem 1rem;border:1.5px solid var(--tinte);border-radius:999px;background:var(--papier);font-size:.8438rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;user-select:none}
+.sitzt input{width:1.05rem;height:1.05rem;margin:0;accent-color:var(--akzent)}
+.sitzt:has(input:checked){background:var(--tinte);color:var(--papier)}
+
+section[id$="-begriffe"]{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(23rem,100%),1fr));gap:1.25rem 1.75rem;align-items:start}
+section[id$="-begriffe"]>:not(dl){grid-column:1/-1}
+section[id$="-begriffe"]>h3{margin-bottom:0}
+section[id$="-begriffe"]>h3::after{content:"Nicht am Stück lesen. Lies den nächsten Abschnitt und komm zurück, wenn dir ein Wort fehlt.";display:block;margin-top:.45rem;font:500 .9rem/1.45 var(--sans);letter-spacing:0;text-transform:none;color:var(--grau)}
+
+/* Eine Karte ist EIN Begriff mit EINER Erklärung. Darunter, deutlich leiser,
+   die drei Zusatzzeilen. Deshalb keine Linie unter dem Begriff und nur eine
+   einzige Trennlinie oberhalb der Zusatzzeilen. */
+dl.begriff{border:1px solid var(--linie);border-radius:var(--radius);padding:1.35rem 1.5rem 1.2rem;margin:0;background:var(--papier)}
+dl.begriff dt{font:760 1.125rem/1.3 var(--anz);letter-spacing:-.022em;margin:0 0 .55rem}
+dl.begriff dt .en{font-weight:450;color:var(--grau);font-size:.9375rem;letter-spacing:0}
+dl.begriff dd{margin:0}
+dl.begriff .label{display:block;margin-bottom:.12rem;font-size:.6563rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--akzent)}
+dl.begriff dd p{margin:0;font-size:1rem;line-height:1.62}
+/* "Was es ist": normaler Absatz. Die Beschriftung bleibt für Vorleseprogramme,
+   ist aber unsichtbar, weil sie direkt unter dem Begriff nichts erklärt. */
+dl.begriff dd:first-of-type>.label{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+dl.begriff dd+dd{margin-top:.5rem;font-size:.875rem;line-height:1.55;color:var(--grau)}
+dl.begriff dd:nth-of-type(2){margin-top:1.05rem;padding-top:.9rem;border-top:1px solid var(--linie)}
+dl.begriff dd+dd>.label{display:inline;margin:0 .5em 0 0;font-size:.6563rem;font-weight:800;letter-spacing:.11em;color:#8B8F98}
+dl.begriff dd+dd p{display:inline;font-size:inherit;line-height:inherit}
+
+figure.abb{margin:2.25rem 0;padding:1.25rem 1.5rem 1rem;border:1px solid var(--linie);border-radius:var(--radius);background:var(--papier)}
+figure.abb svg{display:block;width:100%;height:auto;max-width:min(58rem,100%);margin:0 auto}
+figure.abb figcaption{margin-top:.9rem;padding-top:.7rem;border-top:1px solid var(--linie);font-size:.875rem;font-weight:550;color:var(--grau);line-height:1.5}
+.abb svg .l{fill:none;stroke:var(--tinte);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.abb svg .f{fill:var(--flaeche);stroke:var(--tinte);stroke-width:2}
+.abb svg .w{fill:var(--papier);stroke:var(--tinte);stroke-width:2}
+.abb svg .a{fill:none;stroke:var(--akzent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.abb svg .fa{fill:var(--akzent);stroke:none}
+.abb svg .d{fill:none;stroke:var(--grau);stroke-width:1.25;stroke-dasharray:5 3}
+.abb svg .g{fill:none;stroke:var(--linie);stroke-width:1}
+.abb svg text{font:13px var(--sans);font-weight:550;fill:var(--tinte)}
+.abb svg .t2{font-size:11.5px;font-weight:500;fill:var(--grau)}
+.abb svg .tb{font-weight:780}
+.abb svg .ta{fill:var(--akzent);font-weight:800}
+.abb svg .mono{font-family:var(--mono);font-weight:500}
+.abb svg .mitte{text-anchor:middle}
+.abb svg .rechts{text-anchor:end}
+
+.tabelle{overflow-x:auto;margin:1.75rem 0;border:1px solid var(--linie);border-radius:var(--radius)}
+table{border-collapse:collapse;width:100%;font-size:.9375rem}
+caption{text-align:left;font-size:.875rem;font-weight:550;color:var(--grau);padding:.85rem .85rem .6rem;line-height:1.5}
+th{text-align:left;font-weight:800;font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;padding:.6rem .85rem;background:var(--flaeche);color:var(--grau);border-bottom:1px solid var(--tinte);vertical-align:bottom}
+td{padding:.65rem .85rem;border-bottom:1px solid var(--linie);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tr.hervor td:first-child{border-left:3px solid var(--akzent)}
+td.z,th.z{text-align:right;font-variant-numeric:tabular-nums}
+tr.summe td{font-weight:800;border-top:2px solid var(--tinte);background:var(--grund)}
+tr.hervor td{background:var(--akzent-hell);font-weight:700}
+
+pre.rechenweg{font:.9375rem/1.85 var(--mono);background:var(--flaeche);border-left:4px solid var(--akzent);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.4rem;margin:1.75rem 0;max-width:min(62rem,100%);white-space:pre-wrap;overflow-x:auto}
+.merke{background:var(--akzent-hell);border-left:4px solid var(--akzent);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.4rem;margin:2rem 0;max-width:min(62rem,100%)}
+.merke::before{content:attr(data-art);display:block;margin-bottom:.4rem;font-size:.6875rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--akzent)}
+.merke p{margin:0 0 .6rem;font-size:1rem}
+.merke p:last-child{margin-bottom:0}
+
+.aufgabe{margin:2rem 0;padding:1.4rem 1.6rem 1.5rem;border:1px solid var(--linie);border-radius:var(--radius);background:var(--grund);max-width:min(62rem,100%)}
+.herkunft{margin:0 0 .9rem;font-size:.8125rem;font-weight:750;letter-spacing:.03em;text-transform:uppercase;color:var(--akzent)}
+.aufgabe .text p:last-child{margin-bottom:.5rem}
+
+details{margin:1rem 0 0}
+summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem;padding:.5rem 1rem;border:1.5px solid var(--tinte);border-radius:999px;background:var(--papier);font-size:.8125rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--tinte)}
+summary:hover{background:var(--akzent-hell)}
+details[open] summary{background:var(--tinte);color:var(--papier)}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";font-size:1.15em;font-weight:700;line-height:1;color:var(--akzent)}
+details[open] summary::before{content:"–";color:var(--papier)}
+details .inhalt{padding:1rem 0 .25rem}
+details .inhalt>*:last-child{margin-bottom:0}
+
+sup.q{font-size:.66rem;line-height:0;vertical-align:super;font-weight:800}
+sup.q a{text-decoration:none;padding:0 .1em;color:var(--akzent)}
+ol.quellenliste{font-size:.875rem;line-height:1.6;padding-left:1.6rem}
+ol.quellenliste li{margin-bottom:.65rem;color:var(--grau)}
+ol.quellenliste a{word-break:break-word}
+.typ{display:inline-block;margin-right:.45em;padding:.06em .45em;background:var(--flaeche);color:var(--tinte);border:1px solid var(--linie);border-radius:4px;font-size:.6563rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;vertical-align:.08em}
+.abruf{color:#8B8F98}
+.wo{margin-left:.4em;font-size:.8125rem;font-weight:700;color:#8B8F98}
+.wo a{color:#8B8F98;text-decoration:none}
+
+ul.glossar{columns:2;column-gap:2.5rem;list-style:none;padding:0;font-size:.9375rem;line-height:1.7}
+ul.glossar li{break-inside:avoid;margin:0}
+ol.selbstcheck>li{margin-bottom:1rem;font-weight:600;font-size:1.0625rem}
+
+@media (max-width:1100px){
+  html{font-size:16.5px}
+  body{display:block}
+  nav.inhalt{position:static;height:auto;border-right:0;border-bottom:1px solid var(--linie);padding:1.25rem}
+  nav.inhalt ol{columns:2;column-gap:1.5rem}
+  main{padding:2.25rem 1.25rem 6rem}
+  h1{font-size:2.4rem}
+  h2{font-size:1.9rem}
+  ul.glossar{columns:1}
+}
+@media (max-width:640px){ nav.inhalt ol{columns:1} html{font-size:16px} h1{font-size:2rem} h2{font-size:1.6rem} }
+
+@media print{
+  html{font-size:10pt;background:#fff}
+  body{display:block}
+  nav.inhalt,.sitzt,nav.kapitel-wege,nav.begriffsliste{display:none}
+  main{max-width:none;padding:0;margin:0}
+  .kapitel,.teil{break-before:page;border-top:0;margin-top:0;padding-top:0}
+  h2,h3{break-after:avoid}
+  figure.abb,table,dl.begriff,pre.rechenweg,.merke,.aufgabe{break-inside:avoid}
+  section[id$="-begriffe"]{display:block}
+  dl.begriff{margin:0 0 1rem}
+  .kapitel-kopf,.aufgabe,figure.abb{background:#fff}
+  summary{color:inherit}
+  a{color:inherit;text-decoration:none}
+  ol.quellenliste a[href^="http"]::after{content:" " attr(href);color:#666;word-break:break-all}
+  sup.q a{color:#000}
+}
+
+/* Pfeilspitzen an die Stilfarben binden */
+marker#pfeil path{fill:var(--tinte)}
+marker#pfeil-a path{fill:var(--akzent)}
+marker#pfeil-g path{fill:var(--grau)}
+</style>
+</head>
+<body>
+<nav class="inhalt" aria-label="Inhalt">
+  <p class="nav-titel"><a href="#oben">AP1 Lerndatei</a></p>
+  <ol class="nav-schnell">
+    <li><a href="#glossar">Stichwörter A–Z</a></li>
+    <li><a href="#pruefungen-einzeln">Die neun Prüfungen</a></li>
+  </ol>
+  <ol>
+    <li data-kap="benutzung"><a href="#benutzung"><span class="nr">0</span>Wie du diese Datei benutzt</a></li>
+    <li data-kap="pruefung"><a href="#pruefung"><span class="nr">1</span>Die Prüfung</a></li>
+    <li data-kap="matrix"><a href="#matrix"><span class="nr">2</span>Was wie oft drankam</a></li>
+  </ol>
+  <p class="nav-gruppe">A · Verfahren</p>
+  <ol>
+    <li data-kap="a1"><a href="#a1"><span class="nr">A1</span>IPv4, Subnetting und Netzkonfiguration</a></li>
+    <li data-kap="a2"><a href="#a2"><span class="nr">A2</span>Kaufmännisch rechnen</a></li>
+    <li data-kap="a3"><a href="#a3"><span class="nr">A3</span>Nutzwertanalyse</a></li>
+    <li data-kap="a4"><a href="#a4"><span class="nr">A4</span>Einheiten, Speicher und Datenrate</a></li>
+    <li data-kap="a5"><a href="#a5"><span class="nr">A5</span>Strom und Energiekosten</a></li>
+    <li data-kap="a6"><a href="#a6"><span class="nr">A6</span>Netzplan und Gantt</a></li>
+    <li data-kap="a7"><a href="#a7"><span class="nr">A7</span>Programmlogik und Schreibtischtest</a></li>
+    <li data-kap="a8"><a href="#a8"><span class="nr">A8</span>UML-Diagramme</a></li>
+    <li data-kap="a9"><a href="#a9"><span class="nr">A9</span>Datenmodell und ER-Diagramm</a></li>
+  </ol>
+  <p class="nav-gruppe">B · Erklären</p>
+  <ol>
+    <li data-kap="b1"><a href="#b1"><span class="nr">B1</span>IT-Sicherheit I: Schutzziele, Zugang, Angriffe</a></li>
+    <li data-kap="b2"><a href="#b2"><span class="nr">B2</span>IT-Sicherheit II: Kryptografie und sichere Verbindungen</a></li>
+    <li data-kap="b3"><a href="#b3"><span class="nr">B3</span>Datenschutz: DSGVO und BDSG</a></li>
+    <li data-kap="b4"><a href="#b4"><span class="nr">B4</span>Hardware und Anschlüsse</a></li>
+    <li data-kap="b5"><a href="#b5"><span class="nr">B5</span>Netzwerk-Grundlagen</a></li>
+    <li data-kap="b6"><a href="#b6"><span class="nr">B6</span>Software, Lizenzen und Web</a></li>
+    <li data-kap="b7"><a href="#b7"><span class="nr">B7</span>Datensicherung und Verfügbarkeit</a></li>
+    <li data-kap="b8"><a href="#b8"><span class="nr">B8</span>Arbeitsplatz: Ergonomie, Barrierefreiheit, Nachhaltigkeit</a></li>
+    <li data-kap="b9"><a href="#b9"><span class="nr">B9</span>Projekt, Anforderungen und Vorgehen</a></li>
+    <li data-kap="b10"><a href="#b10"><span class="nr">B10</span>Kunde, Kommunikation und Veränderung</a></li>
+    <li data-kap="b11"><a href="#b11"><span class="nr">B11</span>Wirtschaft und Recht</a></li>
+  </ol>
+  <p class="nav-gruppe">Anhang</p>
+  <ol>
+    <li data-kap="verfahrensblatt"><a href="#verfahrensblatt"><span class="nr">3</span>Verfahrensblatt</a></li>
+    <li data-kap="glossar"><a href="#glossar"><span class="nr">4</span>Glossar</a></li>
+    <li data-kap="quellen"><a href="#quellen"><span class="nr">5</span>Quellenverzeichnis</a></li>
+  </ol>
+</nav>
+<main id="oben">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="pfeil-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="pfeil-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+</svg>
+<header class="titel">
+  <p class="kapitel-nr">IHK-Abschlussprüfung Teil 1 · IT-Berufe</p>
+  <h1>Einrichten eines IT-gestützten Arbeitsplatzes</h1>
+  <p class="unter">Der Prüfungsstoff in 20 Kapiteln. Jedes Verfahren von Grund auf. Jede Aussage mit Quelle. Jede Sache an einer echten Prüfungsaufgabe und einer Variante geübt.</p>
+  <p class="unter klein">Stand 2026-09. Erstellt für die persönliche Prüfungsvorbereitung eines Auszubildenden (Fachinformatiker Systemintegration). Prüfungsaufgaben sind sinngemäß wiedergegeben, nicht wörtlich.</p>
+</header>
+
+<section class="kapitel" id="a4" data-gruppe="A">
+
+<header class="kapitel-kopf">
+  <p class="kapitel-nr">A4 · Verfahren</p>
+  <h2>Einheiten, Speicher und Datenrate</h2>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a4-worum">Worum es geht</a><a href="#a4-kern">Das Verfahren</a><a href="#a4-original">So hat die IHK gefragt</a><a href="#a4-variante">Jetzt du</a><a href="#a4-selbstcheck">Selbstcheck</a><a href="#a4-begriffe">Begriffe</a><a href="#a4-quellen">Quellen</a></nav>
+  <p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2022, 2.11, 4.5 (5 P)</span> · <span>AP1 Herbst 2022, 2.1 bis 2.3 (8 P)</span> · <span>AP1 Frühjahr 2024, 3.3 bis 3.6, 4.7 (18 P)</span> · <span>AP1 Herbst 2025, 2.4, 2.5 (6 P)</span></p>
+  <label class="sitzt"><input type="checkbox" data-key="a4"> Sitzt</label>
+</header>
+
+<section id="a4-worum">
+  <h3>Worum es geht</h3>
+  <p>Eine Rechtsanwaltskanzlei digitalisiert ihr gesamtes Aktenarchiv aus zehn Jahren. Rund 120.000 Aktenordner werden eingescannt, per Texterkennung aufbereitet und in ein cloudbasiertes Dokumentenmanagementsystem übertragen. Die Projektleitung muss berechnen, welche Speicherkapazität im Storage-System bereitgestellt werden muss und wie lange der tägliche Upload über eine 50-Mbit/s-Standleitung dauert. Fehler bei der Umrechnung von Byte in Bit oder zwischen Zehnerpotenzen und Binärpräfixen führen zu gravierenden Fehleinschätzungen bei Hardwarebeschaffung und Leitungsdimensionierung. In der Prüfung verlangt die IHK exakte Berechnungen für Scans, Bilddateien, Backups und Übertragungszeiten unter Berücksichtigung von Protokoll-Overheads.<sup class="q"><a href="#a4-q1" title="IEC 80000-13">1</a></sup></p>
+</section>
+
+<section id="a4-kern">
+  <h3>Das Verfahren</h3>
+
+
+
+  
+  <h4>Das Problem: Zwei Fragen, zwei Einheitenfamilien</h4>
+  <p><strong>Die Kanzlei</strong> will zwei Zahlen von dir: Wie viel Platz brauchen 120.000 eingescannte Aktenordner, und wie lange läuft der tägliche Upload über die Leitung? Beide Fragen sehen harmlos aus und gehen fast immer schief, weil zwei Einheitenfamilien im Spiel sind: Bit und Byte für die Menge, und dazu zwei verschiedene Bedeutungen von „Mega“.</p>
+
+  <h4>Baustein 1: Bit, Byte und warum Leitungen anders zählen</h4>
+  <p><strong>Ein Bit</strong> ist die kleinste Einheit, die es gibt: ein Schalter mit den zwei Zuständen 0 und 1. Acht solcher Schalter zusammen sind ein Byte, und ein Byte reicht für ein Zeichen. Speicher und Dateien werden in Byte gemessen, Übertragungsraten dagegen in Bit je Sekunde. Das ist keine Schikane, sondern historisch gewachsen: Die Leitung transportiert einzelne Bits, die Festplatte speichert ganze Zeichen.</p>
+  <p><strong>Daraus folgt der wichtigste Handgriff</strong> des Kapitels: Bevor du eine Dateigröße durch eine Leitungsgeschwindigkeit teilst, musst du beide in dieselbe Einheit bringen, also die Byte mit 8 malnehmen (Abb. A4-1). Wer das vergisst, rechnet eine achtmal zu kurze Übertragungszeit aus.</p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 252" role="img" aria-labelledby="a4-abb1-t">
+      <title id="a4-abb1-t">Acht Bit ergeben ein Byte, und der Faktor 8 zwischen Leitung und Datei</title>
+      <text class="tb" x="8" y="24">Ein Byte sind acht Bit</text>
+      <rect class="w" x="40" y="40" width="44" height="36"/>
+      <rect class="w" x="90" y="40" width="44" height="36"/>
+      <rect class="w" x="140" y="40" width="44" height="36"/>
+      <rect class="w" x="190" y="40" width="44" height="36"/>
+      <rect class="w" x="240" y="40" width="44" height="36"/>
+      <rect class="w" x="290" y="40" width="44" height="36"/>
+      <rect class="w" x="340" y="40" width="44" height="36"/>
+      <rect class="w" x="390" y="40" width="44" height="36"/>
+      <text class="mono mitte" x="62" y="64">0</text>
+      <text class="mono mitte" x="112" y="64">1</text>
+      <text class="mono mitte" x="162" y="64">0</text>
+      <text class="mono mitte" x="212" y="64">0</text>
+      <text class="mono mitte" x="262" y="64">0</text>
+      <text class="mono mitte" x="312" y="64">0</text>
+      <text class="mono mitte" x="362" y="64">0</text>
+      <text class="mono mitte" x="412" y="64">1</text>
+      <line class="l" x1="40" y1="86" x2="434" y2="86"/>
+      <text class="t2 mitte" x="237" y="104">acht Schalter mit 0 oder 1, zusammen genug für ein Zeichen</text>
+      <text class="tb" x="460" y="64">ein Byte</text>
+      <text class="tb" x="8" y="140">Leitungen zählen in Bit, Dateien in Byte</text>
+      <rect class="w" x="40" y="155" width="240" height="50"/>
+      <text class="tb mitte" x="160" y="178">Leitung</text>
+      <text class="t2 mitte" x="160" y="196">50 Mbit/s: Bit je Sekunde</text>
+      <rect class="w" x="360" y="155" width="240" height="50"/>
+      <text class="tb mitte" x="480" y="178">Datei</text>
+      <text class="t2 mitte" x="480" y="196">Größe in MB oder GB: Byte</text>
+      <line class="a" x1="356" y1="176" x2="284" y2="176" marker-end="url(#pfeil-a)"/>
+      <text class="ta mitte" x="320" y="170">* 8</text>
+      <text class="t2 mitte" x="320" y="200">/ 8</text>
+      <line class="l" x1="284" y1="206" x2="356" y2="206" marker-end="url(#pfeil)"/>
+      <text class="t2" x="8" y="242">Vor jeder Zeitrechnung die Dateigröße mal 8 nehmen. Sonst ist das Ergebnis achtmal zu klein.</text>
+    </svg>
+    <figcaption>Abb. A4-1: Links die Menge, rechts die Geschwindigkeit. Der Faktor 8 steht zwischen beiden Welten und wird am häufigsten vergessen.</figcaption>
+  </figure>
+
+  <h4>Baustein 2: Zwei Bedeutungen von „Mega“</h4>
+  <p><strong>Die zweite Falle</strong> steckt in den Vorsätzen selbst. Kilo, Mega und Giga meinen im Alltag 1.000, 1.000.000 und 1.000.000.000. Der Rechner arbeitet aber in Zweierschritten, deshalb gibt es daneben Kibi, Mebi und Gibi mit 1.024 statt 1.000. Wer beide Leitern mischt, liegt bei Gigabyte schon rund 7&nbsp;% daneben; Abb. A4-2 stellt sie nebeneinander.<sup class="q"><a href="#a4-q1" title="IEC 80000-13">1</a></sup></p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 220" role="img" aria-labelledby="a4-abb2-t">
+      <title id="a4-abb2-t">Vergleich der Umrechnungsstufen für Binär- und SI-Präfixe</title>
+      <text class="tb" x="40" y="30">Binärpräfixe (Faktor 1.024 = 2^10)</text>
+      <rect class="f" x="40" y="45" width="80" height="35"/>
+      <text class="mitte tb" x="80" y="67">Byte</text>
+      <line class="a" x1="120" y1="62" x2="160" y2="62" marker-end="url(#pfeil-a)"/>
+      <text class="ta t2 mitte" x="140" y="55">: 1.024</text>
+      
+      <rect class="f" x="160" y="45" width="80" height="35"/>
+      <text class="mitte tb" x="200" y="67">KiB</text>
+      <line class="a" x1="240" y1="62" x2="280" y2="62" marker-end="url(#pfeil-a)"/>
+      
+      <rect class="f" x="280" y="45" width="80" height="35"/>
+      <text class="mitte tb" x="320" y="67">MiB</text>
+      <line class="a" x1="360" y1="62" x2="400" y2="62" marker-end="url(#pfeil-a)"/>
+      
+      <rect class="f" x="400" y="45" width="80" height="35"/>
+      <text class="mitte tb" x="440" y="67">GiB</text>
+      <line class="a" x1="480" y1="62" x2="520" y2="62" marker-end="url(#pfeil-a)"/>
+      
+      <rect class="f" x="520" y="45" width="80" height="35"/>
+      <text class="mitte tb" x="560" y="67">TiB</text>
+
+      <text class="tb" x="40" y="125">SI-Dezimalpräfixe (Faktor 1.000 = 10^3)</text>
+      <rect class="w" x="40" y="140" width="80" height="35"/>
+      <text class="mitte tb" x="80" y="162">Byte</text>
+      <line class="l" x1="120" y1="157" x2="160" y2="157" marker-end="url(#pfeil)"/>
+      <text class="t2 mitte" x="140" y="150">: 1.000</text>
+      
+      <rect class="w" x="160" y="140" width="80" height="35"/>
+      <text class="mitte tb" x="200" y="162">kB</text>
+      <line class="l" x1="240" y1="157" x2="280" y2="157" marker-end="url(#pfeil)"/>
+      
+      <rect class="w" x="280" y="140" width="80" height="35"/>
+      <text class="mitte tb" x="320" y="162">MB</text>
+      <line class="l" x1="360" y1="157" x2="400" y2="157" marker-end="url(#pfeil)"/>
+      
+      <rect class="w" x="400" y="140" width="80" height="35"/>
+      <text class="mitte tb" x="440" y="162">GB</text>
+      <line class="l" x1="480" y1="157" x2="520" y2="157" marker-end="url(#pfeil)"/>
+      
+      <rect class="w" x="520" y="140" width="80" height="35"/>
+      <text class="mitte tb" x="560" y="162">TB</text>
+    </svg>
+    <figcaption>Abb. A4-2: Umrechnungsleiter zwischen Binärpräfixen (Basis 1.024) und SI-Dezimalpräfixen (Basis 1.000).</figcaption>
+  </figure>
+
+  <h4>1. Speicherbedarfsberechnung für Scans und Rastergrafiken</h4>
+  <p><strong>Der unkomprimierte Speicherbedarf</strong> eines Scans berechnet sich über die geometrischen Abmessungen, die Scanauflösung und die Farbtiefe; Abb. A4-3 zeigt, wie viel ein True-Color-Pixel belegt:</p>
+  <ol>
+    <li><strong>Zollmaße bestimmen:</strong> Abmessungen in cm durch 2,54 teilen, um Zoll (Inch) zu erhalten (DIN A4: 21,0 cm * 29,7 cm ≈ 8,268 Zoll * 11,693 Zoll).</li>
+    <li><strong>Pixelanzahl errechnen:</strong> <code>Breite in Zoll * DPI</code> ergibt die Pixelbreite; <code>Höhe in Zoll * DPI</code> ergibt die Pixelhöhe.</li>
+    <li><strong>Speicher unkomprimiert:</strong> <code>Pixelanzahl * Farbtiefe in Bit / 8</code> ergibt die Rohdateigröße in Byte.</li>
+    <li><strong>Kompression anwenden:</strong> Bei Vorgabe eines Kompressionsfaktors (z. B. 10:1 oder 90 % Ersparnis) wird die unkomprimierte Dateigröße entsprechend reduziert.</li>
+  </ol>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 180" role="img" aria-labelledby="a4-abb3-t">
+      <title id="a4-abb3-t">Struktur eines 24-Bit True-Color Pixelrasters</title>
+      <rect class="w" x="40" y="30" width="160" height="120"/>
+      <line class="d" x1="80" y1="30" x2="80" y2="150"/>
+      <line class="d" x1="120" y1="30" x2="120" y2="150"/>
+      <line class="d" x1="160" y1="30" x2="160" y2="150"/>
+      <line class="d" x1="40" y1="70" x2="200" y2="70"/>
+      <line class="d" x1="40" y1="110" x2="200" y2="110"/>
+      <rect class="f" x="80" y="70" width="40" height="40"/>
+      <text class="mitte t2 tb" x="100" y="95">Pixel</text>
+      
+      <line class="a" x1="120" y1="90" x2="240" y2="90" marker-end="url(#pfeil-a)"/>
+      <text class="ta t2 mitte" x="180" y="80">24 Bit</text>
+      
+      <rect class="f" x="240" y="60" width="110" height="60"/>
+      <text class="mitte tb" x="295" y="85">Rot (8 Bit)</text>
+      <text class="mitte t2" x="295" y="105">0 bis 255</text>
+      
+      <rect class="w" x="370" y="60" width="110" height="60"/>
+      <text class="mitte tb" x="425" y="85">Grün (8 Bit)</text>
+      <text class="mitte t2" x="425" y="105">0 bis 255</text>
+      
+      <rect class="f" x="500" y="60" width="110" height="60"/>
+      <text class="mitte tb" x="555" y="85">Blau (8 Bit)</text>
+      <text class="mitte t2" x="555" y="105">0 bis 255</text>
+    </svg>
+    <figcaption>Abb. A4-3: Ein True-Color-Pixel speichert 3 Byte (je 8 Bit für die Primärfarben Rot, Grün und Blau).</figcaption>
+  </figure>
+
+  <h4>2. Datenübertragungszeit mit Netto-Bandbreite</h4>
+  <p><strong>Die Übertragungszeit</strong> folgt der verbindlichen Rechenkette aus Abb. A4-4, von der Quelldatei bis zur Zeiteinheit:</p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 160" role="img" aria-labelledby="a4-abb4-t">
+      <title id="a4-abb4-t">Rechenkette zur Ermittlung der Datenübertragungszeit</title>
+      <rect class="w" x="30" y="50" width="120" height="45"/>
+      <text class="mitte tb" x="90" y="70">Dateigröße</text>
+      <text class="mitte t2" x="90" y="85">in Byte</text>
+      
+      <line class="a" x1="150" y1="72" x2="185" y2="72" marker-end="url(#pfeil-a)"/>
+      <text class="ta t2 mitte" x="168" y="62">* 8</text>
+      
+      <rect class="f" x="185" y="50" width="120" height="45"/>
+      <text class="mitte tb" x="245" y="70">Datenmenge</text>
+      <text class="mitte t2" x="245" y="85">in Bit</text>
+      
+      <line class="a" x1="305" y1="72" x2="340" y2="72" marker-end="url(#pfeil-a)"/>
+      <text class="ta t2 mitte" x="322" y="62">: Bandbr.</text>
+      
+      <rect class="f" x="340" y="50" width="120" height="45"/>
+      <text class="mitte tb" x="400" y="70">Transferzeit</text>
+      <text class="mitte t2" x="400" y="85">in Sekunden</text>
+      
+      <line class="l" x1="460" y1="72" x2="495" y2="72" marker-end="url(#pfeil)"/>
+      <text class="t2 mitte" x="478" y="62">: 60</text>
+      
+      <rect class="w" x="495" y="50" width="120" height="45"/>
+      <text class="mitte tb" x="555" y="70">Dauer</text>
+      <text class="mitte t2" x="555" y="85">in Min. / Std.</text>
+    </svg>
+    <figcaption>Abb. A4-4: Rechenkette von der Quelldateigröße über Bit-Umrechnung und Bandbreitendivision zur Transferdauer.</figcaption>
+  </figure>
+
+  <h4>Rechenweg-Schema</h4>
+<pre class="rechenweg">Gegeben: Backup-Volumen 450 GiB, Standleitung 100 Mbit/s, 85 % Nutzdatenrate
+
+1. Datenvolumen in Byte:    450 * 1.024^3 = 483.183.820.800 Byte
+2. Datenvolumen in Bit:     483.183.820.800 * 8 = 3.865.470.566.400 Bit
+3. Effektive Bandbreite:    100 Mbit/s * 0,85 = 85 Mbit/s
+   85 Mbit/s in bit/s:      85 * 10^6 = 85.000.000 bit/s
+4. Übertragungszeit in s:   3.865.470.566.400 / 85.000.000 = 45.476,12 Sekunden
+5. Umrechnung in Stunden:   45.476,12 / 3.600 = 12,63 Stunden
+   0,63 h in Minuten:       0,63 * 60 ≈ 38 Minuten
+   Ergebnis:                12 Stunden und 38 Minuten</pre>
+
+  <div class="merke" data-art="Typischer Fehler">
+    <p>Präfix-Kollision: Netzwerkgeschwindigkeiten (100 Mbit/s) rechnen stets mit 10^6 bit/s, nicht mit 1.024^2 bit/s. Wer 85 Mbit/s als 85 * 1.048.576 ansetzt, weicht vom IHK-Erwartungshorizont ab.</p>
+  </div>
+
+  <div class="merke" data-art="Merke">
+    <p>UTF-8 Zeichencodierung: Standard-ASCII-Zeichen belegen in UTF-8 genau 1 Byte (8 Bit). Umlaute wie ä, ö, ü und das ß belegen nach RFC 3629 jeweils 2 Byte. Exotische Sonderzeichen und Emojis benötigen bis zu 4 Byte.</p>
+  </div>
+
+  <div class="merke" data-art="Auf einen Blick"><p><strong>SI-Präfixe</strong> rechnen mit 1.000, <strong>Binärpräfixe</strong> mit 1.024.</p><p><strong>Speicherbedarf</strong> = Pixelanzahl mal Farbtiefe in Bit geteilt durch 8.</p><p><strong>Übertragungszeit</strong> = Dateigröße in Bit geteilt durch die Netto-Bandbreite.</p><p><strong>Netzwerkgeschwindigkeiten</strong> rechnen mit 10^6 bit/s.</p></div>
+
+</section>
+
+<section id="a4-original">
+  <h3>So hat die IHK gefragt</h3>
+
+  <article class="aufgabe" id="a4-original-1">
+    <p class="herkunft">AP1 Herbst 2025, Aufgabe 2.4, 3 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a4-q7" title="AP1 Herbst 2025">7</a></sup></p>
+    <div class="text">
+      <p>In der Rechnungseingangsverarbeitung treffen im Mittel 14 Rechnungen je Stunde ein, durchgehend über 24 Stunden. Eine Rechnung belegt im Mittel 124 kB; das Unternehmen rechnet dabei mit dem dezimalen Kilobyte (1 kB = 1.000 Byte).</p>
+      <p>Berechnen Sie den täglichen Speicherbedarf in KiB. Geben Sie den Rechenweg an und runden Sie auf ganze KiB.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p><strong>Rechenweg:</strong></p>
+        <ol>
+          <li>Rechnungen je Tag:<br>
+          24 h * 14 Rechnungen/h = <strong>336 Rechnungen</strong>.</li>
+          <li>Datenmenge je Tag in Byte:<br>
+          336 * 124 kB = 41.664 kB = 41.664 * 1.000 Byte = 41.664.000 Byte.</li>
+          <li>Umrechnung in KiB (1 KiB = 1.024 Byte):<br>
+          41.664.000 / 1.024 = 40.687,5 KiB.</li>
+          <li>Kaufmännisch auf ganze KiB gerundet: <strong>40.688 KiB</strong>.</li>
+        </ol>
+        <p><strong>Punkteverteilung:</strong> 1 Punkt für die 336 Rechnungen je Tag, 2 Punkte für die Umrechnung mit dem Faktor 1.000 je kB und 1.024 je KiB samt gerundetem Endwert 40.688 KiB (insgesamt 3 Punkte).</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="a4-original-2">
+    <p class="herkunft">AP1 Frühjahr 2024, Aufgabe 4.7, 6 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a4-q8" title="AP1 Frühjahr 2024">8</a></sup></p>
+    <div class="text">
+      <p>Ein Mitarbeiter überträgt eine Datenmenge von 1 GiB vom Laptop auf einen Server. Ein Geschwindigkeitstest der Internetverbindung zeigt 75,78 Mbit/s im Download und 50,02 Mbit/s im Upload. Ein zusätzlicher Overhead ist nicht vorgegeben.</p>
+      <p>Berechnen Sie die Übertragungsdauer mit vollständigem Rechenweg. Runden Sie auf volle Sekunden auf und geben Sie das Ergebnis in Minuten und Sekunden an.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p><strong>Rechenweg:</strong></p>
+        <ol>
+          <li>Richtung bestimmen: Gesendet wird zum Server, maßgeblich ist daher die Uploadrate 50,02 Mbit/s.</li>
+          <li>Datenmenge in Byte:<br>
+          1 GiB = 1.024 * 1.024 * 1.024 Byte = 1.073.741.824 Byte.</li>
+          <li>Datenmenge in Bit:<br>
+          1.073.741.824 Byte * 8 = 8.589.934.592 Bit.</li>
+          <li>Datenrate in bit/s:<br>
+          50,02 Mbit/s = 50,02 * 1.000 * 1.000 = 50.020.000 bit/s.</li>
+          <li>Übertragungsdauer:<br>
+          8.589.934.592 Bit / 50.020.000 bit/s = 171,73 Sekunden.</li>
+          <li>Aufgerundet auf volle Sekunden: 172 s = <strong>2 Minuten und 52 Sekunden</strong>.</li>
+        </ol>
+        <p><strong>Punkteverteilung:</strong> Je 1 Punkt für GiB in Byte, Byte in Bit, Mbit/s in bit/s, den Divisionsansatz, das Ergebnis 171,73 s und die aufgerundete Angabe 172 s beziehungsweise 2 Minuten 52 Sekunden (insgesamt 6 Punkte).</p>
+      </div>
+    </details>
+  </article>
+
+</section>
+
+<section id="a4-variante">
+  <h3>Jetzt du</h3>
+
+  <article class="aufgabe" id="a4-variante-1">
+    <p class="herkunft">Variante zu Aufgabe 2.4 (Herbst 2025)</p>
+    <div class="text">
+      <p>Ein Ticketsystem legt zu jedem Vorgang im Mittel 86 kB ab (dezimales Kilobyte, 1 kB = 1.000 Byte). Durchgehend gehen 18 Vorgänge je Stunde ein.</p>
+      <p>Berechnen Sie den täglichen Speicherbedarf in KiB (auf ganze KiB gerundet) sowie den Bedarf für 30 Tage in MiB (auf zwei Nachkommastellen gerundet).</p>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p><strong>Lösungsweg:</strong></p>
+        <ol>
+          <li>Vorgänge je Tag:<br>
+          24 h * 18 Vorgänge/h = 432 Vorgänge.</li>
+          <li>Datenmenge je Tag in Byte:<br>
+          432 * 86 kB = 37.152 kB = 37.152.000 Byte.</li>
+          <li>Umrechnung in KiB:<br>
+          37.152.000 / 1.024 = 36.281,25 KiB, gerundet <strong>36.281 KiB</strong>.</li>
+          <li>Bedarf für 30 Tage:<br>
+          36.281 KiB * 30 = 1.088.430 KiB.<br>
+          In MiB: 1.088.430 / 1.024 = 1.062,9199… ≈ <strong>1.062,92 MiB</strong>.</li>
+        </ol>
+        <p>Wer im letzten Schritt mit dem ungerundeten Tageswert 36.281,25 KiB weiterrechnet, erhält 1.062,93 MiB. In der Prüfung wird mit dem zuvor gerundeten Zwischenwert weitergerechnet.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="a4-variante-2">
+    <p class="herkunft">Variante zu Aufgabe 4.7 (Frühjahr 2024)</p>
+    <div class="text">
+      <p>Ein Datenbankexport mit einer Dateigröße von 120 GiB soll über einen Internetanschluss mit einer Upload-Bandbreite von 40 Mbit/s übertragen werden. Durch VPN-Verschlüsselung und Netzwerklatenz beträgt der tatsächliche Nutzdatenanteil 75 Prozent.</p>
+      <p>Berechnen Sie die Übertragungsdauer in Stunden und Minuten (gerundet auf volle Minuten).</p>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p><strong>Lösungsweg:</strong></p>
+        <ol>
+          <li>Dateigröße in Bit:<br>
+          120 GiB = 120 * 1.024^3 Byte = 128.849.018.880 Byte.<br>
+          In Bit: 128.849.018.880 * 8 = 1.030.792.151.040 Bit.</li>
+          <li>Effektive Bandbreite:<br>
+          40 Mbit/s * 0,75 = 30 Mbit/s = 30.000.000 bit/s.</li>
+          <li>Dauer in Sekunden:<br>
+          1.030.792.151.040 Bit / 30.000.000 bit/s = 34.359,74 Sekunden.</li>
+          <li>Dauer in Stunden und Minuten:<br>
+          34.359,74 / 3.600 = 9,5444 Stunden, also 9 volle Stunden.<br>
+          Restliche Minuten: 0,5444 * 60 = 32,66 Minuten ≈ <strong>33 Minuten</strong>.<br>
+          Gesamtdauer: <strong>9 Stunden und 33 Minuten</strong>.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+</section>
+
+<section id="a4-selbstcheck">
+  <h3>Selbstcheck</h3>
+  <ol class="selbstcheck">
+    <li>Warum zeigt ein Betriebssystem für eine gekaufte 2-TB-Festplatte nach der Formatierung nur rund 1,82 TiB Speicherkapazität an?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Der Hersteller rechnet mit dezimalen SI-Präfixen (2 TB = 2 * 10^12 Byte = 2.000.000.000.000 Byte). Das Betriebssystem rechnet mit binären Zweierpotenzen (1 TiB = 1.024^4 Byte = 1.099.511.627.776 Byte). 2.000.000.000.000 geteilt durch 1.099.511.627.776 ergibt exakt 1,81898 TiB ≈ 1,82 TiB.</p></div></details>
+    </li>
+    <li>Wie lautet die Formel zur Ermittlung des unkomprimierten Speicherbedarfs eines unkomprimierten DIN-A4-Farbdokument-Scans?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Formel: Speicherbedarf in Byte = (Breite in cm / 2,54 * DPI) * (Höhe in cm / 2,54 * DPI) * (Farbtiefe in Bit / 8). Bei 24 Bit Farbtiefe wird pro Bildpunkt mit genau 3 Byte gerechnet.</p></div></details>
+    </li>
+    <li>Wie viele Bytes belegt das Wort „Prüfung“ bei Speicherung im Standard-Format UTF-8 nach RFC 3629?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Das Wort „Prüfung“ belegt genau 8 Byte. Die sechs ASCII-Buchstaben P, r, f, u, n, g belegen je 1 Byte (= 6 Byte); der deutsche Umlaut „ü“ belegt nach der UTF-8-Codetabelle genau 2 Byte (Hex C3 BC).</p></div></details>
+    </li>
+  </ol>
+</section>
+
+<section id="a4-begriffe">
+  <h3>Begriffe zum Nachschlagen</h3>
+  <p class="unter">Nicht durchlesen. Wenn dir im Verfahren oder in einer Aufgabe ein Wort fehlt, schlag es hier nach.</p>
+  <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a4-begriff-bit-byte">Bit und Byte</a><a href="#a4-begriff-praefixe">SI-Präfixe und Binärpräfixe</a><a href="#a4-begriff-aufloesung">Bildauflösung, DPI und Farbtiefe</a><a href="#a4-begriff-audio">Audiodatenrate und Abtastung</a><a href="#a4-begriff-datenrate">Datenrate und Bandbreite</a><a href="#a4-begriff-uebertragungszeit">Übertragungszeit</a><a href="#a4-begriff-overhead">Protokoll-Overhead</a><a href="#a4-begriff-zahlensysteme">Zahlensysteme</a></nav>
+
+  <dl class="begriff" id="a4-begriff-bit-byte">
+    <dt>Bit und Byte <span class="en">(Binary Digit, Octet)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein Bit ist die kleinste binäre Informationseinheit (Zustand 0 oder 1); ein Byte (Oktett) besteht aus genau acht Bit und kann 256 verschiedene Werte (2^8) annehmen.<sup class="q"><a href="#a4-q1" title="IEC 80000-13">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Speichermedien und Dateigrößen werden in Byte (B) angegeben, während Schnittstellen- und Übertragungsgeschwindigkeiten im Netzwerk in Bit pro Sekunde (bit/s) gemessen werden.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Umrechnungsfaktor 8: Großes B steht für Byte, kleines b steht für Bit (1 Byte = 8 Bit).</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Häufigster Leichtsinnsfehler: Dateigrößen in Byte direkt durch Netzwerkbandbreiten in Bit teilen, ohne vorher mit 8 zu multiplizieren.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a4-begriff-praefixe">
+    <dt>SI-Präfixe und Binärpräfixe <span class="en">(Decimal vs. Binary Prefixes)</span></dt>
+    <dd><span class="label">Was es ist</span><p>SI-Präfixe nach BIPM basieren auf Zehnerpotenzen (k = 10^3, M = 10^6, G = 10^9); Binärpräfixe nach IEC 80000-13 basieren auf Zweierpotenzen (Ki = 2^10 = 1.024, Mi = 2^20 = 1.048.576, Gi = 2^30 = 1.073.741.824).<sup class="q"><a href="#a4-q2" title="BIPM SI">2</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Festplattenhersteller verkaufen Speichermedien in SI-Zehnerpotenzen (1 TB = 1.000.000.000.000 Byte); das Betriebssystem rechnet binär und zeigt nur 931 GiB an.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Mit „i“ ist binär (1 KiB = 1.024 B); ohne „i“ ist dezimal nach SI (1 kB = 1.000 B).</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Die Aufgabenstellung aufmerksam lesen: Gibt die IHK 1.000 oder 1.024 vor? Falls keine Vorgabe existiert, wird der Rechenweg für 1.024 erwartet.<sup class="q"><a href="#a4-q6" title="IHK-Konvention">6</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a4-begriff-aufloesung">
+    <dt>Bildauflösung, DPI und Farbtiefe <span class="en">(Resolution, DPI, Color Depth)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Die Auflösung beschreibt die Gesamtzahl der Bildpunkte (Breite * Höhe); DPI (Dots Per Inch) gibt die Punktdichte pro Zoll (1 Zoll = 2,54 cm) an; die Farbtiefe bestimmt den Speicherbedarf pro Pixel in Bit.<sup class="q"><a href="#a4-q1" title="IEC 80000-13">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Übliche Farbtiefen: 1 Bit (Schwarz/Weiß-Text), 8 Bit (256 Graustufen), 24 Bit (True Color mit je 8 Bit für Rot, Grün und Blau = 16,7 Millionen Farben).</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Unkomprimierte Bildgröße = Pixelanzahl * Farbtiefe in Bit / 8 (ergibt Byte).</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Berechnung des unkomprimierten Speicherbedarfs eines DIN-A4-Scans bei vorgegebener DPI-Zahl und anschließende Reduzierung durch Kompression.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a4-begriff-audio">
+    <dt>Audiodatenrate und Abtastung <span class="en">(Sampling Rate, Bit Depth)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Analoges Audio wird digitalisiert durch periodisches Messen der Signalspannung (Abtastrate in Hz) und Quantisierung jedes Messwerts mit einer definierten Bittiefe.<sup class="q"><a href="#a4-q1" title="IEC 80000-13">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>CD-Qualität nutzt 44.100 Hz (Abtastrate) * 16 Bit (Auflösung) * 2 Kanäle (Stereo) = 1.411.200 bit/s (~176,4 kB/s unkomprimiert).</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Kanalanzahl nicht vergessen: Mono = 1 Kanal, Stereo = 2 Kanäle, Surround = 6 Kanäle.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Formel: Datenrate = Abtastrate * Bittiefe * Kanäle; Dateigröße = Datenrate * Dauer in Sekunden / 8.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a4-begriff-datenrate">
+    <dt>Datenrate und Bandbreite <span class="en">(Data Transfer Rate, Throughput)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Die Menge an Daten, die über einen Übertragungskanal innerhalb einer Sekunde übertragen werden kann, gemessen in Bit pro Sekunde (kbit/s, Mbit/s, Gbit/s).<sup class="q"><a href="#a4-q5" title="Tanenbaum Networks">5</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Gängige Netzstandards: Fast Ethernet (100 Mbit/s), Gigabit-Ethernet (1 Gbit/s = 1.000 Mbit/s), WLAN Wi-Fi 6 (bis mehrere Gbit/s brutto).</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Bruttodatenrate ist die physikalische Signalrate; Nettodatenrate ist der tatsächlich für Nutzdaten verbleibende Durchsatz.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Netzwerkangaben sind im Dezimalsystem skaliert: 1 Gbit/s = 1.000.000.000 bit/s, nicht 1.024^3.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a4-begriff-uebertragungszeit">
+    <dt>Übertragungszeit <span class="en">(Transmission Time)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Die reine Transferdauer zur Übertragung eines Datenvolumens über eine Datenleitung mit konstanter Datenrate: Zeit = Datenmenge / effektive Datenrate.<sup class="q"><a href="#a4-q5" title="Tanenbaum Networks">5</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Berechnet die Dauer von Backup-Fenstern oder Dateiuploads zur Sicherstellung betrieblicher Wartungsfenster.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Zuerst beide Größen auf dieselbe Grundeinheit bringen (z. B. Bit und bit/s), erst dann dividieren; das Ergebnis in Sekunden in Minuten und Stunden umrechnen.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Ergebnis stets in eine alltagstaugliche Zeiteinheit (Minuten oder Stunden und Minuten) umrechnen, nicht als unhandliche Sekundenangabe stehen lassen.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a4-begriff-overhead">
+    <dt>Protokoll-Overhead <span class="en">(Protocol Overhead)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Zusätzliche Steuer-, Adress- und Prüfinformationen (Header und Trailer), die von Netzwerkprotokollen zur Nutzlast hinzugefügt werden und die effektive Nutzdatenrate mindern.<sup class="q"><a href="#a4-q5" title="Tanenbaum Networks">5</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Ethernet-, IP- und TCP-Header reduzieren die nutzbare Bandbreite um ca. 5 bis 15 Prozent je nach Paketgröße.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Wird ein Nutzdatenanteil von 90 % angegeben, beträgt die reale Datenrate: Bruttodatenrate * 0,90.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Overhead-Angaben in der Aufgabenstellung müssen bei der Berechnung der Übertragungszeit zwingend berücksichtigt werden.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a4-begriff-zahlensysteme">
+    <dt>Zahlensysteme <span class="en">(Dual, Decimal, Hexadecimal)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Stellenwertsysteme mit unterschiedlichen Basen: Dualsystem (Basis 2: 0, 1), Dezimalsystem (Basis 10: 0–9) und Hexadezimalsystem (Basis 16: 0–9, A–F).<sup class="q"><a href="#a4-q1" title="IEC 80000-13">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Ein Byte (8 Bit) lässt sich kompakt durch genau zwei Hexadezimalziffern von 00 bis FF darstellen (z. B. Farbwerte #FFFFFF oder MAC-Adressen).</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>A = 10, B = 11, C = 12, D = 13, E = 14, F = 15. Vier Bit (Nibble) entsprechen genau einer Hex-Ziffer.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Umrechnung von Dezimalwerten in Dualzahlen für Subnetzmasken oder Hexadezimalwerte für IPv6 und MAC-Adressen.</p></dd>
+  </dl>
+
+</section>
+
+<section id="a4-quellen">
+  <h3>Quellen dieses Kapitels</h3>
+  <ol class="quellenliste">
+    <li id="a4-q1" data-src="iec-80000-13"><span class="typ">Norm</span> International Electrotechnical Commission (IEC): IEC 80000-13:2008 – Quantities and units – Part 13: Information science and technology, Genf 2008, Clause 4 (Prefixes for binary multiples). <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a4-q2" data-src="bipm-si-brochure"><span class="typ">Behörde</span> Bureau International des Poids et Mesures (BIPM): Le Système international d'unités (SI) / The International System of Units, 9. Auflage, Sèvres 2019, Kapitel 3. <a href="https://www.bipm.org/en/publications/si-brochure">bipm.org/en/publications/si-brochure</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a4-q3" data-src="nist-sp-811"><span class="typ">Behörde</span> Thompson, A.; Taylor, B. N.: NIST Special Publication 811 – Guide for the Use of the International System of Units (SI), National Institute of Standards and Technology, Gaithersburg 2008, Section 4.3. <a href="https://www.nist.gov/pml/special-publication-811">nist.gov/pml/special-publication-811</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a4-q4" data-src="rfc-3629"><span class="typ">RFC</span> Yergeau, F.: RFC 3629 – UTF-8, a transformation format of ISO 10646, 2003, Section 3. <a href="https://www.rfc-editor.org/rfc/rfc3629.txt">rfc-editor.org/rfc/rfc3629.txt</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a4-q5" data-src="tanenbaum-networks"><span class="typ">Fachbuch</span> Tanenbaum, A. S.; Wetherall, D. J.: Computer Networks, 5. Aufl., Pearson, Boston 2011, Kapitel 1 & 2. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a4-q6" data-src="ihk-konvention-einheiten"><span class="typ">IHK-Konvention</span> ZPA Nord-West: Lösungshinweise zu Speicher- und Datenratenberechnungen der AP1, Umrechnungs- und Rundungsregeln. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a4-q7" data-src="ihk-ap1-h2025"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Herbst 2025, Teil 1, Aufgabe 2.4. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a4-q8" data-src="ihk-ap1-f2024"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Frühjahr 2024, Teil 1, Aufgabe 4.7. <span class="abruf">(nicht online geprüft)</span></li>
+  </ol>
+</section>
+
+</section>
+</main>
+<script>
+(function(){
+  /* Häkchen "Sitzt": im Browser speichern und in der Navigation spiegeln */
+  try{
+    var boxen=document.querySelectorAll('input[type=checkbox][data-key]');
+    Array.prototype.forEach.call(boxen,function(b){
+      var key='ap1.sitzt.'+b.getAttribute('data-key');
+      try{ b.checked=(localStorage.getItem(key)==='1'); }catch(e){}
+      spiegeln(b);
+      b.addEventListener('change',function(){
+        try{ localStorage.setItem(key,b.checked?'1':'0'); }catch(e){}
+        spiegeln(b);
+      });
+    });
+    function spiegeln(b){
+      var li=document.querySelector('nav.inhalt li[data-kap="'+b.getAttribute('data-key')+'"]');
+      if(li){ if(b.checked){ li.classList.add('sitzt'); } else { li.classList.remove('sitzt'); } }
+    }
+  }catch(e){}
+
+  /* Druck: alle Lösungen aufklappen, danach Zustand wiederherstellen */
+  try{
+    var geoeffnet=[];
+    window.addEventListener('beforeprint',function(){
+      geoeffnet=[];
+      Array.prototype.forEach.call(document.querySelectorAll('details'),function(d){
+        if(!d.open){ d.open=true; geoeffnet.push(d); }
+      });
+    });
+    window.addEventListener('afterprint',function(){
+      geoeffnet.forEach(function(d){ d.open=false; });
+      geoeffnet=[];
+    });
+  }catch(e){}
+
+  /* Aktuelles Kapitel in der Navigation markieren */
+  try{
+    if('IntersectionObserver' in window){
+      var links={};
+      Array.prototype.forEach.call(document.querySelectorAll('nav.inhalt a[href^="#"]'),function(a){
+        links[a.getAttribute('href').slice(1)]=a;
+      });
+      var io=new IntersectionObserver(function(eintraege){
+        eintraege.forEach(function(e){
+          if(e.isIntersecting){
+            Array.prototype.forEach.call(document.querySelectorAll('nav.inhalt a.aktuell'),function(a){ a.classList.remove('aktuell'); });
+            var a=links[e.target.id];
+            if(a){ a.classList.add('aktuell'); }
+          }
+        });
+      },{rootMargin:'-8% 0px -82% 0px'});
+      Array.prototype.forEach.call(document.querySelectorAll('main section[id]'),function(s){
+        if(links[s.id]){ io.observe(s); }
+      });
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

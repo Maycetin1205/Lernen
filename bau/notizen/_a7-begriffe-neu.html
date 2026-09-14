@@ -1,0 +1,78 @@
+<section id="a7-begriffe">
+  <h3>Begriffe zum Nachschlagen</h3>
+  <p class="unter">Nicht durchlesen. Wenn dir im Verfahren oder in einer Aufgabe ein Wort fehlt, schlag es hier nach.</p>
+  <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a7-begriff-variable">Variable, Datentyp und Zuweisung</a><a href="#a7-begriff-bedingung">Bedingung und boolescher Ausdruck</a><a href="#a7-begriff-schleife">Schleife</a><a href="#a7-begriff-array">Array und Index</a><a href="#a7-begriff-akkumulator">Akkumulator</a><a href="#a7-begriff-pseudocode">Pseudocode</a><a href="#a7-begriff-schreibtischtest">Schreibtischtest</a><a href="#a7-begriff-compiler">Compiler und Interpreter</a><a href="#a7-begriff-fehler">Logischer Fehler und Laufzeitfehler</a></nav>
+
+  <dl class="begriff" id="a7-begriff-variable">
+    <dt>Variable, Datentyp und Zuweisung <span class="en">(variable, data type, assignment)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein beschriftetes Kästchen im Speicher. Der Datentyp sagt, was hineinpasst: ganze Zahl, Kommazahl, Wahrheitswert, Zeichen, Zeichenkette. Die Zuweisung schreibt einen Wert hinein.<sup class="q"><a href="#a7-q2" title="Java Language Specification, Kapitel 4">2</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Ein Wartungsskript zählt geprüfte Rechner in einer Ganzzahl und hält das Prüfergebnis in einem Wahrheitswert.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Der Gleichung. Das Gleichheitszeichen heißt hier „wird gesetzt auf“, nicht „ist gleich“. <code>zaehler = zaehler + 1</code> ergibt nur als Zuweisung Sinn.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Jede Variable bekommt im Schreibtischtest eine eigene Spalte. Wer eine vergisst, kann den Rückgabewert nicht ablesen.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a7-begriff-bedingung">
+    <dt>Bedingung und boolescher Ausdruck <span class="en">(condition, boolean expression)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Eine Frage, auf die es nur wahr oder falsch gibt. Sie entsteht aus Vergleichen und den Verknüpfungen UND, ODER, NICHT und wählt zwischen zwei Wegen.<sup class="q"><a href="#a7-q3" title="Microsoft Learn, Typsystem in C#">3</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Eine Überwachung warnt, wenn der freie Plattenplatz unter 15&nbsp;% liegt UND das Laufwerk zu einem Server gehört.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>„Größer oder gleich“. Bei „größer als 80“ ist die 80 selbst nicht dabei, bei „größer oder gleich 80“ schon.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Die Lösungshinweise zu Frühjahr 2025 heben hervor: Ein SEO-Wert von genau 80 erfüllt „größer als 80“ nicht.<sup class="q"><a href="#a7-q6" title="AP1 Frühjahr 2025">6</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a7-begriff-schleife">
+    <dt>Schleife <span class="en">(loop)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein Block, der mehrfach läuft. Die kopfgesteuerte Form prüft vor jedem Durchlauf, die fußgesteuerte danach und läuft deshalb mindestens einmal. Die Zählschleife fasst Startwert, Abbruch und Schrittweite zusammen.<sup class="q"><a href="#a7-q1" title="Python Tutorial, More Control Flow Tools">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Ein Rollout-Skript geht mit einer Zählschleife alle Rechner einer Liste durch und installiert auf jedem dieselbe Software.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Der Verzweigung: die läuft einmal, die Schleife kehrt zurück. Drei Fragen je Schleife: Womit fängt sie an, wann hört sie auf, was ändert sich je Durchlauf. Fehlt die dritte Antwort, läuft sie endlos.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Herbst 2022 verlangte, eine leere Schleifenbedingung im Struktogramm zu ergänzen; diese Zeile allein brachte 2 von 7 Punkten.<sup class="q"><a href="#a7-q5" title="IHK-Konvention Schreibtischtest">5</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a7-begriff-array">
+    <dt>Array und Index <span class="en">(array, index)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Eine Reihe nummerierter Fächer unter einem Namen. Der Index wählt ein Fach und zählt ab 0. Ein zweidimensionales Feld braucht zwei Indizes: erst Zeile, dann Spalte.<sup class="q"><a href="#a7-q2" title="Java Language Specification, Kapitel 4">2</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Eine Berechtigungstabelle speichert je Zeile einen Mitarbeiter und in den Folgespalten die Räume, die er betreten darf.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Der Anzahl. Ein Feld mit fünf Elementen hat die Indizes 0 bis 4; die letzte gültige Position ist die Länge minus 1.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Herbst 2024 fragte den Rückgabewert einer Funktion, die ein zweidimensionales Feld durchsucht. Gefordert war der Weg, nicht nur das Ergebniswort.<sup class="q"><a href="#a7-q7" title="AP1 Herbst 2024">7</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a7-begriff-akkumulator">
+    <dt>Akkumulator <span class="en">(accumulator)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein Kästchen, das über alle Durchläufe sammelt: Summe, Produkt, Zähler oder bisheriges Maximum. Es wird vor der Schleife gesetzt und in der Schleife fortgeschrieben.<sup class="q"><a href="#a7-q1" title="Python Tutorial, More Control Flow Tools">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Beim Aufaddieren einer Bestellung hält eine Summenvariable den bisher erreichten Gesamtpreis.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Einem gewöhnlichen Zwischenwert. Der Startwert richtet sich nach der Rechenart: 0 für Summe und Zähler, 1 für ein Produkt, das erste Element für ein Maximum.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Herbst 2025 stellte genau diesen Fehler zweimal: erst erklären, dann die Zeile korrigieren, zusammen 5 Punkte.<sup class="q"><a href="#a7-q5" title="IHK-Konvention Schreibtischtest">5</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a7-begriff-pseudocode">
+    <dt>Pseudocode <span class="en">(pseudocode)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein Ablauf in Textform, ohne echte Programmiersprache: Zuweisung, Bedingung, Schleife, Aufruf, Einrückung für die Verschachtelung. Nicht ausführbar; die Schreibweise gibt die Aufgabe vor.<sup class="q"><a href="#a7-q5" title="IHK-Konvention Schreibtischtest">5</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Vor der Umsetzung schreibst du den Ablauf einer Konfigurationsroutine als Pseudocode auf und stimmst ihn mit dem Kunden ab.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Dem Struktogramm und dem Programmablaufplan. Diese beiden sind Bilder desselben Ablaufs, Pseudocode ist Text. Zur Diagrammform siehe <a href="#a8">A8</a>.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Die Hefte mischen die Formen: Herbst 2021 ein PowerShell-Skript, Frühjahr 2025 Python-nahen Text, Herbst 2022 ein Struktogramm. Das Verfahren bleibt dasselbe.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a7-begriff-schreibtischtest">
+    <dt>Schreibtischtest <span class="en">(desk check)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein Programm von Hand durchspielen: eine Spalte je Variable, eine Zeile je Durchlauf, die letzte Zeile trägt das Ergebnis.<sup class="q"><a href="#a7-q5" title="IHK-Konvention Schreibtischtest">5</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Bevor ein Skript auf 200 Kundenrechnern ausgerollt wird, spielst du es an drei Beispieldatensätzen durch, darunter ein Grenzfall.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Dem Ausprobieren am Rechner. Beim Schreibtischtest steht jeder Zwischenstand auf dem Papier und ist damit prüfbar.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Die Tabelle selbst zählt. Nach den allgemeinen Korrekturhinweisen gibt es Teilpunkte für richtige Teilleistungen, also auch für einen richtigen Zwischenwert.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a7-begriff-compiler">
+    <dt>Compiler und Interpreter <span class="en">(compiler, interpreter)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein Compiler übersetzt den Quelltext vorab in Zielcode, etwa Maschinen- oder Bytecode. Ein Interpreter liest und führt zur Laufzeit aus.<sup class="q"><a href="#a7-q4" title="Aho, Compilers, Kapitel 1">4</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>C wird typischerweise vorab übersetzt. CPython übersetzt Python-Quelltext zunächst in Bytecode und führt diesen aus; beides lässt sich also kombinieren.<sup class="q"><a href="#a7-q9" title="Python-Glossar, bytecode und interpreted">9</a></sup></p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Schnell gegen langsam. Der Unterschied ist der Zeitpunkt: Ein Compiler findet Syntaxfehler vor dem Start, logische Fehler findet er nicht.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Herbst 2024 fragte den Unterschied für 3 Punkte, Operator „erläutern“. Zwei Sätze zum Übersetzungszeitpunkt und seiner Folge genügen.<sup class="q"><a href="#a7-q7" title="AP1 Herbst 2024">7</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a7-begriff-fehler">
+    <dt>Logischer Fehler und Laufzeitfehler <span class="en">(logic error, runtime error)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein logischer Fehler liefert still das falsche Ergebnis. Ein Laufzeitfehler tritt während der Ausführung auf, etwa eine Indexüberschreitung, und kann zum Abbruch führen. Ein Syntaxfehler verletzt die Grammatik der Sprache.<sup class="q"><a href="#a7-q10" title="Java SE 21, §15.10.4 und §15.17.2">10</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Ein Bericht kann falsche Summen liefern, ohne eine Fehlermeldung auszugeben. Vergleiche das Ergebnis deshalb mit einem kleinen, bekannten Beispieldatensatz.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Ursache und Folge. Eine falsche Schleifengrenze ist ein Logikfehler und kann später einen Laufzeitfehler auslösen.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Herbst 2021 verlangte, zwei fehlerhafte Zeilen zu korrigieren, 8 Punkte. Gefragt war die berichtigte Zeile, nicht eine Beschreibung des Fehlers.<sup class="q"><a href="#a7-q8" title="AP1 Herbst 2021">8</a></sup></p></dd>
+  </dl>
+
+</section>

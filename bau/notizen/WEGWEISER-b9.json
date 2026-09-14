@@ -1,0 +1,83 @@
+[
+ {
+  "pruefung": "H21",
+  "nr": "1.1",
+  "ziel": "b9-k1",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H21",
+  "nr": "1.2",
+  "ziel": "b9-k5",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H21",
+  "nr": "3.1",
+  "ziel": "b9-k3",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "1.4",
+  "ziel": "b9-original-3",
+  "hinweis": "",
+  "lektion": "b9-k4"
+ },
+ {
+  "pruefung": "F22",
+  "nr": "1.5",
+  "ziel": "b9-k4",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H22",
+  "nr": "1.3",
+  "ziel": "b9-original-2",
+  "hinweis": "",
+  "lektion": "b9-k6"
+ },
+ {
+  "pruefung": "H22",
+  "nr": "1.4",
+  "ziel": "b9-k11",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H22",
+  "nr": "1.5",
+  "ziel": "b9-k11",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F23",
+  "nr": "4.2",
+  "ziel": "b9-k3",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F23",
+  "nr": "4.3",
+  "ziel": "b9-k3",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "1.4",
+  "ziel": "b9-k2",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "4.2",
+  "ziel": "b9-k7",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H24",
+  "nr": "4.1",
+  "ziel": "b9-original-1",
+  "hinweis": "",
+  "lektion": "b9-k3"
+ }
+]

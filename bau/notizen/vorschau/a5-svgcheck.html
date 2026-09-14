@@ -1,0 +1,329 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><style>
+/* STIL B · Werkstatt, Fassung 2026-09-07: breiter Rahmen, Karten statt schwarzer Balken, ruhige Linien, ein warmer Akzent. */
+:root{
+  --papier:#ffffff; --grund:#FAFAF9; --flaeche:#F5F4F2;
+  --tinte:#0D0F14; --grau:#5A5F6B; --linie:#E3E2DF; --linie-stark:#0D0F14;
+  --akzent:#C4400C; --akzent-hell:#FDF0E8; --akzent-tief:#8F2E08;
+  --nav-b:18.5rem; --inhalt-b:78rem; --text-b:74ch; --radius:12px;
+  --sans:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,"Inter",Roboto,Arial,sans-serif;
+  --anz:"Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,"Inter",Roboto,Arial,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--papier);color:var(--tinte);font:17.5px/1.62 var(--sans);-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:2rem;-webkit-font-smoothing:antialiased}
+body{margin:0;display:grid;grid-template-columns:var(--nav-b) minmax(0,1fr)}
+
+nav.inhalt{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;min-width:0;background:var(--grund);border-right:1px solid var(--linie);padding:1.75rem 1.1rem 4rem;font-size:.8438rem;line-height:1.35}
+nav.inhalt .nav-titel{margin:0 .6rem 1.75rem;font:780 1.125rem/1.15 var(--anz);letter-spacing:-.03em;text-transform:uppercase}
+nav.inhalt .nav-titel a{color:var(--tinte);text-decoration:none}
+nav.inhalt .nav-gruppe{margin:1.75rem .6rem .5rem;font-size:.6875rem;font-weight:780;letter-spacing:.12em;text-transform:uppercase;color:var(--grau)}
+nav.inhalt ol{list-style:none;margin:0;padding:0}
+nav.inhalt li a{display:flex;gap:.5rem;padding:.4rem .6rem;border-radius:8px;color:var(--grau);text-decoration:none;font-weight:500}
+nav.inhalt li a:hover{color:var(--tinte);background:var(--flaeche)}
+nav.inhalt li a.aktuell{color:var(--tinte);font-weight:750;background:var(--akzent-hell)}
+nav.inhalt .nr{flex:0 0 2.2em;font-weight:780;color:#B9BCC4;font-variant-numeric:tabular-nums}
+nav.inhalt li a:hover .nr,nav.inhalt li a.aktuell .nr{color:var(--akzent)}
+nav.inhalt ol.nav-schnell{margin:0 0 1.6rem;padding-bottom:1.2rem;border-bottom:1px solid var(--linie)}
+nav.inhalt ol.nav-schnell li a{font-weight:750;color:var(--tinte)}
+nav.inhalt ol.nav-schnell li a:hover{color:var(--akzent)}
+
+/* min-width:0 ist der Kern: ohne das wächst main auf die Breite seines breitesten
+   Inhalts (der Matrix-Tabelle) und schiebt die ganze Seite über den Bildschirm. */
+main{min-width:0;max-width:min(var(--inhalt-b),100%);padding:3.5rem clamp(1.5rem,4vw,4.5rem) 10rem;margin:0 auto}
+main p,main ul:not(.glossar),main ol,main .unter{max-width:min(var(--text-b),100%)}
+header.titel{padding-bottom:2.5rem;border-bottom:1px solid var(--linie);margin-bottom:1rem}
+header.titel+.teil{margin-top:2.5rem;border-top:0;padding-top:1rem}
+h1{font:800 clamp(2.2rem,3.4vw,3rem)/1.04 var(--anz);letter-spacing:-.04em;margin:0 0 1.1rem;text-wrap:balance}
+h2{font:780 2.35rem/1.08 var(--anz);letter-spacing:-.035em;margin:0 0 1.1rem;text-wrap:balance}
+h3{font:740 1.3125rem/1.3 var(--anz);letter-spacing:-.02em;margin:3rem 0 1rem;padding-bottom:.45rem;border-bottom:1px solid var(--linie)}
+h4{font:780 .8125rem/1.5 var(--sans);letter-spacing:.11em;text-transform:uppercase;color:var(--akzent);margin:2rem 0 .6rem}
+p{margin:0 0 1.1rem}
+.unter{font-size:1.1875rem;line-height:1.5;color:var(--grau)}
+.klein{font-size:.9375rem}
+a{color:var(--akzent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;text-decoration-color:#F0C4AD}
+a:hover{text-decoration-color:var(--akzent)}
+strong{font-weight:730}
+ol,ul{padding-left:1.4rem;margin:0 0 1.1rem}
+li{margin-bottom:.42rem}
+li>ul,li>ol{margin-top:.42rem}
+hr{border:0;border-top:1px solid var(--linie);margin:2.5rem 0}
+code{font:.9em var(--mono);background:var(--flaeche);padding:.1em .3em}
+mark{background:#FFE9A8;color:inherit;padding:.05em .2em}
+
+.kapitel,.teil{padding-top:3.5rem;margin-top:5rem;border-top:1px solid var(--linie)}
+.kapitel-kopf{margin-bottom:2.5rem;padding:1.75rem 2rem 1.9rem;background:var(--grund);border:1px solid var(--linie);border-radius:var(--radius)}
+.kapitel-kopf h2{margin-bottom:.9rem}
+.kapitel-nr{margin:0 0 .6rem;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--akzent)}
+.kam-dran{margin:1rem 0 0;font-size:.875rem;font-weight:550;color:var(--grau)}
+.kam-dran span{white-space:nowrap}
+.kam-dran span+span::before{content:"·";margin:0 .55em;color:#B9BCC4;font-weight:700}
+
+/* Sprunglink-Zeilen: Wegweiser, keine Überschriften. Zurückgenommen und einzeilig gedacht. */
+nav.kapitel-wege{margin:.95rem 0 0;font-size:.8438rem;line-height:1.95}
+nav.kapitel-wege a{color:var(--grau);text-decoration:none;font-weight:650}
+nav.kapitel-wege a:hover{color:var(--akzent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+nav.kapitel-wege a+a::before{content:"·";margin:0 .6em;color:#B9BCC4;font-weight:700}
+nav.begriffsliste{margin:.85rem 0 .1rem;max-width:min(62rem,100%);font-size:.8438rem;line-height:1.95}
+nav.begriffsliste a{color:var(--akzent);text-decoration:none;font-weight:650}
+nav.begriffsliste a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+nav.begriffsliste a+a::before{content:"·";margin:0 .55em;color:#B9BCC4;font-weight:700}
+
+section[id$="-begriffe"]{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(23rem,100%),1fr));gap:1.25rem 1.75rem;align-items:start}
+section[id$="-begriffe"]>:not(dl){grid-column:1/-1}
+section[id$="-begriffe"]>h3{margin-bottom:0}
+section[id$="-begriffe"]>h3::after{content:"Nicht am Stück lesen. Lies den nächsten Abschnitt und komm zurück, wenn dir ein Wort fehlt.";display:block;margin-top:.45rem;font:500 .9rem/1.45 var(--sans);letter-spacing:0;text-transform:none;color:var(--grau)}
+
+/* Eine Karte ist EIN Begriff mit EINER Erklärung. Darunter, deutlich leiser,
+   die drei Zusatzzeilen. Deshalb keine Linie unter dem Begriff und nur eine
+   einzige Trennlinie oberhalb der Zusatzzeilen. */
+dl.begriff{border:1px solid var(--linie);border-radius:var(--radius);padding:1.35rem 1.5rem 1.2rem;margin:0;background:var(--papier)}
+dl.begriff dt{font:760 1.125rem/1.3 var(--anz);letter-spacing:-.022em;margin:0 0 .55rem}
+dl.begriff dt .en{font-weight:450;color:var(--grau);font-size:.9375rem;letter-spacing:0}
+dl.begriff dd{margin:0}
+dl.begriff .label{display:block;margin-bottom:.12rem;font-size:.6563rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--akzent)}
+dl.begriff dd p{margin:0;font-size:1rem;line-height:1.62}
+/* "Was es ist": normaler Absatz. Die Beschriftung bleibt für Vorleseprogramme,
+   ist aber unsichtbar, weil sie direkt unter dem Begriff nichts erklärt. */
+dl.begriff dd:first-of-type>.label{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+dl.begriff dd+dd{margin-top:.5rem;font-size:.875rem;line-height:1.55;color:var(--grau)}
+dl.begriff dd:nth-of-type(2){margin-top:1.05rem;padding-top:.9rem;border-top:1px solid var(--linie)}
+dl.begriff dd+dd>.label{display:inline;margin:0 .5em 0 0;font-size:.6563rem;font-weight:800;letter-spacing:.11em;color:#8B8F98}
+dl.begriff dd+dd p{display:inline;font-size:inherit;line-height:inherit}
+
+figure.abb{margin:2.25rem 0;padding:1.25rem 1.5rem 1rem;border:1px solid var(--linie);border-radius:var(--radius);background:var(--papier)}
+figure.abb svg{display:block;width:100%;height:auto;max-width:min(58rem,100%);margin:0 auto}
+figure.abb figcaption{margin-top:.9rem;padding-top:.7rem;border-top:1px solid var(--linie);font-size:.875rem;font-weight:550;color:var(--grau);line-height:1.5}
+.abb svg .l{fill:none;stroke:var(--tinte);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.abb svg .f{fill:var(--flaeche);stroke:var(--tinte);stroke-width:2}
+.abb svg .w{fill:var(--papier);stroke:var(--tinte);stroke-width:2}
+.abb svg .a{fill:none;stroke:var(--akzent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.abb svg .fa{fill:var(--akzent);stroke:none}
+.abb svg .d{fill:none;stroke:var(--grau);stroke-width:1.25;stroke-dasharray:5 3}
+.abb svg .g{fill:none;stroke:var(--linie);stroke-width:1}
+.abb svg text{font:13px var(--sans);font-weight:550;fill:var(--tinte)}
+.abb svg .t2{font-size:11.5px;font-weight:500;fill:var(--grau)}
+.abb svg .tb{font-weight:780}
+.abb svg .ta{fill:var(--akzent);font-weight:800}
+.abb svg .mono{font-family:var(--mono);font-weight:500}
+.abb svg .mitte{text-anchor:middle}
+.abb svg .rechts{text-anchor:end}
+
+.tabelle{overflow-x:auto;margin:1.75rem 0;border:1px solid var(--linie);border-radius:var(--radius)}
+table{border-collapse:collapse;width:100%;font-size:.9375rem}
+caption{text-align:left;font-size:.875rem;font-weight:550;color:var(--grau);padding:.85rem .85rem .6rem;line-height:1.5}
+th{text-align:left;font-weight:800;font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;padding:.6rem .85rem;background:var(--flaeche);color:var(--grau);border-bottom:1px solid var(--tinte);vertical-align:bottom}
+td{padding:.65rem .85rem;border-bottom:1px solid var(--linie);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tr.hervor td:first-child{border-left:3px solid var(--akzent)}
+td.z,th.z{text-align:right;font-variant-numeric:tabular-nums}
+tr.summe td{font-weight:800;border-top:2px solid var(--tinte);background:var(--grund)}
+tr.hervor td{background:var(--akzent-hell);font-weight:700}
+
+pre.rechenweg{font:.9375rem/1.85 var(--mono);background:var(--flaeche);border-left:4px solid var(--akzent);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.4rem;margin:1.75rem 0;max-width:min(62rem,100%);white-space:pre-wrap;overflow-x:auto}
+.merke{background:var(--akzent-hell);border-left:4px solid var(--akzent);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.4rem;margin:2rem 0;max-width:min(62rem,100%)}
+.merke::before{content:attr(data-art);display:block;margin-bottom:.4rem;font-size:.6875rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--akzent)}
+.merke p{margin:0 0 .6rem;font-size:1rem}
+.merke p:last-child{margin-bottom:0}
+
+.aufgabe{margin:2rem 0;padding:1.4rem 1.6rem 1.5rem;border:1px solid var(--linie);border-radius:var(--radius);background:var(--grund);max-width:min(62rem,100%)}
+.herkunft{margin:0 0 .9rem;font-size:.8125rem;font-weight:750;letter-spacing:.03em;text-transform:uppercase;color:var(--akzent)}
+.aufgabe .text p:last-child{margin-bottom:.5rem}
+
+details{margin:1rem 0 0}
+summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem;padding:.5rem 1rem;border:1.5px solid var(--tinte);border-radius:999px;background:var(--papier);font-size:.8125rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--tinte)}
+summary:hover{background:var(--akzent-hell)}
+details[open] summary{background:var(--tinte);color:var(--papier)}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";font-size:1.15em;font-weight:700;line-height:1;color:var(--akzent)}
+details[open] summary::before{content:"–";color:var(--papier)}
+details .inhalt{padding:1rem 0 .25rem}
+details .inhalt>*:last-child{margin-bottom:0}
+
+sup.q{font-size:.66rem;line-height:0;vertical-align:super;font-weight:800}
+sup.q a{text-decoration:none;padding:0 .1em;color:var(--akzent)}
+ol.quellenliste{font-size:.875rem;line-height:1.6;padding-left:1.6rem}
+ol.quellenliste li{margin-bottom:.65rem;color:var(--grau)}
+ol.quellenliste a{word-break:break-word}
+.typ{display:inline-block;margin-right:.45em;padding:.06em .45em;background:var(--flaeche);color:var(--tinte);border:1px solid var(--linie);border-radius:4px;font-size:.6563rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;vertical-align:.08em}
+.abruf{color:#8B8F98}
+.wo{margin-left:.4em;font-size:.8125rem;font-weight:700;color:#8B8F98}
+.wo a{color:#8B8F98;text-decoration:none}
+
+ul.glossar{columns:2;column-gap:2.5rem;list-style:none;padding:0;font-size:.9375rem;line-height:1.7}
+ul.glossar li{break-inside:avoid;margin:0}
+ol.selbstcheck>li{margin-bottom:1rem;font-weight:600;font-size:1.0625rem}
+
+@media (max-width:1100px){
+  html{font-size:16.5px}
+  body{display:block}
+  nav.inhalt{position:static;height:auto;border-right:0;border-bottom:1px solid var(--linie);padding:1.25rem}
+  nav.inhalt ol{columns:2;column-gap:1.5rem}
+  main{padding:2.25rem 1.25rem 6rem}
+  h1{font-size:2.4rem}
+  h2{font-size:1.9rem}
+  ul.glossar{columns:1}
+}
+@media (max-width:640px){ nav.inhalt ol{columns:1} html{font-size:16px} h1{font-size:2rem} h2{font-size:1.6rem} }
+
+@media print{
+  html{font-size:10pt;background:#fff}
+  body{display:block}
+  nav.inhalt,nav.kapitel-wege,nav.begriffsliste{display:none}
+  main{max-width:none;padding:0;margin:0}
+  .kapitel,.teil{break-before:page;border-top:0;margin-top:0;padding-top:0}
+  h2,h3{break-after:avoid}
+  figure.abb,table,dl.begriff,pre.rechenweg,.merke,.aufgabe{break-inside:avoid}
+  section[id$="-begriffe"]{display:block}
+  dl.begriff{margin:0 0 1rem}
+  .kapitel-kopf,.aufgabe,figure.abb{background:#fff}
+  summary{color:inherit}
+  a{color:inherit;text-decoration:none}
+  ol.quellenliste a[href^="http"]::after{content:" " attr(href);color:#666;word-break:break-all}
+  sup.q a{color:#000}
+}
+
+/* Pfeilspitzen an die Stilfarben binden */
+marker#pfeil path{fill:var(--tinte)}
+marker#pfeil-a path{fill:var(--akzent)}
+marker#pfeil-g path{fill:var(--grau)}
+ figure.abb{width:640px}</style></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="pfeil" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="pfeil-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="pfeil-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+</svg>
+<figure class="abb" data-name="Abb. A5-1">
+    <svg viewBox="0 0 640 200" role="img" aria-labelledby="a5-abb1-t">
+      <title id="a5-abb1-t">Formeldreieck mit P oben sowie U und I unten, dazu die drei umgestellten Formeln</title>
+      <polygon class="f" points="185,25 275,165 95,165"/>
+      <line class="a" x1="134" y1="105" x2="237" y2="105"/>
+      <line class="l" x1="185" y1="105" x2="185" y2="165"/>
+      <text class="mitte tb" x="185" y="72">P</text>
+      <text class="mitte t2" x="185" y="90">in Watt</text>
+      <text class="mitte tb" x="148" y="132">U</text>
+      <text class="mitte t2" x="148" y="150">in Volt</text>
+      <text class="mitte tb" x="222" y="132">I</text>
+      <text class="mitte t2" x="222" y="150">in Ampere</text>
+      <text x="330" y="60">P gesucht:   P = U · I</text>
+      <text x="330" y="100">U gesucht:   U = P / I</text>
+      <text x="330" y="140">I gesucht:   I = P / U</text>
+      <text class="t2" x="330" y="180">Netzspannung in Deutschland: 230 V</text>
+    </svg>
+    <figcaption>Abb. A5-1: Über dem dicken Strich steht der Zähler, darunter der Nenner; wer P abdeckt, liest U · I ab, wer I abdeckt, liest P / U ab.</figcaption>
+  </figure>
+<figure class="abb" data-name="Abb. A5-2">
+    <svg viewBox="0 0 640 170" role="img" aria-labelledby="a5-abb2-t">
+      <title id="a5-abb2-t">Zwei Balken: die Grenze der Steckdose mit 3.680 W und der Bedarf der Geräte mit 4.140 W, der über die Grenze hinausragt</title>
+      <text class="tb" x="20" y="52">Grenze</text>
+      <text class="t2" x="20" y="70">16 A · 230 V</text>
+      <rect class="w" x="140" y="34" width="368" height="40"/>
+      <text class="mitte tb" x="324" y="59">3.680 W</text>
+      <text class="tb" x="20" y="120">Bedarf</text>
+      <text class="t2" x="20" y="138">sechs Geräte</text>
+      <rect class="w" x="140" y="102" width="368" height="40"/>
+      <rect class="fa" x="508" y="102" width="46" height="40"/>
+      <text class="mitte tb" x="324" y="127">4.140 W</text>
+      <line class="d" x1="508" y1="20" x2="508" y2="156"/>
+      <text class="ta" x="562" y="127">+ 460 W</text>
+    </svg>
+    <figcaption>Abb. A5-2: Der Bedarf ragt um 460 W über die Grenze der Leiste hinaus; deshalb fällt die Sicherung, sobald alle Geräte gleichzeitig laufen.</figcaption>
+  </figure>
+<figure class="abb" data-name="Abb. A5-3">
+    <svg viewBox="0 0 640 200" role="img" aria-labelledby="a5-abb3-t">
+      <title id="a5-abb3-t">Zwei getrennte Rechenstränge für Betrieb und Standby, die zur Gesamtenergie und dann zu den Kosten zusammenlaufen</title>
+      <rect class="w" x="20" y="25" width="170" height="66"/>
+      <text class="mitte tb" x="105" y="48">Betrieb</text>
+      <text class="mitte t2" x="105" y="68">P in kW = W / 1.000</text>
+      <text class="mitte t2" x="105" y="85">× h/Tag × Tage</text>
+      <rect class="w" x="20" y="119" width="170" height="66"/>
+      <text class="mitte tb" x="105" y="142">Standby</text>
+      <text class="mitte t2" x="105" y="162">P in kW = W / 1.000</text>
+      <text class="mitte t2" x="105" y="179">× h/Tag × Tage</text>
+      <path class="l" d="M190 58 H214 V105"/>
+      <path class="l" d="M190 152 H214 V105"/>
+      <line class="a" x1="214" y1="105" x2="282" y2="105" marker-end="url(#pfeil-a)"/>
+      <text class="mitte ta" x="248" y="88">Summe</text>
+      <rect class="f" x="286" y="80" width="154" height="50"/>
+      <text class="mitte tb" x="363" y="103">Energie gesamt</text>
+      <text class="mitte t2" x="363" y="121">in kWh</text>
+      <text class="mitte t2" x="458" y="70">× Preis in EUR/kWh</text>
+      <line class="l" x1="440" y1="105" x2="476" y2="105" marker-end="url(#pfeil)"/>
+      <rect class="f" x="480" y="80" width="140" height="50"/>
+      <text class="mitte tb" x="550" y="103">Kosten</text>
+      <text class="mitte t2" x="550" y="121">in EUR</text>
+    </svg>
+    <figcaption>Abb. A5-3: Der Arbeitspreis wird genau einmal angesetzt, nämlich auf die Summe aus Betriebs- und Standby-Energie.</figcaption>
+  </figure>
+<figure class="abb" data-name="Abb. A5-4">
+    <svg viewBox="0 0 640 190" role="img" aria-labelledby="a5-abb4-t">
+      <title id="a5-abb4-t">Leistungsfluss von der Steckdose durch das Netzteil zu den Komponenten mit Verlustwärme und der gesuchten Gegenrichtung</title>
+      <text class="mitte ta" x="315" y="20">Prüfungsfrage: P_auf = P_ab / Wirkungsgrad</text>
+      <line class="a" x1="468" y1="36" x2="164" y2="36" marker-end="url(#pfeil-a)"/>
+      <rect class="w" x="20" y="62" width="140" height="62"/>
+      <text class="mitte tb" x="90" y="88">Steckdose 230 V</text>
+      <text class="mitte t2" x="90" y="108">P_auf = 139,53 W</text>
+      <line class="l" x1="160" y1="93" x2="206" y2="93" marker-end="url(#pfeil)"/>
+      <rect class="f" x="210" y="50" width="200" height="90"/>
+      <text class="mitte tb" x="310" y="80">Netzteil</text>
+      <text class="mitte t2" x="310" y="102">Wirkungsgrad 43 %</text>
+      <text class="mitte t2" x="310" y="122">P_ab = P_auf · 0,43</text>
+      <line class="l" x1="410" y1="93" x2="466" y2="93" marker-end="url(#pfeil)"/>
+      <rect class="w" x="470" y="62" width="150" height="62"/>
+      <text class="mitte tb" x="545" y="88">Komponenten</text>
+      <text class="mitte t2" x="545" y="108">P_ab = 60 W</text>
+      <line class="d" x1="310" y1="140" x2="310" y2="172" marker-end="url(#pfeil-g)"/>
+      <text class="t2" x="322" y="170">Verlustwärme 79,53 W</text>
+    </svg>
+    <figcaption>Abb. A5-4: Der Leistungsfluss läuft von links nach rechts, die Prüfungsaufgabe aber von rechts nach links: gegeben sind 60 W an den Komponenten, gesucht sind 139,53 W aus dem Netz.</figcaption>
+  </figure>
+<figure class="abb" data-name="Abb. A5-5">
+    <svg viewBox="0 0 640 250" role="img" aria-labelledby="a5-abb5-t">
+      <title id="a5-abb5-t">Aufgelaufene Einsparung als steigende Gerade, die die waagerechte Linie des Mehrpreises im 31. Monat schneidet</title>
+      <line class="l" x1="60" y1="200" x2="618" y2="200" marker-end="url(#pfeil)"/>
+      <line class="l" x1="60" y1="212" x2="60" y2="32" marker-end="url(#pfeil)"/>
+      <text class="t2" x="24" y="40">EUR</text>
+      <line class="d" x1="60" y1="86" x2="600" y2="86"/>
+      <text class="t2" x="66" y="80">Mehrpreis 100,00 €</text>
+      <line class="l" x1="60" y1="200" x2="600" y2="50"/>
+      <text class="rechts t2" x="600" y="44">kumulierte Einsparung: 3,27 € je Monat</text>
+      <line class="a" x1="473" y1="86" x2="473" y2="200"/>
+      <text class="mitte t2" x="195" y="216">10</text>
+      <text class="mitte t2" x="330" y="216">20</text>
+      <text class="mitte t2" x="465" y="216">30</text>
+      <text class="rechts t2" x="615" y="216">Monate</text>
+      <text class="mitte ta" x="473" y="238">amortisiert nach 31 Monaten</text>
+    </svg>
+    <figcaption>Abb. A5-5: Der Mehrpreis ist eine feste Linie, die Einsparung wächst gleichmäßig; der Schnittpunkt liegt bei 30,58 Monaten und wird auf 31 aufgerundet.</figcaption>
+  </figure>
+<pre id="out"></pre>
+<script>
+const out = [];
+const rects = (a, b) => !(a.x + a.width <= b.x || b.x + b.width <= a.x || a.y + a.height <= b.y || b.y + b.height <= a.y);
+document.querySelectorAll('figure.abb').forEach(fig => {
+  const name = fig.dataset.name, svg = fig.querySelector('svg');
+  const vb = svg.viewBox.baseVal; const texts = [...svg.querySelectorAll('text')];
+  const boxes = texts.map(t => { const b = t.getBBox(); return {t, b, s: (t.textContent || '').trim()}; });
+  boxes.forEach(({b, s}) => {
+    if (b.width === 0) return;
+    if (b.x < vb.x - 1 || b.y < vb.y - 1 || b.x + b.width > vb.x + vb.width + 1 || b.y + b.height > vb.y + vb.height + 1)
+      out.push(name + ' | RAND | "' + s + '" ragt aus dem Bild (x ' + Math.round(b.x) + '..' + Math.round(b.x + b.width) + ', y ' + Math.round(b.y) + '..' + Math.round(b.y + b.height) + ', Bild ' + vb.width + 'x' + vb.height + ')');
+  });
+  for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
+    const A = boxes[i], B = boxes[j]; if (!A.s || !B.s) continue;
+    if (rects(A.b, B.b)) {
+      const ix = Math.min(A.b.x + A.b.width, B.b.x + B.b.width) - Math.max(A.b.x, B.b.x);
+      const iy = Math.min(A.b.y + A.b.height, B.b.y + B.b.height) - Math.max(A.b.y, B.b.y);
+      if (ix > 2 && iy > 2) out.push(name + ' | TEXT-TEXT | "' + A.s + '" ueberlappt "' + B.s + '" (' + Math.round(ix) + 'x' + Math.round(iy) + ')');
+    }
+  }
+  const rs = [...svg.querySelectorAll('rect')].map(r => ({x: +r.getAttribute('x') || 0, y: +r.getAttribute('y') || 0, w: +r.getAttribute('width') || 0, h: +r.getAttribute('height') || 0}));
+  boxes.forEach(({b, s}) => {
+    if (!s) return; const cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+    rs.forEach(r => { if (cx > r.x && cx < r.x + r.w && cy > r.y && cy < r.y + r.h && (b.x < r.x - 1 || b.x + b.width > r.x + r.w + 1))
+      out.push(name + ' | BOX | "' + s + '" breiter als seine Box (Text ' + Math.round(b.width) + ', Box ' + r.w + ')'); });
+  });
+});
+document.title = 'FERTIG';
+document.getElementById('out').textContent = out.join('\n') || 'Keine Befunde.';
+</script></body></html>

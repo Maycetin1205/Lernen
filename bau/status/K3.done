@@ -1,0 +1,15 @@
+Phase K-3 abgeschlossen am 2026-09-03.
+bau/kapitel/20-b1.html: 2426 Wörter, 9 Begriffskarten, 3 SVGs.
+bau/kapitel/21-b2.html: 3001 Wörter, 9 Begriffskarten, 3 SVGs.
+bau/kapitel/22-b3.html: 2801 Wörter, 9 Begriffskarten, 2 SVGs.
+bau/kapitel/23-b4.html: 3212 Wörter, 9 Begriffskarten, 4 SVGs.
+Insgesamt: 4 Kapitel, 11440 Wörter, 36 Begriffskarten, 12 SVGs.
+11 Originalaufgaben, 11 passende Varianten, 16 Selbstcheck-Fragen.
+Alle vier Fragmente: check.js --fragment, keine Fehler und keine Hinweise.
+Prüfprotokoll: bau/notizen/K3-PRUEFUNG.json.
+Rechnungen: bau/notizen/RECHNUNGEN-b1.md bis RECHNUNGEN-b4.md.
+Kam-dran-Zeilen stimmen mit MATRIX.md überein; feste Bauteile per SHA256 unverändert.
+Arbeitsansicht: bau/K3-vorschau.html.
+Browser-Sichtprüfung in Z offen; lokale Navigation zuvor durch Sicherheitsrichtlinie blockiert.
+Entscheidungen: bau/ENTSCHEIDUNGEN.md, Abschnitt K-3.
+Nächste Kapitelphase: K-4, B5 bis B8.

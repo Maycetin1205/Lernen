@@ -1,0 +1,12 @@
+Phase K-2 abgeschlossen am 2026-09-03.
+14-a5.html: 3155 Wörter, 4 SVG-Abbildungen, 8 Begriffskarten.
+15-a6.html: 3491 Wörter, 4 SVG-Abbildungen, 8 Begriffskarten.
+16-a7.html: 3499 Wörter, 4 SVG-Abbildungen, 9 Begriffskarten.
+17-a8.html: 3319 Wörter, 7 SVG-Abbildungen, 9 Begriffskarten.
+18-a9.html: 3496 Wörter, 6 SVG-Abbildungen, 8 Begriffskarten.
+Alle fünf Fragmente: check.js --fragment, keine Fehler und keine Hinweise.
+Rechnungen und Quellenprüfung: bau/notizen/k2-pruefung/.
+Kam-dran-Zeilen stimmen mit MATRIX.md überein; feste Bauteile unverändert.
+Browser-Sichtprüfung durch Sicherheitsrichtlinie blockiert; in Phase Z nachholen.
+Entscheidungen: bau/ENTSCHEIDUNGEN.md, Abschnitt K-2.
+Nächste Kapitelphase: K-3, B1 bis B4.

@@ -1,0 +1,7 @@
+Phase K-1 abgeschlossen am 2026-09-03.
+Erzeugt: bau/kapitel/10-a1.html, bau/kapitel/11-a2.html, bau/kapitel/12-a3.html, bau/kapitel/13-a4.html.
+Umfang: 4 Kapitel, 9.635 Wörter (A1: 2.826, A2: 2.178, A3: 2.102, A4: 2.529), 13 Abbildungen, 30 Begriffskarten.
+Quellen: 33 Quellenangaben aus QUELLEN-A.md mit data-src und hochgestellten Belegen eingebunden.
+Originalaufgaben: 8 IHK-Aufgaben mit Lösungshinweisen und 8 passgenaue Übungsvarianten.
+Entscheidungen in bau/ENTSCHEIDUNGEN.md dokumentiert.
+Prüferergebnis: check.js meldet für alle vier Fragmente 0 Fehler und 0 Hinweise.

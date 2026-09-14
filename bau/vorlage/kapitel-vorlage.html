@@ -1,0 +1,132 @@
+<!-- VORLAGE: Diese Datei ist die verbindliche Kapitelvorlage. Kopiere sie nach bau/kapitel/NN-<id>.html,
+     ersetze alle Platzhalter, LÖSCHE ALLE KOMMENTARE, die mit "VORLAGE:" beginnen. Der Prüfer (check.js)
+     meldet jedes verbliebene "VORLAGE" als Fehler. Nur die hier gezeigten Klassen verwenden. -->
+
+<section class="kapitel" id="a1" data-gruppe="A">
+<!-- VORLAGE: id = a1..a9 oder b1..b11. data-gruppe = A oder B. -->
+
+<header class="kapitel-kopf">
+  <p class="kapitel-nr">A1 · Verfahren</p>
+  <!-- VORLAGE: "A1 · Verfahren" bzw. "B1 · Erklären" -->
+  <h2>IPv4, Subnetting und Netzkonfiguration</h2>
+  <!-- VORLAGE: Titel exakt wie in der Navigation (00-kopf.html). -->
+  <p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2025, 1.5 (6 P)</span> · <span>AP1 Herbst 2025, 3.5 (5 P)</span> · <span>AP1 Herbst 2024, 1.4 bis 1.7 (12 P)</span></p>
+  <!-- VORLAGE: Jede Teilaufgabe dieses Clusters aus bau/notizen/MATRIX.md, chronologisch, mit Punkten. Nichts erfinden. -->
+</header>
+
+<section id="a1-worum">
+  <h3>Worum es geht</h3>
+  <p>PLATZHALTER. 80 bis 150 Wörter. Beginnt mit einem konkreten Fall aus dem Alltag eines IT-Systemhauses (ein Kunde, ein Gerät, ein Problem), sagt dann in einem Satz, was man können muss, und in einem Satz, warum die Prüfung das fragt.<sup class="q"><a href="#a1-q1" title="RFC 4632">1</a></sup></p>
+</section>
+
+<section id="a1-begriffe">
+  <h3>Begriffe</h3>
+  <!-- VORLAGE: 5 bis 10 Begriffskarten. Reihenfolge: in der Reihenfolge, in der der Kern sie braucht.
+       Jede Karte hat GENAU diese vier dd-Zeilen. Theorie-Zeile immer mit Quellenverweis. id = <kapitel>-begriff-<slug>. -->
+  <dl class="begriff" id="a1-begriff-netzmaske">
+    <dt>Netzmaske <span class="en">(subnet mask)</span></dt>
+    <dd><span class="label">Theorie</span><p>PLATZHALTER Definition in ein bis zwei Sätzen, fachlich exakt, mit Quelle.<sup class="q"><a href="#a1-q1" title="RFC 4632">1</a></sup></p></dd>
+    <dd><span class="label">Praxis</span><p>PLATZHALTER Wo begegnet dir das beim Kunden oder im Betrieb, konkret.</p></dd>
+    <dd><span class="label">Merkhilfe und Verwechslung</span><p>PLATZHALTER Womit wird es verwechselt, woran hält man es auseinander, ein Merksatz ohne Kitsch.</p></dd>
+    <dd><span class="label">In der Prüfung</span><p>PLATZHALTER Wie die IHK danach fragt, welche Formulierung typisch ist, was die Lösungshinweise erwarten.</p></dd>
+  </dl>
+</section>
+
+<section id="a1-kern">
+  <h3>Das Verfahren</h3>
+  <!-- VORLAGE: Bei Gruppe B heißt die Überschrift "Die Sache". 500 bis 1000 Wörter. Schritt für Schritt.
+       Mindestens ZWEI Abbildungen, in Gruppe A drei bis fünf. Siehe Plan §9 mit den fünf Fällen,
+       in denen eine Abbildung Pflicht ist: Ablauf, Aufbau, Gegenüberstellung, Rechenkette, Zuordnung im Raum. -->
+  <p>PLATZHALTER Text.<sup class="q"><a href="#a1-q2" title="RFC 791">2</a></sup></p>
+
+  <!-- VORLAGE: MINDESTENS ZWEI Abbildungen je Kapitel (Plan §9), in Gruppe A drei bis fünf.
+       figcaption muss mit "Abb. <Kapitel>-<Nr>:" beginnen, das SVG braucht role="img", ein <title id> und viewBox="0 0 640 H".
+       Der Prüfer lehnt ein Kapitel mit weniger als zwei Abbildungen ab. -->
+  <figure class="abb">
+    <svg viewBox="0 0 640 200" role="img" aria-labelledby="a1-abb1-t">
+      <title id="a1-abb1-t">PLATZHALTER Kurzbeschreibung der Abbildung</title>
+      <!-- VORLAGE: Nur die Klassen l, f, w, a, fa, d, g, text, t2, tb, ta, mono, mitte, rechts. Pfeile: marker-end="url(#pfeil)" oder "url(#pfeil-a)".
+           Keine eigenen Farben, keine Filter, keine Verläufe. viewBox-Breite 640, Höhe nach Bedarf. Schrift nie kleiner als 11px im viewBox-Maß. -->
+      <rect class="f" x="20" y="60" width="380" height="40"/>
+      <rect class="w" x="400" y="60" width="220" height="40"/>
+      <text class="mitte tb" x="210" y="85">Netzanteil (26 Bit)</text>
+      <text class="mitte" x="510" y="85">Hostanteil (6 Bit)</text>
+      <line class="a" x1="400" y1="40" x2="400" y2="120"/>
+      <text class="ta mitte" x="400" y="30">/26</text>
+    </svg>
+    <figcaption>Abb. A1-1: PLATZHALTER Was die Abbildung zeigt, in einem Satz.</figcaption>
+  </figure>
+
+  <h4>Rechenweg-Schema</h4>
+  <!-- VORLAGE: Nur Gruppe A. Genau das Schema, das der Leser in der Prüfung hinschreibt. Mit Einheiten. -->
+<pre class="rechenweg">Präfix /26  →  Hostbits = 32 − 26 = 6
+Anzahl Adressen  = 2^6 = 64
+Nutzbare Hosts   = 64 − 2 = 62
+Netzadresse      = 192.168.10.64
+Broadcast        = 192.168.10.127
+Erster Host      = 192.168.10.65
+Letzter Host     = 192.168.10.126</pre>
+
+  <div class="merke" data-art="Typischer Fehler">
+    <p>PLATZHALTER. Erlaubte data-art-Werte: „Merke“, „Typischer Fehler“, „Prüfungsnotiz“. Nichts anderes. Höchstens vier solche Blöcke pro Kapitel.</p>
+  </div>
+
+  <div class="tabelle"><table>
+    <caption>PLATZHALTER Tabellenunterschrift</caption>
+    <tr><th>Präfix</th><th>Maske</th><th class="z">Adressen</th><th class="z">Hosts</th></tr>
+    <tr><td>/24</td><td>255.255.255.0</td><td class="z">256</td><td class="z">254</td></tr>
+    <tr><td>/26</td><td>255.255.255.192</td><td class="z">64</td><td class="z">62</td></tr>
+  </table></div>
+</section>
+
+<section id="a1-original">
+  <h3>So hat die IHK gefragt</h3>
+  <!-- VORLAGE: 1 bis 3 Aufgaben. Sinngemäß, eigene Worte, gleiche Zahlen und Struktur, NIE wörtlich. Herkunftszeile exakt in diesem Format. -->
+  <article class="aufgabe" id="a1-original-1">
+    <p class="herkunft">AP1 Frühjahr 2025, Aufgabe 1.5, 6 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a1-q5" title="AP1 Frühjahr 2025">5</a></sup></p>
+    <div class="text">
+      <p>PLATZHALTER Aufgabentext in eigenen Worten. Alle Angaben, die zum Lösen nötig sind.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p>PLATZHALTER Lösung Schritt für Schritt. Danach ein Absatz „Punkte“: wofür es laut Lösungshinweisen welche Punkte gibt.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<section id="a1-variante">
+  <h3>Jetzt du</h3>
+  <!-- VORLAGE: Zu jeder Original-Aufgabe genau eine Variante: andere Zahlen oder anderes Szenario, gleiches Verfahren. Lösung rechnerisch geprüft. -->
+  <article class="aufgabe" id="a1-variante-1">
+    <p class="herkunft">Variante zu Aufgabe 1.5 (Frühjahr 2025)</p>
+    <div class="text"><p>PLATZHALTER.</p></div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt"><p>PLATZHALTER.</p></div>
+    </details>
+  </article>
+</section>
+
+<section id="a1-selbstcheck">
+  <h3>Selbstcheck</h3>
+  <ol class="selbstcheck">
+    <li>PLATZHALTER Frage, die laut beantwortet wird.
+      <details><summary>Antwort</summary><div class="inhalt"><p>PLATZHALTER.</p></div></details>
+    </li>
+  </ol>
+</section>
+
+<section id="a1-quellen">
+  <h3>Quellen dieses Kapitels</h3>
+  <!-- VORLAGE: Jede Quelle: li mit id="<kapitel>-q<n>" und data-src="<stabiler Schlüssel aus QUELLEN.md>". Typ-Spans: Gesetz, Norm, RFC, Behörde, Hersteller, Fachbuch, IHK-Prüfung, IHK-Konvention.
+       URL nur, wenn in QUELLEN.md als geprüft markiert; dann Abrufdatum. Sonst ohne URL und mit "nicht online geprüft". -->
+  <ol class="quellenliste">
+    <li id="a1-q1" data-src="rfc-4632"><span class="typ">RFC</span> Fuller, V.; Li, T.: RFC 4632, Classless Inter-domain Routing (CIDR), IETF 2006, Abschnitt 3. <a href="https://www.rfc-editor.org/rfc/rfc4632">rfc-editor.org/rfc/rfc4632</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q2" data-src="rfc-791"><span class="typ">RFC</span> Postel, J.: RFC 791, Internet Protocol, IETF 1981. <a href="https://www.rfc-editor.org/rfc/rfc791">rfc-editor.org/rfc/rfc791</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q5" data-src="ihk-ap1-f2025"><span class="typ">IHK-Prüfung</span> IHK-Abschlussprüfung Teil 1 Frühjahr 2025, Einrichten eines IT-gestützten Arbeitsplatzes, Aufgabe 1.5 und zugehörige Lösungshinweise (lokale Datei).</li>
+  </ol>
+</section>
+
+</section>
