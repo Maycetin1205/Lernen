@@ -1,9 +1,0 @@
-Phase E2 abgeschlossen am 2026-09-03.
-Erzeugt/bestätigt: bau/notizen/2023-fruehjahr.md, 2023-herbst.md, 2024-fruehjahr.md.
-Erzeugt: bau/notizen/ENTSCHEIDUNGEN-E2.md; Entscheidungen in bau/ENTSCHEIDUNGEN.md übernommen.
-F23: 24 Teilaufgaben (26/25/24/25, 100 P); H23: 31 Teilaufgaben (25/25/22/28, 100 P); F24: 30 Teilaufgaben (26/24/24/26, 100 P).
-E2 insgesamt: 85 Teilaufgaben und 300 Punkte aus drei Prüfungen.
-Vollständigkeit und Punktesummen mit node bau/pruef/extraktionen-pruefen.js validiert; 0 Fehler.
-Textextraktionen und Seitenbilder aus scratch-e2 geprüft; Rechnungen mit Node verifiziert.
-Entscheidungen zu F23 (Access-SQL, fehlender Beleg), H23 (Pufferkorrektur) und F24 (Netzteil, Übertragungszeit) dokumentiert.
-Keine unlesbaren Teilaufgaben oder unklaren Punktwerte; Fragmentprüfer auf Extraktionen nicht anwendbar.

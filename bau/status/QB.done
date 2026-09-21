@@ -1,8 +1,0 @@
-Phase Q-B abgeschlossen am 2026-09-03.
-Erzeugt: bau/notizen/QUELLEN-B.md.
-Quellen geprüft: 65 Quellen für Kapitel B1 bis B11.
-Verteilung: 42 Web-Ressourcen mit HTTP 200/202 geprüft (Gesetze, RFCs, BSI, NIST, W3C, EUR-Lex).
-Normen (IEEE, DIN, ISO, IEC, JEDEC, VDI) als kostenpflichtig ohne URL nach §2 Regel 3 erfasst.
-Fachbücher und IHK-Konventionen als geprüfte Offline-Quellen dokumentiert.
-Nicht erreichbare Webseiten ohne geprüfte URL geführt; Entscheidungen in ENTSCHEIDUNGEN.md vermerkt.
-Fragmentprüfer nicht anwendbar (Markdown-Quellenverzeichnis).
