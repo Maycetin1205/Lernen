@@ -1,0 +1,381 @@
+<section class="kapitel" id="a1" data-gruppe="A">
+
+<header class="kapitel-kopf">
+  <p class="kapitel-nr">A1 · Verfahren</p>
+  <h2>IPv4, Subnetting und Netzkonfiguration</h2>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a1-worum">Worum es geht</a><a href="#a1-begriffe">Begriffe</a><a href="#a1-kern">Das Verfahren</a><a href="#a1-original">So hat die IHK gefragt</a><a href="#a1-variante">Jetzt du</a><a href="#a1-selbstcheck">Selbstcheck</a><a href="#a1-quellen">Quellen</a></nav>
+  <p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2022, 3.5 bis 3.8 (8 P)</span> · <span>AP1 Herbst 2022, 3.1 bis 3.6 (18 P)</span> · <span>AP1 Frühjahr 2024, 2.3, 2.4, 2.7 (11 P)</span> · <span>AP1 Herbst 2024, 1.4, 1.5, 1.7 (10 P)</span> · <span>AP1 Frühjahr 2025, 1.6 (2 P)</span> · <span>AP1 Herbst 2025, 3.7 (3 P)</span></p>
+  <label class="sitzt"><input type="checkbox" data-key="a1"> Sitzt</label>
+</header>
+
+<section id="a1-worum">
+  <h3>Worum es geht</h3>
+  <p>Ein IT-Systemhaus richtet für eine expandierende Steuerberatungskanzlei eine neue Niederlassung mit 45 Arbeitsplätzen, drei Netzwerkdruckern und zwei Servern ein. Der Internetdienstanbieter weist dem Router ein Übergabenetz zu, und das lokale Netzwerk muss strukturiert in Teilnetze segmentiert werden. Wird hierbei eine Subnetzmaske falsch berechnet oder ein fehlerhaftes Standardgateway eingetragen, können Rechner weder Druckaufträge versenden noch das Internet erreichen. In der Abschlussprüfung verlangt die IHK verlässlich das fehlerfreie Zerlegen von IP-Netzen, das Zuweisen kollisionsfreier Adressparameter sowie das korrekte Lesen von IPv6- und MAC-Adressen.<sup class="q"><a href="#a1-q1" title="RFC 4632">1</a></sup></p>
+</section>
+
+<section id="a1-begriffe">
+  <h3>Begriffe</h3>
+  <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a1-begriff-ipv4">IPv4-Adresse</a><a href="#a1-begriff-netzmaske">Netzmaske und Präfix</a><a href="#a1-begriff-netzadresse">Netzadresse und Broadcastadresse</a><a href="#a1-begriff-standardgateway">Standardgateway</a><a href="#a1-begriff-private-ip">Private IP-Adressen</a><a href="#a1-begriff-apipa">APIPA</a><a href="#a1-begriff-mac">MAC-Adresse und OUI</a><a href="#a1-begriff-ipv6">IPv6-Adresse</a></nav>
+
+  <dl class="begriff" id="a1-begriff-ipv4">
+    <dt>IPv4-Adresse <span class="en">(Internet Protocol Version 4 Address)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Eine 32 Bit lange logische Netzwerkadresse zur Adressierung von Knoten in IP-Netzen, dargestellt in vier dezimalen Oktetten von 0 bis 255, getrennt durch Punkte.<sup class="q"><a href="#a1-q2" title="RFC 791">2</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Jeder netzwerkfähige Host benötigt eine IPv4-Adresse, um über das Vermittlungsprotokoll IP Pakete zu senden und zu empfangen.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>IPv4 hat genau vier Dezimalzahlen (je 8 Bit = 32 Bit gesamt); nicht mit der physischen MAC-Adresse (48 Bit hexadezimal) verwechseln.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Wird als Basis für Subnetzberechnungen vorgegeben oder muss im Rahmen einer Netzwerkkonfiguration passend ausgewählt werden.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a1-begriff-netzmaske">
+    <dt>Netzmaske und Präfix <span class="en">(Subnet Mask, CIDR Prefix)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein 32-Bit-Filter aus fortlaufenden Einsen gefolgt von fortlaufenden Nullen, der die IP-Adresse in Netz- und Hostanteil teilt; die Präfixschreibweise gibt die Anzahl der gesetzten Netzbits an.<sup class="q"><a href="#a1-q1" title="RFC 4632">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Das Betriebssystem vergleicht per bitweiser UND-Verknüpfung Quell- und Ziel-IP mit der Maske, um zu entscheiden, ob ein Paket lokal zugestellt oder an das Gateway gesendet wird.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Präfix /24 bedeutet 24 gesetzte Bits = 255.255.255.0; jedes zusätzliche Bit halbiert den verbleibenden Adressbereich.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Wird oft in CIDR-Notation (z. B. /26) genannt und muss in die dezimale Punkt-Schreibweise (255.255.255.192) umgerechnet werden.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a1-begriff-netzadresse">
+    <dt>Netzadresse und Broadcastadresse <span class="en">(Network ID, Broadcast Address)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Die Netzadresse hat im Hostanteil ausschließlich Nullen und identifiziert das Subnetz; die Broadcastadresse hat im Hostanteil ausschließlich Einsen und dient dem Versand an alle Hosts.<sup class="q"><a href="#a1-q1" title="RFC 4632">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Weder die Netzadresse noch die Broadcastadresse dürfen einem einzelnen Endgerät als Hostadresse zugewiesen werden.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Netzadresse ist immer die erste, Broadcastadresse immer die letzte Adresse eines Blocks; nutzbar sind nur die Adressen dazwischen.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Typische Aufgabenstellung: Berechnen Sie die Netzadresse, die Broadcastadresse und den Bereich der nutzbaren Hostadressen.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a1-begriff-standardgateway">
+    <dt>Standardgateway <span class="en">(Default Gateway)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Die IP-Adresse eines Routers im lokalen Netzsegment, an den ein Host alle Pakete weiterleitet, deren Zieladresse außerhalb des eigenen Subnetzes liegt.<sup class="q"><a href="#a1-q2" title="RFC 791">2</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Ohne korrekt eingetragenes Standardgateway kann ein Rechner zwar im lokalen LAN kommunizieren, hat jedoch keinen Zugriff auf entfernte Netze oder das Internet.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Das Standardgateway muss zwingend eine gültige Hostadresse im selben Subnetz wie der Rechner selbst besitzen.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Häufige Fangfrage: Ein Rechner hat Gateway 192.168.1.1 bei IP 192.168.2.10/24; der Prüfling muss den Adresskonflikt bzw. Subnetzfehler aufdecken.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a1-begriff-private-ip">
+    <dt>Private IP-Adressen <span class="en">(Private IP Address Spaces)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Nach RFC 1918 definierte Adressbereiche (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16), die im öffentlichen Internet nicht geroutet werden und für interne Netze reserviert sind.<sup class="q"><a href="#a1-q3" title="RFC 1918">3</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Werden in Heim- und Unternehmensnetzen eingesetzt; für den Internetzugriff übersetzt ein Router diese Adressen per Network Address Translation (NAT).</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Klasse-C-Privatbereich beginnt mit 192.168; Klasse B umfasst 172.16 bis 172.31; Klasse A umfasst 10.0.0.0 bis 10.255.255.255.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Prüflinge müssen erkennen, ob eine vorgegebene IP-Adresse für ein firmeninternes Netzwerk zulässig ist.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a1-begriff-apipa">
+    <dt>APIPA <span class="en">(Automatic Private IP Addressing, Link-Local)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein automatisches Adressierungsverfahren nach RFC 3927, bei dem sich ein Client selbstständig eine IP aus dem Bereich 169.254.0.0/16 zuweist, wenn kein DHCP-Server antwortet.<sup class="q"><a href="#a1-q4" title="RFC 3927">4</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Zeigt ein Windows-Client per ipconfig eine Adresse mit 169.254.x.x an, liegt ein Problem mit der Netzwerkverbindung oder dem DHCP-Server vor.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>169.254 ist kein Fehler im Client, sondern das Symptom: Der DHCP-Server wurde nicht erreicht.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>IHK fragt nach der Ursache, wenn ein Rechner eine 169.254er-Adresse aufweist: DHCP-Server nicht erreichbar oder Kabel nicht verbunden.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a1-begriff-mac">
+    <dt>MAC-Adresse und OUI <span class="en">(Media Access Control, Organizationally Unique Identifier)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Eine 48 Bit lange physikalische Hardwareadresse auf Schicht 2 des OSI-Modells; die ersten 24 Bit bilden die herstellerspezifische OUI, die letzten 24 Bit die individuelle Gerätenummer.<sup class="q"><a href="#a1-q8" title="IEEE OUI">8</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Switches leiten Ethernet-Frames anhand der Ziel-MAC weiter; IP-Adressen werden im lokalen Netz per ARP in MAC-Adressen aufgelöst.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Wird in sechs hexadezimalen Wertepaaren notiert (z. B. 00:1A:2B:3C:4D:5E); die ersten drei Paare kennzeichnen den Hersteller.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Aufgabe verlangt die Bestimmung der OUI aus einer vorgegebenen MAC-Adresse oder das Abgrenzen von Schicht 2 zu Schicht 3.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a1-begriff-ipv6">
+    <dt>IPv6-Adresse <span class="en">(Internet Protocol Version 6 Address)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Eine 128 Bit lange logische Adresse nach RFC 8200, gegliedert in acht Blöcke zu je 16 Bit hexadezimal, getrennt durch Doppelpunkte.<sup class="q"><a href="#a1-q6" title="RFC 8200">6</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Löst den Adressmangel von IPv4 ab; jeder Rechner konfiguriert standardmäßig mindestens eine Link-Local-Adresse (fe80::/10) sowie globale Unicast-Adressen.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Führende Nullen innerhalb eines Blocks dürfen entfallen; eine einmalige Folge von Nullblöcken darf durch :: ersetzt werden.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Die IHK prüft regelmäßig das fehlerfreie Kürzen einer ungekürzten IPv6-Adresse und das vollständige Ausschreiben einer gekürzten Adresse.</p></dd>
+  </dl>
+
+</section>
+
+<section id="a1-kern">
+  <h3>Das Verfahren</h3>
+<div class="merke" data-art="Auf einen Blick"><p><strong>Die Subnetzmaske</strong> trennt Netzanteil und Hostanteil.</p><p><strong>Hostbits</strong> = 32 − n, Blockgröße = 2^Hostbits, nutzbare Hosts = Blockgröße − 2.</p><p><strong>Die Schrittweite</strong> gleicht der Blockgröße: bei /26 beginnen die Netze bei .0, .64, .128 und .192.</p><p><strong>IPv6:</strong> führende Nullen weg, der doppelte Doppelpunkt genau einmal je Adresse.</p><p><strong>169.254.0.0/16</strong> heißt: kein DHCP-Server gefunden.</p></div>
+
+
+  <p><strong>Das Internet Protocol Version 4</strong> verwendet 32-Bit-Adressen. Jede Adresse besteht aus zwei funktionalen Bestandteilen: dem Netzanteil zur Identifikation des IP-Netzes und dem Hostanteil zur Adressierung des einzelnen Knotens innerhalb dieses Netzes.<sup class="q"><a href="#a1-q2" title="RFC 791">2</a></sup> Wo diese Trennung verläuft, bestimmt die Subnetzmaske; Abb. A1-1 zeigt sie am Bitmuster.</p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 180" role="img" aria-labelledby="a1-abb1-t">
+      <title id="a1-abb1-t">Aufbau einer IPv4-Adresse mit Subnetzmaske /26</title>
+      <rect class="f" x="20" y="50" width="450" height="40"/>
+      <rect class="w" x="470" y="50" width="150" height="40"/>
+      <text class="mitte tb" x="245" y="75">Netzanteil (26 Bit)</text>
+      <text class="mitte" x="545" y="75">Hostanteil (6 Bit)</text>
+      <line class="a" x1="470" y1="30" x2="470" y2="110"/>
+      <text class="ta mitte" x="470" y="22">/26 Trennlinie</text>
+      <text class="mitte t2" x="120" y="125">192 . 168 . 10</text>
+      <text class="mitte t2" x="470" y="125">. 64</text>
+      <text class="mitte klein" x="245" y="155">255 . 255 . 255 . 192 (Netzmaske)</text>
+    </svg>
+    <figcaption>Abb. A1-1: Die 32 Bits einer IPv4-Adresse werden durch die Präfixlänge /26 in 26 Netzbits und 6 Hostbits unterteilt.</figcaption>
+  </figure>
+
+  <h4>Netz-, Host- und Broadcastadresse in vier Schritten</h4>
+  <p><strong>Eine feste Rechenkette</strong> analysiert das Subnetz vollständig; Abb. A1-2 zeigt die Zerlegung eines /24-Netzes in vier /26-Teilnetze:</p>
+  <ol>
+    <li><strong>Hostbits ermitteln:</strong> Die Anzahl der Hostbits ergibt sich aus der Differenz von 32 und der Präfixlänge: <code>Hostbits = 32 − n</code>.</li>
+    <li><strong>Gesamtzahl der Adressen:</strong> Ein Block umfasst <code>2^(Hostbits)</code> Adressen. Bei 6 Hostbits sind dies <code>2^6 = 64</code> Adressen.</li>
+    <li><strong>Nutzbare Hostadressen:</strong> Da die kleinste Adresse die Netzadresse und die größte die Broadcastadresse darstellt, gilt: <code>Nutzbare Hosts = 2^(Hostbits) − 2</code>. Bei 6 Hostbits verbleiben 62 nutzbare Arbeitsplatzadressen.</li>
+    <li><strong>Schrittweite im vierten Oktett:</strong> Die Schrittweite zwischen aufeinanderfolgenden Subnetzen entspricht exakt der Gesamtanzahl der Adressen pro Subnetz (z. B. 64). Die Netze beginnen bei .0, .64, .128 und .192.</li>
+  </ol>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 190" role="img" aria-labelledby="a1-abb2-t">
+      <title id="a1-abb2-t">Zerlegung eines /24 Netzes in vier /26 Subnetze</title>
+      <rect class="f" x="20" y="50" width="145" height="50"/>
+      <rect class="w" x="175" y="50" width="145" height="50"/>
+      <rect class="f" x="330" y="50" width="145" height="50"/>
+      <rect class="w" x="485" y="50" width="135" height="50"/>
+      <text class="mitte tb" x="92" y="73">Subnetz 0</text>
+      <text class="mitte t2 klein" x="92" y="90">.0 bis .63</text>
+      <text class="mitte tb" x="247" y="73">Subnetz 1</text>
+      <text class="mitte t2 klein" x="247" y="90">.64 bis .127</text>
+      <text class="mitte tb" x="402" y="73">Subnetz 2</text>
+      <text class="mitte t2 klein" x="402" y="90">.128 bis .191</text>
+      <text class="mitte tb" x="552" y="73">Subnetz 3</text>
+      <text class="mitte t2 klein" x="552" y="90">.192 bis .255</text>
+      <text class="mitte klein" x="320" y="135">Ausgangsnetz 192.168.10.0/24 (Schrittweite 64 Adressen je Subnetz)</text>
+    </svg>
+    <figcaption>Abb. A1-2: Ein /24-Klassennetz wird durch zwei zusätzliche Netzbits in vier gleich große /26-Teilnetze zerlegt.</figcaption>
+  </figure>
+
+  <div class="tabelle"><table>
+    <caption>Subnetzmasken und Hostkapazitäten von /24 bis /30</caption>
+    <tr><th>Präfix</th><th>Dezimale Subnetzmaske</th><th class="z">Hostbits</th><th class="z">Schrittweite</th><th class="z">Gesamtadressen</th><th class="z">Nutzbare Hosts</th></tr>
+    <tr><td>/24</td><td>255.255.255.0</td><td class="z">8</td><td class="z">256</td><td class="z">256</td><td class="z">254</td></tr>
+    <tr><td>/25</td><td>255.255.255.128</td><td class="z">7</td><td class="z">128</td><td class="z">128</td><td class="z">126</td></tr>
+    <tr><td>/26</td><td>255.255.255.192</td><td class="z">6</td><td class="z">64</td><td class="z">64</td><td class="z">62</td></tr>
+    <tr><td>/27</td><td>255.255.255.224</td><td class="z">5</td><td class="z">32</td><td class="z">32</td><td class="z">30</td></tr>
+    <tr><td>/28</td><td>255.255.255.240</td><td class="z">4</td><td class="z">16</td><td class="z">16</td><td class="z">14</td></tr>
+    <tr><td>/29</td><td>255.255.255.248</td><td class="z">3</td><td class="z">8</td><td class="z">8</td><td class="z">6</td></tr>
+    <tr><td>/30</td><td>255.255.255.252</td><td class="z">2</td><td class="z">4</td><td class="z">4</td><td class="z">2 (Point-to-Point)</td></tr>
+  </table></div>
+
+  <h4>Rechenweg-Schema</h4>
+<pre class="rechenweg">Gegeben: IP 192.168.10.75 mit Präfix /26
+
+1. Hostbits:        32 − 26 = 6 Bit
+2. Blockgröße:      2^6 = 64 Adressen
+3. Subnetzmaske:    256 − 64 = 192  →  255.255.255.192
+4. Vielfache von 64: 0, 64, 128, 192 ...
+   75 liegt zwischen 64 und 127
+5. Netzadresse:     192.168.10.64
+6. Broadcastadresse: 192.168.10.127
+7. Erster Host:     192.168.10.65
+8. Letzter Host:    192.168.10.126
+9. Nutzbare Hosts:  64 − 2 = 62 Hosts</pre>
+
+  <h4>IPv6-Adresse ausschreiben und kürzen</h4>
+  <p><strong>Eine IPv6-Adresse</strong> besteht aus 128 Bits, aufgeteilt in acht Blöcke (Hextette) zu je 16 Bit in hexadezimaler Schreibweise.<sup class="q"><a href="#a1-q6" title="RFC 8200">6</a></sup> Zur besseren Lesbarkeit gelten die zwei verbindlichen Kürzungsregeln nach RFC 5952, die Abb. A1-3 an einem Beispiel zeigt<sup class="q"><a href="#a1-q7" title="RFC 5952">7</a></sup>:</p>
+  <ol>
+    <li><strong>Führende Nullen weglassen:</strong> In jedem einzelnen Block dürfen führende Nullen gestrichen werden (z. B. wird aus <code>0042</code> einfach <code>42</code>, und aus <code>0000</code> wird <code>0</code>). Mindestens eine Ziffer muss pro Block stehen bleiben.</li>
+    <li><strong>Zusammenhängende Nullblöcke komprimieren:</strong> Eine oder mehrere aufeinanderfolgende Gruppen von reinen Nullblöcken (z. B. <code>:0000:0000:</code>) dürfen durch einen doppelten Doppelpunkt <code>::</code> ersetzt werden. Dies darf in einer Adresse ausnahmslos genau einmal geschehen, da sonst die Zuordnung der Blockanzahl nicht mehr eindeutig rekonstruierbar wäre.</li>
+  </ol>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 180" role="img" aria-labelledby="a1-abb3-t">
+      <title id="a1-abb3-t">Kürzungsregeln einer IPv6-Adresse</title>
+      <rect class="w" x="20" y="30" width="600" height="40"/>
+      <text class="mono mitte" x="320" y="55">2001 : 0db8 : 0000 : 0000 : 0008 : 0800 : 200c : 417a</text>
+      <line class="a" x1="220" y1="75" x2="280" y2="105" marker-end="url(#pfeil)"/>
+      <text class="ta mitte klein" x="180" y="100">Nullblöcke komprimieren</text>
+      <rect class="f" x="20" y="120" width="600" height="40"/>
+      <text class="mono mitte tb" x="320" y="145">2001 : db8 :: 8 : 800 : 200c : 417a</text>
+    </svg>
+    <figcaption>Abb. A1-3: Führende Nullen entfallen in jedem Block, und die beiden Nullblöcke werden durch den doppelten Doppelpunkt ersetzt.</figcaption>
+  </figure>
+
+  <h4>Automatische Adressvergabe: Der DHCP-DORA-Ablauf</h4>
+  <p><strong>DHCP</strong> vergibt die Konfiguration in modernen Netzen meist dynamisch, nach RFC 2131<sup class="q"><a href="#a1-q5" title="RFC 2131">5</a></sup>. Der Vorgang läuft in den vier Schritten aus Abb. A1-4 ab:</p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 220" role="img" aria-labelledby="a1-abb4-t">
+      <title id="a1-abb4-t">DHCP-DORA-Ablauf zwischen Client und Server</title>
+      <rect class="w" x="40" y="20" width="140" height="30"/>
+      <text class="mitte tb" x="110" y="40">DHCP-Client</text>
+      <rect class="f" x="460" y="20" width="140" height="30"/>
+      <text class="mitte tb" x="530" y="40">DHCP-Server</text>
+      <line class="d" x1="110" y1="50" x2="110" y2="200"/>
+      <line class="d" x1="530" y1="50" x2="530" y2="200"/>
+      
+      <line class="a" x1="110" y1="80" x2="520" y2="80" marker-end="url(#pfeil)"/>
+      <text class="mitte klein" x="320" y="75">1. Discover (Broadcast: Wer hat eine IP?)</text>
+      
+      <line class="l" x1="530" y1="115" x2="120" y2="115" marker-end="url(#pfeil)"/>
+      <text class="mitte klein" x="320" y="110">2. Offer (Unicast/Broadcast: Angebot einer IP)</text>
+      
+      <line class="a" x1="110" y1="150" x2="520" y2="150" marker-end="url(#pfeil)"/>
+      <text class="mitte klein" x="320" y="145">3. Request (Broadcast: Ich möchte dieses Angebot)</text>
+      
+      <line class="l" x1="530" y1="185" x2="120" y2="185" marker-end="url(#pfeil)"/>
+      <text class="mitte klein" x="320" y="180">4. Acknowledge (Bestätigung mit Lease-Dauer)</text>
+    </svg>
+    <figcaption>Abb. A1-4: Der vierstufige DORA-Handshake bei der dynamischen IP-Vergabe.</figcaption>
+  </figure>
+
+  <h4>Statische IP-Konfiguration und Standardgateway</h4>
+  <div class="merke" data-art="Typischer Fehler">
+    <p>Ein häufiger Fehler in Prüfungen: Als Standardgateway wird die externe WAN-Adresse des Routers oder eine IP außerhalb des eigenen Subnetzes eingetragen. Das Standardgateway muss stets die lokale LAN-Schnittstelle des Routers sein und im selben logischen Subnetz wie der Host liegen.</p>
+  </div>
+
+  <h4>Die Adresse 169.254.122.115 erklären</h4>
+  <div class="merke" data-art="Prüfungsnotiz">
+    <p>Wenn ipconfig eine Adresse aus 169.254.0.0/16 ausgibt, ist dies kein statischer Adresskonflikt, sondern das APIPA-Verfahren (RFC 3927): Der Rechner hat vergeblich nach einem DHCP-Server gesucht und sich selbst eine Notfall-IP zugewiesen.</p>
+  </div>
+
+</section>
+
+<section id="a1-original">
+  <h3>So hat die IHK gefragt</h3>
+
+  <article class="aufgabe" id="a1-original-1">
+    <p class="herkunft">AP1 Herbst 2024, Aufgabe 1.5, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a1-q10" title="AP1 Herbst 2024">10</a></sup></p>
+    <div class="text">
+      <p>Ein Präsentationsrechner soll feste Netzwerkparameter erhalten. Im Netz 192.168.20.0/24 vergibt der DHCP-Server ausschließlich Adressen von 192.168.20.20 bis 192.168.20.254. Der Router ist unter 192.168.20.1 erreichbar.</p>
+      <p>In der Eingabemaske des Betriebssystems stehen die Auswahlknöpfe „IP-Adresse automatisch beziehen“ und „Folgende IP-Adresse verwenden“ sowie drei Eingabefelder zur Verfügung. Markieren Sie den zutreffenden Auswahlknopf und tragen Sie ein:</p>
+      <ul>
+        <li>IP-Adresse des Präsentationsrechners</li>
+        <li>Subnetzmaske (dezimal)</li>
+        <li>Standardgateway</li>
+      </ul>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p><strong>Lösungsschritte:</strong></p>
+        <ol>
+          <li>Feste Netzwerkparameter verlangen den Auswahlknopf <strong>„Folgende IP-Adresse verwenden“</strong>.</li>
+          <li>Das Netz 192.168.20.0/24 reicht von .0 (Netzadresse) bis .255 (Broadcastadresse). Nutzbar sind .1 bis .254.</li>
+          <li>Belegt sind .1 (Router) und der DHCP-Bereich .20 bis .254. Frei bleibt damit ausschließlich der Bereich .2 bis .19.</li>
+          <li>IP-Adresse: z. B. <code>192.168.20.10</code>; als richtig gilt jede Adresse von 192.168.20.2 bis 192.168.20.19.</li>
+          <li>Präfix /24 entspricht der dezimalen Subnetzmaske <code>255.255.255.0</code>.</li>
+          <li>Das Standardgateway ist die LAN-Schnittstelle des Routers: <code>192.168.20.1</code>.</li>
+        </ol>
+        <p><strong>Punkteverteilung:</strong> Je 1 Punkt für den markierten Auswahlknopf, die IP-Adresse aus dem freien Bereich, die Subnetzmaske und das Standardgateway (insgesamt 4 Punkte).</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="a1-original-2">
+    <p class="herkunft">AP1 Herbst 2025, Aufgabe 3.7, 3 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a1-q11" title="AP1 Herbst 2025">11</a></sup></p>
+    <div class="text">
+      <p>An einem zentralen Switch hängen ein Internetrouter unter 172.16.10.1/24, ein Konnektor zur Verbindungsverschlüsselung unter 172.16.10.10/24 und ein Arbeitsplatzrechner unter 172.16.10.25/24. Ergänzt wird ein Kartenterminal, das alle drei Geräte und das Internet erreichen soll. Es erhält die letzte mögliche Hostadresse dieses Netzes.</p>
+      <p>Tragen Sie für das Kartenterminal ein:</p>
+      <ul>
+        <li>IP-Adresse</li>
+        <li>Subnetzmaske (dezimal)</li>
+        <li>Standardgateway</li>
+      </ul>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p><strong>Lösungsschritte:</strong></p>
+        <ol>
+          <li>Alle vorhandenen Geräte arbeiten mit /24, das Terminal gehört also in dasselbe Netz 172.16.10.0/24.</li>
+          <li>Hostbits: 32 − 24 = 8, also 2^8 = 256 Adressen von .0 bis .255.</li>
+          <li>.0 ist die Netzadresse, .255 die Broadcastadresse. Die letzte mögliche Hostadresse ist damit <code>172.16.10.254</code>.</li>
+          <li>Präfix /24 entspricht der dezimalen Subnetzmaske <code>255.255.255.0</code>.</li>
+          <li>Standardgateway ist die LAN-Adresse des Internetrouters: <code>172.16.10.1</code>.</li>
+        </ol>
+        <p><strong>Punkteverteilung:</strong> Je 1 Punkt für die IP-Adresse 172.16.10.254, die Subnetzmaske 255.255.255.0 und das Standardgateway 172.16.10.1 (insgesamt 3 Punkte).</p>
+      </div>
+    </details>
+  </article>
+
+</section>
+
+<section id="a1-variante">
+  <h3>Jetzt du</h3>
+
+  <article class="aufgabe" id="a1-variante-1">
+    <p class="herkunft">Variante zu Aufgabe 1.5 (Herbst 2024)</p>
+    <div class="text">
+      <p>In einem Entwickler-Labor soll ein Testserver in ein neu geschaffenes Labornetz eingebunden werden. Dem Labor ist das Netz 172.16.40.128/25 zugewiesen. Die erste nutzbare IP dieses Subnetzes wurde dem Standardgateway zugewiesen. Die Adressen .130 bis .140 sind fest an Testclients vergeben. Der primäre DNS-Server des Unternehmens hat die Adresse 172.16.1.10.</p>
+      <p>Ermitteln Sie für den Testserver:</p>
+      <ul>
+        <li>Eine zulässige, freie IPv4-Adresse</li>
+        <li>Die dezimale Subnetzmaske</li>
+        <li>Die IP-Adresse des Standardgateways</li>
+        <li>Die Broadcastadresse dieses Teilnetzes</li>
+      </ul>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p><strong>Lösungsweg:</strong></p>
+        <ol>
+          <li>Das Teilnetz 172.16.40.128/25 hat 7 Hostbits (32 − 25 = 7).</li>
+          <li>Blockgröße: 2^7 = 128 Adressen. Das Netz reicht von 172.16.40.128 bis 172.16.40.255.</li>
+          <li>Netzadresse: 172.16.40.128. Broadcastadresse: 172.16.40.255.</li>
+          <li>Nutzbare Hostadressen: 172.16.40.129 bis 172.16.40.254.</li>
+          <li>Standardgateway: Erste nutzbare IP = <code>172.16.40.129</code>.</li>
+          <li>Vergebene Host-IPs: .129 (Gateway), .130 bis .140 (Clients). Frei ist beispielsweise <code>172.16.40.141</code>.</li>
+          <li>Dezimale Subnetzmaske für /25: 256 − 128 = 128  →  <code>255.255.255.128</code>.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="a1-variante-2">
+    <p class="herkunft">Variante zu Aufgabe 3.7 (Herbst 2025)</p>
+    <div class="text">
+      <p>In einem Lagerbereich ist das Teilnetz 10.10.5.64/27 eingerichtet. Der Router belegt die erste nutzbare Hostadresse dieses Teilnetzes. Ein neuer Etikettendrucker soll die letzte nutzbare Hostadresse erhalten.</p>
+      <p>Ermitteln Sie für den Etikettendrucker:</p>
+      <ul>
+        <li>Netzadresse und Broadcastadresse des Teilnetzes</li>
+        <li>Die IP-Adresse des Druckers</li>
+        <li>Die dezimale Subnetzmaske</li>
+        <li>Das Standardgateway</li>
+      </ul>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p><strong>Lösungsweg:</strong></p>
+        <ol>
+          <li>Hostbits: 32 − 27 = 5. Blockgröße: 2^5 = 32 Adressen.</li>
+          <li>Netzadresse: 10.10.5.64. Broadcastadresse: 64 + 32 − 1 = <code>10.10.5.95</code>.</li>
+          <li>Nutzbare Hostadressen: 10.10.5.65 bis 10.10.5.94, also 32 − 2 = 30 Adressen.</li>
+          <li>Standardgateway (erste nutzbare Adresse): <code>10.10.5.65</code>.</li>
+          <li>Etikettendrucker (letzte nutzbare Adresse): <code>10.10.5.94</code>.</li>
+          <li>Dezimale Subnetzmaske für /27: 256 − 32 = 224  →  <code>255.255.255.224</code>.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+</section>
+
+<section id="a1-selbstcheck">
+  <h3>Selbstcheck</h3>
+  <ol class="selbstcheck">
+    <li>Wie viele nutzbare Hosts stehen in einem Subnetz mit der Präfixlänge /28 zur Verfügung?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Genau 14 Hosts. Rechnung: 32 − 28 = 4 Hostbits. Gesamtadressen = 2^4 = 16. Nutzbare Hosts = 16 − 2 = 14 (Netz- und Broadcastadresse entfallen).</p></div></details>
+    </li>
+    <li>Warum darf die Adresse 192.168.5.127/26 keinem Arbeitsplatz-PC als IP zugewiesen werden?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Weil 192.168.5.127 bei /26 die Broadcastadresse des zweiten Subnetzes (192.168.5.64 bis 192.168.5.127) ist. Sie dient dem Rundruf an alle Stationen dieses Subnetzes.</p></div></details>
+    </li>
+    <li>Ein Windows-Rechner erhält per DHCP keine Antwort und zeigt die IP 169.254.12.34 an. Um welchen Mechanismus handelt es sich, und kann dieser Rechner damit Webseiten im Internet aufrufen?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Es handelt sich um APIPA (Automatic Private IP Addressing, Link-Local nach RFC 3927). Der Rechner kann damit nur Knoten im selben physischen LAN-Segment erreichen, die ebenfalls APIPA nutzen. Der Zugriff auf das Internet oder entfernte Netze ist ausgeschlossen, da kein Standardgateway konfiguriert ist.</p></div></details>
+    </li>
+    <li>Aus welchen zwei Teilen besteht eine 48 Bit lange MAC-Adresse, und welche Bedeutung haben sie?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Die ersten 24 Bit (3 Byte) bilden die OUI (Organizationally Unique Identifier) und kennzeichnen den Chiphersteller. Die hinteren 24 Bit (3 Byte) sind die herstellerspezifische Serien- oder Gerätenummer des Netzwerkadapters.</p></div></details>
+    </li>
+  </ol>
+</section>
+
+<section id="a1-quellen">
+  <h3>Quellen dieses Kapitels</h3>
+  <ol class="quellenliste">
+    <li id="a1-q1" data-src="rfc-4632"><span class="typ">RFC</span> Fuller, V.; Li, T.: RFC 4632 – Classless Inter-domain Routing (CIDR): The Internet Address Assignment and Aggregation Plan, 2006, Section 3.1. <a href="https://www.rfc-editor.org/rfc/rfc4632.txt">rfc-editor.org/rfc/rfc4632.txt</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q2" data-src="rfc-791"><span class="typ">RFC</span> Postel, J. (Ed.): RFC 791 – Internet Protocol, DARPA Internet Program Protocol Specification, 1981, Section 3.1. <a href="https://www.rfc-editor.org/rfc/rfc791.txt">rfc-editor.org/rfc/rfc791.txt</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q3" data-src="rfc-1918"><span class="typ">RFC</span> Rekhter, Y. et al.: RFC 1918 – Address Allocation for Private Internets, 1996, Section 3. <a href="https://www.rfc-editor.org/rfc/rfc1918.txt">rfc-editor.org/rfc/rfc1918.txt</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q4" data-src="rfc-3927"><span class="typ">RFC</span> Cheshire, S. et al.: RFC 3927 – Dynamic Configuration of IPv4 Link-Local Addresses, 2005, Section 2.1. <a href="https://www.rfc-editor.org/rfc/rfc3927.txt">rfc-editor.org/rfc/rfc3927.txt</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q5" data-src="rfc-2131"><span class="typ">RFC</span> Droms, R.: RFC 2131 – Dynamic Host Configuration Protocol, 1997, Section 3.1. <a href="https://www.rfc-editor.org/rfc/rfc2131.txt">rfc-editor.org/rfc/rfc2131.txt</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q6" data-src="rfc-8200"><span class="typ">RFC</span> Deering, S.; Hinden, R.: RFC 8200 – Internet Protocol, Version 6 (IPv6) Specification, 2017, Section 3. <a href="https://www.rfc-editor.org/rfc/rfc8200.txt">rfc-editor.org/rfc/rfc8200.txt</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q7" data-src="rfc-5952"><span class="typ">RFC</span> Kawamura, S.; Kawashima, M.: RFC 5952 – A Recommendation for IPv6 Address Text Representation, 2010, Section 4. <a href="https://www.rfc-editor.org/rfc/rfc5952.txt">rfc-editor.org/rfc/rfc5952.txt</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q8" data-src="ieee-eui-oui"><span class="typ">Norm</span> IEEE Registration Authority: Guidelines for Use of Extended Unique Identifier (EUI) and Organizationally Unique Identifier (OUI), IEEE Standards Association. <a href="https://standards.ieee.org/products-programs/regauth/">standards.ieee.org/products-programs/regauth/</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q9" data-src="ms-learn-ipconfig"><span class="typ">Hersteller</span> Microsoft Learn: Befehlszeilenreferenz: ipconfig, Microsoft Corporation 2023. <a href="https://learn.microsoft.com/de-de/windows-server/administration/windows-commands/ipconfig">learn.microsoft.com/de-de/windows-server/administration/windows-commands/ipconfig</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a1-q10" data-src="ihk-ap1-h2024"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Herbst 2024, Teil 1, Aufgabe 1.5. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a1-q11" data-src="ihk-ap1-h2025"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Herbst 2025, Teil 1, Aufgabe 3.7. <span class="abruf">(nicht online geprüft)</span></li>
+  </ol>
+</section>
+
+</section>

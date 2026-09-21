@@ -191,6 +191,8 @@ ol.selbstcheck>li{margin-bottom:1rem;font-weight:600;font-size:1.0625rem}
   dl.begriff{margin:0 0 1rem}
   .kapitel-kopf,.aufgabe,figure.abb{background:#fff}
   summary{color:inherit}
+  details[open] summary{background:#fff;color:#000}
+  details[open] summary::before{color:#000}
   a{color:inherit;text-decoration:none}
   ol.quellenliste a[href^="http"]::after{content:" " attr(href);color:#666;word-break:break-all}
   sup.q a{color:#000}

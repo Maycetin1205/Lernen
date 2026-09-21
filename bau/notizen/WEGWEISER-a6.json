@@ -23,26 +23,30 @@
  {
   "pruefung": "H23",
   "nr": "4.1",
-  "ziel": "a6-k7",
-  "hinweis": ""
+  "ziel": "a6-ihk-h23-4-1",
+  "hinweis": "",
+  "lektion": "a6-k7"
  },
  {
   "pruefung": "H23",
   "nr": "4.3",
-  "ziel": "a6-k7",
-  "hinweis": "Die 1er-Zählung der Spalten in H23 steht separat im Fließtext nach a6-k9, nicht unter a6-k7 selbst."
+  "ziel": "a6-ihk-h23-4-3",
+  "hinweis": "Die 1er-Zählung der Spalten in H23 steht separat im Fließtext nach a6-k9, nicht unter a6-k7 selbst.",
+  "lektion": "a6-k7"
  },
  {
   "pruefung": "H23",
   "nr": "4.4",
-  "ziel": "a6-k3",
-  "hinweis": ""
+  "ziel": "a6-ihk-h23-4-4",
+  "hinweis": "",
+  "lektion": "a6-k3"
  },
  {
   "pruefung": "H23",
   "nr": "4.5",
-  "ziel": "a6-k9",
-  "hinweis": ""
+  "ziel": "a6-ihk-h23-4-5",
+  "hinweis": "",
+  "lektion": "a6-k9"
  },
  {
   "pruefung": "F25",

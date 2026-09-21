@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-03",
+  "chapters": [
+    {
+      "file": "20-b1.html",
+      "words": 2426,
+      "cards": 9,
+      "figures": 3,
+      "originals": 3,
+      "variants": 3,
+      "questions": 4,
+      "sources": 9,
+      "validation": "Keine Fehler."
+    },
+    {
+      "file": "21-b2.html",
+      "words": 3001,
+      "cards": 9,
+      "figures": 3,
+      "originals": 3,
+      "variants": 3,
+      "questions": 4,
+      "sources": 18,
+      "validation": "Keine Fehler."
+    },
+    {
+      "file": "22-b3.html",
+      "words": 2801,
+      "cards": 9,
+      "figures": 2,
+      "originals": 2,
+      "variants": 2,
+      "questions": 4,
+      "sources": 6,
+      "validation": "Keine Fehler."
+    },
+    {
+      "file": "23-b4.html",
+      "words": 3212,
+      "cards": 9,
+      "figures": 4,
+      "originals": 3,
+      "variants": 3,
+      "questions": 4,
+      "sources": 12,
+      "validation": "Keine Fehler."
+    }
+  ],
+  "matrix": "stimmt",
+  "fixedParts": "SHA256 unverändert",
+  "visual": "Browser-Sichtprüfung in Phase Z offen; lokale Navigation zuvor durch Browser-Sicherheitsrichtlinie blockiert"
+}

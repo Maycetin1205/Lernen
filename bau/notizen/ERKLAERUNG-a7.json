@@ -1,0 +1,87 @@
+{
+"a7-ihk-f22-4-4": {
+ "denkweg": [
+  "Lies die Aufgabe als Alltagssatz: Hol die Liste aller PCs. Für jeden PC: hol seine Softwareliste, installiere jede Software darauf. Zwei Schleifen ineinander, außen PCs, innen Software.",
+  "Vor einer Schleife braucht der Zähler einen Startwert und die Liste muss da sein: PCNr = 0 und PCListe[] = getPC(). Das sind die zwei Felder ganz oben.",
+  "Der äußere Schleifenkopf: Solange PCNr kleiner als Anzahl in PCListe. 'Solange' ist immer der Kopf, in dem Kasten mit dem Rand links.",
+  "In der äußeren Schleife, vor der inneren: SoftwareListe holen für den aktuellen PC, dann SoftwareNr = 0. Der innere Zähler muss bei jedem neuen PC wieder auf 0, sonst bekommt der zweite PC keine Software. Das ist der Kern der Aufgabe.",
+  "Innerer Schleifenkopf: Solange SoftwareNr kleiner Anzahl in SoftwareListe. Darin: installSoftware(...) und SoftwareNr = SoftwareNr + 1.",
+  "Nach der inneren Schleife, noch in der äußeren: PCNr = PCNr + 1. Ohne diese Zeile läuft die Schleife ewig.",
+  "Prüfe dein Struktogramm mit zwei PCs im Kopf durch: Zähler starten, arbeiten, Zähler erhöhen. Wenn es im Kopf klappt, stimmt es."
+ ],
+ "mitnehmen": "Jede Zählschleife hat drei Teile: Start (Zähler = 0), Kopf (solange Zähler kleiner Anzahl), Schritt (Zähler + 1). Bei verschachtelten Schleifen wird der innere Zähler bei jedem äußeren Durchlauf neu auf 0 gesetzt."
+},
+"a7-ihk-h22-4-4": {
+ "denkweg": [
+  "Übersetze den Ablauf in Alltagssprache: Maße einstellen, dann so oft ein Stück fertigen, wie bestellt, aber sofort aufhören, wenn der Notaus gedrückt ist.",
+  "Maße einstellen kommt vor der Schleife, einmal: setRollerDim(daten[0], daten[1], daten[2]). Die Zahlen sind die Plätze im Array: 0 Breite, 1 Länge, 2 Dicke.",
+  "Schleifenkopf hat zwei Bedingungen mit UND: zaehler kleiner als daten[3] (Stückzahl) UND notaus gleich false. Beide müssen wahr sein, damit weitergefertigt wird.",
+  "In der Schleife: ein Stück fertigen (rollerStart), Notaus neu abfragen (notaus = getEmergencyStop()), Zähler um 1 erhöhen.",
+  "Warum den Notaus in der Schleife neu abfragen? Weil die Variable sonst den alten Wert vom Anfang behält und die Schleife den Knopfdruck nie bemerkt. Dafür gab es zwei Punkte."
+ ],
+ "mitnehmen": "Bedingungen, die sich während der Schleife ändern können, musst du in der Schleife neu abfragen. Zwei Abbruchgründe verbindest du mit UND im Schleifenkopf."
+},
+"a7-ihk-h24-2-2": {
+ "denkweg": [
+  "Frage dich: Was entscheidet in einer echten Firma, welche Sprache genommen wird? Nicht der Geschmack, sondern: Können unsere Leute sie? Passt sie zur Aufgabe? Gibt es Werkzeuge und Bibliotheken? Wird sie in fünf Jahren noch gepflegt?",
+  "Nimm eins und begründe in einem Satz, zum Beispiel: Kenntnisse der Entwickler, weil Einarbeitung Zeit und Geld kostet und Fehler bringt.",
+  "Ein Punkt für das Kriterium, zwei für die Begründung. Die Begründung ist wichtiger als das Stichwort."
+ ],
+ "mitnehmen": "Sprachwahl-Kriterien: Anforderungen des Projekts, Können des Teams, Werkzeuge und Bibliotheken, Zukunftssicherheit. Immer mit Nutzen für die Firma begründen."
+},
+"a7-ihk-h24-2-3": {
+ "denkweg": [
+  "Ein Rechner versteht nur Maschinencode. Der Quelltext muss übersetzt werden. Die Frage ist nur: wann?",
+  "Compiler: übersetzt einmal vorher komplett. Danach gibt es eine fertige Datei, die ohne Übersetzer läuft, darum schnell.",
+  "Interpreter: übersetzt beim Ausführen Zeile für Zeile, jedes Mal neu. Darum langsamer, aber man kann sofort ändern und testen, und der Interpreter muss auf dem Zielrechner sein.",
+  "Kern in einem Satz: Zeitpunkt der Übersetzung, vorher am Stück oder während des Laufs Zeile für Zeile."
+ ],
+ "mitnehmen": "Compiler = vorher übersetzen, schnell im Lauf. Interpreter = beim Lauf übersetzen, flexibel, langsamer. Der Unterschied ist der Zeitpunkt."
+},
+"a7-ihk-f25-3-5": {
+ "denkweg": [
+  "Ein Schreibtischtest heißt: Du spielst den Computer. Du setzt die Zahlen aus dem Aufruf in die Variablen ein und rechnest jede Zeile aus.",
+  "Aufruf: besucher 12.000, aufrufe 33.000, überSuche 5.562, absprünge 7.554. Ordne sie der Reihe nach den Parametern zu, die Reihenfolge im Aufruf ist die Reihenfolge in der Funktion.",
+  "Zeile 1: 33.000 / 12.000 = 2,75 Aufrufe je Besucher.",
+  "Zeile 2: 5.562 / 12.000 = 0,4635, mal 100 = 46,35 %.",
+  "Zeile 3: erst die Klammer: 12.000 minus 7.554 = 4.446. Dann / 12.000 = 0,3705, mal 100 = 37,05 %.",
+  "Zwei Nachkommastellen, wie verlangt. Je Wert zwei Punkte: Rechenweg und Ergebnis."
+ ],
+ "mitnehmen": "Schreibtischtest: Werte in der Reihenfolge des Aufrufs den Parametern zuordnen, dann Zeile für Zeile rechnen, Klammern zuerst. Jeden Zwischenwert aufschreiben."
+},
+"a7-ihk-h25-4-5": {
+ "denkweg": [
+  "Lies jede Zeile als deutschen Satz. Zeile 2: FÜR JEDEN artikel IN artikelListe heißt: Nimm die Liste und geh sie Eintrag für Eintrag durch, jeder Eintrag heißt gerade artikel.",
+  "Zeile 3: WENN artikel.bestand kleiner mindestmenge heißt: Schau beim aktuellen Eintrag auf den Bestand und vergleiche ihn mit der Grenze.",
+  "Zeile 4 ist eingerückt unter der WENN-Zeile, sie läuft also nur, wenn der Vergleich wahr ist: Dann wird der Name mit einem Warntext ausgegeben.",
+  "Drei Zeilen, drei Sätze, je ein Punkt. Die Einrückung sagt dir, was wozu gehört."
+ ],
+ "mitnehmen": "Code erklären: Schleife = 'für jeden', Bedingung = 'wenn', eingerückte Zeile = 'nur dann'. Jede Zeile in einen Alltagssatz übersetzen."
+},
+"a7-ihk-h25-4-6": {
+ "denkweg": [
+  "Spiel die Schleife durch, ein Eintrag nach dem anderen, und prüfe jedes Mal die Bedingung bestand kleiner 25.",
+  "Paracetamol 50: 50 kleiner 25? Nein, keine Ausgabe. ASS 22: 22 kleiner 25? Ja, Ausgabe. Pantoprazol 25: 25 kleiner 25? Nein, gleich ist nicht kleiner. Ibuprofen 30: Nein.",
+  "Ausgabe: nur die Zeile für ASS.",
+  "Die Falle ist Pantoprazol mit genau 25. 'Kleiner' schließt gleich aus. Wäre 'kleiner oder gleich' im Code, käme Pantoprazol dazu."
+ ],
+ "mitnehmen": "Beim Schreibtischtest jeden Eintrag einzeln gegen die Bedingung halten. Bei Vergleichen genau lesen: kleiner ist nicht kleiner-gleich."
+},
+"a7-ihk-h25-4-7": {
+ "denkweg": [
+  "Spiel es mit Zahlen durch: summe startet bei 0. Erste Position kostet 10 EUR mal 2 Stück = 20. Die Zeile rechnet summe = 0 · 20 = 0.",
+  "Zweite Position: summe = 0 · irgendwas = 0. Null mal irgendwas bleibt null, für immer.",
+  "Der Fehler: Es wird multipliziert statt addiert. Ein Sammler (Akkumulator) muss den neuen Wert dazuzählen: summe = summe + Wert.",
+  "Sag beides: was passiert (bleibt 0) und warum (Malzeichen statt Plus)."
+ ],
+ "mitnehmen": "Ein Akkumulator startet bei 0 und addiert. Startet er bei 0 und multipliziert, bleibt er 0. Solche Fehler findest du, indem du zwei Durchläufe mit kleinen Zahlen im Kopf rechnest."
+},
+"a7-ihk-h25-4-8": {
+ "denkweg": [
+  "Die Zeile muss den Wert der Position zur bisherigen Summe dazuzählen.",
+  "Also: summe = summe + (position.einzelpreis · position.anzahl). Nur das Malzeichen vor der Klammer wird zum Plus.",
+  "Probe mit zwei Positionen: 0 + 20 = 20, 20 + 15 = 35. Stimmt."
+ ],
+ "mitnehmen": "Korrektur immer mit einer kurzen Probe im Kopf bestätigen. Summe bilden = alter Wert plus neuer Wert."
+}
+}

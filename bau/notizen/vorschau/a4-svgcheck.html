@@ -23,7 +23,6 @@ nav.inhalt li a:hover{color:var(--tinte);background:var(--flaeche)}
 nav.inhalt li a.aktuell{color:var(--tinte);font-weight:750;background:var(--akzent-hell)}
 nav.inhalt .nr{flex:0 0 2.2em;font-weight:780;color:#B9BCC4;font-variant-numeric:tabular-nums}
 nav.inhalt li a:hover .nr,nav.inhalt li a.aktuell .nr{color:var(--akzent)}
-nav.inhalt li.sitzt>a .nr::after{content:"✓";margin-left:.1em;color:var(--akzent)}
 nav.inhalt ol.nav-schnell{margin:0 0 1.6rem;padding-bottom:1.2rem;border-bottom:1px solid var(--linie)}
 nav.inhalt ol.nav-schnell li a{font-weight:750;color:var(--tinte)}
 nav.inhalt ol.nav-schnell li a:hover{color:var(--akzent)}
@@ -68,9 +67,6 @@ nav.begriffsliste{margin:.85rem 0 .1rem;max-width:min(62rem,100%);font-size:.843
 nav.begriffsliste a{color:var(--akzent);text-decoration:none;font-weight:650}
 nav.begriffsliste a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
 nav.begriffsliste a+a::before{content:"·";margin:0 .55em;color:#B9BCC4;font-weight:700}
-.sitzt{display:inline-flex;gap:.55rem;align-items:center;margin-top:1.25rem;padding:.45rem 1rem;border:1.5px solid var(--tinte);border-radius:999px;background:var(--papier);font-size:.8438rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;user-select:none}
-.sitzt input{width:1.05rem;height:1.05rem;margin:0;accent-color:var(--akzent)}
-.sitzt:has(input:checked){background:var(--tinte);color:var(--papier)}
 
 section[id$="-begriffe"]{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(23rem,100%),1fr));gap:1.25rem 1.75rem;align-items:start}
 section[id$="-begriffe"]>:not(dl){grid-column:1/-1}
@@ -142,6 +138,20 @@ summary::before{content:"+";font-size:1.15em;font-weight:700;line-height:1;color
 details[open] summary::before{content:"–";color:var(--papier)}
 details .inhalt{padding:1rem 0 .25rem}
 details .inhalt>*:last-child{margin-bottom:0}
+details.wegweiser .tabelle{margin:1rem 0 0}
+
+/* Teil 2 als Pruefungsansicht: Kapitelkuerzel in der Zielspalte, Strichliste, Rueckweg-Leiste.
+   Strichliste und Leiste entstehen erst im Skript in 99-fuss.html; ohne JavaScript bleibt Teil 2 wie bisher. */
+#matrix td .kap{display:block;font-size:.6875rem;font-weight:800;letter-spacing:.1em;color:var(--grau)}
+#matrix caption .stand{font-weight:750;color:var(--akzent)}
+/* Erst lernen / Dann pruefen sollen zwei Zeilen bleiben, auch wenn beide selbst umbrechen. */
+#matrix td .kap ~ a{display:block;margin-top:.28rem}
+#matrix td .kap ~ br{display:none}
+#matrix input[type=checkbox]{width:1.05rem;height:1.05rem;margin:.15rem 0 0;accent-color:var(--akzent)}
+#matrix tr:target td{background:var(--akzent-hell)}
+#rueckweg{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--tinte);padding:.65rem 1rem;text-align:center}
+#rueckweg a{color:var(--papier);font-size:.9375rem;font-weight:650;text-decoration-color:#7C818C}
+#rueckweg a:hover{text-decoration-color:var(--papier)}
 
 sup.q{font-size:.66rem;line-height:0;vertical-align:super;font-weight:800}
 sup.q a{text-decoration:none;padding:0 .1em;color:var(--akzent)}
@@ -172,7 +182,7 @@ ol.selbstcheck>li{margin-bottom:1rem;font-weight:600;font-size:1.0625rem}
 @media print{
   html{font-size:10pt;background:#fff}
   body{display:block}
-  nav.inhalt,.sitzt,nav.kapitel-wege,nav.begriffsliste{display:none}
+  nav.inhalt,nav.kapitel-wege,nav.begriffsliste,#rueckweg{display:none}
   main{max-width:none;padding:0;margin:0}
   .kapitel,.teil{break-before:page;border-top:0;margin-top:0;padding-top:0}
   h2,h3{break-after:avoid}
@@ -181,6 +191,8 @@ ol.selbstcheck>li{margin-bottom:1rem;font-weight:600;font-size:1.0625rem}
   dl.begriff{margin:0 0 1rem}
   .kapitel-kopf,.aufgabe,figure.abb{background:#fff}
   summary{color:inherit}
+  details[open] summary{background:#fff;color:#000}
+  details[open] summary::before{color:#000}
   a{color:inherit;text-decoration:none}
   ol.quellenliste a[href^="http"]::after{content:" " attr(href);color:#666;word-break:break-all}
   sup.q a{color:#000}
@@ -198,8 +210,36 @@ marker#pfeil-g path{fill:var(--grau)}
   </defs>
 </svg>
 <figure class="abb" data-name="Abb. A4-1">
-    <svg viewBox="0 0 640 252" role="img" aria-labelledby="a4-abb1-t">
-      <title id="a4-abb1-t">Acht Bit ergeben ein Byte, und der Faktor 8 zwischen Leitung und Datei</title>
+    <svg viewBox="0 0 640 200" role="img" aria-labelledby="a4-abb1-t">
+      <title id="a4-abb1-t">Jeder zusätzliche Schalter verdoppelt die Zahl der Möglichkeiten</title>
+      <text class="tb mitte" x="320" y="22">n Schalter ergeben 2 hoch n Möglichkeiten</text>
+      <text class="t2 rechts" x="300" y="52">1 Schalter</text>
+      <line class="g" x1="310" y1="48" x2="348" y2="48" marker-end="url(#pfeil-g)"/>
+      <text class="t2" x="356" y="52">2 Möglichkeiten</text>
+      <text class="t2 rechts" x="300" y="76">2 Schalter</text>
+      <line class="g" x1="310" y1="72" x2="348" y2="72" marker-end="url(#pfeil-g)"/>
+      <text class="t2" x="356" y="76">4 Möglichkeiten</text>
+      <text class="t2 rechts" x="300" y="100">3 Schalter</text>
+      <line class="g" x1="310" y1="96" x2="348" y2="96" marker-end="url(#pfeil-g)"/>
+      <text class="t2" x="356" y="100">8 Möglichkeiten</text>
+      <text class="ta rechts" x="300" y="128">8 Schalter</text>
+      <line class="a" x1="310" y1="124" x2="348" y2="124" marker-end="url(#pfeil-a)"/>
+      <text class="ta" x="356" y="128">256 Möglichkeiten</text>
+      <text class="t2" x="480" y="128">ein Byte, ein Zeichen</text>
+      <text class="ta rechts" x="300" y="156">10 Schalter</text>
+      <line class="a" x1="310" y1="152" x2="348" y2="152" marker-end="url(#pfeil-a)"/>
+      <text class="ta" x="356" y="156">1.024 Möglichkeiten</text>
+      <text class="t2" x="480" y="156">daher kommt das Kibi</text>
+      <text class="t2 rechts" x="300" y="180">16 Schalter</text>
+      <line class="g" x1="310" y1="176" x2="348" y2="176" marker-end="url(#pfeil-g)"/>
+      <text class="t2" x="356" y="180">65.536 Möglichkeiten</text>
+      <text class="t2" x="480" y="180">Farbtiefe 16 Bit</text>
+    </svg>
+    <figcaption>Abb. A4-1: Verdoppeln statt Zählen. Aus dieser einen Regel folgen das Byte mit 256 Zeichen, die 1.024 der Speicherleiter und jede Farbtiefe.</figcaption>
+  </figure>
+<figure class="abb" data-name="Abb. A4-2">
+    <svg viewBox="0 0 640 252" role="img" aria-labelledby="a4-abb2-t">
+      <title id="a4-abb2-t">Acht Bit ergeben ein Byte, und der Faktor 8 zwischen Leitung und Datei</title>
       <text class="tb" x="8" y="24">Ein Byte sind acht Bit</text>
       <rect class="w" x="40" y="40" width="44" height="36"/>
       <rect class="w" x="90" y="40" width="44" height="36"/>
@@ -233,11 +273,11 @@ marker#pfeil-g path{fill:var(--grau)}
       <line class="l" x1="284" y1="206" x2="356" y2="206" marker-end="url(#pfeil)"/>
       <text class="t2" x="8" y="242">Vor jeder Zeitrechnung die Dateigröße mal 8 nehmen. Sonst ist das Ergebnis achtmal zu klein.</text>
     </svg>
-    <figcaption>Abb. A4-1: Links die Menge, rechts die Geschwindigkeit. Der Faktor 8 steht zwischen beiden Welten und wird am häufigsten vergessen.</figcaption>
+    <figcaption>Abb. A4-2: Links die Menge, rechts die Geschwindigkeit. Der Faktor 8 steht zwischen beiden Welten und wird am häufigsten vergessen.</figcaption>
   </figure>
-<figure class="abb" data-name="Abb. A4-2">
-    <svg viewBox="0 0 640 220" role="img" aria-labelledby="a4-abb2-t">
-      <title id="a4-abb2-t">Vergleich der Umrechnungsstufen für Binär- und SI-Präfixe</title>
+<figure class="abb" data-name="Abb. A4-3">
+    <svg viewBox="0 0 640 220" role="img" aria-labelledby="a4-abb3-t">
+      <title id="a4-abb3-t">Vergleich der Umrechnungsstufen für Binär- und SI-Präfixe</title>
       <text class="tb" x="40" y="30">Binärpräfixe (Faktor 1.024 = 2^10)</text>
       <rect class="f" x="40" y="45" width="80" height="35"/>
       <text class="mitte tb" x="80" y="67">Byte</text>
@@ -280,11 +320,11 @@ marker#pfeil-g path{fill:var(--grau)}
       <rect class="w" x="520" y="140" width="80" height="35"/>
       <text class="mitte tb" x="560" y="162">TB</text>
     </svg>
-    <figcaption>Abb. A4-2: Umrechnungsleiter zwischen Binärpräfixen (Basis 1.024) und SI-Dezimalpräfixen (Basis 1.000).</figcaption>
+    <figcaption>Abb. A4-3: Umrechnungsleiter zwischen Binärpräfixen (Basis 1.024) und SI-Dezimalpräfixen (Basis 1.000).</figcaption>
   </figure>
-<figure class="abb" data-name="Abb. A4-3">
-    <svg viewBox="0 0 640 180" role="img" aria-labelledby="a4-abb3-t">
-      <title id="a4-abb3-t">Struktur eines 24-Bit True-Color Pixelrasters</title>
+<figure class="abb" data-name="Abb. A4-4">
+    <svg viewBox="0 0 640 180" role="img" aria-labelledby="a4-abb4-t">
+      <title id="a4-abb4-t">Struktur eines 24-Bit True-Color Pixelrasters</title>
       <rect class="w" x="40" y="30" width="160" height="120"/>
       <line class="d" x1="80" y1="30" x2="80" y2="150"/>
       <line class="d" x1="120" y1="30" x2="120" y2="150"/>
@@ -309,37 +349,87 @@ marker#pfeil-g path{fill:var(--grau)}
       <text class="mitte tb" x="555" y="85">Blau (8 Bit)</text>
       <text class="mitte t2" x="555" y="105">0 bis 255</text>
     </svg>
-    <figcaption>Abb. A4-3: Ein True-Color-Pixel speichert 3 Byte (je 8 Bit für die Primärfarben Rot, Grün und Blau).</figcaption>
+    <figcaption>Abb. A4-4: Ein True-Color-Pixel speichert 3 Byte (je 8 Bit für die Primärfarben Rot, Grün und Blau).</figcaption>
   </figure>
-<figure class="abb" data-name="Abb. A4-4">
-    <svg viewBox="0 0 640 160" role="img" aria-labelledby="a4-abb4-t">
-      <title id="a4-abb4-t">Rechenkette zur Ermittlung der Datenübertragungszeit</title>
-      <rect class="w" x="30" y="50" width="120" height="45"/>
-      <text class="mitte tb" x="90" y="70">Dateigröße</text>
-      <text class="mitte t2" x="90" y="85">in Byte</text>
-      
-      <line class="a" x1="150" y1="72" x2="185" y2="72" marker-end="url(#pfeil-a)"/>
-      <text class="ta t2 mitte" x="168" y="62">* 8</text>
-      
-      <rect class="f" x="185" y="50" width="120" height="45"/>
-      <text class="mitte tb" x="245" y="70">Datenmenge</text>
-      <text class="mitte t2" x="245" y="85">in Bit</text>
-      
-      <line class="a" x1="305" y1="72" x2="340" y2="72" marker-end="url(#pfeil-a)"/>
-      <text class="ta t2 mitte" x="322" y="62">: Bandbr.</text>
-      
-      <rect class="f" x="340" y="50" width="120" height="45"/>
-      <text class="mitte tb" x="400" y="70">Transferzeit</text>
-      <text class="mitte t2" x="400" y="85">in Sekunden</text>
-      
-      <line class="l" x1="460" y1="72" x2="495" y2="72" marker-end="url(#pfeil)"/>
-      <text class="t2 mitte" x="478" y="62">: 60</text>
-      
-      <rect class="w" x="495" y="50" width="120" height="45"/>
-      <text class="mitte tb" x="555" y="70">Dauer</text>
-      <text class="mitte t2" x="555" y="85">in Min. / Std.</text>
+<figure class="abb" data-name="Abb. A4-5">
+    <svg viewBox="0 0 640 235" role="img" aria-labelledby="a4-abb5-t">
+      <title id="a4-abb5-t">Von Zentimetern über Zoll zur Pixelzahl eines Scans und weiter zur Dateigröße</title>
+      <text class="tb" x="20" y="22">Scanfläche 50,80 cm · 30,48 cm bei 400 dpi</text>
+      <rect class="w" x="20" y="34" width="120" height="40"/>
+      <text class="mono mitte" x="80" y="58">50,80 cm</text>
+      <line class="l" x1="140" y1="54" x2="186" y2="54" marker-end="url(#pfeil)"/>
+      <text class="t2 mitte" x="163" y="46">: 2,54</text>
+      <rect class="w" x="194" y="34" width="100" height="40"/>
+      <text class="mono mitte" x="244" y="58">20 Zoll</text>
+      <line class="l" x1="294" y1="54" x2="340" y2="54" marker-end="url(#pfeil)"/>
+      <text class="t2 mitte" x="317" y="46">· 400</text>
+      <rect class="f" x="348" y="34" width="130" height="40"/>
+      <text class="mono mitte" x="413" y="58">8.000 Pixel</text>
+      <rect class="w" x="20" y="86" width="120" height="40"/>
+      <text class="mono mitte" x="80" y="110">30,48 cm</text>
+      <line class="l" x1="140" y1="106" x2="186" y2="106" marker-end="url(#pfeil)"/>
+      <text class="t2 mitte" x="163" y="98">: 2,54</text>
+      <rect class="w" x="194" y="86" width="100" height="40"/>
+      <text class="mono mitte" x="244" y="110">12 Zoll</text>
+      <line class="l" x1="294" y1="106" x2="340" y2="106" marker-end="url(#pfeil)"/>
+      <text class="t2 mitte" x="317" y="98">· 400</text>
+      <rect class="f" x="348" y="86" width="130" height="40"/>
+      <text class="mono mitte" x="413" y="110">4.800 Pixel</text>
+      <line class="a" x1="486" y1="54" x2="520" y2="74" marker-end="url(#pfeil-a)"/>
+      <line class="a" x1="486" y1="106" x2="520" y2="86" marker-end="url(#pfeil-a)"/>
+      <text class="ta" x="496" y="34">Breite mal Höhe</text>
+      <rect class="fa" x="524" y="60" width="96" height="40"/>
+      <text class="mono mitte tb" x="572" y="76">38,4 Mio</text>
+      <text class="mono mitte t2" x="572" y="92">Pixel</text>
+      <line class="l" x1="320" y1="134" x2="320" y2="154" marker-end="url(#pfeil)"/>
+      <text class="t2 mitte" x="320" y="176">· 16 Bit Farbtiefe = 614.400.000 Bit    : 8 = 76.800.000 Byte</text>
+      <text class="t2 mitte" x="320" y="198">: 1.024 = 75.000 KiB    : 1.024 = 73,24 MiB</text>
+      <text class="t2 mitte" x="320" y="222">dpi zählt je Zoll, darum zuerst die Zentimeter umrechnen</text>
     </svg>
-    <figcaption>Abb. A4-4: Rechenkette von der Quelldateigröße über Bit-Umrechnung und Bandbreitendivision zur Transferdauer.</figcaption>
+    <figcaption>Abb. A4-5: Erst Zentimeter zu Zoll, dann Zoll mal Auflösung, dann Breite mal Höhe. Danach ist es die gewohnte Kette aus Farbtiefe, Faktor 8 und Speicherleiter.</figcaption>
+  </figure>
+<figure class="abb" data-name="Abb. A4-6">
+    <svg viewBox="0 0 640 250" role="img" aria-labelledby="a4-abb6-t">
+      <title id="a4-abb6-t">Fünf Schritte zur Übertragungszeit: Datei in Byte, dann in Bit; Rate in bit/s; teilen; runden</title>
+      <rect class="w" x="20" y="30" width="130" height="45"/>
+      <text class="mitte tb" x="85" y="50">Dateigröße</text>
+      <text class="mitte t2" x="85" y="65">in MiByte / MByte</text>
+      <line class="a" x1="150" y1="52" x2="210" y2="52" marker-end="url(#pfeil-a)"/>
+      <text class="ta t2 mitte" x="180" y="24">Mi: · 1.024 · 1.024</text>
+      <text class="ta t2 mitte" x="180" y="88">M: · 1.000.000</text>
+      <rect class="f" x="210" y="30" width="110" height="45"/>
+      <text class="mitte tb" x="265" y="50">Dateigröße</text>
+      <text class="mitte t2" x="265" y="65">in Byte</text>
+      <line class="a" x1="320" y1="52" x2="370" y2="52" marker-end="url(#pfeil-a)"/>
+      <text class="ta t2 mitte" x="345" y="42">· 8</text>
+      <rect class="f" x="370" y="30" width="110" height="45"/>
+      <text class="mitte tb" x="425" y="50">Datenmenge</text>
+      <text class="mitte t2" x="425" y="65">in Bit</text>
+
+      <rect class="w" x="20" y="130" width="130" height="45"/>
+      <text class="mitte tb" x="85" y="150">Datenrate</text>
+      <text class="mitte t2" x="85" y="165">in kbit/s, Mbit/s</text>
+      <line class="a" x1="150" y1="152" x2="370" y2="152" marker-end="url(#pfeil-a)"/>
+      <text class="ta t2 mitte" x="260" y="142">k: · 1.000    M: · 1.000.000</text>
+      <text class="ta t2 mitte" x="260" y="188">immer dezimal, nie 1.024</text>
+      <rect class="f" x="370" y="130" width="110" height="45"/>
+      <text class="mitte tb" x="425" y="150">Datenrate</text>
+      <text class="mitte t2" x="425" y="165">in bit/s</text>
+
+      <line class="a" x1="480" y1="52" x2="525" y2="92" marker-end="url(#pfeil-a)"/>
+      <line class="a" x1="480" y1="152" x2="525" y2="112" marker-end="url(#pfeil-a)"/>
+      <text class="ta t2 mitte" x="512" y="52">Bit</text>
+      <text class="ta t2 mitte" x="512" y="168">: bit/s</text>
+      <rect class="f" x="525" y="80" width="100" height="45"/>
+      <text class="mitte tb" x="575" y="100">Zeit</text>
+      <text class="mitte t2" x="575" y="115">in Sekunden</text>
+      <line class="l" x1="575" y1="125" x2="575" y2="185" marker-end="url(#pfeil)"/>
+      <text class="t2" x="583" y="160">: 60</text>
+      <rect class="w" x="525" y="185" width="100" height="45"/>
+      <text class="mitte tb" x="575" y="205">Dauer</text>
+      <text class="mitte t2" x="575" y="220">in Minuten</text>
+    </svg>
+    <figcaption>Abb. A4-6: Die fünf Schritte zur Übertragungszeit. Oben die Datei (Byte, dann Bit), unten die Leitung (bit/s), rechts das Teilen und das Runden.</figcaption>
   </figure>
 <pre id="out"></pre>
 <script>

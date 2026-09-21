@@ -1,0 +1,80 @@
+[
+ {
+  "pruefung": "F22",
+  "nr": "3.1",
+  "ziel": "b2-k10",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "3.2",
+  "ziel": "b2-k10",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "3.4",
+  "ziel": "b2-k12",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "3.6",
+  "ziel": "b2-k12",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "3.7",
+  "ziel": "b2-k8",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "3.8",
+  "ziel": "b2-k6",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F24",
+  "nr": "4.2",
+  "ziel": "b2-k8",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F25",
+  "nr": "2.3",
+  "ziel": "b2-original-2",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F25",
+  "nr": "2.5",
+  "ziel": "b2-k1",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F25",
+  "nr": "2.7",
+  "ziel": "b2-original-3",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F25",
+  "nr": "4.5",
+  "ziel": "b2-k7",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F25",
+  "nr": "4.6",
+  "ziel": "b2-k9",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H25",
+  "nr": "3.9",
+  "ziel": "b2-original-1",
+  "hinweis": ""
+ }
+]

@@ -2,44 +2,51 @@
  {
   "pruefung": "F22",
   "nr": "3.1",
-  "ziel": "b2-k10",
-  "hinweis": ""
+  "ziel": "b2-ihk-f22-3-1",
+  "hinweis": "",
+  "lektion": "b2-k10"
  },
  {
   "pruefung": "F22",
   "nr": "3.2",
-  "ziel": "b2-k10",
-  "hinweis": ""
+  "ziel": "b2-ihk-f22-3-2",
+  "hinweis": "",
+  "lektion": "b2-k10"
  },
  {
   "pruefung": "H23",
   "nr": "3.4",
-  "ziel": "b2-k12",
-  "hinweis": ""
+  "ziel": "b2-ihk-h23-3-4",
+  "hinweis": "",
+  "lektion": "b2-k12"
  },
  {
   "pruefung": "H23",
   "nr": "3.6",
-  "ziel": "b2-k12",
-  "hinweis": ""
+  "ziel": "b2-ihk-h23-3-6",
+  "hinweis": "",
+  "lektion": "b2-k12"
  },
  {
   "pruefung": "H23",
   "nr": "3.7",
-  "ziel": "b2-k8",
-  "hinweis": ""
+  "ziel": "b2-ihk-h23-3-7",
+  "hinweis": "",
+  "lektion": "b2-k8"
  },
  {
   "pruefung": "H23",
   "nr": "3.8",
-  "ziel": "b2-k6",
-  "hinweis": ""
+  "ziel": "b2-ihk-h23-3-8",
+  "hinweis": "",
+  "lektion": "b2-k6"
  },
  {
   "pruefung": "F24",
   "nr": "4.2",
-  "ziel": "b2-k8",
-  "hinweis": ""
+  "ziel": "b2-ihk-f24-4-2",
+  "hinweis": "",
+  "lektion": "b2-k8"
  },
  {
   "pruefung": "F25",
@@ -51,8 +58,9 @@
  {
   "pruefung": "F25",
   "nr": "2.5",
-  "ziel": "b2-k1",
-  "hinweis": ""
+  "ziel": "b2-ihk-f25-2-5",
+  "hinweis": "",
+  "lektion": "b2-k1"
  },
  {
   "pruefung": "F25",
@@ -64,14 +72,16 @@
  {
   "pruefung": "F25",
   "nr": "4.5",
-  "ziel": "b2-k7",
-  "hinweis": ""
+  "ziel": "b2-ihk-f25-4-5",
+  "hinweis": "",
+  "lektion": "b2-k7"
  },
  {
   "pruefung": "F25",
   "nr": "4.6",
-  "ziel": "b2-k9",
-  "hinweis": ""
+  "ziel": "b2-ihk-f25-4-6",
+  "hinweis": "",
+  "lektion": "b2-k9"
  },
  {
   "pruefung": "H25",

@@ -112,6 +112,17 @@
     });
   }catch(e){}
 })();
+  /* Sprung zu einer Stelle in einer zugeklappten Klappe: Klappen auf dem Weg öffnen */
+  try{
+    var oeffneZiel=function(){
+      var id=decodeURIComponent((location.hash||'').slice(1)); if(!id) return;
+      var el=document.getElementById(id); if(!el) return;
+      var p=el.parentNode, offen=false;
+      while(p && p!==document){ if(p.tagName==='DETAILS' && !p.open){ p.open=true; offen=true; } p=p.parentNode; }
+      if(offen){ setTimeout(function(){ el.scrollIntoView(); },0); }
+    };
+    window.addEventListener('hashchange',oeffneZiel); oeffneZiel();
+  }catch(e){}
 </script>
 </body>
 </html>

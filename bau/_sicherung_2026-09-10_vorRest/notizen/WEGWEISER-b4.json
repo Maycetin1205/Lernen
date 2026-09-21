@@ -1,0 +1,108 @@
+[
+ {
+  "pruefung": "F22",
+  "nr": "2.1",
+  "ziel": "b4-k8",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "2.2",
+  "ziel": "b4-k8",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "2.3",
+  "ziel": "b4-k9",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "2.4",
+  "ziel": "b4-k4",
+  "hinweis": "Dual-Channel-Absatz mit der Belegung A1+B1 oder A2+B2 aus dem Heft"
+ },
+ {
+  "pruefung": "F22",
+  "nr": "2.5",
+  "ziel": "b4-k7",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "2.6",
+  "ziel": "b4-k2",
+  "hinweis": "DVI jetzt im Text und in Abb. B4-5"
+ },
+ {
+  "pruefung": "F22",
+  "nr": "2.7",
+  "ziel": "b4-k14",
+  "hinweis": "Eigener Abschnitt BIOS FlashBack"
+ },
+ {
+  "pruefung": "F22",
+  "nr": "2.8",
+  "ziel": "b4-k2",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "2.9",
+  "ziel": "b4-k10",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "2.10",
+  "ziel": "b4-k13",
+  "hinweis": "Cache im Baustein 1 mit Abb. B4-1"
+ },
+ {
+  "pruefung": "H22",
+  "nr": "2.8",
+  "ziel": "b4-k15",
+  "hinweis": "Eigener Abschnitt Barcode/QR/RFID mit der Hefttabelle"
+ },
+ {
+  "pruefung": "F23",
+  "nr": "1.1",
+  "ziel": "b4-k12",
+  "hinweis": "Abb. B4-7 jetzt mit All-in-One-PC statt Tablet"
+ },
+ {
+  "pruefung": "F24",
+  "nr": "1.4",
+  "ziel": "b4-k2",
+  "hinweis": "DVI jetzt im Text und in Abb. B4-5"
+ },
+ {
+  "pruefung": "H24",
+  "nr": "3.2",
+  "ziel": "b4-original-2",
+  "hinweis": "",
+  "lektion": "b4-k4"
+ },
+ {
+  "pruefung": "H24",
+  "nr": "3.3",
+  "ziel": "b4-original-2",
+  "hinweis": "Empfehlung steht im dritten Absatz der Loesung",
+  "lektion": "b4-k4"
+ },
+ {
+  "pruefung": "H24",
+  "nr": "3.4",
+  "ziel": "b4-original-3",
+  "hinweis": "",
+  "lektion": "b4-k6"
+ },
+ {
+  "pruefung": "F25",
+  "nr": "1.4",
+  "ziel": "b4-original-1",
+  "hinweis": "",
+  "lektion": "b4-k2"
+ }
+]

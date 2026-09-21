@@ -2,32 +2,37 @@
  {
   "pruefung": "H22",
   "nr": "4.1",
-  "ziel": "a9-k12",
-  "hinweis": ""
+  "ziel": "a9-ihk-h22-4-1",
+  "hinweis": "",
+  "lektion": "a9-k12"
  },
  {
   "pruefung": "H22",
   "nr": "4.2",
-  "ziel": "a9-k12",
-  "hinweis": ""
+  "ziel": "a9-ihk-h22-4-2",
+  "hinweis": "",
+  "lektion": "a9-k12"
  },
  {
   "pruefung": "H22",
   "nr": "4.3",
-  "ziel": "a9-k12",
-  "hinweis": ""
+  "ziel": "a9-ihk-h22-4-3",
+  "hinweis": "",
+  "lektion": "a9-k12"
  },
  {
   "pruefung": "H22",
   "nr": "4.5",
-  "ziel": "a9-k9",
-  "hinweis": ""
+  "ziel": "a9-ihk-h22-4-5",
+  "hinweis": "",
+  "lektion": "a9-k9"
  },
  {
   "pruefung": "F23",
   "nr": "4.5",
-  "ziel": "a9-k12",
-  "hinweis": ""
+  "ziel": "a9-ihk-f23-4-5",
+  "hinweis": "",
+  "lektion": "a9-k12"
  },
  {
   "pruefung": "F23",
@@ -39,26 +44,30 @@
  {
   "pruefung": "H23",
   "nr": "4.6",
-  "ziel": "a9-k4",
-  "hinweis": "Kardinalitäten der zwei neuen Beziehungen (2 von 5 Punkten) stehen nicht in a9-k4, sondern in a9-k5."
+  "ziel": "a9-ihk-h23-4-6",
+  "hinweis": "Kardinalitäten der zwei neuen Beziehungen (2 von 5 Punkten) stehen nicht in a9-k4, sondern in a9-k5.",
+  "lektion": "a9-k4"
  },
  {
   "pruefung": "H23",
   "nr": "4.7",
-  "ziel": "a9-k12",
-  "hinweis": ""
+  "ziel": "a9-ihk-h23-4-7",
+  "hinweis": "",
+  "lektion": "a9-k12"
  },
  {
   "pruefung": "H23",
   "nr": "4.8",
-  "ziel": "a9-k12",
-  "hinweis": ""
+  "ziel": "a9-ihk-h23-4-8",
+  "hinweis": "",
+  "lektion": "a9-k12"
  },
  {
   "pruefung": "H23",
   "nr": "4.9",
-  "ziel": "a9-k12",
-  "hinweis": ""
+  "ziel": "a9-ihk-h23-4-9",
+  "hinweis": "",
+  "lektion": "a9-k12"
  },
  {
   "pruefung": "H24",
@@ -70,32 +79,37 @@
  {
   "pruefung": "F25",
   "nr": "4.7",
-  "ziel": "a9-k10",
-  "hinweis": ""
+  "ziel": "a9-ihk-f25-4-7",
+  "hinweis": "",
+  "lektion": "a9-k10"
  },
  {
   "pruefung": "F25",
   "nr": "4.8",
-  "ziel": "a9-k10",
-  "hinweis": ""
+  "ziel": "a9-ihk-f25-4-8",
+  "hinweis": "",
+  "lektion": "a9-k10"
  },
  {
   "pruefung": "H25",
   "nr": "4.1",
-  "ziel": "a9-k2",
-  "hinweis": ""
+  "ziel": "a9-ihk-h25-4-1",
+  "hinweis": "",
+  "lektion": "a9-k2"
  },
  {
   "pruefung": "H25",
   "nr": "4.2",
-  "ziel": "a9-k3",
-  "hinweis": ""
+  "ziel": "a9-ihk-h25-4-2",
+  "hinweis": "",
+  "lektion": "a9-k3"
  },
  {
   "pruefung": "H25",
   "nr": "4.3",
-  "ziel": "a9-k1",
-  "hinweis": ""
+  "ziel": "a9-ihk-h25-4-3",
+  "hinweis": "",
+  "lektion": "a9-k1"
  },
  {
   "pruefung": "H25",

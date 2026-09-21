@@ -1,0 +1,125 @@
+{
+"a9-ihk-h22-4-1": {
+ "denkweg": [
+  "Jede SQL-Abfrage hat drei Fragen: Welche Spalten will ich sehen (SELECT), aus welcher Tabelle (FROM), welche Zeilen (WHERE).",
+  "Spalten: Breite, Länge, Dicke, Stückzahl, also Width, Length, Thickness, Quantity. Die Auftragsnummer darf nicht ausgegeben werden, also steht sie nicht hinter SELECT.",
+  "Tabelle: ProductionData.",
+  "Zeilen: nur der Auftrag 736298, also WHERE OrderID = 736298. Die Auftragsnummer wird zum Filtern benutzt, nicht zum Anzeigen. Das ist der Trick der Aufgabe."
+ ],
+ "mitnehmen": "SELECT Spalten FROM Tabelle WHERE Bedingung. Eine Spalte kann im WHERE stehen, ohne im SELECT zu stehen."
+},
+"a9-ihk-h22-4-2": {
+ "denkweg": [
+  "Gefragt ist eine Anzahl von Aufträgen, also von Zeilen. Zeilen zählen heißt COUNT(*).",
+  "Nur die Zeilen mit Dicke 2: WHERE Thickness = 2.",
+  "Einfachste Antwort: SELECT COUNT(*) FROM ProductionData WHERE Thickness = 2.",
+  "Die IHK-Lösung ging mit GROUP BY Thickness HAVING Thickness = 2, das ist derselbe Gedanke über den Umweg 'nach Dicke gruppieren, dann die Gruppe 2 nehmen'. Beides zählt.",
+  "Falle: Nicht SUM(Quantity), das wäre die Stückzahl, nicht die Anzahl der Aufträge."
+ ],
+ "mitnehmen": "COUNT zählt Zeilen, SUM addiert Werte. 'Wie viele Aufträge' = COUNT, 'wie viele Stück' = SUM."
+},
+"a9-ihk-h22-4-3": {
+ "denkweg": [
+  "Gefragt ist die gefertigte Stückzahl insgesamt. Stück stehen in Quantity, addieren heißt SUM(Quantity).",
+  "Drei Bedingungen, alle müssen gleichzeitig gelten, also mit AND: Width = 200 AND Length = 300 AND Thickness = 2.",
+  "SELECT SUM(Quantity) FROM ProductionData WHERE Width = 200 AND Length = 300 AND Thickness = 2.",
+  "Die IHK hängte noch ein GROUP BY an, nötig ist es hier nicht, weil die Filter schon eine einzige Gruppe übrig lassen."
+ ],
+ "mitnehmen": "Mehrere Bedingungen, die alle gelten müssen: AND. Summe einer Spalte: SUM. Vergleiche mit 4.2: COUNT für Anzahl, SUM für Menge."
+},
+"a9-ihk-h22-4-5": {
+ "denkweg": [
+  "Erst die Kardinalität: Eine Walzanlage erzeugt viele Produktionsdatensätze, ein Datensatz gehört zu genau einer Anlage. Also 1 an der Anlage, n bei den Produktionsdaten.",
+  "Dann je Entität: Was steht im Text als 'je Anlage'? Maschinennummer, Bezeichnung, Baujahr, Spezifikation. Die Maschinennummer ist eindeutig, also Primärschlüssel, unterstreichen.",
+  "Was steht als 'je Produktionsdatensatz'? Breite, Länge, Dicke, Anzahl, Zeitstempel. Dazu eine eigene Nummer als Primärschlüssel (OrderID), unterstrichen.",
+  "Attribute als Ellipsen an die Rechtecke hängen, Raute beschriften (zum Beispiel 'liefert'). Fremdschlüssel waren nicht verlangt.",
+  "Punkte: 1 für die Kardinalität, 2 für die zwei unterstrichenen Schlüssel, 3 für die Attribute. Die Schlüssel sind ein Drittel der Punkte, also nie vergessen."
+ ],
+ "mitnehmen": "ER-Modell aus Text: Jedes 'je X wird gespeichert' ist ein Attribut von X. Das eindeutige Merkmal ist der Primärschlüssel und wird unterstrichen. Eins-zu-viele: 1 an der Seite, die einmal vorkommt."
+},
+"a9-ihk-f23-4-5": {
+ "denkweg": [
+  "Gefragt ist ein Durchschnitt. Durchschnitt in SQL heißt AVG.",
+  "Wovon? Von der Versicherungssumme, im Bild heißt die Spalte Versicherung_Summe.",
+  "In welcher Tabelle steht sie? Im ER-Modell hängt sie an KFZ_Versicherung.",
+  "SELECT AVG(Versicherung_Summe) FROM KFZ_Versicherung. Kein WHERE, weil alle Verträge gemeint sind.",
+  "Je ein Punkt für AVG, die richtige Spalte, die richtige Tabelle. Spaltennamen genau so abschreiben, wie sie im Bild stehen."
+ ],
+ "mitnehmen": "Rechenfunktionen in SQL: AVG Durchschnitt, SUM Summe, COUNT Anzahl, MIN und MAX. Tabelle und Spalte immer aus dem ER-Bild ablesen."
+},
+"a9-ihk-h23-4-6": {
+ "denkweg": [
+  "Lies den Text und sammle, was je Tätigkeit gespeichert werden soll: Beschreibung, Ergebnis, Start, Ende. Beschreibung und Ergebnis stehen schon da, also fehlen ZeitstempelStart und ZeitstempelEnde.",
+  "Wer macht die Tätigkeit? Ein Mitarbeiter. Damit die Datenbank das weiß, braucht Taetigkeiten die MitarbeiterID als Fremdschlüssel. Das ist die dritte leere Ellipse. TicketID(FK) ist schon da.",
+  "Kardinalitäten: Ein Ticket hat eine oder mehrere Tätigkeiten, jede Tätigkeit gehört zu einem Ticket: 1 am Ticket, n an Taetigkeiten. Ein Mitarbeiter führt viele Tätigkeiten aus, jede Tätigkeit macht ein Mitarbeiter: 1 am Mitarbeiter, n an Taetigkeiten.",
+  "Regel zum Merken: Der Fremdschlüssel steht immer auf der n-Seite. Taetigkeiten hat n bei beiden Beziehungen, also trägt sie beide Fremdschlüssel."
+ ],
+ "mitnehmen": "Fehlende Attribute findest du im Aufgabentext ('soll gespeichert werden'). Fremdschlüssel gehört auf die n-Seite. 1:n heißt: einer hat viele, jeder der vielen hat genau einen."
+},
+"a9-ihk-h23-4-7": {
+ "denkweg": [
+  "'Anzahl je Priorität' heißt: für jede Priorität eine Zeile mit der Zahl der Tickets. 'Je' ist das Signalwort für GROUP BY.",
+  "Zählen mit COUNT(TicketID) oder COUNT(*). Ausgeben soll sie Priorität und Anzahl, also beides hinter SELECT.",
+  "SELECT Prioritaet, COUNT(TicketID) FROM Ticket GROUP BY Prioritaet.",
+  "Regel: Was du hinter SELECT ohne Funktion nennst, muss im GROUP BY stehen."
+ ],
+ "mitnehmen": "'Je' oder 'pro' in der Frage = GROUP BY nach dieser Spalte, kombiniert mit COUNT, SUM oder AVG."
+},
+"a9-ihk-h23-4-8": {
+ "denkweg": [
+  "Gefragt: Wie viele verschiedene Kunden haben mindestens ein Ticket? Die Kunden stehen als KundenID in der Tabelle Ticket, ein Kunde mit fünf Tickets steht fünfmal drin.",
+  "Einfach COUNT(KundenID) würde ihn fünfmal zählen. DISTINCT heißt 'jeden Wert nur einmal'.",
+  "SELECT COUNT(DISTINCT KundenID) FROM Ticket.",
+  "Ein Punkt für COUNT, einer für DISTINCT, einer für Tabelle und Spalte. Das DISTINCT ist der Kern."
+ ],
+ "mitnehmen": "'Wie viele verschiedene' = COUNT(DISTINCT Spalte). Ohne DISTINCT zählst du Doppelte mit."
+},
+"a9-ihk-h23-4-9": {
+ "denkweg": [
+  "Nimm die Abfrage von hinten nach vorn auseinander: FROM Ticket, also Tickets. WHERE mit zwei Bedingungen: Monat jetzt minus Erfassungsmonat größer 2, das heißt mehr als zwei Monate alt, und Zustand gleich offen.",
+  "SELECT nennt vier Spalten: Problembeschreibung, Priorität, Zustand, Erfassungsdatum. Nur die werden angezeigt.",
+  "ORDER BY ErfassungDatum ASC: aufsteigend sortiert, ältestes zuerst.",
+  "Drei Sätze schreiben: welche Zeilen, welche Spalten, welche Reihenfolge. Je Satz ein Punkt."
+ ],
+ "mitnehmen": "SQL lesen: WHERE sagt welche Zeilen, SELECT welche Spalten, ORDER BY welche Reihenfolge (ASC aufsteigend, DESC absteigend)."
+},
+"a9-ihk-f25-4-7": {
+ "denkweg": [
+  "Redundant heißt doppelt. In einer Tabelle: Dieselbe Information steht mehrfach drin, zum Beispiel die Adresse eines Mandanten in zehn Zeilen, einmal je Akte.",
+  "Zwei Sätze: Was es ist (mehrfach gespeicherte Daten) und ein Beispiel."
+ ],
+ "mitnehmen": "Redundanz = dieselbe Information mehrfach gespeichert. Normalisierung ist der Weg, sie loszuwerden."
+},
+"a9-ihk-f25-4-8": {
+ "denkweg": [
+  "Denk das Beispiel weiter: Die Adresse steht zehnmal drin, der Mandant zieht um, jemand ändert nur drei Stellen. Jetzt gibt es zwei verschiedene Adressen für denselben Menschen. Das heißt Inkonsistenz, Widerspruch in den Daten.",
+  "Folge: falsche Briefe, falsche Auswertungen. Nebenbei mehr Speicher und mehr Pflegeaufwand.",
+  "Problem nennen und in einem Satz erklären, wie es entsteht."
+ ],
+ "mitnehmen": "Hauptproblem von Redundanz: Inkonsistenz beim Ändern (Änderungsanomalie). Nebenproblem: Speicherplatz."
+},
+"a9-ihk-h25-4-1": {
+ "denkweg": [
+  "Suche im englischen Text das Wort 'primary key' und den Satz drumherum: identifies a row uniquely, zum Beispiel eine ID-Nummer.",
+  "Übersetze in eigenen Worten: Der Primärschlüssel ist die Spalte, die jede Zeile eindeutig macht. Zwei Zeilen können nie denselben Wert haben.",
+  "Beispiel dazu: Kundennummer, jede nur einmal vergeben."
+ ],
+ "mitnehmen": "Primärschlüssel = eindeutige Kennung je Zeile, nie doppelt, nie leer. Im ER-Modell unterstrichen."
+},
+"a9-ihk-h25-4-2": {
+ "denkweg": [
+  "Suche 'foreign key': refers to the primary key of another table.",
+  "In eigenen Worten: Der Fremdschlüssel ist eine Spalte in Tabelle A, die den Primärschlüssel aus Tabelle B enthält. So weiß die Datenbank, welcher Kunde zu welcher Bestellung gehört.",
+  "Beispiel: Kunden-ID in der Bestelltabelle zeigt auf den Kunden in der Kundentabelle."
+ ],
+ "mitnehmen": "Fremdschlüssel = Verweis auf den Primärschlüssel einer anderen Tabelle. Er stellt die Verbindung her und steht auf der n-Seite."
+},
+"a9-ihk-h25-4-3": {
+ "denkweg": [
+  "Der Text sagt: Daten können gemeinsam abgefragt werden und Doppelablagen werden vermieden.",
+  "Ohne Verknüpfung müsste bei jeder Bestellung die ganze Kundenadresse stehen (Redundanz). Mit Verknüpfung steht sie einmal in der Kundentabelle, die Bestellung zeigt nur darauf.",
+  "Vorteil in einem Satz: weniger Doppelte, Änderungen nur an einer Stelle, trotzdem alles zusammen abfragbar."
+ ],
+ "mitnehmen": "Verknüpfte Tabellen: jede Information nur einmal, verbunden über Schlüssel, gemeinsam abfragbar mit JOIN."
+}
+}

@@ -1,77 +1,86 @@
 [
-  {
-    "pruefung": "H21",
-    "nr": "2.5",
-    "ziel": "a7-original-3",
-    "hinweis": "",
-    "lektion": "a7-k11"
-  },
-  {
-    "pruefung": "F22",
-    "nr": "4.4",
-    "ziel": "a7-k13",
-    "hinweis": "Verschachtelung im Bild: Abb. A7-4 im Abschnitt darueber"
-  },
-  {
-    "pruefung": "H22",
-    "nr": "4.4",
-    "ziel": "a7-k13",
-    "hinweis": "Verschachtelung im Bild: Abb. A7-4 im Abschnitt darueber"
-  },
-  {
-    "pruefung": "H24",
-    "nr": "2.2",
-    "ziel": "a7-k11",
-    "hinweis": ""
-  },
-  {
-    "pruefung": "H24",
-    "nr": "2.3",
-    "ziel": "a7-k11",
-    "hinweis": ""
-  },
-  {
-    "pruefung": "H24",
-    "nr": "2.5",
-    "ziel": "a7-original-2",
-    "hinweis": "",
-    "lektion": "a7-k9"
-  },
-  {
-    "pruefung": "F25",
-    "nr": "3.5",
-    "ziel": "a7-k12",
-    "hinweis": "Eigener Abschnitt mit der vollstaendigen Rechnung (2,75; 46,35; 37,05)"
-  },
-  {
-    "pruefung": "F25",
-    "nr": "3.6",
-    "ziel": "a7-original-1",
-    "hinweis": "",
-    "lektion": "a7-k8"
-  },
-  {
-    "pruefung": "H25",
-    "nr": "4.5",
-    "ziel": "a7-k5",
-    "hinweis": ""
-  },
-  {
-    "pruefung": "H25",
-    "nr": "4.6",
-    "ziel": "a7-k7",
-    "hinweis": ""
-  },
-  {
-    "pruefung": "H25",
-    "nr": "4.7",
-    "ziel": "a7-k6",
-    "hinweis": ""
-  },
-  {
-    "pruefung": "H25",
-    "nr": "4.8",
-    "ziel": "a7-k6",
-    "hinweis": ""
-  }
+ {
+  "pruefung": "H21",
+  "nr": "2.5",
+  "ziel": "a7-original-3",
+  "hinweis": "",
+  "lektion": "a7-k11"
+ },
+ {
+  "pruefung": "F22",
+  "nr": "4.4",
+  "ziel": "a7-ihk-f22-4-4",
+  "hinweis": "Verschachtelung im Bild: Abb. A7-4 im Abschnitt darueber",
+  "lektion": "a7-k13"
+ },
+ {
+  "pruefung": "H22",
+  "nr": "4.4",
+  "ziel": "a7-ihk-h22-4-4",
+  "hinweis": "Verschachtelung im Bild: Abb. A7-4 im Abschnitt darueber",
+  "lektion": "a7-k13"
+ },
+ {
+  "pruefung": "H24",
+  "nr": "2.2",
+  "ziel": "a7-ihk-h24-2-2",
+  "hinweis": "",
+  "lektion": "a7-k11"
+ },
+ {
+  "pruefung": "H24",
+  "nr": "2.3",
+  "ziel": "a7-ihk-h24-2-3",
+  "hinweis": "",
+  "lektion": "a7-k11"
+ },
+ {
+  "pruefung": "H24",
+  "nr": "2.5",
+  "ziel": "a7-original-2",
+  "hinweis": "",
+  "lektion": "a7-k9"
+ },
+ {
+  "pruefung": "F25",
+  "nr": "3.5",
+  "ziel": "a7-ihk-f25-3-5",
+  "hinweis": "Eigener Abschnitt mit der vollstaendigen Rechnung (2,75; 46,35; 37,05)",
+  "lektion": "a7-k12"
+ },
+ {
+  "pruefung": "F25",
+  "nr": "3.6",
+  "ziel": "a7-original-1",
+  "hinweis": "",
+  "lektion": "a7-k8"
+ },
+ {
+  "pruefung": "H25",
+  "nr": "4.5",
+  "ziel": "a7-ihk-h25-4-5",
+  "hinweis": "",
+  "lektion": "a7-k5"
+ },
+ {
+  "pruefung": "H25",
+  "nr": "4.6",
+  "ziel": "a7-ihk-h25-4-6",
+  "hinweis": "",
+  "lektion": "a7-k7"
+ },
+ {
+  "pruefung": "H25",
+  "nr": "4.7",
+  "ziel": "a7-ihk-h25-4-7",
+  "hinweis": "",
+  "lektion": "a7-k6"
+ },
+ {
+  "pruefung": "H25",
+  "nr": "4.8",
+  "ziel": "a7-ihk-h25-4-8",
+  "hinweis": "",
+  "lektion": "a7-k6"
+ }
 ]

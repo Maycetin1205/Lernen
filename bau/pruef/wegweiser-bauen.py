@@ -56,6 +56,8 @@ for jf in sorted(glob.glob(os.path.join(N, "WEGWEISER-*.json"))):
             text = "Gelöste Originalaufgabe mit Lösung"
         elif "-variante-" in e["ziel"]:
             text = "Übungsvariante mit Lösung"
+        elif "-ihk-" in e["ziel"]:
+            text = "Diese Aufgabe gelöst, mit Punkten"
         else:
             m = re.search(r'<h4 id="%s">([^<]*)</h4>' % re.escape(e["ziel"]), s)
             if m:
@@ -65,9 +67,13 @@ for jf in sorted(glob.glob(os.path.join(N, "WEGWEISER-*.json"))):
                 text = ("Begriff: " + html.unescape(d.group(1)).strip()) if d else "Abschnitt im Kapitel"
         if e.get("lektion"):
             lm = re.search(r'<h4 id="%s">([^<]*)</h4>' % re.escape(e["lektion"]), s)
-            if not lm:
+            dm = re.search(r'<dl class="begriff" id="%s">\s*<dt>([^<]*)' % re.escape(e["lektion"]), s)
+            if lm:
+                lektion_text = html.unescape(lm.group(1))
+            elif dm:
+                lektion_text = "Begriff: " + html.unescape(dm.group(1)).strip()
+            else:
                 fehler.append(f"{kid}: Lektionsziel {e['lektion']} für {key} ist keine Kernüberschrift"); continue
-            lektion_text = html.unescape(lm.group(1))
             zelle = (f'<a href="#{e["lektion"]}">Erst lernen: {html.escape(lektion_text)}</a><br>'
                      f'<a href="#{e["ziel"]}">Dann prüfen: {html.escape(text)}</a>')
         else:

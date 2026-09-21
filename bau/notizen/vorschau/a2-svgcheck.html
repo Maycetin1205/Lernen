@@ -23,7 +23,6 @@ nav.inhalt li a:hover{color:var(--tinte);background:var(--flaeche)}
 nav.inhalt li a.aktuell{color:var(--tinte);font-weight:750;background:var(--akzent-hell)}
 nav.inhalt .nr{flex:0 0 2.2em;font-weight:780;color:#B9BCC4;font-variant-numeric:tabular-nums}
 nav.inhalt li a:hover .nr,nav.inhalt li a.aktuell .nr{color:var(--akzent)}
-nav.inhalt li.sitzt>a .nr::after{content:"✓";margin-left:.1em;color:var(--akzent)}
 nav.inhalt ol.nav-schnell{margin:0 0 1.6rem;padding-bottom:1.2rem;border-bottom:1px solid var(--linie)}
 nav.inhalt ol.nav-schnell li a{font-weight:750;color:var(--tinte)}
 nav.inhalt ol.nav-schnell li a:hover{color:var(--akzent)}
@@ -68,9 +67,6 @@ nav.begriffsliste{margin:.85rem 0 .1rem;max-width:min(62rem,100%);font-size:.843
 nav.begriffsliste a{color:var(--akzent);text-decoration:none;font-weight:650}
 nav.begriffsliste a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
 nav.begriffsliste a+a::before{content:"·";margin:0 .55em;color:#B9BCC4;font-weight:700}
-.sitzt{display:inline-flex;gap:.55rem;align-items:center;margin-top:1.25rem;padding:.45rem 1rem;border:1.5px solid var(--tinte);border-radius:999px;background:var(--papier);font-size:.8438rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;user-select:none}
-.sitzt input{width:1.05rem;height:1.05rem;margin:0;accent-color:var(--akzent)}
-.sitzt:has(input:checked){background:var(--tinte);color:var(--papier)}
 
 section[id$="-begriffe"]{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(23rem,100%),1fr));gap:1.25rem 1.75rem;align-items:start}
 section[id$="-begriffe"]>:not(dl){grid-column:1/-1}
@@ -142,6 +138,20 @@ summary::before{content:"+";font-size:1.15em;font-weight:700;line-height:1;color
 details[open] summary::before{content:"–";color:var(--papier)}
 details .inhalt{padding:1rem 0 .25rem}
 details .inhalt>*:last-child{margin-bottom:0}
+details.wegweiser .tabelle{margin:1rem 0 0}
+
+/* Teil 2 als Pruefungsansicht: Kapitelkuerzel in der Zielspalte, Strichliste, Rueckweg-Leiste.
+   Strichliste und Leiste entstehen erst im Skript in 99-fuss.html; ohne JavaScript bleibt Teil 2 wie bisher. */
+#matrix td .kap{display:block;font-size:.6875rem;font-weight:800;letter-spacing:.1em;color:var(--grau)}
+#matrix caption .stand{font-weight:750;color:var(--akzent)}
+/* Erst lernen / Dann pruefen sollen zwei Zeilen bleiben, auch wenn beide selbst umbrechen. */
+#matrix td .kap ~ a{display:block;margin-top:.28rem}
+#matrix td .kap ~ br{display:none}
+#matrix input[type=checkbox]{width:1.05rem;height:1.05rem;margin:.15rem 0 0;accent-color:var(--akzent)}
+#matrix tr:target td{background:var(--akzent-hell)}
+#rueckweg{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--tinte);padding:.65rem 1rem;text-align:center}
+#rueckweg a{color:var(--papier);font-size:.9375rem;font-weight:650;text-decoration-color:#7C818C}
+#rueckweg a:hover{text-decoration-color:var(--papier)}
 
 sup.q{font-size:.66rem;line-height:0;vertical-align:super;font-weight:800}
 sup.q a{text-decoration:none;padding:0 .1em;color:var(--akzent)}
@@ -172,7 +182,7 @@ ol.selbstcheck>li{margin-bottom:1rem;font-weight:600;font-size:1.0625rem}
 @media print{
   html{font-size:10pt;background:#fff}
   body{display:block}
-  nav.inhalt,.sitzt,nav.kapitel-wege,nav.begriffsliste{display:none}
+  nav.inhalt,nav.kapitel-wege,nav.begriffsliste,#rueckweg{display:none}
   main{max-width:none;padding:0;margin:0}
   .kapitel,.teil{break-before:page;border-top:0;margin-top:0;padding-top:0}
   h2,h3{break-after:avoid}
@@ -181,6 +191,8 @@ ol.selbstcheck>li{margin-bottom:1rem;font-weight:600;font-size:1.0625rem}
   dl.begriff{margin:0 0 1rem}
   .kapitel-kopf,.aufgabe,figure.abb{background:#fff}
   summary{color:inherit}
+  details[open] summary{background:#fff;color:#000}
+  details[open] summary::before{color:#000}
   a{color:inherit;text-decoration:none}
   ol.quellenliste a[href^="http"]::after{content:" " attr(href);color:#666;word-break:break-all}
   sup.q a{color:#000}
@@ -224,8 +236,43 @@ marker#pfeil-g path{fill:var(--grau)}
     <figcaption>Abb. A2-1: Die Treppe vom Listenpreis zum Bezugspreis. Im Akzent die Stufe, auf der am häufigsten der falsche Grundwert benutzt wird.</figcaption>
   </figure>
 <figure class="abb" data-name="Abb. A2-2">
-    <svg viewBox="0 0 640 262" role="img" aria-labelledby="a2-abb2-t">
-      <title id="a2-abb2-t">Sinkende Restschuld über drei Jahre mit den jeweils darauf berechneten Zinsen</title>
+    <svg viewBox="0 0 640 225" role="img" aria-labelledby="a2-abb2-t">
+      <title id="a2-abb2-t">Einmalige Kosten fallen einmal an, laufende Kosten in jedem Zeitraum erneut</title>
+      <text class="tb" x="20" y="20">Fünf Jahre, zwei Arten von Kosten</text>
+      <text class="t2 rechts" x="128" y="58">einmalig</text>
+      <text class="t2 rechts" x="128" y="70">Kaufpreis</text>
+      <rect class="fa" x="138" y="40" width="92" height="40"/>
+      <text class="mitte tb" x="184" y="58">33.280</text>
+      <text class="mitte t2" x="184" y="72">nur Jahr 1</text>
+      <line class="d" x1="238" y1="60" x2="620" y2="60"/>
+      <text class="t2" x="248" y="56">in den Jahren 2 bis 5 nicht noch einmal</text>
+      <text class="t2 rechts" x="128" y="118">laufend</text>
+      <text class="t2 rechts" x="128" y="130">Lizenz je Jahr</text>
+      <rect class="f" x="138" y="100" width="92" height="40"/>
+      <text class="mitte" x="184" y="124">349</text>
+      <rect class="f" x="236" y="100" width="92" height="40"/>
+      <text class="mitte" x="282" y="124">349</text>
+      <rect class="f" x="334" y="100" width="92" height="40"/>
+      <text class="mitte" x="380" y="124">349</text>
+      <rect class="f" x="432" y="100" width="92" height="40"/>
+      <text class="mitte" x="478" y="124">349</text>
+      <rect class="f" x="530" y="100" width="92" height="40"/>
+      <text class="mitte" x="576" y="124">349</text>
+      <text class="t2 mitte" x="184" y="158">Jahr 1</text>
+      <text class="t2 mitte" x="282" y="158">Jahr 2</text>
+      <text class="t2 mitte" x="380" y="158">Jahr 3</text>
+      <text class="t2 mitte" x="478" y="158">Jahr 4</text>
+      <text class="t2 mitte" x="576" y="158">Jahr 5</text>
+      <line class="g" x1="20" y1="172" x2="620" y2="172"/>
+      <text class="ta" x="20" y="194">einmalig: genau einmal ansetzen</text>
+      <text class="ta" x="330" y="194">laufend: mal Anzahl der Zeiträume</text>
+      <text class="t2" x="20" y="214">Bei Monatskosten wird der einmalige Betrag stattdessen durch die Nutzungsdauer in Monaten geteilt.</text>
+    </svg>
+    <figcaption>Abb. A2-2: Die Sortierung entscheidet die Aufgabe. Nur die laufende Zeile wird mit der Zahl der Jahre multipliziert, der Kaufpreis niemals.</figcaption>
+  </figure>
+<figure class="abb" data-name="Abb. A2-3">
+    <svg viewBox="0 0 640 262" role="img" aria-labelledby="a2-abb3-t">
+      <title id="a2-abb3-t">Sinkende Restschuld über drei Jahre mit den jeweils darauf berechneten Zinsen</title>
       <text class="t2" x="8" y="20">Restschuld am Jahresanfang</text>
       <line class="l" x1="60" y1="210" x2="600" y2="210"/>
       <rect class="f" x="90" y="50" width="120" height="160"/>
@@ -242,11 +289,11 @@ marker#pfeil-g path{fill:var(--grau)}
       <text class="t2 mitte" x="490" y="228">Jahr 3</text>
       <text class="t2" x="8" y="256">Die Tilgung bleibt jedes Jahr 3.000,00 EUR. Der Zins wird von der Restschuld am Jahresanfang berechnet.</text>
     </svg>
-    <figcaption>Abb. A2-2: Die Restschuld sinkt in gleichen Stufen, weil die Tilgung konstant ist. Der Zins über jedem Balken wird von genau dieser Restschuld gerechnet und schrumpft mit.</figcaption>
+    <figcaption>Abb. A2-3: Die Restschuld sinkt in gleichen Stufen, weil die Tilgung konstant ist. Der Zins über jedem Balken wird von genau dieser Restschuld gerechnet und schrumpft mit.</figcaption>
   </figure>
-<figure class="abb" data-name="Abb. A2-3">
-    <svg viewBox="0 0 640 212" role="img" aria-labelledby="a2-abb3-t">
-      <title id="a2-abb3-t">Der Verkaufspreis eines Stücks geteilt in variable Kosten und Deckungsbeitrag</title>
+<figure class="abb" data-name="Abb. A2-4">
+    <svg viewBox="0 0 640 212" role="img" aria-labelledby="a2-abb4-t">
+      <title id="a2-abb4-t">Der Verkaufspreis eines Stücks geteilt in variable Kosten und Deckungsbeitrag</title>
       <text class="t2 mitte" x="320" y="36">Verkaufspreis 80,00 EUR je Stück</text>
       <line class="l" x1="80" y1="44" x2="560" y2="44"/>
       <rect class="f" x="80" y="60" width="300" height="44"/>
@@ -257,11 +304,11 @@ marker#pfeil-g path{fill:var(--grau)}
       <text class="ta" x="8" y="166">Fixkosten 12.000,00 EUR / 30,00 EUR je Stück = 400 Stück</text>
       <text class="t2" x="8" y="192">Bei 400 Stück ist der Gewinn genau null. Ab dem nächsten Stück bleibt Gewinn übrig.</text>
     </svg>
-    <figcaption>Abb. A2-3: Der Deckungsbeitrag ist der Teil des Verkaufspreises, der nach den variablen Kosten übrig bleibt. Wie oft er in die Fixkosten passt, ist die Gewinnschwelle.</figcaption>
+    <figcaption>Abb. A2-4: Der Deckungsbeitrag ist der Teil des Verkaufspreises, der nach den variablen Kosten übrig bleibt. Wie oft er in die Fixkosten passt, ist die Gewinnschwelle.</figcaption>
   </figure>
-<figure class="abb" data-name="Abb. A2-4">
-    <svg viewBox="0 0 640 210" role="img" aria-labelledby="a2-abb4-t">
-      <title id="a2-abb4-t">Break-even-Diagramm mit Gewinnschwelle</title>
+<figure class="abb" data-name="Abb. A2-5">
+    <svg viewBox="0 0 640 210" role="img" aria-labelledby="a2-abb5-t">
+      <title id="a2-abb5-t">Break-even-Diagramm mit Gewinnschwelle</title>
       <line class="l" x1="60" y1="180" x2="580" y2="180"/>
       <line class="l" x1="60" y1="180" x2="60" y2="20"/>
       <text class="t2 rechts" x="55" y="25">EUR</text>
@@ -277,7 +324,7 @@ marker#pfeil-g path{fill:var(--grau)}
       <text class="mitte tb ta" x="320" y="60">Break-even-Point</text>
       <text class="mitte t2" x="320" y="195">x_G (Gewinnschwelle)</text>
     </svg>
-    <figcaption>Abb. A2-4: Am Schnittpunkt der Erlöskurve mit der Gesamtkostenkurve ist der Gewinn exakt null.</figcaption>
+    <figcaption>Abb. A2-5: Am Schnittpunkt der Erlöskurve mit der Gesamtkostenkurve ist der Gewinn exakt null.</figcaption>
   </figure>
 <pre id="out"></pre>
 <script>

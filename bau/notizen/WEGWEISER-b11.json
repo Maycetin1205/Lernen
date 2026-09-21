@@ -2,56 +2,65 @@
  {
   "pruefung": "H22",
   "nr": "1.1",
-  "ziel": "b11-k10",
-  "hinweis": ""
+  "ziel": "b11-ihk-h22-1-1",
+  "hinweis": "",
+  "lektion": "b11-k10"
  },
  {
   "pruefung": "H22",
   "nr": "1.2",
-  "ziel": "b11-k10",
-  "hinweis": ""
+  "ziel": "b11-ihk-h22-1-2",
+  "hinweis": "",
+  "lektion": "b11-k10"
  },
  {
   "pruefung": "H22",
   "nr": "1.7",
-  "ziel": "b11-k13",
-  "hinweis": "Eigener Abschnitt Werk-/Dienstvertrag im Kern mit der H22-Empfehlung"
+  "ziel": "b11-ihk-h22-1-7",
+  "hinweis": "Eigener Abschnitt Werk-/Dienstvertrag im Kern mit der H22-Empfehlung",
+  "lektion": "b11-k13"
  },
  {
   "pruefung": "F23",
   "nr": "2.3",
-  "ziel": "b11-k7",
-  "hinweis": ""
+  "ziel": "b11-ihk-f23-2-3",
+  "hinweis": "",
+  "lektion": "b11-k7"
  },
  {
   "pruefung": "F23",
   "nr": "2.5",
-  "ziel": "b11-k8",
-  "hinweis": ""
+  "ziel": "b11-ihk-f23-2-5",
+  "hinweis": "",
+  "lektion": "b11-k8"
  },
  {
   "pruefung": "F23",
   "nr": "2.6",
-  "ziel": "b11-k9",
-  "hinweis": ""
+  "ziel": "b11-ihk-f23-2-6",
+  "hinweis": "",
+  "lektion": "b11-k9"
  },
  {
   "pruefung": "H23",
   "nr": "1.5",
-  "ziel": "b11-k11",
-  "hinweis": ""
+  "ziel": "b11-ihk-h23-1-5",
+  "hinweis": "",
+  "lektion": "b11-k11"
  },
  {
   "pruefung": "H23",
   "nr": "1.6",
-  "ziel": "b11-k11",
-  "hinweis": ""
+  "ziel": "b11-ihk-h23-1-6",
+  "hinweis": "",
+  "lektion": "b11-k11"
  },
  {
   "pruefung": "H23",
   "nr": "1.7",
-  "ziel": "b11-k11",
-  "hinweis": ""
+  "ziel": "b11-ihk-h23-1-7",
+  "hinweis": "",
+  "lektion": "b11-k11"
  },
  {
   "pruefung": "F24",
@@ -63,20 +72,23 @@
  {
   "pruefung": "F24",
   "nr": "1.6",
-  "ziel": "b11-k1",
-  "hinweis": ""
+  "ziel": "b11-ihk-f24-1-6",
+  "hinweis": "",
+  "lektion": "b11-k1"
  },
  {
   "pruefung": "F24",
   "nr": "1.7",
-  "ziel": "b11-k5",
-  "hinweis": ""
+  "ziel": "b11-ihk-f24-1-7",
+  "hinweis": "",
+  "lektion": "b11-k5"
  },
  {
   "pruefung": "F24",
   "nr": "1.8",
-  "ziel": "b11-k5",
-  "hinweis": ""
+  "ziel": "b11-ihk-f24-1-8",
+  "hinweis": "",
+  "lektion": "b11-k5"
  },
  {
   "pruefung": "H24",
@@ -88,14 +100,16 @@
  {
   "pruefung": "H24",
   "nr": "4.4",
-  "ziel": "b11-k9",
-  "hinweis": ""
+  "ziel": "b11-ihk-h24-4-4",
+  "hinweis": "",
+  "lektion": "b11-k9"
  },
  {
   "pruefung": "H25",
   "nr": "1.1",
-  "ziel": "b11-k2",
-  "hinweis": ""
+  "ziel": "b11-ihk-h25-1-1",
+  "hinweis": "",
+  "lektion": "b11-k2"
  },
  {
   "pruefung": "H25",
@@ -107,19 +121,22 @@
  {
   "pruefung": "H25",
   "nr": "1.5",
-  "ziel": "b11-k4",
-  "hinweis": ""
+  "ziel": "b11-ihk-h25-1-5",
+  "hinweis": "",
+  "lektion": "b11-k4"
  },
  {
   "pruefung": "H25",
   "nr": "1.6",
-  "ziel": "b11-k4",
-  "hinweis": ""
+  "ziel": "b11-ihk-h25-1-6",
+  "hinweis": "",
+  "lektion": "b11-k4"
  },
  {
   "pruefung": "H25",
   "nr": "2.1",
-  "ziel": "b11-k4",
-  "hinweis": ""
+  "ziel": "b11-ihk-h25-2-1",
+  "hinweis": "",
+  "lektion": "b11-k4"
  }
 ]

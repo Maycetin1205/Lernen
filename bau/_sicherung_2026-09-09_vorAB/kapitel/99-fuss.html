@@ -1,0 +1,44 @@
+</main>
+<script>
+(function(){
+
+  /* Druck: alle Lösungen aufklappen, danach Zustand wiederherstellen */
+  try{
+    var geoeffnet=[];
+    window.addEventListener('beforeprint',function(){
+      geoeffnet=[];
+      Array.prototype.forEach.call(document.querySelectorAll('details'),function(d){
+        if(!d.open){ d.open=true; geoeffnet.push(d); }
+      });
+    });
+    window.addEventListener('afterprint',function(){
+      geoeffnet.forEach(function(d){ d.open=false; });
+      geoeffnet=[];
+    });
+  }catch(e){}
+
+  /* Aktuelles Kapitel in der Navigation markieren */
+  try{
+    if('IntersectionObserver' in window){
+      var links={};
+      Array.prototype.forEach.call(document.querySelectorAll('nav.inhalt a[href^="#"]'),function(a){
+        links[a.getAttribute('href').slice(1)]=a;
+      });
+      var io=new IntersectionObserver(function(eintraege){
+        eintraege.forEach(function(e){
+          if(e.isIntersecting){
+            Array.prototype.forEach.call(document.querySelectorAll('nav.inhalt a.aktuell'),function(a){ a.classList.remove('aktuell'); });
+            var a=links[e.target.id];
+            if(a){ a.classList.add('aktuell'); }
+          }
+        });
+      },{rootMargin:'-8% 0px -82% 0px'});
+      Array.prototype.forEach.call(document.querySelectorAll('main section[id]'),function(s){
+        if(links[s.id]){ io.observe(s); }
+      });
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

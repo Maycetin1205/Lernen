@@ -1,0 +1,38 @@
+[
+ {
+  "pruefung": "H21",
+  "nr": "2.3",
+  "ziel": "b8-k8",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "2.1",
+  "ziel": "b8-k3",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "2.2",
+  "ziel": "b8-original-2",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "2.3",
+  "ziel": "b8-original-3",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "2.4",
+  "ziel": "b8-k10",
+  "hinweis": "Eigener Abschnitt mit der Vor-/Nachteil-Tabelle aus den Loesungshinweisen"
+ },
+ {
+  "pruefung": "H24",
+  "nr": "4.5",
+  "ziel": "b8-original-1",
+  "hinweis": ""
+ }
+]

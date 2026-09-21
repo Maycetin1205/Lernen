@@ -1,0 +1,621 @@
+<section class="kapitel" id="a8" data-gruppe="A">
+
+<header class="kapitel-kopf">
+  <p class="kapitel-nr">A8 · Verfahren</p>
+  <h2>UML-Diagramme</h2>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a8-worum">Worum es geht</a><a href="#a8-begriffe">Begriffe</a><a href="#a8-kern">Das Verfahren</a><a href="#a8-original">So hat die IHK gefragt</a><a href="#a8-variante">Jetzt du</a><a href="#a8-selbstcheck">Selbstcheck</a><a href="#a8-quellen">Quellen</a></nav>
+  <p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2023, 4.4 (8 P)</span> · <span>AP1 Herbst 2023, 1.1 (6 P)</span> · <span>AP1 Herbst 2024, 2.4 (5 P)</span> · <span>AP1 Herbst 2025, 2.2 (9 P)</span></p>
+  <label class="sitzt"><input type="checkbox" data-key="a8"> Sitzt</label>
+</header>
+
+<section id="a8-worum">
+  <h3>Worum es geht</h3>
+  <p>Ein Steuerbüro mit zwölf Arbeitsplätzen bestellt bei deinem Systemhaus eine Software für den Posteingang. Am Telefon beschreibt die Kanzleileiterin den Ablauf: Die Empfangskraft zieht die Post durch den Netzwerkscanner, das Sekretariat ordnet zu, ab 1.000,00&nbsp;€ schaut der Chef mit drauf. Aus diesen Sätzen muss eine Zeichnung werden, die Entwicklung, Einkauf und Kunde gleich lesen. Dafür gibt es die vereinheitlichte Modellierungssprache (Unified Modeling Language, UML) mit festen Symbolen.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1">1</a></sup> Du musst drei Diagrammarten lesen, ergänzen und aus einem Prozesstext von Hand zeichnen: Anwendungsfall, Aktivität, Klasse. Die IHK prüft das regelmäßig und bewertet jedes Symbol einzeln, auch die Pfeile zwischen den Kästen.<sup class="q"><a href="#a8-q3" title="IHK-Konvention UML">3</a></sup></p>
+</section>
+
+<section id="a8-begriffe">
+  <h3>Begriffe</h3>
+  <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a8-begriff-akteur">Akteur</a><a href="#a8-begriff-anwendungsfall">Anwendungsfall und Systemgrenze</a><a href="#a8-begriff-include-extend">include und extend</a><a href="#a8-begriff-aktion">Aktion</a><a href="#a8-begriff-entscheidung">Entscheidungsknoten und Bedingung</a><a href="#a8-begriff-gabelung">Gabelung und Synchronisation</a><a href="#a8-begriff-klasse">Klasse, Attribut und Methode</a><a href="#a8-begriff-sichtbarkeit">Sichtbarkeit</a><a href="#a8-begriff-assoziation">Assoziation und Multiplizität</a></nav>
+
+  <dl class="begriff" id="a8-begriff-akteur">
+    <dt>Akteur <span class="en">(actor)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein Akteur ist eine Rolle außerhalb des Systems, die mit ihm zusammenwirkt: Mensch, Nachbarsystem oder Zeitgeber. Symbol ist das Strichmännchen mit dem Rollennamen darunter, immer außerhalb der Systemgrenze.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, Clause 18">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Im Ticketsystem heißen die Akteure „Kunde“, „Serviceteam“ und „Buchhaltung“ – nicht „Frau Meier“.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Der Akteur wird mit der Person verwechselt. Ein Akteur ist eine Rolle; eine Person kann zwei Akteure ausfüllen.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Gefragt wird „Ergänzen Sie die Bezeichnungen der Akteure“. Herbst 2023 gab einen Punkt je Akteur.<sup class="q"><a href="#a8-q7" title="AP1 Herbst 2023, 1.1">7</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a8-begriff-anwendungsfall">
+    <dt>Anwendungsfall und Systemgrenze <span class="en">(use case, system boundary)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein Anwendungsfall ist eine abgeschlossene Leistung des Systems für einen Akteur; Symbol ist die Ellipse. Die Systemgrenze ist das Rechteck mit dem Systemnamen an der Oberkante: innen das System, außen die Umwelt.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, Clause 18">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>„Störungsmeldung erfassen“ steht in der Ellipse, „Ticketsystem“ an der Oberkante, der Kunde davor.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Wird mit einem Arbeitsschritt verwechselt. Schreibe Verb mit Objekt („Ticket anlegen“), nie ein Substantiv („Ticketverwaltung“).</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>„Ergänzen Sie die fehlenden Anwendungsfälle“; je Ellipse gibt es einen halben bis einen Punkt.<sup class="q"><a href="#a8-q3" title="IHK-Konvention UML">3</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a8-begriff-include-extend">
+    <dt>include und extend <span class="en">(include, extend)</span></dt>
+    <dd><span class="label">Was es ist</span><p>&laquo;include&raquo;: Der einschließende Fall führt den eingeschlossenen immer mit aus, der gestrichelte Pfeil zeigt vom Ganzen auf den Teil. &laquo;extend&raquo;: Ein Sonderfall erweitert einen Grundfall unter Bedingung, der Pfeil zeigt vom Sonderfall auf den Grundfall.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, Clause 18">1</a></sup><sup class="q"><a href="#a8-q2" title="Rupp/Queins, UML 2 glasklar">2</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Die Berechtigungsprüfung läuft bei jedem Türöffnen mit. Ein Foto hängt der Kunde nur manchmal an die Störungsmeldung.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Beide Pfeile sind gestrichelt mit offener Spitze. include zeigt zum eingeschlossenen Fall, extend zum erweiterten Grundfall; die Lage auf dem Blatt ist beliebig.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Signalwörter sind „beinhaltet immer“ und „findet immer statt“. Herbst 2024 zahlte je include-Beziehung einen halben Punkt.<sup class="q"><a href="#a8-q6" title="AP1 Herbst 2024, 2.4">6</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a8-begriff-aktion">
+    <dt>Aktion <span class="en">(action)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Eine Aktion ist der kleinste Verhaltensschritt eines Aktivitätsdiagramms, gezeichnet als Rechteck mit runden Ecken; die Pfeile dazwischen sind Kanten. Der Startknoten ist ein gefüllter Kreis, der Endknoten ein Kreis im Ring.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, Clause 15">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>„Rechnung automatisch prüfen“, „Rechnung archivieren“ und „Ticket schließen“ sind Aktionen im Posteingang des Steuerbüros.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Aktion und Anwendungsfall werden verwechselt: Die Aktion ist ein Schritt und eckig, der Anwendungsfall eine ganze Leistung und eine Ellipse.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Jede geforderte Aktion und der Endknoten werden einzeln bepunktet, Herbst 2025 mit je einem Punkt.<sup class="q"><a href="#a8-q4" title="AP1 Herbst 2025, 2.2">4</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a8-begriff-entscheidung">
+    <dt>Entscheidungsknoten und Bedingung <span class="en">(decision node, guard)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Der Entscheidungsknoten ist eine Raute mit einer eingehenden und mehreren ausgehenden Kanten. Für eindeutige Abläufe beschriftest du die Ausgänge mit einander ausschließenden Bedingungen (Guards) in eckigen Klammern und deckst alle Fälle ab.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, Clause 15">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Am Rechnungseingang steht die Raute „Betrag?“ mit den Kanten [ab 1.000&nbsp;EUR] und [unter 1.000&nbsp;EUR].</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Raute und Balken werden vertauscht: Raute heißt entweder-oder, Balken heißt gleichzeitig. Eine Zusammenführung ist ebenfalls eine Raute, hat aber mehrere Eingänge und einen Ausgang.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Prüfschritt und Entscheidung werden als Paar bewertet, Herbst 2025 mit zwei Punkten. Fehlt der Guard, fehlt der Punkt.<sup class="q"><a href="#a8-q3" title="IHK-Konvention UML">3</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a8-begriff-gabelung">
+    <dt>Gabelung und Synchronisation <span class="en">(fork, join)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Gabelung und Synchronisation sind dicke Balken. Die Gabelung teilt einen Ablauf in gleichzeitig laufende Zweige auf, die Synchronisation wartet auf alle eingehenden Zweige und führt sie wieder zusammen.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, Clause 15">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Eine freigegebene Rechnung wird bezahlt und archiviert; erst wenn beides fertig ist, endet der Vorgang.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Balken heißt und, Raute heißt oder. Soll es erst nach Abschluss aller parallelen Zweige weitergehen, brauchst du eine Synchronisation.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Auslöser ist das Wort „gleichzeitig“. Herbst 2025 zahlte einen eigenen Punkt für die Parallelisierung.<sup class="q"><a href="#a8-q4" title="AP1 Herbst 2025, 2.2">4</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a8-begriff-klasse">
+    <dt>Klasse, Attribut und Methode <span class="en">(class, attribute, operation)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Eine Klasse ist der Bauplan gleichartiger Objekte, gezeichnet als Rechteck mit drei Fächern: Name, Attribute mit Datentyp, Methoden mit runden Klammern.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, Clause 9">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Die Klasse Ticket trägt status : String und schliessen(). Das Ticket mit der Nummer 4711 ist ein Objekt dieser Klasse.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Klasse und Objekt werden verwechselt: Die Klasse ist der Bauplan, das Objekt das gebaute Ding. Attribute sind Substantive, Methoden Verben mit Klammern.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Frühjahr 2023 gab zwei Punkte je richtig besetzter Klasse; leere Fächer zählen nicht.<sup class="q"><a href="#a8-q5" title="AP1 Frühjahr 2023, 4.4">5</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a8-begriff-sichtbarkeit">
+    <dt>Sichtbarkeit <span class="en">(visibility)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Die Sichtbarkeit steht als Zeichen vor jedem Attribut und jeder Methode: + öffentlich, - privat, # geschützt, ~ innerhalb des Pakets.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, Clause 7">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Attribute setzt man privat und lässt den Zugriff über öffentliche Methoden laufen; das ist die Kapselung.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Plus offen für alle, Minus nur in der eigenen Klasse, Doppelkreuz zusätzlich für Unterklassen. Verwechslung mit der Multiplizität, die aber an der Linie steht.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Steht im Heft „Zugriffsmodifikatoren nicht erforderlich“, lässt du sie weg; verlangt die Aufgabe sie, setzt du sie vor jede Zeile.<sup class="q"><a href="#a8-q5" title="AP1 Frühjahr 2023, 4.4">5</a></sup></p></dd>
+  </dl>
+
+  <dl class="begriff" id="a8-begriff-assoziation">
+    <dt>Assoziation und Multiplizität <span class="en">(association, multiplicity)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Eine Assoziation ist eine dauerhafte Beziehung zwischen zwei Klassen, gezeichnet als durchgezogene Linie. An jedem Ende steht eine Multiplizität (1, 0..1, 1..*, 0..*): wie viele Objekte der dort stehenden Klasse zu einem Objekt der Gegenseite gehören.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, Clause 11">1</a></sup><sup class="q"><a href="#a8-q2" title="Rupp/Queins, UML 2 glasklar">2</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Kunde 1 zu Ticket 0..*: Ein Kunde meldet beliebig viele Tickets, jedes Ticket gehört zu einem Kunden.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Lies über Kreuz. Vertauschte Multiplizitäten sind der häufigste Fehler. Die Vererbung ist keine Assoziation, sie trägt eine hohle Dreiecksspitze.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Die Multiplizität steht am jeweiligen Klassenende. In UML bedeutet * dasselbe wie 0..*. Verwende im UML-Diagramm diese Schreibweise; ein n gehört zur hier getrennt behandelten ER-Notation.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, §7.5">1</a></sup></p></dd>
+  </dl>
+
+</section>
+
+<section id="a8-kern">
+  <h3>Das Verfahren</h3>
+
+  <p>Drei Diagrammarten reichen für die AP1. Das Anwendungsfalldiagramm beantwortet „Wer darf was mit dem System machen?“, das Aktivitätsdiagramm „In welcher Reihenfolge läuft ein Vorgang ab?“, das Klassendiagramm „Welche Daten und welches Verhalten gehören zusammen?“. Der Aufgabentext verrät die Art: Rollen und Berechtigungen führen zum Anwendungsfall, ein Ablauf mit Wenn-dann zur Aktivität, Eigenschaften und Funktionen zur Klasse.<sup class="q"><a href="#a8-q2" title="Rupp/Queins, UML 2 glasklar">2</a></sup></p>
+
+  <h4>1. Anwendungsfalldiagramm</h4>
+  <p>Zuerst kommt das Rechteck der Systemgrenze mit dem Systemnamen, denn es entscheidet, was innen und was außen liegt. Die Akteure stehen außen, die Anwendungsfälle innen. Eine Linie ohne Pfeilspitze verbindet den Akteur mit jedem Anwendungsfall, den er auslöst. Zwei gestrichelte Pfeile bringen Struktur hinein: &laquo;include&raquo; für einen Schritt, der immer mitläuft, &laquo;extend&raquo; für einen Sonderfall. Kann ein Akteur alles, was ein anderer kann, verbindest du beide mit einem Pfeil mit hohler Dreiecksspitze; das ist die Generalisierung.</p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 285" role="img" aria-labelledby="a8-abb1-t">
+      <title id="a8-abb1-t">Vollständiges Anwendungsfalldiagramm mit Akteur, Systemgrenze, include und extend</title>
+      <defs><marker id="a8-abb1-t-offen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="l" d="M1,1 L9,5 L1,9"/></marker></defs>
+      <rect class="l" x="150" y="40" width="460" height="225"/>
+      <text class="t2" x="150" y="32">Systemgrenze</text>
+      <text class="tb mitte" x="380" y="64">Ticketsystem</text>
+      <circle class="w" cx="62" cy="112" r="12"/>
+      <line class="l" x1="62" y1="124" x2="62" y2="158"/>
+      <line class="l" x1="40" y1="136" x2="84" y2="136"/>
+      <line class="l" x1="62" y1="158" x2="46" y2="182"/>
+      <line class="l" x1="62" y1="158" x2="78" y2="182"/>
+      <text class="tb mitte" x="62" y="202">Kunde</text>
+      <text class="t2 mitte" x="62" y="222">Akteur</text>
+      <line class="l" x1="84" y1="140" x2="206" y2="152"/>
+      <text class="t2 mitte" x="116" y="120">Assoziation</text>
+      <ellipse class="w" cx="290" cy="155" rx="82" ry="30"/>
+      <text class="mitte" x="290" y="160">Ticket anlegen</text>
+      <text class="t2 mitte" x="290" y="205">Anwendungsfall</text>
+      <ellipse class="w" cx="505" cy="95" rx="82" ry="28"/>
+      <text class="mitte" x="505" y="100">Kunde prüfen</text>
+      <ellipse class="w" cx="505" cy="222" rx="82" ry="28"/>
+      <text class="mitte" x="505" y="227">Foto anhängen</text>
+      <path class="d" d="M 370 148 H 400 V 95 H 421" marker-end="url(#a8-abb1-t-offen)"/>
+      <text class="ta mitte" x="400" y="84">&laquo;include&raquo;</text>
+      <path class="d" d="M 426 215 H 400 V 168 H 368" marker-end="url(#a8-abb1-t-offen)"/>
+      <text class="t2 rechts" x="396" y="190">&laquo;extend&raquo;</text>
+    </svg>
+    <figcaption>Abb. A8-1: include zeigt zum eingeschlossenen Pflichtteil, extend vom Erweiterungsfall zum Grundfall. Entscheidend ist das Pfeilziel.</figcaption>
+  </figure>
+
+  <h4>2. Aktivitätsdiagramm</h4>
+  <p>Ein Aktivitätsdiagramm läuft von oben nach unten. Du beginnst mit dem gefüllten Startknoten und hängst Aktion an Aktion. Wo der Text „wenn“, „falls“ oder „ab“ sagt, setzt du eine Raute und beschriftest jede ausgehende Kante mit einer Bedingung in eckigen Klammern. Wo der Text „gleichzeitig“ sagt, setzt du einen Gabelungsbalken und später einen Synchronisationsbalken. Jeder Pfad endet in einem Endknoten. Nennt die Aufgabe Zuständigkeiten, teilst du das Blatt in Schwimmbahnen und legst jede Aktion in die Bahn der Stelle, die sie ausführt.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, Clause 15">1</a></sup></p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 595" role="img" aria-labelledby="a8-abb2-t">
+      <title id="a8-abb2-t">Aktivitätsdiagramm mit zwei Schwimmbahnen, Entscheidung, Gabelung und Synchronisation</title>
+      <rect class="l" x="20" y="30" width="600" height="545"/>
+      <line class="l" x1="20" y1="68" x2="620" y2="68"/>
+      <line class="l" x1="250" y1="30" x2="250" y2="575"/>
+      <text class="tb mitte" x="135" y="56">Kunde</text>
+      <text class="tb mitte" x="435" y="56">Support</text>
+
+      <circle class="f" cx="135" cy="100" r="11"/>
+      <text class="t2" x="155" y="104">Startknoten</text>
+      <line class="l" x1="135" y1="111" x2="135" y2="133" marker-end="url(#pfeil)"/>
+      <rect class="w" x="55" y="135" width="160" height="38" rx="14"/>
+      <text class="mitte" x="135" y="159">Störung melden</text>
+      <text class="t2 mitte" x="135" y="192">Aktion</text>
+      <line class="l" x1="215" y1="154" x2="348" y2="154" marker-end="url(#pfeil)"/>
+
+      <rect class="w" x="350" y="135" width="160" height="38" rx="14"/>
+      <text class="mitte" x="430" y="159">Ticket erfassen</text>
+      <line class="l" x1="430" y1="173" x2="430" y2="192" marker-end="url(#pfeil)"/>
+      <path class="a" d="M 430 194 L 466 220 L 430 246 L 394 220 Z"/>
+      <text x="476" y="216">Dringend?</text>
+      <text class="t2" x="476" y="234">Entscheidungsknoten</text>
+
+      <path class="l" d="M 394 220 H 285 V 393 H 416" marker-end="url(#pfeil)"/>
+      <text class="tb mitte" x="340" y="212">[nein]</text>
+      <line class="l" x1="430" y1="246" x2="430" y2="270" marker-end="url(#pfeil)"/>
+      <text class="tb" x="440" y="262">[ja]</text>
+
+      <rect class="f" x="330" y="272" width="200" height="9"/>
+      <text class="t2" x="538" y="281">Gabelung</text>
+      <line class="l" x1="375" y1="281" x2="375" y2="303" marker-end="url(#pfeil)"/>
+      <line class="l" x1="517" y1="281" x2="517" y2="303" marker-end="url(#pfeil)"/>
+      <rect class="w" x="310" y="305" width="130" height="38" rx="14"/>
+      <text class="mitte" x="375" y="329">Techniker rufen</text>
+      <rect class="w" x="455" y="305" width="125" height="38" rx="14"/>
+      <text class="mitte" x="517" y="329">Teil bestellen</text>
+      <line class="l" x1="375" y1="343" x2="375" y2="358" marker-end="url(#pfeil)"/>
+      <line class="l" x1="517" y1="343" x2="517" y2="358" marker-end="url(#pfeil)"/>
+      <rect class="f" x="330" y="360" width="200" height="9"/>
+      <text class="t2 rechts" x="615" y="355">Synchronisation</text>
+
+      <line class="l" x1="430" y1="369" x2="430" y2="377" marker-end="url(#pfeil)"/>
+      <path class="w" d="M 430 379 L 444 393 L 430 407 L 416 393 Z"/>
+      <line class="l" x1="430" y1="407" x2="430" y2="419" marker-end="url(#pfeil)"/>
+      <rect class="w" x="350" y="421" width="160" height="38" rx="14"/>
+      <text class="mitte" x="430" y="445">Ticket schließen</text>
+      <path class="l" d="M 430 459 V 489 H 224" marker-end="url(#pfeil)"/>
+      <rect class="w" x="50" y="470" width="170" height="38" rx="14"/>
+      <text class="mitte" x="135" y="494">Meldung bestätigen</text>
+      <line class="l" x1="135" y1="508" x2="135" y2="528" marker-end="url(#pfeil)"/>
+      <circle class="w" cx="135" cy="543" r="13"/>
+      <circle class="f" cx="135" cy="543" r="7"/>
+      <text class="t2" x="155" y="547">Endknoten</text>
+    </svg>
+    <figcaption>Abb. A8-2: Die Raute trennt zwei sich ausschließende Wege, die Balken lassen zwei Wege gleichzeitig laufen; jede Aktion liegt in der Bahn der Stelle, die sie ausführt.</figcaption>
+  </figure>
+
+  <p>Die Zusammenführung (Merge) ist eine Raute mit mehreren Eingängen und einem Ausgang: Jeder alternative Weg darf einzeln weiterlaufen. Verbinde Alternativen vor einer gemeinsamen Aktion über diese Raute. Mehrere direkte Kontrollkanten an einer Aktion wirken dagegen wie eine UND-Verknüpfung und können den Ablauf blockieren.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, §15.3.3 und §16.2.3">1</a></sup></p>
+  <h4>3. Klassendiagramm</h4>
+  <p>Jede Klasse ist ein Rechteck mit drei Fächern: oben der Name im Singular, in der Mitte die Attribute in der Form <span class="mono">name : Typ</span>, unten die Methoden mit runden Klammern. Verlangt die Aufgabe Sichtbarkeiten, setzt du +, - oder # vor jede Zeile. Danach ziehst du die Assoziationslinien und schreibst an jedes Ende die Multiplizität. Kommt derselbe Inhalt in mehreren Klassen vor, ziehst du ihn in eine Oberklasse hoch.</p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 245" role="img" aria-labelledby="a8-abb3-t">
+      <title id="a8-abb3-t">Zwei Klassen mit Attributen, Methoden, Sichtbarkeit und einer Assoziation mit Multiplizitäten</title>
+      <rect class="w" x="25" y="25" width="250" height="150"/>
+      <line class="l" x1="25" y1="57" x2="275" y2="57"/>
+      <line class="l" x1="25" y1="125" x2="275" y2="125"/>
+      <text class="tb" x="35" y="48">Kunde</text>
+      <text class="t2 rechts" x="265" y="48">Klassenname</text>
+      <text class="mono" x="35" y="76">- kundenNr : Integer</text>
+      <text class="mono" x="35" y="96">+ name : String</text>
+      <text class="mono" x="35" y="116"># rabatt : Integer</text>
+      <text class="t2 rechts" x="265" y="76">Attribute</text>
+      <text class="mono" x="35" y="144">+ adresseAendern()</text>
+      <text class="mono" x="35" y="164">- bonitaet() : Boolean</text>
+      <text class="t2 rechts" x="265" y="144">Methoden</text>
+
+      <rect class="w" x="380" y="25" width="235" height="150"/>
+      <line class="l" x1="380" y1="57" x2="615" y2="57"/>
+      <line class="l" x1="380" y1="125" x2="615" y2="125"/>
+      <text class="tb" x="390" y="48">Ticket</text>
+      <text class="mono" x="390" y="76">- ticketNr : Integer</text>
+      <text class="mono" x="390" y="96">+ betreff : String</text>
+      <text class="mono" x="390" y="116">+ status : String</text>
+      <text class="mono" x="390" y="144">+ schliessen()</text>
+      <text class="mono" x="390" y="164">+ eskalieren()</text>
+
+      <line class="a" x1="275" y1="100" x2="380" y2="100"/>
+      <text class="tb" x="283" y="92">1</text>
+      <text class="tb rechts" x="372" y="92">0..*</text>
+      <text class="mitte" x="327" y="120">meldet</text>
+      <text class="t2 mitte" x="327" y="138">Assoziation</text>
+
+      <text class="t2" x="25" y="205">Sichtbarkeit: + öffentlich, - privat, # geschützt</text>
+      <text class="t2" x="25" y="225">Lesart: ein Kunde meldet 0 bis beliebig viele Tickets</text>
+    </svg>
+    <figcaption>Abb. A8-3: Die Multiplizität am Ticket-Ende beantwortet, wie viele Tickets zu einem Kunden gehören – nicht umgekehrt.</figcaption>
+  </figure>
+
+  <h4>Zeichenschema für die Prüfung</h4>
+  <p>Die Reihenfolge beim Zeichnen ist kein Geschmack. Wer zuerst die Rahmen setzt, verschätzt sich seltener im Platz und vergisst seltener die Beziehungen, für die es die Punkte gibt.<sup class="q"><a href="#a8-q3" title="IHK-Konvention UML">3</a></sup></p>
+
+<pre class="rechenweg">Anwendungsfalldiagramm
+1. Systemgrenze als Rechteck, Systemname an die Oberkante
+2. Akteure ausserhalb, Rollennamen darunter
+3. Anwendungsfaelle als Ellipsen innerhalb, je Verb + Objekt
+4. Akteur zu Anwendungsfall: durchgezogene Linie ohne Pfeilspitze
+5. "beinhaltet immer" -> gestrichelt, &laquo;include&raquo;, vom Ganzen zum Teil
+   "nur manchmal"     -> gestrichelt, &laquo;extend&raquo;, vom Sonderfall zum Grundfall
+6. "kann alles wie"   -> hohle Dreiecksspitze zum allgemeineren Akteur
+
+Aktivitaetsdiagramm
+1. Schwimmbahnen, wenn Zustaendigkeiten genannt sind
+2. Startknoten (gefuellter Kreis) oben
+3. Aktionen der Reihe nach, Rechtecke mit runden Ecken, Pfeile dazwischen
+4. je "wenn / falls / ab": Raute, jede ausgehende Kante mit [Bedingung]
+5. je "gleichzeitig": Gabelungsbalken, spaeter Synchronisationsbalken
+6. Alternativen per Merge-Raute vereinen; erst danach gemeinsame Aktion
+7. jeden abgeschlossenen Ablauf im Endknoten (Kreis im Ring) beenden
+8. Gegenprobe: Guards an Entscheidungen; benoetigte Synchronisation vorhanden
+
+Klassendiagramm
+1. je Klasse ein Rechteck mit drei Faechern, Name im Singular
+2. Attribute als name : Typ, Methoden mit runden Klammern
+3. Sichtbarkeit + - # nur, wenn die Aufgabe sie verlangt
+4. gemeinsame Attribute und gleiche Methoden in die Oberklasse
+5. unterschiedlich arbeitende Methoden in den Unterklassen lassen
+6. Assoziationen ziehen, an beide Enden die Multiplizitaet</pre>
+
+  <div class="merke" data-art="Prüfungsnotiz">
+    <p>Die Punkte hängen nicht an den Kästen allein. Herbst 2024 verteilte für drei Anwendungsfälle je einen halben Punkt und für die drei include-Beziehungen ebenfalls je einen halben Punkt.<sup class="q"><a href="#a8-q6" title="AP1 Herbst 2024, 2.4">6</a></sup> Wer die Ellipsen zeichnet und die Pfeile weglässt, verschenkt die Hälfte.</p>
+  </div>
+
+  <h4>Vier Fehler, die regelmäßig Punkte kosten</h4>
+  <p>Prüfe dein fertiges Diagramm gegen diese vier Punkte, bevor du umblätterst.</p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 495" role="img" aria-labelledby="a8-abb4-t">
+      <title id="a8-abb4-t">Gegenüberstellung von vier häufigen Zeichenfehlern und ihrer richtigen Form</title>
+      <text class="tb ta mitte" x="165" y="30">Richtig</text>
+      <text class="tb mitte" x="475" y="30">Falsch</text>
+
+      <line class="g" x1="320" y1="45" x2="320" y2="118"/>
+      <rect class="l" x="75" y="50" width="175" height="60"/>
+      <ellipse class="w" cx="175" cy="80" rx="58" ry="20"/>
+      <text class="mitte" x="175" y="85">Anmelden</text>
+      <circle class="w" cx="40" cy="62" r="7"/>
+      <line class="l" x1="40" y1="69" x2="40" y2="88"/>
+      <line class="l" x1="30" y1="75" x2="50" y2="75"/>
+      <line class="l" x1="40" y1="88" x2="32" y2="100"/>
+      <line class="l" x1="40" y1="88" x2="48" y2="100"/>
+      <line class="l" x1="50" y1="75" x2="117" y2="80"/>
+      <rect class="l" x="385" y="50" width="175" height="60"/>
+      <ellipse class="w" cx="500" cy="80" rx="53" ry="20"/>
+      <text class="mitte" x="500" y="85">Anmelden</text>
+      <circle class="w" cx="410" cy="62" r="7"/>
+      <line class="l" x1="410" y1="69" x2="410" y2="88"/>
+      <line class="l" x1="400" y1="75" x2="420" y2="75"/>
+      <line class="l" x1="410" y1="88" x2="402" y2="100"/>
+      <line class="l" x1="410" y1="88" x2="418" y2="100"/>
+      <line class="l" x1="420" y1="75" x2="447" y2="80"/>
+      <text class="t2 mitte" x="320" y="138">Der Akteur steht außerhalb der Systemgrenze</text>
+
+      <line class="g" x1="320" y1="155" x2="320" y2="228"/>
+      <path class="w" d="M 165 160 L 191 180 L 165 200 L 139 180 Z"/>
+      <line class="l" x1="191" y1="180" x2="243" y2="180" marker-end="url(#pfeil)"/>
+      <text class="tb mitte" x="215" y="172">[ja]</text>
+      <line class="l" x1="165" y1="200" x2="165" y2="225" marker-end="url(#pfeil)"/>
+      <text class="tb" x="175" y="218">[nein]</text>
+      <path class="w" d="M 475 160 L 501 180 L 475 200 L 449 180 Z"/>
+      <line class="l" x1="501" y1="180" x2="553" y2="180" marker-end="url(#pfeil)"/>
+      <line class="l" x1="475" y1="200" x2="475" y2="225" marker-end="url(#pfeil)"/>
+      <text class="t2 mitte" x="320" y="250">Jede Kante aus der Raute trägt ihre Bedingung in eckigen Klammern</text>
+
+      <line class="g" x1="320" y1="265" x2="320" y2="348"/>
+      <rect class="w" x="105" y="270" width="120" height="34" rx="12"/>
+      <text class="mitte" x="165" y="292">Zahlung buchen</text>
+      <line class="l" x1="165" y1="304" x2="165" y2="320" marker-end="url(#pfeil)"/>
+      <circle class="w" cx="165" cy="333" r="10"/>
+      <circle class="f" cx="165" cy="333" r="5"/>
+      <rect class="w" x="415" y="270" width="120" height="34" rx="12"/>
+      <text class="mitte" x="475" y="292">Zahlung buchen</text>
+      <line class="l" x1="475" y1="304" x2="475" y2="335" marker-end="url(#pfeil)"/>
+      <text class="t2 mitte" x="320" y="368">Jeder Pfad endet in einem Endknoten, kein Pfeil endet im Leeren</text>
+
+      <line class="g" x1="320" y1="385" x2="320" y2="455"/>
+      <rect class="w" x="55" y="390" width="90" height="34"/>
+      <text class="mitte" x="100" y="412">Kunde</text>
+      <rect class="w" x="215" y="390" width="90" height="34"/>
+      <text class="mitte" x="260" y="412">Ticket</text>
+      <line class="l" x1="145" y1="407" x2="215" y2="407"/>
+      <text class="tb" x="152" y="400">1</text>
+      <text class="tb rechts" x="208" y="400">0..*</text>
+      <rect class="w" x="365" y="390" width="90" height="34"/>
+      <text class="mitte" x="410" y="412">Kunde</text>
+      <rect class="w" x="525" y="390" width="90" height="34"/>
+      <text class="mitte" x="570" y="412">Ticket</text>
+      <line class="l" x1="455" y1="407" x2="525" y2="407"/>
+      <text class="tb" x="462" y="400">0..*</text>
+      <text class="tb rechts" x="518" y="400">1</text>
+      <text class="t2 mitte" x="320" y="472">Die Multiplizität steht an dem Ende, dessen Objekte sie zählt</text>
+    </svg>
+    <figcaption>Abb. A8-4: Vier Zeichenfehler und ihre richtige Form; die linke Spalte ist die, die du in der Prüfung abliefern willst.</figcaption>
+  </figure>
+
+  <div class="merke" data-art="Typischer Fehler">
+    <p>Ein Diagramm ohne Endknoten gilt als unvollständig, auch wenn der Ablauf inhaltlich stimmt. Eine Raute ohne Bedingung wird nicht als Entscheidung gewertet. Beides sind Symbolfehler, keine Denkfehler – und genau deshalb ärgerlich.</p>
+  </div>
+
+  <div class="merke" data-art="Merke">
+    <p>Ein Aktivitätsdiagramm wächst nach unten und braucht mehr Platz, als man schätzt. Zeichne erst schwach vor, dann ziehe nach. Für das Datenmodell derselben Anwendung siehe <a href="#a9">A9</a>.</p>
+  </div>
+
+</section>
+
+<section id="a8-original">
+  <h3>So hat die IHK gefragt</h3>
+
+  <article class="aufgabe" id="a8-original-1">
+    <p class="herkunft">AP1 Herbst 2025, Aufgabe 2.2, 9 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a8-q4" title="AP1 Herbst 2025">4</a></sup></p>
+    <div class="text">
+      <p>Ein Handelsbetrieb bearbeitet Eingangsrechnungen digital. Nach dem Eingang läuft eine automatische Kontrolle. Fällt sie negativ aus, wird die Rechnung abgelehnt und der Vorgang endet. Fällt sie positiv aus, entscheidet der Betrag: Ab 1.000,00&nbsp;€ einschließlich kommt eine manuelle Prüfung hinzu, deren negatives Ergebnis ebenfalls zur Ablehnung und zum Ende führt. Rechnungen unter 1.000,00&nbsp;€ sowie manuell bestätigte Rechnungen werden gleichzeitig bezahlt und archiviert. Erst danach endet der Vorgang.</p>
+      <p>Im Heft sind Startknoten, die Aktion „Rechnung eingegangen“ und die erste Kante vorgezeichnet. Setzen Sie das UML-Aktivitätsdiagramm fort.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p>Der Ablauf braucht drei Entscheidungen: automatische Prüfung, Betragsschwelle und manuelle Prüfung. Die beiden Ablehnungswege werden vor „Rechnung ablehnen“ über eine Merge-Raute vereinigt. Auch die erfolgreichen Alternativen werden vor dem Gabelungsbalken zusammengeführt. Genau 1.000,00&nbsp;€ gehört zum manuellen Zweig.<sup class="q"><a href="#a8-q1" title="OMG UML 2.5.1, §15.3.3 und §16.2.3">1</a></sup></p>
+        <figure class="abb">
+          <svg viewBox="0 0 640 660" role="img" aria-labelledby="a8-abb5-t">
+            <title id="a8-abb5-t">Aktivitätsdiagramm Rechnungseingang mit drei Entscheidungen, Zusammenführungen und Parallelisierung</title>
+            <circle class="f" cx="180" cy="28" r="10"/>
+            <line class="l" x1="180" y1="38" x2="180" y2="48" marker-end="url(#pfeil)"/>
+            <rect class="w" x="90" y="50" width="180" height="36" rx="13"/>
+            <text class="mitte" x="180" y="73">Rechnung eingegangen</text>
+            <line class="l" x1="180" y1="86" x2="180" y2="104" marker-end="url(#pfeil)"/>
+            <rect class="w" x="90" y="106" width="180" height="36" rx="13"/>
+            <text class="mitte" x="180" y="129">Automatisch prüfen</text>
+            <line class="l" x1="180" y1="142" x2="180" y2="157" marker-end="url(#pfeil)"/>
+            <path class="w" d="M 180 159 L 214 185 L 180 211 L 146 185 Z"/>
+            <text class="rechts" x="140" y="189">Prüfung ok?</text>
+            <path class="l" d="M 214 185 H 600 V 465 H 569" marker-end="url(#pfeil)"/>
+            <text class="tb mitte" x="300" y="177">[nicht in Ordnung]</text>
+            <line class="l" x1="180" y1="211" x2="180" y2="246" marker-end="url(#pfeil)"/>
+            <text class="tb" x="190" y="232">[in Ordnung]</text>
+            <path class="w" d="M 180 248 L 214 274 L 180 300 L 146 274 Z"/>
+            <text class="rechts" x="140" y="278">Betrag?</text>
+            <path class="l" d="M 214 274 H 328" marker-end="url(#pfeil)"/>
+            <text class="ta mitte" x="271" y="266">[ab 1.000 EUR]</text>
+            <rect class="w" x="330" y="256" width="150" height="36" rx="13"/>
+            <text class="mitte" x="405" y="279">Manuell prüfen</text>
+            <line class="l" x1="405" y1="292" x2="405" y2="320" marker-end="url(#pfeil)"/>
+            <path class="w" d="M 405 322 L 435 346 L 405 370 L 375 346 Z"/>
+            <text x="445" y="350">Manuell ok?</text>
+            <path class="l" d="M 435 346 H 500 V 465 H 529" marker-end="url(#pfeil)"/>
+            <text class="tb mitte" x="478" y="329">[nein]</text>
+            <path class="l" d="M 405 370 V 425 H 208" marker-end="url(#pfeil)"/>
+            <text class="tb" x="415" y="398">[ja]</text>
+            <line class="l" x1="180" y1="300" x2="180" y2="403" marker-end="url(#pfeil)"/>
+            <text class="tb" x="190" y="330">[unter 1.000 EUR]</text>
+            <path class="w" d="M 180 405 L 206 425 L 180 445 L 154 425 Z"/>
+            <line class="l" x1="180" y1="445" x2="180" y2="468" marker-end="url(#pfeil)"/>
+            <rect class="f" x="80" y="470" width="240" height="9"/>
+            <text class="t2" x="328" y="479">Gabelung</text>
+            <line class="l" x1="105" y1="479" x2="105" y2="503" marker-end="url(#pfeil)"/>
+            <line class="l" x1="307" y1="479" x2="307" y2="503" marker-end="url(#pfeil)"/>
+            <rect class="w" x="20" y="505" width="170" height="36" rx="13"/>
+            <text class="mitte" x="105" y="528">Rechnung bezahlen</text>
+            <rect class="w" x="215" y="505" width="185" height="36" rx="13"/>
+            <text class="mitte" x="307" y="528">Rechnung archivieren</text>
+            <line class="l" x1="105" y1="541" x2="105" y2="578" marker-end="url(#pfeil)"/>
+            <line class="l" x1="307" y1="541" x2="307" y2="578" marker-end="url(#pfeil)"/>
+            <rect class="f" x="80" y="580" width="240" height="9"/>
+            <text class="t2" x="328" y="589">Synchronisation</text>
+            <line class="l" x1="200" y1="589" x2="200" y2="610" marker-end="url(#pfeil)"/>
+            <circle class="w" cx="200" cy="625" r="13"/>
+            <circle class="f" cx="200" cy="625" r="7"/>
+            <path class="w" d="M 549 445 L 569 465 L 549 485 L 529 465 Z"/>
+            <text class="t2 mitte" x="549" y="429">Zusammenführung</text>
+            <line class="l" x1="549" y1="485" x2="549" y2="516" marker-end="url(#pfeil)"/>
+            <rect class="w" x="465" y="518" width="168" height="36" rx="13"/>
+            <text class="mitte" x="549" y="541">Rechnung ablehnen</text>
+            <path class="l" d="M 549 554 V 625 H 215" marker-end="url(#pfeil)"/>
+          </svg>
+          <figcaption>Abb. A8-5: Eigene Lösungsskizze zu Herbst 2025 mit expliziter Zusammenführung vor der Ablehnung; die fachlichen Schritte entsprechen den Lösungshinweisen.</figcaption>
+        </figure>
+        <p>Punkte: zwei Punkte für die automatische Prüfung samt Entscheidung, zwei für die manuelle Prüfung samt Entscheidung, je einen für Bezahlung, Archivierung, Parallelisierung, Ablehnung und Endknoten: 2 + 2 + 1 + 1 + 1 + 1 + 1 = 9. Wer bezahlen und archivieren hintereinander zeichnet, verliert den Punkt für die Parallelisierung.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="a8-original-2">
+    <p class="herkunft">AP1 Frühjahr 2023, Aufgabe 4.4, 8 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a8-q5" title="AP1 Frühjahr 2023">5</a></sup></p>
+    <div class="text">
+      <p>Für die Schadensregulierung einer Versicherung soll ein UML-Klassendiagramm entworfen werden. Für die Fallarten Kraftfahrzeug und Immobilie sind eigene Klassen vorgesehen.</p>
+      <p>Die Klasse KFZ trägt Hersteller, Typschlüssel, Neupreis, Baujahr, Laufleistung und Schadenshöhe sowie die Methoden restwertBerechnen() und auszahlen(). Die Klasse Immobilie trägt Neupreis, Baujahr, Wohnfläche, Lagebewertung und Schadenshöhe sowie restwertBerechnen(), getLagebewertung() und auszahlen().</p>
+      <p>Entwerfen Sie eine sinnvolle Klassenhierarchie mit der gemeinsamen Oberklasse Versicherungsobjekt. Die Restwertberechnung läuft bei Fahrzeug und Immobilie unterschiedlich ab. Zusätzliche Methoden, Konstruktoren und Zugriffsmodifikatoren sind nicht erforderlich.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p>Zuerst die Schnittmenge bilden. Neupreis, Baujahr und Schadenshöhe stehen in beiden Klassen, ebenso auszahlen(), das in beiden dasselbe tut. Diese vier Angaben wandern in die Oberklasse. restwertBerechnen() steht zwar auch in beiden, arbeitet aber unterschiedlich und bleibt deshalb unten. Übrig bleibt je Unterklasse, was es nur dort gibt.</p>
+        <figure class="abb">
+          <svg viewBox="0 0 640 380" role="img" aria-labelledby="a8-abb6-t">
+            <title id="a8-abb6-t">Musterlösung Klassendiagramm mit Oberklasse Versicherungsobjekt und zwei Unterklassen</title>
+            <rect class="w" x="205" y="20" width="230" height="126"/>
+            <line class="l" x1="205" y1="50" x2="435" y2="50"/>
+            <line class="l" x1="205" y1="116" x2="435" y2="116"/>
+            <text class="tb mitte" x="320" y="42">Versicherungsobjekt</text>
+            <text class="mono" x="215" y="68">Neupreis</text>
+            <text class="mono" x="215" y="88">Baujahr</text>
+            <text class="mono" x="215" y="108">Schadenshöhe</text>
+            <text class="mono" x="215" y="136">auszahlen()</text>
+            <path class="a" d="M 320 146 L 307 168 L 333 168 Z"/>
+            <text class="t2" x="345" y="164">Generalisierung (Vererbung)</text>
+            <line class="l" x1="320" y1="168" x2="320" y2="196"/>
+            <line class="l" x1="150" y1="196" x2="490" y2="196"/>
+            <line class="l" x1="150" y1="196" x2="150" y2="232"/>
+            <line class="l" x1="490" y1="196" x2="490" y2="232"/>
+            <rect class="w" x="45" y="232" width="210" height="126"/>
+            <line class="l" x1="45" y1="262" x2="255" y2="262"/>
+            <line class="l" x1="45" y1="328" x2="255" y2="328"/>
+            <text class="tb mitte" x="150" y="254">KFZ</text>
+            <text class="mono" x="55" y="280">Hersteller</text>
+            <text class="mono" x="55" y="300">Typschlüssel</text>
+            <text class="mono" x="55" y="320">Laufleistung</text>
+            <text class="mono" x="55" y="348">restwertBerechnen()</text>
+            <rect class="w" x="385" y="232" width="210" height="126"/>
+            <line class="l" x1="385" y1="262" x2="595" y2="262"/>
+            <line class="l" x1="385" y1="308" x2="595" y2="308"/>
+            <text class="tb mitte" x="490" y="254">Immobilie</text>
+            <text class="mono" x="395" y="280">Wohnfläche</text>
+            <text class="mono" x="395" y="300">Lagebewertung</text>
+            <text class="mono" x="395" y="326">restwertBerechnen()</text>
+            <text class="mono" x="395" y="346">getLagebewertung()</text>
+          </svg>
+          <figcaption>Abb. A8-6: Musterlösung zu Frühjahr 2023; gemeinsame Daten und gleich arbeitende Methoden wandern nach oben, unterschiedlich arbeitende Methoden bleiben unten.</figcaption>
+        </figure>
+        <p>Punkte: zwei Punkte je Klasse und zwei Punkte für die Vererbung, also 3 × 2 + 2 = 8. Die Lösungshinweise lassen ausdrücklich zu, restwertBerechnen() zusätzlich in der Oberklasse zu führen, weil die Unterklassen sie überschreiben (Polymorphie). Sichtbarkeiten und Datentypen werden hier nicht bewertet.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="a8-original-3">
+    <p class="herkunft">AP1 Herbst 2024, Aufgabe 2.4, 5 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a8-q6" title="AP1 Herbst 2024">6</a></sup></p>
+    <div class="text">
+      <p>Für die Software einer elektronischen Schließanlage ist ein UML-Anwendungsfalldiagramm zu vervollständigen. Ein Mitarbeiter kann Türen öffnen und Türen zuschließen, wobei jedes Mal eine Berechtigungsprüfung stattfindet. Ein Administrator kann alles, was ein Mitarbeiter kann, und zusätzlich die Türschlösser programmieren; auch dabei findet immer eine Berechtigungsprüfung statt.</p>
+      <p>Vorgezeichnet sind das Systemrechteck mit der Beschriftung System, der Akteur Mitarbeiter links außerhalb und eine Linie von ihm zur Ellipse „Tür öffnen“. Ergänzen Sie das Diagramm.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p>„Alles, was ein Mitarbeiter kann“ ist das Signal für die Generalisierung: ein Pfeil mit hohler Dreiecksspitze vom Administrator zum Mitarbeiter. „Jedes Mal“ und „immer“ sind die Signale für &laquo;include&raquo;. Die Berechtigungsprüfung bekommt deshalb eine eigene Ellipse, auf die alle drei fachlichen Anwendungsfälle zeigen.</p>
+        <figure class="abb">
+          <svg viewBox="0 0 640 390" role="img" aria-labelledby="a8-abb7-t">
+            <title id="a8-abb7-t">Musterlösung Anwendungsfalldiagramm Schließsystem mit Generalisierung und drei include-Beziehungen</title>
+      <defs><marker id="a8-abb7-t-offen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="l" d="M1,1 L9,5 L1,9"/></marker></defs>
+            <rect class="l" x="180" y="25" width="440" height="345"/>
+            <text class="tb mitte" x="400" y="48">System</text>
+            <circle class="w" cx="60" cy="60" r="11"/>
+            <line class="l" x1="60" y1="71" x2="60" y2="105"/>
+            <line class="l" x1="42" y1="84" x2="78" y2="84"/>
+            <line class="l" x1="60" y1="105" x2="46" y2="128"/>
+            <line class="l" x1="60" y1="105" x2="74" y2="128"/>
+            <text class="tb mitte" x="60" y="146">Mitarbeiter</text>
+            <path class="a" d="M 60 152 L 49 172 L 71 172 Z"/>
+            <line class="a" x1="60" y1="172" x2="60" y2="219"/>
+            <text class="t2" x="78" y="166">Generalisierung</text>
+            <circle class="w" cx="60" cy="232" r="11"/>
+            <line class="l" x1="60" y1="243" x2="60" y2="277"/>
+            <line class="l" x1="42" y1="256" x2="78" y2="256"/>
+            <line class="l" x1="60" y1="277" x2="46" y2="300"/>
+            <line class="l" x1="60" y1="277" x2="74" y2="300"/>
+            <text class="tb mitte" x="60" y="318">Administrator</text>
+            <ellipse class="w" cx="290" cy="95" rx="85" ry="28"/>
+            <text class="mitte" x="290" y="100">Tür öffnen</text>
+            <ellipse class="w" cx="290" cy="180" rx="85" ry="28"/>
+            <text class="mitte" x="290" y="185">Tür zuschließen</text>
+            <ellipse class="w" cx="290" cy="268" rx="103" ry="30"/>
+            <text class="mitte" x="290" y="273">Türschloss programmieren</text>
+            <ellipse class="w" cx="515" cy="180" rx="90" ry="30"/>
+            <text class="mitte" x="515" y="185">Berechtigungsprüfung</text>
+            <line class="l" x1="79" y1="88" x2="208" y2="97"/>
+            <line class="l" x1="79" y1="98" x2="208" y2="178"/>
+            <line class="l" x1="79" y1="262" x2="190" y2="268"/>
+            <line class="d" x1="369" y1="105" x2="441" y2="163" marker-end="url(#a8-abb7-t-offen)"/>
+            <text class="t2" x="395" y="112">&laquo;include&raquo;</text>
+            <line class="d" x1="376" y1="180" x2="423" y2="180" marker-end="url(#a8-abb7-t-offen)"/>
+            <text class="t2 mitte" x="400" y="172">&laquo;include&raquo;</text>
+            <line class="d" x1="387" y1="258" x2="465" y2="205" marker-end="url(#a8-abb7-t-offen)"/>
+            <text class="t2" x="415" y="255">&laquo;include&raquo;</text>
+          </svg>
+          <figcaption>Abb. A8-7: Musterlösung zu Herbst 2024; der Administrator erbt die beiden Türfunktionen über die Generalisierung, die Berechtigungsprüfung hängt dreifach als include daran.</figcaption>
+        </figure>
+        <p>Punkte: ein Punkt für den Akteur Administrator, ein Punkt für die Vererbung, dreimal ein halber Punkt für die ergänzten Anwendungsfälle und dreimal ein halber Punkt für die include-Beziehungen: 1 + 1 + 1,5 + 1,5 = 5. Statt der Generalisierung sind auch zwei einzelne Linien vom Administrator zu „Tür öffnen“ und „Tür zuschließen“ zugelassen.</p>
+      </div>
+    </details>
+  </article>
+
+</section>
+
+<section id="a8-variante">
+  <h3>Jetzt du</h3>
+
+  <article class="aufgabe" id="a8-variante-1">
+    <p class="herkunft">Variante zu Aufgabe 2.2 (Herbst 2025)</p>
+    <div class="text">
+      <p>Ein Systemhaus wickelt Urlaubsanträge digital ab. Nach dem Eingang prüft das System automatisch den Resturlaub. Reicht er nicht, wird der Antrag abgelehnt und der Vorgang endet. Reicht er, entscheidet die Dauer: Anträge über mehr als 10&nbsp;Arbeitstage muss zusätzlich die Abteilungsleitung freigeben; verweigert sie die Freigabe, wird ebenfalls abgelehnt. Anträge über 10&nbsp;Arbeitstage oder weniger sowie freigegebene Anträge werden gleichzeitig in den Urlaubskalender eingetragen und der antragstellenden Person per E-Mail bestätigt. Erst danach endet der Vorgang. Zeichne das Aktivitätsdiagramm ohne Schwimmbahnen.</p>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p>Von oben nach unten: Startknoten, Aktion „Antrag eingegangen“, Aktion „Resturlaub prüfen“, Raute „Resturlaub ausreichend?“ mit [nein] und [ja]. Der Zweig [nein] führt zu einer Merge-Raute vor „Antrag ablehnen“.</p>
+        <p>Der Zweig [ja] führt zur Raute „Dauer?“ mit [mehr als 10 Arbeitstage] und [10 Arbeitstage oder weniger]. Der lange Zweig führt zur Aktion „Freigabe einholen“ und zur Raute „Freigabe erteilt?“; deren [nein] mündet in dieselbe Merge-Raute vor „Antrag ablehnen“, deren [ja] in die Zusammenführung. Der kurze Zweig läuft direkt in dieselbe Zusammenführung.</p>
+        <p>Danach folgen Gabelungsbalken, die parallelen Aktionen „Urlaubskalender eintragen“ und „Bestätigung senden“, der Synchronisationsbalken und der Endknoten. Auch „Antrag ablehnen“ läuft in einen Endknoten.</p>
+        <p>Achte auf die Grenze: 12&nbsp;Tage sind mehr als 10 und brauchen die Freigabe, genau 10&nbsp;Tage nicht. Bei 30&nbsp;Tagen Resturlaub bleiben nach 12&nbsp;Tagen noch 18&nbsp;Tage übrig, der Resturlaub reicht also. Punkte wie im Original: 2 + 2 + 1 + 1 + 1 + 1 + 1 = 9.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="a8-variante-2">
+    <p class="herkunft">Variante zu Aufgabe 4.4 (Frühjahr 2023)</p>
+    <div class="text">
+      <p>Ein Systemhaus verleiht Vorführgeräte an Kunden. Die Klasse Notebook trägt inventarNr, anschaffungsdatum, tagessatz, zustand, arbeitsspeicher und seriennummer sowie mietpreisBerechnen() und ausleihen(). Die Klasse Beamer trägt inventarNr, anschaffungsdatum, tagessatz, zustand und lichtstaerke sowie mietpreisBerechnen(), lampenstundenLesen() und ausleihen().</p>
+      <p>Entwirf eine sinnvolle Klassenhierarchie mit der gemeinsamen Oberklasse Leihgeraet. Der Mietpreis wird je Gerätetyp unterschiedlich ermittelt: Notebook nach Tagessatz, Beamer zusätzlich mit 10,00&nbsp;€ Einrichtungspauschale je Ausleihe. Sichtbarkeiten und Datentypen sind nicht erforderlich.</p>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p>Oberklasse Leihgeraet: inventarNr, anschaffungsdatum, tagessatz, zustand und ausleihen(). Diese vier Attribute stehen in beiden Klassen, und ausleihen() arbeitet in beiden gleich.</p>
+        <p>Unterklasse Notebook: arbeitsspeicher, seriennummer, mietpreisBerechnen(). Unterklasse Beamer: lichtstaerke, mietpreisBerechnen(), lampenstundenLesen(). Beide hängen mit einem Pfeil mit hohler Dreiecksspitze an der Oberklasse.</p>
+        <p>mietpreisBerechnen() arbeitet hier unterschiedlich: Notebook 12,00&nbsp;€/Tag × 5&nbsp;Tage = 60,00&nbsp;€; Beamer 25,00&nbsp;€/Tag × 5&nbsp;Tage + 10,00&nbsp;€ Pauschale = 135,00&nbsp;€. Unterschiedliche Tagessätze allein würden keine unterschiedliche Methode erfordern. Die gemeinsame Operation darf auch in der Oberklasse deklariert und unten überschrieben werden. Übungspunkte: 3 × 2 + 2 = 8.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="a8-variante-3">
+    <p class="herkunft">Variante zu Aufgabe 2.4 (Herbst 2024)</p>
+    <div class="text">
+      <p>Für die Kassensoftware einer Filiale ist ein UML-Anwendungsfalldiagramm zu vervollständigen. Ein Kassierer kann Verkäufe buchen und Retouren buchen; bei jedem dieser Vorgänge findet eine Anmeldeprüfung statt. Ein Filialleiter kann alles, was ein Kassierer kann, und zusätzlich den Tagesabschluss erstellen; auch dabei findet immer eine Anmeldeprüfung statt.</p>
+      <p>Vorgezeichnet sind das Systemrechteck mit der Beschriftung Kassensystem, der Akteur Kassierer links außerhalb und eine Linie von ihm zur Ellipse „Verkauf buchen“. Ergänze das Diagramm.</p>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p>Zu ergänzen sind der Akteur Filialleiter unter dem Kassierer, ein Pfeil mit hohler Dreiecksspitze vom Filialleiter zum Kassierer, die Ellipsen „Retoure buchen“, „Tagesabschluss erstellen“ und „Anmeldung prüfen“ sowie drei gestrichelte &laquo;include&raquo;-Pfeile von den drei fachlichen Anwendungsfällen auf „Anmeldung prüfen“.</p>
+        <p>Verbindungslinien: Kassierer zu „Retoure buchen“, Filialleiter zu „Tagesabschluss erstellen“. Punkte wie im Original: ein Punkt für den Akteur, ein Punkt für die Generalisierung, dreimal ein halber Punkt für die Ellipsen, dreimal ein halber Punkt für die include-Beziehungen, also 1 + 1 + 1,5 + 1,5 = 5.</p>
+      </div>
+    </details>
+  </article>
+
+</section>
+
+<section id="a8-selbstcheck">
+  <h3>Selbstcheck</h3>
+  <ol class="selbstcheck">
+    <li>Woran erkennst du im Aufgabentext eine &laquo;include&raquo;-Beziehung, und wohin zeigt der Pfeil?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Signalwörter sind „beinhaltet immer“, „findet immer statt“ und „jedes Mal“. Der gestrichelte Pfeil mit offener Spitze zeigt vom einschließenden Anwendungsfall auf den eingeschlossenen, also vom Ganzen auf den Pflichtteil.</p></div></details>
+    </li>
+    <li>Was unterscheidet die Raute vom Balken im Aktivitätsdiagramm?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Die Raute ist eine Entscheidung: Genau ein ausgehender Weg wird genommen, jeder trägt eine Bedingung in eckigen Klammern. Der Balken ist eine Gabelung: Alle ausgehenden Wege laufen gleichzeitig und werden von einem zweiten Balken wieder synchronisiert.</p></div></details>
+    </li>
+    <li>Zwei Klassen haben beide das Attribut Neupreis und beide die Methode restwertBerechnen(), die aber unterschiedlich rechnet. Was gehört in die Oberklasse?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Neupreis gehört nach oben, weil das Attribut in beiden Klassen dasselbe bedeutet. restwertBerechnen() bleibt in beiden Unterklassen, weil die Berechnung unterschiedlich abläuft; zulässig ist zusätzlich eine gleichnamige Methode in der Oberklasse, die überschrieben wird.</p></div></details>
+    </li>
+    <li>Ein Kunde meldet beliebig viele Tickets, jedes Ticket gehört zu genau einem Kunden. Wo stehen 1 und 0..*?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Die 1 steht am Ende der Klasse Kunde, die 0..* am Ende der Klasse Ticket. Gelesen wird über Kreuz: Die Zahl am Ticket-Ende beantwortet, wie viele Tickets zu einem Kunden gehören.</p></div></details>
+    </li>
+  </ol>
+</section>
+
+<section id="a8-quellen">
+  <h3>Quellen dieses Kapitels</h3>
+  <ol class="quellenliste">
+    <li id="a8-q1" data-src="omg-uml-2-5-1"><span class="typ">Norm</span> Object Management Group (OMG): OMG Unified Modeling Language (OMG UML), Version 2.5.1, formal/2017-12-05, Needham 2017, Clause 9 (Classification), Clause 11 (Structured Classifiers), Clause 15 (Activities), Clause 18 (UseCases). <a href="https://www.omg.org/spec/UML/2.5.1/PDF">omg.org/spec/UML/2.5.1/PDF</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="a8-q2" data-src="rupp-uml-glasklar"><span class="typ">Fachbuch</span> Rupp, C.; Queins, S.: UML 2 glasklar. Praxiswissen für die UML-Modellierung, 4. Aufl., Hanser, München 2012, Kapitel zu Anwendungsfall-, Aktivitäts- und Klassendiagrammen. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a8-q3" data-src="ihk-konvention-uml"><span class="typ">IHK-Konvention</span> ZPA Nord-West: Lösungshinweise zu UML-Diagrammen der AP1, Zeichenkonventionen (Bedingungen in eckigen Klammern, Gabelungs- und Synchronisationsbalken, Systemgrenze im Anwendungsfalldiagramm). <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a8-q4" data-src="ihk-ap1-h2025"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Herbst 2025, Teil 1, Aufgabe 2.2. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a8-q5" data-src="ihk-ap1-f2023"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Frühjahr 2023, Teil 1, Aufgabe 4.4. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a8-q6" data-src="ihk-ap1-h2024"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Herbst 2024, Teil 1, Aufgabe 2.4. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a8-q7" data-src="ihk-ap1-h2023"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Herbst 2023, Teil 1, Aufgabe 1.1. <span class="abruf">(nicht online geprüft)</span></li>
+  </ol>
+</section>
+
+</section>

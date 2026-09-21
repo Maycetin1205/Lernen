@@ -20,7 +20,10 @@ const verboten = [
   ['TODO', 'offener TODO'], ['lorem ipsum', 'Fülltext'], ['<script src', 'externes Skript'],
 ];
 for (const [k, n] of verboten) {
-  if (s.toLowerCase().includes(k.toLowerCase())) errs.push(`verboten: ${n} ("${k}")`);
+  // Grossgeschriebene Marker (VORLAGE, PLATZHALTER, TODO) nur exakt suchen: das Wort "Vorlage"
+  // kommt in Pruefungsaufgaben vor, der Vorlagen-Kommentar ist immer in Grossbuchstaben.
+  const treffer = k === k.toUpperCase() ? s.includes(k) : s.toLowerCase().includes(k.toLowerCase());
+  if (treffer) errs.push(`verboten: ${n} ("${k}")`);
 }
 
 // 2) Emoji
@@ -67,6 +70,7 @@ function woerter(t) {
   // und Aufschriften, kein Text, den man liest.
   return t.replace(/<svg[\s\S]*?<\/svg>/g, ' ')
     .replace(/<details class="wegweiser">[\s\S]*?<\/details>/g, ' ')
+    .replace(/<section id="[ab]\d+-geloest">[\s\S]*?<\/section>/g, ' ')
     .replace(/<nav\b[\s\S]*?<\/nav>/g, ' ')
     .replace(/<span class="label">[^<]*<\/span>/g, ' ')
     .replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/g, ' ').split(/\s+/).filter(Boolean).length;
@@ -122,14 +126,39 @@ for (const k of kaps) {
   // 2026-09-11 zusaetzlich das Struktogramm (DIN 66261) und den Programmablaufplan (DIN 66001).
   // Die beiden Formen werden in zwei Pruefungsaufgaben verlangt und standen vorher nirgends.
   // Begruendung in ENTSCHEIDUNGEN.md, Abschnitt AF. Alle anderen Kapitel bleiben bei 4500.
-  const grenze = k === 'a7' ? 4700 : 4500;
+  // 2026-09-15: A7 auf 4750, weil drei Quellenzeilen fuer die geloesten IHK-Aufgaben dazukamen (Abschnitt AH).
+  // 2026-09-16: A1 auf 6000. Das Kapitel lehrt seit Abschnitt AI wirklich bei null los: was ein Netz,
+  // ein Paket, ein Switch und ein Router sind, Binaerzahlen mit Hin- und Rueckrechnung, Hexadezimal
+  // (vorher nirgends erklaert, aber fuer IPv6 und MAC noetig) und das Bilden von Teilnetzen aus einem
+  // Bedarf. Der Lernende hat Verstaendlichkeit ausdruecklich ueber Kuerze gestellt.
+  // Begruendung in ENTSCHEIDUNGEN.md, Abschnitt AI.
+  // 2026-09-16: A4 auf 6000, gleiche Begruendung wie A1 (Abschnitt AI). Neu sind die Herleitung
+  // der 1.024 aus 2^10, die Regel "das kleine i entscheidet", der allgemeine Speicherbedarf
+  // (Anzahl mal Groesse je Stueck), die Prozentfrage und ein eigener Abschnitt zu Pixeln,
+  // dpi und Farbtiefe mit H22 2.2 vollstaendig vorgerechnet.
+  // 2026-09-16: A2 auf 6000. Sieben der 16 Aufgaben hatten vorher nur eine Begriffskarte als Ziel;
+  // dafuer sind drei Abschnitte dazugekommen (Netto und Brutto, einmalige und laufende Kosten, Leasing).
+  // 2026-09-16: A9 auf 6000. Acht der 17 Aufgaben landen im SQL-Abschnitt; der zeigte vorher nur
+  // eine Schlagwortliste und kein einziges Ergebnis. Jetzt Tabelle mit Zeilen, Abfragen und Resultat.
+  // 2026-09-16: A7 von 4750 auf 6000. Neu sind die beiden Struktogramm-Aufgaben F22 4.4 und H22 4.4,
+  // Schritt fuer Schritt einsortiert, und die verlangte Antwortform bei Sprachwahl und Compiler/Interpreter.
+  // 2026-09-16: A6 auf 6000. Neu sind die Trennung der beiden Tageszaehlweisen (Zeitpunkte im
+  // Netzplan, nummerierte Tagesspalten im Balkenplan), H23 4.3 als Balkenplan vorgerechnet und
+  // die Gegenueberstellung Gantt gegen Netzplan fuer H23 4.1.
+  // 2026-09-16 abends: A5 dazu. In allen A-Kapiteln ist jede Pruefungsaufgabe jetzt in ihrem
+  // Lernabschnitt namentlich angebunden, statt nur ueber die Wegweiser-Tabelle erreichbar zu sein.
+  // Abschnitt AJ: In jedem angebundenen Kapitel steht je Abschnitt eine Zeile "So fragt die IHK hier"
+  // mit den Aufgaben, die dort beantwortet werden, und der verlangten Antwortform. Das kostet Woerter
+  // und ersetzt dafuer das Suchen ueber die Wegweiser-Tabelle.
+  const grenze = ['a1', 'a2', 'a4', 'a5', 'a6', 'a7', 'a9',
+                  'b1', 'b4', 'b5', 'b7', 'b9', 'b10', 'b11'].includes(k) ? 6000 : 4500;
   if (w > grenze) errs.push(`${k}: ${w} Wörter, Obergrenze ${grenze}`);
   else if (w > 3500) warn.push(`${k}: ${w} Wörter, Richtwert 3500`);
   if (w < 900) warn.push(`${k}: nur ${w} Wörter, wirkt unvollständig`);
   if (/style="/.test(t.replace(/<svg[\s\S]*?<\/svg>/g, ''))) warn.push(`${k}: style-Attribut außerhalb von SVG`);
   if (/<h4>/.test(t) && !/<h3>/.test(t)) warn.push(`${k}: h4 ohne h3`);
   // Klassen außerhalb des Systems
-  const erlaubt = new Set(['kapitel','kapitel-kopf','kapitel-nr','kam-dran','begriff','label','en','abb','l','f','w','a','fa','d','g','t2','tb','ta','mono','mitte','rechts','tabelle','z','summe','hervor','rechenweg','merke','aufgabe','herkunft','text','inhalt','q','quellenliste','typ','abruf','wo','selbstcheck','teil','unter','klein','glossar','kapitel-wege','begriffsliste','wegweiser']);
+  const erlaubt = new Set(['kapitel','kapitel-kopf','kapitel-nr','kam-dran','begriff','label','en','abb','l','f','w','a','fa','d','g','t2','tb','ta','mono','mitte','rechts','tabelle','z','summe','hervor','rechenweg','merke','aufgabe','herkunft','text','inhalt','q','quellenliste','typ','abruf','wo','selbstcheck','teil','unter','klein','glossar','kapitel-wege','begriffsliste','wegweiser','geloest']);
   for (const cm of t.matchAll(/class="([^"]+)"/g)) for (const c of cm[1].split(/\s+/)) if (c && !erlaubt.has(c)) errs.push(`${k}: unbekannte Klasse "${c}"`);
 }
 
@@ -159,7 +188,11 @@ const sprach = [
   [/[a-zäöüß]![\s<]/, 'Ausrufezeichen im Fließtext'],
   [/\bLesezeit\b/i, 'Lesezeit-Angabe (verboten)'],
   [/\b\d+\s?(Minuten|Min\.)\s+(pro|am|täglich|je)\b/i, 'Zeitvorgabe für den Lernenden (verboten)'],
-  [/\b(Tag|Woche)\s+\d+\b/, 'Tages-/Wochenplan (verboten)'],
+  // Verboten ist ein Lernplan ("Tag 1: Kapitel A1 lesen"), nicht die Sache selbst: In A6 sind
+  // "Tag 9" und "Tag 12" Termine im Netzplan, in A2 Zahlungsziele. Darum greift die Regel nur
+  // noch, wenn "Tag N" oder "Woche N" eine Aufzaehlung oder Ueberschrift anfuehrt, also am
+  // Anfang eines Elements steht oder ein Doppelpunkt folgt. (2026-09-16, Abschnitt AI.8)
+  [/(^|>)\s*(Tag|Woche)\s+\d+\s*[:.]/m, 'Tages-/Wochenplan (verboten)'],
   [/\bKI\b.*\bgeneriert\b/i, 'Selbstbezug auf KI'],
   [/—/, 'Geviertstrich (Gedankenstrich als „ – “ setzen)'],
 ];

@@ -1,0 +1,464 @@
+<section class="kapitel" id="b9" data-gruppe="B">
+
+<header class="kapitel-kopf">
+  <p class="kapitel-nr">B9 · Erklären</p>
+  <h2>Projekt, Anforderungen und Vorgehen</h2>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b9-worum">Worum es geht</a><a href="#b9-kern">Die Sache</a><a href="#b9-original">So hat die IHK gefragt</a><a href="#b9-variante">Jetzt du</a><a href="#b9-selbstcheck">Selbstcheck</a><a href="#b9-begriffe">Begriffe</a><a href="#b9-quellen">Quellen</a></nav>
+  <p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 1.1, 1.2, 3.1 (13 P)</span> · <span>AP1 Frühjahr 2022, 1.4, 1.5 (7 P)</span> · <span>AP1 Herbst 2022, 1.3 bis 1.5 (14 P)</span> · <span>AP1 Frühjahr 2023, 4.2, 4.3 (6 P)</span> · <span>AP1 Herbst 2023, 1.4, 4.2 (6 P)</span> · <span>AP1 Herbst 2024, 4.1 (6 P)</span></p>
+</header>
+
+<section id="b9-worum">
+  <h3>Worum es geht</h3>
+  <p>Ein Steuerbüro ruft an. Die Kanzlei will ihre Papierakten loswerden, „am besten bis zum Jahreswechsel, und teuer darf es nicht werden“. Mehr weiß niemand: nicht, wie viele Akten es sind, nicht, wer später damit arbeitet, nicht, ob der alte Server bleibt. Dein Chef legt dir den Fall auf den Tisch, weil du das Erstgespräch führst und das Angebot vorbereitest.</p>
+  <p>Du musst dafür wissen, was ein Vorhaben zum Projekt macht, wie aus einem vagen Wunsch prüfbare Anforderungen werden, wer das Lastenheft und wer das Pflichtenheft schreibt und nach welchem Vorgehensmodell das Team arbeitet. Die Prüfung fragt das in sechs von neun ausgewerteten Sätzen, fast immer als „Nennen und erläutern Sie“: Jeder Aspekt ist ein Punkt, jede Erläuterung ein zweiter.<sup class="q"><a href="#b9-q15" title="Allgemeine Korrekturhinweise: Dimension der Aufgabenstellung, geforderte Anzahl">15</a></sup></p>
+  <nav aria-label="Prüfungsaufgaben dieses Kapitels"><div class="tabelle"><table>
+    <caption>Prüfungsaufgaben zu diesem Kapitel und wo die Antwort steht</caption>
+    <tr><th>Prüfung</th><th>Aufgabe</th><th>Worum es ging</th><th>Hier steht es</th></tr>
+    <tr><td>Herbst 2021</td><td>1.1</td><td>Merkmale eines Projekts nennen</td><td><a href="#b9-k1">Das Problem: Aus einem Wunsch wird noch kein Auftrag</a></td></tr>
+    <tr><td>Herbst 2021</td><td>1.2</td><td>SMART-Kriterien vervollständigen</td><td><a href="#b9-k5">SMART-Kriterien</a></td></tr>
+    <tr><td>Herbst 2021</td><td>3.1</td><td>Inhalte eines Lastenhefts benennen</td><td><a href="#b9-k3">Lastenheft und Pflichtenheft</a></td></tr>
+    <tr><td>Frühjahr 2022</td><td>1.4</td><td>Informationen für die Angebotserstellung begründen</td><td><a href="#b9-k4">Erst lernen: Angaben in einem Angebot</a><br><a href="#b9-original-3">Dann prüfen: Gelöste Originalaufgabe mit Lösung</a></td></tr>
+    <tr><td>Frühjahr 2022</td><td>1.5</td><td>Formale Information für ein Angebot</td><td><a href="#b9-k4">Angaben in einem Angebot</a></td></tr>
+    <tr><td>Herbst 2022</td><td>1.3</td><td>Inhalte vorgegebener Projektschritte beschreiben</td><td><a href="#b9-k6">Erst lernen: Projektschritte: vom Start bis zum Abschluss</a><br><a href="#b9-original-2">Dann prüfen: Gelöste Originalaufgabe mit Lösung</a></td></tr>
+    <tr><td>Herbst 2022</td><td>1.4</td><td>Stakeholder und ihren Einfluss beschreiben</td><td><a href="#b9-k11">Stakeholder und das Team</a></td></tr>
+    <tr><td>Herbst 2022</td><td>1.5</td><td>Externe Projektberatung mit Vorzeichen bewerten</td><td><a href="#b9-k11">Stakeholder und das Team</a></td></tr>
+    <tr><td>Frühjahr 2023</td><td>4.2</td><td>Lastenheft gegen Pflichtenheft</td><td><a href="#b9-k3">Lastenheft und Pflichtenheft</a></td></tr>
+    <tr><td>Frühjahr 2023</td><td>4.3</td><td>Zwei weitere Inhalte eines Lastenhefts</td><td><a href="#b9-k3">Lastenheft und Pflichtenheft</a></td></tr>
+    <tr><td>Herbst 2023</td><td>1.4</td><td>Drei Methoden der Bedarfsanalyse</td><td><a href="#b9-k2">Bedarfsanalyse: Gespräch, Fragebogen und Beobachtung</a></td></tr>
+    <tr><td>Herbst 2023</td><td>4.2</td><td>Phasen des Datenbankentwurfs ordnen</td><td><a href="#b9-k7">Phasen des Datenbankentwurfs</a></td></tr>
+    <tr><td>Herbst 2024</td><td>4.1</td><td>Zweck und Inhalt von Lasten- und Pflichtenheft</td><td><a href="#b9-k3">Erst lernen: Lastenheft und Pflichtenheft</a><br><a href="#b9-original-1">Dann prüfen: Gelöste Originalaufgabe mit Lösung</a></td></tr>
+  </table></div></nav>
+</section>
+
+<section id="b9-kern"><h3>Die Sache</h3>
+
+<h4 id="b9-k1">Das Problem: Aus einem Wunsch wird noch kein Auftrag</h4>
+<p><strong>„Akten weg, bis zum Jahreswechsel, und teuer darf es nicht werden“</strong> ist alles, was du hast. Daraus lässt sich kein Angebot rechnen. Wie viele Akten sind es? Wer arbeitet später damit? Bleibt der alte Server stehen? Solange diese Fragen offen sind, weiß niemand, was „fertig“ bedeutet, und ein Vorhaben ohne klares Ziel wird garantiert zu spät fertig oder zu teuer.</p>
+<p><strong>Die Arbeit dieses Kapitels</strong> ist genau diese Übersetzung: aus einem vagen Wunsch werden prüfbare Anforderungen, aus Anforderungen ein Auftrag, aus dem Auftrag ein geplanter Weg mit Terminen und Zuständigkeiten. Der erste Schritt dazu ist die Frage, ob das überhaupt ein Projekt ist, denn davon hängt ab, wie viel Planung sich lohnt. Ein Projekt ist ein Vorhaben mit den vier Merkmalen aus Abb. B9-1; fehlt eines davon, ist es Tagesgeschäft.<sup class="q"><a href="#b9-q1" title="DIN 69901-5, Begriff Projekt">1</a></sup></p>
+<figure class="abb"><svg viewBox="0 0 640 168" role="img" aria-labelledby="b9-abb1-t"><title id="b9-abb1-t">Vier Merkmale, die ein Vorhaben zum Projekt machen</title><rect class="w" x="20" y="20" width="292" height="58"/><text x="34" y="45" class="ta">1</text><text x="54" y="45" class="tb">Einmaligkeit</text><text x="54" y="66" class="t2">der Bedingungen insgesamt</text><rect class="w" x="328" y="20" width="292" height="58"/><text x="342" y="45" class="ta">2</text><text x="362" y="45" class="tb">Zielvorgabe</text><text x="362" y="66" class="t2">ein benanntes Ergebnis</text><rect class="w" x="20" y="90" width="292" height="58"/><text x="34" y="115" class="ta">3</text><text x="54" y="115" class="tb">Begrenzung</text><text x="54" y="136" class="t2">zeitlich, finanziell, personell</text><rect class="w" x="328" y="90" width="292" height="58"/><text x="342" y="115" class="ta">4</text><text x="362" y="115" class="tb">Eigene Organisation</text><text x="362" y="136" class="t2">für dieses Vorhaben gebildet</text></svg><figcaption>Abb. B9-1: Vier Merkmale, die ein Vorhaben zum Projekt machen. Fehlt eines, ist es Tagesgeschäft, und niemand braucht Netzplan oder Lastenheft dafür.</figcaption></figure>
+<h4 id="b9-k2">Bedarfsanalyse: Gespräch, Fragebogen und Beobachtung</h4>
+<p><strong>Am Anfang</strong> steht ein Bedarf, den der Kunde selten fertig formuliert. „Akten weg“ sagt nicht, welche Akten, wer sie sucht und wie schnell. Bevor du irgendetwas planst, findest du das heraus. Dafür gibt es fünf Wege, und die Prüfung will drei davon nennen können:<sup class="q"><a href="#b9-q21" title="Lösungshinweise Herbst 2023, Aufgabe 1.4: Methoden der Bedarfsanalyse">21</a></sup></p>
+<ol><li>Interview: das Gespräch mit den Menschen, die später damit arbeiten. Liefert die genauesten Antworten, kostet aber Zeit je Person.</li><li>Schriftliche Befragung: ein Fragebogen an viele auf einmal, online oder auf Papier. Schnell für viele, aber ohne Nachfragen.</li><li>Fokusgruppe: eine moderierte Runde aus mehreren Nutzern, die miteinander diskutiert. Bringt Widersprüche zwischen Abteilungen ans Licht.</li><li>Auswertung von Beschwerden: was in der Vergangenheit schiefging, zeigt, was das neue System besser machen muss.</li><li>Medienanalyse: was Fachpresse und Markt über Lösungen und Probleme berichten.</li></ol>
+<p><strong>Die Gesprächsführung</strong> beim Interview steht in <a href="#b10">B10</a>.</p>
+<h4 id="b9-k3">Lastenheft und Pflichtenheft</h4>
+<p><strong>Aus dem Bedarf</strong> entsteht das Lastenheft des Auftraggebers, und das Systemhaus antwortet mit dem Pflichtenheft. Abb. B9-2 zeigt die Richtung, die Tabelle die Inhalte.<sup class="q"><a href="#b9-q19" title="Lösungshinweise Herbst 2021, Aufgabe 3.1: Inhalte eines Lastenhefts">19</a></sup><sup class="q"><a href="#b9-q20" title="Lösungshinweise Frühjahr 2023, Aufgabe 4.3: Inhalte eines Lastenhefts">20</a></sup><sup class="q"><a href="#b9-q16" title="Lösungshinweise Herbst 2024, Aufgabe 4.1: Inhalte des Pflichtenhefts">16</a></sup></p>
+<figure class="abb">
+    <svg viewBox="0 0 640 300" role="img" aria-labelledby="b9-abb2-t">
+      <title id="b9-abb2-t">Lastenheft und Pflichtenheft als zwei Spalten: wer, was, wann</title>
+      <text x="160" y="26" class="mitte tb">Lastenheft</text>
+      <text x="480" y="26" class="mitte tb">Pflichtenheft</text>
+      <rect class="w" x="20" y="40" width="280" height="196"/>
+      <rect class="w" x="340" y="40" width="280" height="196"/>
+      <text x="36" y="64" class="t2">Wer schreibt es</text>
+      <text x="36" y="84">Auftraggeber, der Kunde</text>
+      <text x="36" y="114" class="t2">Was steht drin</text>
+      <text x="36" y="134">Anforderungen: was und wofür</text>
+      <text x="36" y="152">Ziel, Ist-Zustand, Rahmen, Termin</text>
+      <text x="36" y="182" class="t2">Wann entsteht es</text>
+      <text x="36" y="202">vor Anfrage und Angebot</text>
+      <text x="36" y="220" class="t2">Grundlage der Kalkulation</text>
+      <text x="356" y="64" class="t2">Wer schreibt es</text>
+      <text x="356" y="84">Auftragnehmer, das Systemhaus</text>
+      <text x="356" y="114" class="t2">Was steht drin</text>
+      <text x="356" y="134">Umsetzung: wie und womit</text>
+      <text x="356" y="152">Lösungsweg, Technik, Abnahmekriterien</text>
+      <text x="356" y="182" class="t2">Wann entsteht es</text>
+      <text x="356" y="202">als Antwort, vor dem Vertrag</text>
+      <text x="356" y="220" class="t2">verpflichtet den Anbieter</text>
+      <line class="a" x1="300" y1="138" x2="334" y2="138" marker-end="url(#pfeil-a)"/>
+      <text x="320" y="268" class="mitte ta">Jede Anforderung links bekommt rechts eine Lösung</text>
+      <text x="320" y="290" class="mitte t2">Reihenfolge: Bedarf, Lastenheft, Pflichtenheft, Angebot, Vertrag, Abnahme</text>
+    </svg>
+    <figcaption>Abb. B9-2: Links schreibt der Kunde, rechts antwortet das Systemhaus. Der Akzentpfeil ist die Prüfungsfrage: Das Pflichtenheft entsteht als Antwort auf das Lastenheft, nie umgekehrt.</figcaption>
+  </figure>
+<div class="tabelle"><table><caption>Was in welches Heft gehört. Was im Pflichtenheft nicht steht, ist nicht bestellt.</caption><thead><tr><th>Frage</th><th>Lastenheft</th><th>Pflichtenheft</th></tr></thead><tbody><tr><td>Wer schreibt es</td><td>der Auftraggeber</td><td>der Auftragnehmer</td></tr><tr><td>Welche Frage</td><td>was und wofür</td><td>wie und womit</td></tr><tr><td>Wann</td><td>vor der Anfrage</td><td>als Antwort darauf</td></tr><tr class="hervor"><td>Inhalte, die die Prüfung erwartet</td><td>Vorstellung des Auftraggebers, Ausgangssituation und Ist-Zustand, Projektziel, funktionale Anforderungen, Rahmenbedingungen wie Datenschutz und IT-Sicherheit, Schnittstellen, Zeitrahmen, Budget</td><td>Lösungsweg, eingesetzte Technik, Ansprechpartner, Zeitrahmen, Testszenarien, Abnahmekriterien</td></tr></tbody></table></div>
+<div class="merke" data-art="Merke">
+    <p>Lastenheft: Auftraggeber, was und wofür, vor der Anfrage. Pflichtenheft: Auftragnehmer, wie und womit, als Antwort darauf. Jede Anforderung des Lastenhefts findet im Pflichtenheft eine Lösung; was dort nicht steht, ist nicht bestellt.</p>
+  </div>
+<h4 id="b9-k4">Angaben in einem Angebot</h4>
+<p><strong>Drei Informationen</strong> braucht das Systemhaus, bevor es kalkuliert:<sup class="q"><a href="#b9-q18" title="Lösungshinweise Frühjahr 2022, Aufgabe 1.4: Informationen für das Angebot">18</a></sup></p>
+<ol><li>das Lastenheft, es liefert den Umfang</li><li>der Zeitrahmen, er bestimmt die Ressourcenplanung</li><li>die Ist-Analyse, sie beschreibt die Ausgangslage</li></ol>
+<p><strong>Dazu kommen formale Angaben</strong>, ohne die kein Angebot rausgeht: die Adresse des Kunden, ein Ansprechpartner mit Kontaktdaten, das Datum der Anfrage, auf die sich das Angebot bezieht, und die Bindungsfrist, also wie lange das Angebot gilt. Frühjahr 2022 wollte eine davon genannt haben, ein Punkt.<sup class="q"><a href="#b9-q18" title="Lösungshinweise Frühjahr 2022, Aufgabe 1.5: formale Angaben">18</a></sup> Was ein Angebot rechtlich bindet, steht in <a href="#b11">B11</a>.</p>
+<h4 id="b9-k5">SMART-Kriterien</h4>
+<p><strong>Aus den Anforderungen</strong> werden Ziele. Ein Ziel, das die Prüfung anerkennt, ist SMART; Abb. B9-3 zeigt die fünf Kriterien in der Reihenfolge der Arbeit.<sup class="q"><a href="#b9-q6" title="Doran 1981: S.M.A.R.T.-Kriterien">6</a></sup></p>
+<figure class="abb"><svg viewBox="0 0 640 283" role="img" aria-labelledby="b9-abb3-t"><title id="b9-abb3-t">Die fünf SMART-Kriterien in der Reihenfolge der Arbeit</title><rect class="w" x="20" y="20" width="292" height="73"/><text x="34" y="45" class="ta">1</text><text x="54" y="45" class="tb">Spezifisch</text><text x="54" y="66" class="t2">das Ergebnis benennen</text><rect class="w" x="328" y="20" width="292" height="73"/><text x="342" y="45" class="ta">2</text><text x="362" y="45" class="tb">Messbar</text><text x="362" y="66" class="t2">die Messgröße festlegen</text><rect class="w" x="20" y="105" width="292" height="73"/><text x="34" y="130" class="ta">3</text><text x="54" y="130" class="tb">Erreichbar</text><text x="54" y="151" class="t2">Team und Budget geben es her</text><rect class="w" x="328" y="105" width="292" height="73"/><text x="342" y="130" class="ta">4</text><text x="362" y="130" class="tb">Realistisch</text><text x="362" y="151" class="t2">unter den gegebenen Bedingungen</text><text x="362" y="166" class="t2">machbar</text><rect class="a" x="20" y="190" width="292" height="73"/><text x="34" y="215" class="ta">5</text><text x="54" y="215" class="tb">Terminiert</text><text x="54" y="236" class="t2">einen Termin setzen</text></svg><figcaption>Abb. B9-3: Beispiel: „Bis zum 31. März sind alle laufenden Mandantenakten gescannt und über die Volltextsuche in unter drei Sekunden auffindbar.“</figcaption></figure>
+<p><strong>Das Ziel</strong> bekommt Meilensteine: Kick-off, Lastenheft abgenommen, Testbetrieb, Abnahme. Wie daraus Netzplan und Gantt-Diagramm werden, zeigt <a href="#a6">A6</a>.</p>
+<h4 id="b9-k6">Projektschritte: vom Start bis zum Abschluss</h4>
+<p><strong>Die Prüfung</strong> nutzt gern eine feste Schrittfolge: Projektinitiierung, Ist-Zustand, Sollkonzept, Planung, Umsetzung, Überprüfung der Zielerreichung, Ausblick.<sup class="q"><a href="#b9-q17" title="Lösungshinweise Herbst 2022, Aufgabe 1.3: Projektschritte">17</a></sup> Das ist ein Wasserfall: jede Phase wird einmal durchlaufen, ihr Ergebnis ist ein Dokument, das die nächste Phase freigibt.<sup class="q"><a href="#b9-q7" title="Royce 1970: sequenzielles Phasenmodell">7</a></sup></p>
+<h4 id="b9-k7">Phasen des Datenbankentwurfs</h4>
+<p><strong>Dieselbe Logik</strong> steckt in der Phasenfolge des Datenbankentwurfs; die Modellierung selbst steht in <a href="#a9">A9</a>.<sup class="q"><a href="#b9-q21" title="Lösungshinweise Herbst 2023, Aufgabe 1.4: Methoden der Bedarfsanalyse">21</a></sup></p>
+<ol><li>Anforderungsanalyse</li><li>konzeptioneller Entwurf</li><li>logischer Entwurf</li><li>Verteilung im Netz</li><li>physischer Entwurf</li><li>Test</li><li>Anwendung und Wartung</li></ol>
+<h4 id="b9-k8">Wasserfall, V-Modell, iterativ</h4>
+<p><strong>Der Wasserfall</strong> passt, wenn die Anforderungen zu Beginn feststehen und Änderungen teuer sind: Verkabelung, Umzug, Beschaffung. Sein Nachteil: ein Fehler in den Anforderungen fällt erst beim Test auf. Das V-Modell begegnet dem, indem es zu jeder Spezifikationsstufe die passende Teststufe festlegt.<sup class="q"><a href="#b9-q4" title="V-Modell XT, Produkt Anforderungen (Lastenheft): funktionale und nicht-funktionale Anforderungen">4</a></sup> Iterative Modelle liefern in kurzen Zyklen ein nutzbares Teilergebnis und lassen den Kunden nach jedem Zyklus nachsteuern. Abb. B9-4 stellt beide Wege gegenüber.</p>
+<figure class="abb">
+    <svg viewBox="0 0 640 270" role="img" aria-labelledby="b9-abb4-t">
+      <title id="b9-abb4-t">Wasserfall als Treppe gegen iteratives Vorgehen in Zyklen</title>
+      <text x="20" y="24" class="tb">Wasserfall: jede Phase einmal</text>
+      <rect class="w" x="20" y="40" width="110" height="28"/>
+      <text x="75" y="59" class="mitte">Anforderungen</text>
+      <line class="l" x1="75" y1="68" x2="75" y2="78" marker-end="url(#pfeil)"/>
+      <rect class="w" x="60" y="80" width="110" height="28"/>
+      <text x="115" y="99" class="mitte">Entwurf</text>
+      <line class="l" x1="115" y1="108" x2="115" y2="118" marker-end="url(#pfeil)"/>
+      <rect class="w" x="100" y="120" width="110" height="28"/>
+      <text x="155" y="139" class="mitte">Umsetzung</text>
+      <line class="l" x1="155" y1="148" x2="155" y2="158" marker-end="url(#pfeil)"/>
+      <rect class="w" x="140" y="160" width="110" height="28"/>
+      <text x="195" y="179" class="mitte">Test</text>
+      <line class="l" x1="195" y1="188" x2="195" y2="198" marker-end="url(#pfeil)"/>
+      <rect class="w" x="180" y="200" width="110" height="28"/>
+      <text x="235" y="219" class="mitte">Betrieb</text>
+      <text x="20" y="252" class="t2">Anforderungsfehler fallen erst beim Test auf</text>
+      <line class="g" x1="320" y1="16" x2="320" y2="258"/>
+      <text x="330" y="24" class="tb">Iterativ: kurze Zyklen, frühe Rückmeldung</text>
+      <rect class="w" x="340" y="48" width="80" height="80"/>
+      <text x="380" y="70" class="mitte">Zyklus 1</text>
+      <text x="380" y="90" class="mitte t2">planen</text>
+      <text x="380" y="104" class="mitte t2">bauen</text>
+      <text x="380" y="118" class="mitte t2">prüfen</text>
+      <line class="l" x1="380" y1="128" x2="380" y2="146" marker-end="url(#pfeil)"/>
+      <rect class="f" x="340" y="150" width="80" height="26"/>
+      <text x="380" y="168" class="mitte">Inkrement</text>
+      <rect class="w" x="440" y="48" width="80" height="80"/>
+      <text x="480" y="70" class="mitte">Zyklus 2</text>
+      <text x="480" y="90" class="mitte t2">planen</text>
+      <text x="480" y="104" class="mitte t2">bauen</text>
+      <text x="480" y="118" class="mitte t2">prüfen</text>
+      <line class="l" x1="480" y1="128" x2="480" y2="146" marker-end="url(#pfeil)"/>
+      <rect class="f" x="440" y="150" width="80" height="26"/>
+      <text x="480" y="168" class="mitte">Inkrement</text>
+      <rect class="w" x="540" y="48" width="80" height="80"/>
+      <text x="580" y="70" class="mitte">Zyklus 3</text>
+      <text x="580" y="90" class="mitte t2">planen</text>
+      <text x="580" y="104" class="mitte t2">bauen</text>
+      <text x="580" y="118" class="mitte t2">prüfen</text>
+      <line class="l" x1="580" y1="128" x2="580" y2="146" marker-end="url(#pfeil)"/>
+      <rect class="f" x="540" y="150" width="80" height="26"/>
+      <text x="580" y="168" class="mitte">Inkrement</text>
+      <path class="a" d="M420,163 H430 V88 H437" marker-end="url(#pfeil-a)"/>
+      <path class="l" d="M520,163 H530 V88 H537" marker-end="url(#pfeil)"/>
+      <text x="330" y="214" class="ta">Rückmeldung fließt in den nächsten Zyklus</text>
+      <text x="330" y="252" class="t2">Jeder Zyklus liefert etwas Nutzbares</text>
+    </svg>
+    <figcaption>Abb. B9-4: Links führt jede Stufe einmal abwärts, Rücksprünge sind nicht vorgesehen. Rechts endet jeder Zyklus mit einem Inkrement, und der Akzentpfeil trägt die Rückmeldung in die nächste Planung.</figcaption>
+  </figure>
+<h4 id="b9-k9">Scrum</h4>
+<p><strong>Scrum</strong> ist das bekannteste iterative Rahmenwerk. Der Product Owner ordnet das Product Backlog nach Wert. Im Sprint Planning wählt das Team daraus den Umfang für einen Sprint von höchstens einem Monat und bildet das Sprint Backlog. Am Ende steht ein fertiges Inkrement, das im Sprint Review mit den Stakeholdern begutachtet wird; in der Sprint Retrospektive verbessert das Team seine Arbeitsweise. Abb. B9-5 zeigt den Takt.<sup class="q"><a href="#b9-q8" title="Scrum Guide 2020: Scrum Team, Events, Artefakte">8</a></sup></p>
+<figure class="abb">
+    <svg viewBox="0 0 640 345" role="img" aria-labelledby="b9-abb5-t">
+      <title id="b9-abb5-t">Scrum-Zyklus mit Rollen, Artefakten und Ereignissen</title>
+      <rect class="w" x="20" y="110" width="120" height="80"/>
+      <text x="80" y="138" class="mitte">Product Backlog</text>
+      <text x="80" y="158" class="mitte t2">Product Owner</text>
+      <text x="80" y="174" class="mitte t2">ordnet nach Wert</text>
+      <line class="l" x1="140" y1="150" x2="166" y2="150" marker-end="url(#pfeil)"/>
+      <rect class="w" x="170" y="125" width="110" height="50"/>
+      <text x="225" y="146" class="mitte">Sprint Planning</text>
+      <text x="225" y="164" class="mitte t2">Sprint Backlog</text>
+      <line class="l" x1="280" y1="150" x2="300" y2="150" marker-end="url(#pfeil)"/>
+      <path class="a" d="M416.5,56.4 A95,95 0 1 1 383.5,56.4" marker-end="url(#pfeil-a)"/>
+      <text x="400" y="112" class="mitte ta">Sprint</text>
+      <text x="400" y="132" class="mitte t2">höchstens ein Monat</text>
+      <text x="400" y="168" class="mitte">Daily Scrum</text>
+      <text x="400" y="186" class="mitte t2">täglich, höchstens 15 min</text>
+      <text x="400" y="208" class="mitte t2">Developers</text>
+      <line class="l" x1="495" y1="150" x2="516" y2="150" marker-end="url(#pfeil)"/>
+      <rect class="f" x="520" y="125" width="100" height="50"/>
+      <text x="570" y="146" class="mitte">Inkrement</text>
+      <text x="570" y="164" class="mitte t2">fertig, nutzbar</text>
+      <line class="l" x1="570" y1="175" x2="570" y2="258" marker-end="url(#pfeil)"/>
+      <rect class="w" x="510" y="262" width="120" height="50"/>
+      <text x="570" y="283" class="mitte">Sprint Review</text>
+      <text x="570" y="301" class="mitte t2">mit Stakeholdern</text>
+      <line class="l" x1="510" y1="287" x2="476" y2="287" marker-end="url(#pfeil)"/>
+      <rect class="w" x="330" y="262" width="140" height="50"/>
+      <text x="400" y="283" class="mitte">Sprint Retrospektive</text>
+      <text x="400" y="301" class="mitte t2">Team verbessert sich</text>
+      <path class="l" d="M330,287 H225 V179" marker-end="url(#pfeil)"/>
+      <text x="400" y="336" class="mitte t2">Scrum Master: sorgt dafür, dass Scrum verstanden und gelebt wird</text>
+    </svg>
+    <figcaption>Abb. B9-5: Der Akzent liegt auf dem Sprint, dem Takt von Scrum. Links kommt die Arbeit aus dem Product Backlog hinein, rechts kommt ein Inkrement heraus, und Review und Retrospektive führen zurück zur nächsten Planung.</figcaption>
+  </figure>
+<div class="merke" data-art="Typischer Fehler">
+    <p>Scrum Master und Projektleiter werden gleichgesetzt, Review und Retrospektive vertauscht. Der Scrum Master verteilt keine Aufgaben und entscheidet nicht über den Inhalt; das tut der Product Owner. Das Review betrachtet das Produkt, die Retrospektive das Team.</p>
+  </div>
+<h4 id="b9-k10">Kanban</h4>
+<p><strong>Kanban</strong> verzichtet auf Sprints. Es macht den Arbeitsfluss auf einem Board sichtbar und begrenzt, wie viele Aufgaben gleichzeitig in Arbeit sind; erst wenn eine Aufgabe die Spalte verlässt, wird die nächste gezogen.<sup class="q"><a href="#b9-q9" title="Anderson 2010: Kanban-Prinzipien">9</a></sup> Für einen Servicedesk mit ständig neuen Tickets passt das besser als ein Sprint mit festem Umfang.</p>
+<h4 id="b9-k11">Stakeholder und das Team</h4>
+<p><strong>Stakeholder</strong> sind alle, die ein Interesse am Projekt haben oder von ihm betroffen sind, und jede Gruppe entscheidet auf ihre Weise mit, ob das Vorhaben gelingt. Die Anteilseigner oder die Geschäftsführung entscheiden über das Geld, also ob das Projekt überhaupt finanziert wird. Die Beschäftigten entscheiden über die Akzeptanz: Wer das neue System nicht will, arbeitet daran vorbei. Lieferanten entscheiden über die Machbarkeit, etwa ob eine automatische Bestellung bei ihnen technisch überhaupt ankommt. Dazu kommen Kunden, Behörden und der Betriebsrat. Herbst 2022 wollte drei Gruppen mit ihrem Einfluss, je ein Satz.<sup class="q"><a href="#b9-q17" title="Lösungshinweise Herbst 2022, Aufgabe 1.4: Stakeholdergruppen und Einfluss">17</a></sup></p>
+<p><strong>Ein externer Projektberater</strong> ist ein Stakeholder, den man sich dazuholt, und die Prüfung will beide Seiten davon. Vorteile: Er bringt Spezialwissen und Erfahrung aus anderen Projekten mit, er entlastet das eigene Personal, er kennt Normen und Methoden und schätzt Risiken besser ein. Nachteile: Er kostet zusätzlich, sein Wissen verlässt mit ihm das Unternehmen, man wird von ihm abhängig, er kennt die internen Abläufe nicht, er ist eine weitere Schnittstelle in der Kommunikation, und er braucht Zutritt und Datenzugriff, was Datenschutz- und Kontrollaufwand bedeutet. Fünf Punkte für fünf Nennungen, Vor- und Nachteile frei gemischt.<sup class="q"><a href="#b9-q17" title="Lösungshinweise Herbst 2022, Aufgabe 1.5: Vor- und Nachteile externer Projektberatung">17</a></sup></p>
+<p><strong>Ein Projektteam</strong> wird nicht ernannt, es entwickelt sich. Nach Tuckman durchläuft es Forming, Storming, Norming und Performing<sup class="q"><a href="#b9-q10" title="Tuckman 1965: Developmental sequence in small groups">10</a></sup>, am Projektende Adjourning<sup class="q"><a href="#b9-q11" title="Tuckman und Jensen 1977: Stages of Small-Group Development Revisited">11</a></sup>. Für die Projektleitung heißt das: Konflikte im Storming sind zu erwarten und zu moderieren, nicht zu unterdrücken; erst nach dem Norming trägt das Team Verantwortung selbst. Abb. B9-6 zeigt den Leistungsverlauf. Wie du Widerstände im Team und beim Kunden ansprichst, steht in <a href="#b10">B10</a>.</p>
+<figure class="abb">
+    <svg viewBox="0 0 640 250" role="img" aria-labelledby="b9-abb6-t">
+      <title id="b9-abb6-t">Tuckman-Kurve mit fünf Phasen und je einem Merkmal</title>
+      <text x="40" y="22" class="t2">Leistung des Teams</text>
+      <text x="620" y="22" class="t2 rechts">Zeit</text>
+      <line class="l" x1="40" y1="195" x2="620" y2="195"/>
+      <line class="l" x1="40" y1="195" x2="40" y2="30"/>
+      <line class="g" x1="156" y1="30" x2="156" y2="195"/>
+      <line class="g" x1="272" y1="30" x2="272" y2="195"/>
+      <line class="g" x1="388" y1="30" x2="388" y2="195"/>
+      <line class="g" x1="504" y1="30" x2="504" y2="195"/>
+      <path class="l" d="M40,140 C60,138 80,135 98,135 C140,135 170,170 214,170 C260,170 290,110 330,110 C370,110 400,55 446,55 C490,55 520,125 562,125 C585,125 600,150 620,150"/>
+      <circle class="fa" cx="446" cy="55" r="6"/>
+      <text x="446" y="40" class="mitte ta">höchste Leistung</text>
+      <text x="98" y="216" class="mitte tb">Forming</text>
+      <text x="214" y="216" class="mitte tb">Storming</text>
+      <text x="330" y="216" class="mitte tb">Norming</text>
+      <text x="446" y="216" class="mitte tb">Performing</text>
+      <text x="562" y="216" class="mitte tb">Adjourning</text>
+      <text x="98" y="234" class="mitte t2">höflich, abwartend</text>
+      <text x="214" y="234" class="mitte t2">Konflikte um Rollen</text>
+      <text x="330" y="234" class="mitte t2">Regeln entstehen</text>
+      <text x="446" y="234" class="mitte t2">läuft von selbst</text>
+      <text x="562" y="234" class="mitte t2">Auflösung, Abschied</text>
+    </svg>
+    <figcaption>Abb. B9-6: Die Leistung sinkt im Storming unter den Anfangswert und steigt erst, wenn Regeln entstehen. Der Akzent markiert das Ziel der Teamentwicklung; danach löst sich das Team auf.</figcaption>
+  </figure>
+<h4 id="b9-k12">Abnahme, Teststufen und Verbesserung</h4>
+<p><strong>Am Ende</strong> steht die Abnahme: der Auftraggeber prüft anhand der Abnahmekriterien aus dem Pflichtenheft und erkennt die Leistung an.<sup class="q"><a href="#b9-q14" title="§ 640 Abs. 1 BGB: Abnahme">14</a></sup> Davor liegen vier Teststufen:<sup class="q"><a href="#b9-q13" title="ISTQB-Glossar: Teststufen und Testverfahren">13</a></sup></p>
+<ol><li>Unittest</li><li>Integrationstest</li><li>Systemtest</li><li>Abnahmetest</li></ol>
+<p><strong>Was das Projekt</strong> gelehrt hat, fließt über PDCA in das nächste: planen, umsetzen, prüfen, nachbessern.<sup class="q"><a href="#b9-q12" title="BSI, Lerneinheit 2.1: PDCA-Zyklus nach Deming">12</a></sup> Übergabe, Dokumentation und Schulung des Kunden behandelt <a href="#b10">B10</a>.</p>
+<div class="merke" data-art="Prüfungsnotiz">
+    <p>Fast jede Aufgabe dieses Kapitels lautet „Nennen und erläutern Sie n Aspekte“. Der Lösungshinweis zählt Aspekte: Nennen bringt einen Punkt, Erläutern den zweiten. Schreibe je Aspekt eine Zeile mit Begriff, Doppelpunkt, Erklärung und Bezug zum Szenario. Genau n Aspekte, denn nur die ersten n werden bewertet.<sup class="q"><a href="#b9-q15" title="Bearbeitungshinweis 4: nur die geforderte Anzahl wird bewertet">15</a></sup></p>
+  </div>
+
+  <div class="merke" data-art="Auf einen Blick"><p><strong>Projekt:</strong> einmalig, mit Zielvorgabe, Begrenzung und eigener Organisation.</p><p><strong>Lastenheft</strong> kommt vom Auftraggeber und fragt was und wofür, <strong>Pflichtenheft</strong> vom Auftragnehmer und antwortet wie und womit.</p><p><strong>SMART:</strong> spezifisch, messbar, erreichbar, realistisch, terminiert.</p><p><strong>Wasserfall</strong> läuft jede Phase einmal, <strong>iterativ</strong> liefert je Zyklus ein nutzbares Teilergebnis.</p><p><strong>Scrum Master</strong> verteilt keine Aufgaben; der Product Owner entscheidet über den Inhalt.</p></div>
+
+</section>
+
+<section id="b9-original">
+  <h3>So hat die IHK gefragt</h3>
+
+  <article class="aufgabe" id="b9-original-1">
+    <p class="herkunft">AP1 Herbst 2024, Aufgabe 4.1, 6 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b9-q16" title="AP1 Herbst 2024">16</a></sup></p>
+    <div class="text">
+      <p>Ein Hersteller elektronischer Schließsysteme und Ausweise erstellt auch für interne Aufträge ein Lastenheft und ein Pflichtenheft. Erkläre den Zweck beider Dokumente und nenne zu jedem ein konkretes Beispiel für den Inhalt. Vorgegeben ist eine Tabelle mit den Spalten Lastenheft und Pflichtenheft und den Zeilen „Zweck“ und „Beispiel für möglichen Inhalt“.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <div class="tabelle"><table>
+          <caption>Antwort im Tabellenformat der Aufgabe</caption>
+          <tr><th></th><th>Lastenheft</th><th>Pflichtenheft</th></tr>
+          <tr><td>Zweck</td><td>Beschreibt die Gesamtheit der Anforderungen und Funktionen, die der Auftraggeber wünscht: was gebraucht wird und wofür. Grundlage für Angebot und Pflichtenheft.</td><td>Beschreibt, wie der Auftragnehmer die Anforderungen des Lastenhefts umsetzen will: Lösungsweg, Technik und die Leistungen, zu denen er sich verpflichtet.</td></tr>
+          <tr><td>Beispiel</td><td>Rahmenbedingung der Leistung, etwa eine Reaktionszeit; Einhaltung des Datenschutzes; Festlegung von Teilleistungen.</td><td>Ansprechpartner; Zeitrahmen; Testszenarien und Abnahmekriterien.</td></tr>
+        </table></div>
+        <p>Punkte: 6 insgesamt. Der Lösungshinweis teilt ausdrücklich auf: Zweck je 2 Punkte, Beispiel je 1 Punkt. Der Zweck ist also doppelt so viel wert wie das Beispiel und muss zwei Dinge enthalten: den Urheber (Auftraggeber gegen Auftragnehmer) und die Richtung (was und wofür gegen wie und womit). Ein Beispiel je Spalte genügt; ein zweites bringt nichts.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="b9-original-2">
+    <p class="herkunft">AP1 Herbst 2022, Aufgabe 1.3, 6 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b9-q17" title="AP1 Herbst 2022">17</a></sup></p>
+    <div class="text">
+      <p>Ein Verpackungshersteller will wegen gestiegener Nachfrage seine Produktion stärker automatisieren; das verändert auch die Produktionsarbeitsplätze. Eine Tabelle nennt sieben Projektschritte in dieser Reihenfolge: Projektinitiierung, Beschreibung des Istzustands, Definition des Sollkonzepts, Planung, Umsetzung, Überprüfung der Zielerreichung, Ausblick. Für den ersten Schritt ist als Beispiel „Problembereich feststellen“ eingetragen. Ergänze bei den sechs übrigen Schritten je einen nachvollziehbaren inhaltlichen Aspekt in Stichworten.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p>Istzustand: Schwächen des bisherigen Produktionsablaufs erfassen, etwa Handarbeit an Engpassstellen. Sollkonzept: Ziel des verbesserten Ablaufs festlegen, etwa Durchsatz je Schicht und automatische Nachbestellung. Planung: Phasen, Termine und Ressourcen festlegen, Netzplan aufstellen. Umsetzung: den veränderten Ablauf einführen, Anlagen installieren, Personal einweisen. Überprüfung der Zielerreichung: Wirkung der Änderung messen, Soll gegen Ist vergleichen. Ausblick: weitere Optimierungsmöglichkeiten festhalten, nächste Ausbaustufe.</p>
+        <p>Punkte: 6 insgesamt, je Schritt 1 Punkt. Der Lösungshinweis nennt je Zeile ein Beispiel ohne weitere Teilpunkte. Ein Stichwort je Zeile genügt, aber es muss zum Schritt passen: Beim Istzustand wird nichts geplant, bei der Umsetzung nichts geprüft. Der vorgegebene erste Schritt zählt nicht mit.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="b9-original-3">
+    <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 1.4, 6 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b9-q18" title="AP1 Frühjahr 2022">18</a></sup></p>
+    <div class="text">
+      <p>Ein Systemhaus soll einem Hersteller von Bauteilen für die E-Mobilität ein Angebot für die Neuorganisation der Verwaltung und der IT-Gesamtkonzeption erstellen. Eine Tabelle nennt Informationen, die dafür gebraucht werden. Als Beispiel ist „Räumliche Gegebenheiten“ eingetragen mit der Erläuterung, dass Entfernungen bestimmt werden, um den logistischen Aufwand abzuschätzen. Schildere entsprechend, warum das Lastenheft, der geplante Zeitrahmen und die Ergebnisse der Ist-Analyse für das Angebot benötigt werden.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p>Lastenheft: beschreibt alle vom Kunden gewünschten Anforderungen; damit steht der Leistungsumfang fest, und das Angebot kann kalkuliert werden. Geplanter Zeitrahmen: legt Beginn und Ende fest; danach werden Personal, Material und Subunternehmer rechtzeitig bereitgestellt und der Liefertermin im Angebot zugesagt. Ergebnisse der Ist-Analyse: legen die Ausgangslage fest; erst wenn bekannt ist, was vorhanden ist und was ersetzt werden muss, lässt sich der Aufwand bestimmen.</p>
+        <p>Punkte: 6 insgesamt, 2 Punkte je Zeile. Die Musterantworten sind je einen Satz lang. Trotzdem stecken zwei Teile darin: was die Information enthält und welche Wirkung sie auf das Angebot hat. Fehlt die Wirkung, bleibt es beim Nennen, und die Zeile ist nur halb beantwortet.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<section id="b9-variante">
+  <h3>Jetzt du</h3>
+
+  <article class="aufgabe" id="b9-variante-1">
+    <p class="herkunft">Variante zu Aufgabe 4.1 (Herbst 2024)</p>
+    <div class="text">
+      <p>Eine Zahnarztpraxis lässt von deinem Systemhaus ein Dokumentenmanagementsystem einführen. Die Praxisleitung fragt, warum sie ein Lastenheft schreiben soll, wenn das Systemhaus doch ein Pflichtenheft liefert. Erkläre den Zweck beider Dokumente und nenne je ein Beispiel für den Inhalt, bezogen auf die Praxis.</p>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p>Lastenheft, Zweck: Die Praxis beschreibt darin alle Anforderungen an das System, was es leisten soll und wofür; ohne diese Vorgabe kann das Systemhaus weder planen noch kalkulieren. Beispiel: „Befunde und Röntgenbilder müssen dem Patienten zugeordnet und unveränderbar abgelegt werden; nur Behandler dürfen sie öffnen.“</p>
+        <p>Pflichtenheft, Zweck: Das Systemhaus beschreibt darin, wie und womit es diese Anforderungen umsetzt, und verpflichtet sich zu diesen Leistungen. Beispiel: „Dokumentenserver mit gespiegelten Platten, Scanner an beiden Empfangsplätzen, Rollenkonzept mit drei Rechtestufen, Testplan mit Abnahmekriterien, Schulungstermin für das Praxisteam.“</p>
+        <p>Antwortformat wie im Original: Zweck mit Urheber und Richtung, dazu ein konkretes Beispiel je Heft. Das Beispiel muss zur Spalte passen: Technik gehört rechts hin, Wünsche links.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="b9-variante-2">
+    <p class="herkunft">Variante zu Aufgabe 1.3 (Herbst 2022)</p>
+    <div class="text">
+      <p>Ein Autohaus stellt seine Telefonanlage auf Internettelefonie (Voice over IP) um. Die Projektschritte lauten wie in der Prüfung; bei der Projektinitiierung ist „Wartungsvertrag der alten Anlage läuft aus“ eingetragen. Ergänze für die sechs übrigen Schritte je einen inhaltlichen Aspekt in Stichworten.</p>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p>Istzustand: 24 analoge Nebenstellen, ISDN-Anschluss, häufige Ausfälle dokumentieren. Sollkonzept: Ziel festlegen, etwa jeder Arbeitsplatz erreichbar, Weiterleitung ins Homeoffice, Rufnummern bleiben. Planung: Phasen, Termine, Netzplan, Rufnummernportierung terminieren. Umsetzung: Telefone und Switches installieren, Rufnummern portieren, Personal einweisen. Überprüfung der Zielerreichung: Testanrufe, Gesprächsqualität und Ausfälle mit dem Istzustand vergleichen. Ausblick: Anbindung an die Kundendatenbank, Videokonferenzen.</p>
+        <p>Je Schritt ein passendes Stichwort, sechs Stichworte, sechs Punkte. Prüfe jede Zeile: Steht dort wirklich Inhalt dieses Schritts und nicht des vorherigen?</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="b9-variante-3">
+    <p class="herkunft">Variante zu Aufgabe 1.4 (Frühjahr 2022)</p>
+    <div class="text">
+      <p>Eine Anwaltskanzlei mit 18 Arbeitsplätzen bittet dein Systemhaus um ein Angebot für einen neuen Server samt Datensicherung. Erläutere, warum die drei Informationen Anzahl und Art der Arbeitsplätze, bestehende Lizenzen und Verträge sowie gewünschter Termin der Inbetriebnahme für das Angebot benötigt werden.</p>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p>Anzahl und Art der Arbeitsplätze: bestimmen die Größe von Server, Speicher und Lizenzen; daraus entsteht das Mengengerüst für die Kalkulation. Bestehende Lizenzen und Verträge: zeigen, was weitergenutzt werden kann und wann Kündigungsfristen enden; das vermeidet Doppelkäufe und legt den Leistungsumfang fest. Gewünschter Termin: bestimmt, bis wann Personal und Material bereitstehen müssen und ob Lieferzeiten reichen; daraus folgt der zugesagte Liefertermin im Angebot.</p>
+        <p>Zwei Punkte je Zeile: erst, was die Information enthält, dann, was sie für das Angebot bewirkt.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<section id="b9-selbstcheck">
+  <h3>Selbstcheck</h3>
+  <ol class="selbstcheck">
+    <li>Nenne vier Merkmale eines Projekts.
+      <details><summary>Antwort</summary><div class="inhalt"><p>Zielvorgabe, zeitliche Begrenzung, begrenzte Ressourcen (Personal, Geld), Einmaligkeit. Ebenfalls anerkannt: projektspezifische Organisation, Komplexität. Vier hinschreiben, nicht sechs.</p></div></details>
+    </li>
+    <li>Vervollständige SMART: S steht für spezifisch. Was bedeuten M, A, R und T?
+      <details><summary>Antwort</summary><div class="inhalt"><p>M messbar (measurable), A akzeptiert, erreichbar oder attraktiv (accepted, attainable, attractive), R realistisch (realistic), T terminiert (time-bound). Je Buchstabe ein Punkt.</p></div></details>
+    </li>
+    <li>Nenne drei Methoden, mit denen du den Bedarf eines Kunden ermittelst.
+      <details><summary>Antwort</summary><div class="inhalt"><p>Interview, schriftliche Befragung (online oder auf Papier), Fokusgruppe. Ebenfalls anerkannt: Auswertung von Beschwerden, Medienanalyse. Wie du das Gespräch führst, steht in <a href="#b10">B10</a>.</p></div></details>
+    </li>
+    <li>Nenne zwei Vorteile und zwei Nachteile, wenn ein externer Projektberater einbezogen wird.
+      <details><summary>Antwort</summary><div class="inhalt"><p>Vorteile: Spezialwissen und Erfahrung, Entlastung des eigenen Personals, bessere Risikoeinschätzung. Nachteile: zusätzliche Kosten, Wissen bleibt außerhalb des Unternehmens, Abhängigkeit, fehlende Kenntnis interner Abläufe, zusätzlicher Datenschutz- und Zutrittsaufwand.</p></div></details>
+    </li>
+    <li>Bringe die Phasen des Datenbankentwurfs in die richtige Reihenfolge: Test, Verteilung im Netz, logischer Entwurf, konzeptioneller Entwurf, Anwendung und Wartung, physischer Entwurf.
+      <details><summary>Antwort</summary><div class="inhalt"><p>Anforderungsanalyse, konzeptioneller Entwurf, logischer Entwurf, Verteilung im Netz, physischer Entwurf, Test, Anwendung und Wartung. Erst was gebraucht wird, dann das fachliche Modell, dann das relationale, dann die Umsetzung.</p></div></details>
+    </li>
+  </ol>
+</section>
+
+<section id="b9-begriffe">
+  <h3>Begriffe zum Nachschlagen</h3>
+  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <details><summary>Begriffe aufklappen (10 Karten)</summary><div class="inhalt">
+<nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b9-begriff-projekt">Projekt und magisches Dreieck</a><a href="#b9-begriff-stakeholder">Stakeholder, Kick-off und Meilenstein</a><a href="#b9-begriff-lastenheft">Lastenheft und Pflichtenheft</a><a href="#b9-begriff-anforderung">Anforderungen: funktional, nicht-funktional, Muss, Soll, Kann</a><a href="#b9-begriff-smart">SMART</a><a href="#b9-begriff-wasserfall">Wasserfallmodell und V-Modell</a><a href="#b9-begriff-scrum">Scrum</a><a href="#b9-begriff-kanban">Kanban</a><a href="#b9-begriff-teamphasen">Teamphasen nach Tuckman</a><a href="#b9-begriff-abnahme">Abnahme, Test und PDCA</a></nav>
+
+  <dl class="begriff" id="b9-begriff-projekt">
+    <dt>Projekt und magisches Dreieck <span class="en">(project, triple constraint)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein Projekt ist ein Vorhaben, das durch die Einmaligkeit seiner Bedingungen gekennzeichnet ist: eine Zielvorgabe, eine zeitliche, finanzielle und personelle Begrenzung und eine eigene Organisation.<sup class="q"><a href="#b9-q1" title="DIN 69901-5, Begriff Projekt">1</a></sup> Seine drei Zielgrößen Qualität (Leistung), Zeit und Kosten hängen voneinander ab; die gebräuchliche Bezeichnung dafür ist das magische Dreieck.<sup class="q"><a href="#b9-q2" title="Gabler Wirtschaftslexikon: Projektziele qualitativ, termingerecht, im Kostenrahmen">2</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Der Umzug einer Arztpraxis ist ein Projekt: fester Termin, festes Budget, ein Team aus Kunde und Systemhaus, das es so nur einmal gibt. Der tägliche Ticketdienst ist keins.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Projekt wird mit Prozess verwechselt. Der Prozess wiederholt sich, das Projekt endet. Beim Dreieck gilt: Ziehst du an einer Ecke, bewegen sich die anderen. Schneller heißt teurer oder weniger Umfang.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>„Nennen Sie vier Merkmale eines Projekts“ (Herbst 2021, 4 P, je Merkmal 1 P). Schreibe genau vier; die fünfte Angabe wird nicht bewertet.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="b9-begriff-stakeholder">
+    <dt>Stakeholder, Kick-off und Meilenstein</dt>
+    <dd><span class="label">Was es ist</span><p>Stakeholder sind Personen oder Gruppen mit berechtigtem Interesse am Verlauf oder Ergebnis eines Projekts. Ein Meilenstein ist ein Ereignis besonderer Bedeutung im Projektablauf, ohne eigene Dauer.<sup class="q"><a href="#b9-q1" title="DIN 69901-5, Begriffe Stakeholder und Meilenstein">1</a></sup> Der Kick-off ist die Startsitzung, in der Auftraggeber und Team Ziel, Rollen, Termine und Regeln der Zusammenarbeit festlegen.</p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Beim Praxisumzug sind Ärztin, Personal, Patienten, Vermieter und Netzbetreiber Stakeholder. Meilensteine: Vertrag unterschrieben, Verkabelung abgenommen, erster Behandlungstag am neuen Standort.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Stakeholder ist mehr als der Kunde: Wer betroffen ist, zählt, auch ohne Vertrag. Der Meilenstein ist kein Vorgang; wie er im Netzplan steht, zeigt <a href="#a6">A6</a>.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>„Beschreiben Sie drei Stakeholdergruppen und ihren Einfluss“ (Herbst 2022, 3 P): Gruppe nennen und sagen, worauf sie wirkt, etwa Anteilseigner auf die Finanzierung, Beschäftigte auf die Akzeptanz, Lieferanten auf die Machbarkeit.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="b9-begriff-lastenheft">
+    <dt>Lastenheft und Pflichtenheft <span class="en">(requirements specification, functional specification)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Das Lastenheft enthält die Gesamtheit der Anforderungen des Auftraggebers an Lieferungen und Leistungen: was gebraucht wird und wofür. Das Pflichtenheft ist die Antwort des Auftragnehmers: wie und womit er diese Anforderungen umsetzt.<sup class="q"><a href="#b9-q3" title="VDI 2519 Blatt 1: Lastenheft und Pflichtenheft">3</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Die Kanzlei schreibt: „Jede Akte muss in drei Sekunden am Bildschirm sein.“ Dein Pflichtenheft antwortet: Dokumentenserver mit SSD, Volltextindex, zwei Scanner am Empfang, Testplan, Abnahmekriterien.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Die Last trägt der Kunde, die Pflicht übernimmt der Lieferant. Der Inhalt verrät den Urheber: Ziele und Rahmen stehen im Lastenheft, Technik und Lösungsweg im Pflichtenheft. Reihenfolge: erst Lasten-, dann Pflichtenheft.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Fünfmal in sechs Prüfungen gefragt. Erwartet werden Urheber, Inhalt und Zweck je Heft (Herbst 2024: Zweck 2 P, Beispiel 1 P) oder eine Liste von Lastenheft-Inhalten mit je 1 P.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="b9-begriff-anforderung">
+    <dt>Anforderungen: funktional, nicht-funktional, Muss, Soll, Kann</dt>
+    <dd><span class="label">Was es ist</span><p>Funktionale Anforderungen beschreiben, was ein System tun soll; nicht-funktionale Anforderungen beschreiben, wie gut es das tut, etwa Leistung, Sicherheit, Bedienbarkeit.<sup class="q"><a href="#b9-q4" title="V-Modell XT, Produkt Anforderungen (Lastenheft): funktionale und nicht-funktionale Anforderungen">4</a></sup> Die Abstufung Muss, Soll, Kann folgt den Schlüsselwörtern MUST, SHOULD, MAY: Pflicht, Empfehlung mit begründeter Ausnahme, Option.<sup class="q"><a href="#b9-q5" title="RFC 2119, Abschnitte 1, 3 und 5">5</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>„Das System speichert Rechnungen als PDF“ ist funktional. „Die Suche antwortet in unter zwei Sekunden“ ist nicht-funktional. Ein nicht erfülltes Muss-Kriterium scheidet den Anbieter aus, ein Kann-Kriterium ist ein Bonus.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Funktional fragt „was“, nicht-funktional fragt „wie gut“. Das Muss-Kriterium entspricht dem K.-o.-Kriterium der Nutzwertanalyse in <a href="#a3">A3</a>; Soll wird gewichtet, Kann entscheidet bei Gleichstand.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Meist als Inhalt des Lastenhefts („funktionale Anforderungen“, Herbst 2021) oder als Zuordnung von Beispielsätzen. Nenne bei einer nicht-funktionalen Anforderung immer die Messgröße.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="b9-begriff-smart">
+    <dt>SMART</dt>
+    <dd><span class="label">Was es ist</span><p>Ein Ziel ist SMART, wenn es spezifisch (specific), messbar (measurable), erreichbar oder akzeptiert (attainable, accepted), realistisch (realistic) und terminiert (time-bound) ist.<sup class="q"><a href="#b9-q6" title="Doran 1981: S.M.A.R.T.-Kriterien">6</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Nicht „Der Server soll schneller werden“, sondern: „Bis zum 30.&nbsp;Juni startet die Warenwirtschaft auf allen zwölf Arbeitsplätzen in unter zehn Sekunden.“</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>SMART prüft die Formulierung des Ziels, nicht seinen Inhalt. Für das A lässt der Lösungshinweis drei Wörter zu: akzeptiert, erreichbar, attraktiv. Ohne Termin ist kein Ziel SMART.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>„Vervollständigen Sie die SMART-Kriterien“ (Herbst 2021, 4 P, je Buchstabe 1 P), deutsch oder englisch. Schreibe zu jedem Buchstaben Wort und Bedeutung, dann bist du auf beiden Wegen sicher.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="b9-begriff-wasserfall">
+    <dt>Wasserfallmodell und V-Modell</dt>
+    <dd><span class="label">Was es ist</span><p>Das Wasserfallmodell ordnet die Phasen Anforderungen, Entwurf, Umsetzung, Test und Betrieb streng nacheinander; jede Phase endet mit einem Dokument, das die nächste freigibt.<sup class="q"><a href="#b9-q7" title="Royce 1970: sequenzielles Phasenmodell">7</a></sup> Das V-Modell stellt jeder Spezifikationsstufe eine Teststufe gegenüber: Anforderungen werden im Abnahmetest geprüft, der Systementwurf im Systemtest.<sup class="q"><a href="#b9-q4" title="V-Modell XT: Zuordnung von Spezifikations- und Teststufen">4</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Eine Verkabelung planst du im Wasserfall: erst Aufmaß, dann Plan, dann Bau. Eine Dose nachträglich zu versetzen kostet Putz und Zeit. Softwareprojekte mit unklaren Wünschen scheitern an dieser Starrheit.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Ein Wasserfall fließt nicht bergauf: Rücksprünge sind teuer. Das V ist ein geknickter Wasserfall, dessen rechter Schenkel prüft, was der linke festgelegt hat.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Gefragt als Reihenfolge („Ordnen Sie die Phasen“, Herbst 2023, je Feld 0,5 P) oder als Projektschritte mit Inhalt (Herbst 2022, je Schritt 1 P).</p></dd>
+  </dl>
+
+  <dl class="begriff" id="b9-begriff-scrum">
+    <dt>Scrum</dt>
+    <dd><span class="label">Was es ist</span><p>Scrum ist ein Rahmenwerk für iterative Entwicklung. Drei Verantwortlichkeiten: Product Owner (Wert und Product Backlog), Scrum Master (Wirksamkeit des Teams, Einhaltung von Scrum), Developers (Entwicklungsteam, erstellt das Inkrement). Drei Artefakte: Product Backlog, Sprint Backlog, Inkrement. Fünf Ereignisse: Sprint (höchstens ein Monat), Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospektive.<sup class="q"><a href="#b9-q8" title="Scrum Guide 2020: Scrum Team, Events, Artefakte">8</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Ein Kundenportal entsteht in Sprints von zwei Wochen. Nach jedem Sprint sieht der Kunde eine lauffähige Fassung und ordnet das Product Backlog neu.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Der Scrum Master ist kein Projektleiter und verteilt keine Aufgaben. Das Review zeigt das Produkt den Stakeholdern, die Retrospektive prüft die Zusammenarbeit im Team.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>In den ausgewerteten Prüfungen kam Scrum nicht als eigene Aufgabe vor. Rechne mit „Nennen und erläutern Sie drei Rollen“ oder „zwei Ereignisse“: Name plus Aufgabe, je 1 bis 2 P.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="b9-begriff-kanban">
+    <dt>Kanban</dt>
+    <dd><span class="label">Was es ist</span><p>Kanban steuert Arbeit über ein Board, das den Arbeitsfluss in Spalten sichtbar macht, und über eine Obergrenze für gleichzeitig begonnene Aufgaben (WIP-Limit, work in progress). Neue Arbeit wird gezogen, wenn Platz frei wird, nicht zugeteilt.<sup class="q"><a href="#b9-q9" title="Anderson 2010: Kanban-Prinzipien">9</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Das Ticketboard des Systemhauses: Spalten Neu, In Arbeit, Warten auf Kunde, Erledigt. In Arbeit stehen höchstens drei Tickets je Techniker.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Kanban hat keine Sprints, keine festen Rollen und keine Zeitbox; es begrenzt Menge, nicht Zeit. Scrum begrenzt Zeit. Beides ist agil, aber nur Scrum ist ein Rahmenwerk mit Ereignissen.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Wenn gefragt, dann als Vergleich mit Scrum oder als Erklärung des WIP-Limits: Es verhindert, dass viele Aufgaben halb fertig liegen bleiben.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="b9-begriff-teamphasen">
+    <dt>Teamphasen nach Tuckman</dt>
+    <dd><span class="label">Was es ist</span><p>Gruppen durchlaufen die Phasen Forming (Orientierung), Storming (Konflikt), Norming (Regeln und Zusammenhalt) und Performing (Leistung).<sup class="q"><a href="#b9-q10" title="Tuckman 1965: Developmental sequence in small groups">10</a></sup> Später wurde Adjourning (Auflösung) als fünfte Phase ergänzt.<sup class="q"><a href="#b9-q11" title="Tuckman und Jensen 1977: Stages of Small-Group Development Revisited">11</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Ein neu zusammengestelltes Umzugsteam ist in der ersten Woche höflich und unsicher, streitet in der zweiten über Zuständigkeiten und arbeitet ab der vierten eingespielt.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Storming ist kein Scheitern, sondern ein notwendiger Schritt; wer ihn unterdrückt, kommt nicht ins Norming. Die Phasen beschreiben das Team, nicht das Projekt.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>„Nennen Sie die Phasen der Teamentwicklung und je ein Merkmal“: Name plus Merkmal, je Phase 1 P. Die Reihenfolge zählt mit.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="b9-begriff-abnahme">
+    <dt>Abnahme, Test und PDCA</dt>
+    <dd><span class="label">Was es ist</span><p>Mit der Abnahme erkennt der Auftraggeber das Werk als vertragsgemäß hergestellt an; wegen unwesentlicher Mängel darf er sie nicht verweigern.<sup class="q"><a href="#b9-q14" title="§ 640 Abs. 1 BGB: Abnahme">14</a></sup> Davor wird geprüft: Unit-, Integrations-, System- und Abnahmetest als Stufen, Blackbox- und Whitebox-Test als Verfahren.<sup class="q"><a href="#b9-q13" title="ISTQB-Glossar: Teststufen und Testverfahren">13</a></sup> PDCA (Plan, Do, Check, Act) ist der Kreislauf der ständigen Verbesserung: planen, umsetzen, prüfen, nachbessern.<sup class="q"><a href="#b9-q12" title="BSI, Lerneinheit 2.1: PDCA-Zyklus nach Deming">12</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Nach der Verkabelung misst du jede Dose durch, der Kunde unterschreibt das Protokoll. Was schiefging, landet in der Planung des nächsten Projekts.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Abnahme ist ein Rechtsakt mit Unterschrift, kein Testlauf. Blackbox prüft von außen ohne Kenntnis des Codes, Whitebox mit. PDCA ist ein Kreis, kein Wasserfall. Vertragsfolgen der Abnahme stehen in <a href="#b11">B11</a>.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Abnahmekriterien sind ein Standardbeispiel für den Inhalt des Pflichtenhefts (Herbst 2024). PDCA wird als vier Schritte mit je einem Satz erwartet.</p></dd>
+  </dl>
+  </div></details>
+</section>
+
+<section id="b9-quellen">
+  <h3>Quellen dieses Kapitels</h3>
+  <ol class="quellenliste">
+    <li id="b9-q1" data-src="din-69901-5"><span class="typ">Norm</span> DIN Deutsches Institut für Normung e.&nbsp;V.: DIN 69901-5:2009-01 – Projektmanagement – Projektmanagementsysteme – Teil 5: Begriffe, Beuth Verlag, Berlin 2009. Fundstelle: Begriffe Projekt, Projektphase, Meilenstein, Stakeholder. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="b9-q2" data-src="gabler-projektmanagement"><span class="typ">Fachbuch</span> Hobel, B.; Schütte, S.: Projektmanagement (PM), in: Gabler Wirtschaftslexikon, Springer Fachmedien, Wiesbaden. Fundstelle: Projektziele qualitativ, termingerecht und im Kostenrahmen. <a href="https://wirtschaftslexikon.gabler.de/definition/projektmanagement-pm-46130">wirtschaftslexikon.gabler.de/definition/projektmanagement-pm-46130</a> <span class="abruf">(abgerufen 2026-09-06)</span></li>
+    <li id="b9-q3" data-src="vdi-2519"><span class="typ">Norm</span> Verein Deutscher Ingenieure: VDI-Richtlinie 2519 Blatt 1 – Vorgehensweise bei der Erstellung von Lastenheft und Pflichtenheft, VDI-Gesellschaft Produktion und Logistik, Düsseldorf 2001. Fundstelle: Lastenheft (Anforderungen des Auftraggebers), Pflichtenheft (Realisierungskonzept des Auftragnehmers). <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="b9-q4" data-src="cio-v-modell-xt"><span class="typ">Behörde</span> Bundesbeauftragter für Informationstechnik (CIO): V-Modell XT – Entwicklungsstandard des Bundes für IT-Systeme, Berlin. Fundstelle: Zuordnung von Spezifikations- und Teststufen; Produkt Anforderungen (Lastenheft) mit funktionalen und nicht-funktionalen Anforderungen. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="b9-q5" data-src="rfc-2119"><span class="typ">RFC</span> Bradner, S.: RFC 2119, Key words for use in RFCs to Indicate Requirement Levels, IETF 1997, Abschnitte 1, 3 und 5. <a href="https://www.rfc-editor.org/rfc/rfc2119">rfc-editor.org/rfc/rfc2119</a> <span class="abruf">(abgerufen 2026-09-06)</span></li>
+    <li id="b9-q6" data-src="doran-smart-1981"><span class="typ">Fachbuch</span> Doran, G. T.: There's a S.M.A.R.T. way to write management's goals and objectives, Management Review, Vol. 70, No. 11, 1981, S. 35–36. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="b9-q7" data-src="royce-wasserfall-1970"><span class="typ">Fachbuch</span> Royce, W. W.: Managing the development of large software systems: Concepts and techniques, Proceedings of IEEE WESCON, 1970, S. 1–9. Fundstelle: sequenzielles Phasenmodell mit Phasendokumenten. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="b9-q8" data-src="scrum-guide-2020"><span class="typ">Hersteller</span> Schwaber, K.; Sutherland, J.: Der Scrum Guide – Der verbindliche Leitfaden für Scrum: Die Spielregeln, 2020. Fundstelle: Scrum Team, Events, Artefakte. <a href="https://scrumguides.org/scrum-guide.html">scrumguides.org/scrum-guide.html</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="b9-q9" data-src="anderson-kanban-2010"><span class="typ">Fachbuch</span> Anderson, D. J.: Kanban: Successful Evolutionary Change for Your Technology Business, Blue Hole Press, Sequim 2010. Fundstelle: Arbeitsfluss visualisieren, Work in Progress begrenzen. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="b9-q10" data-src="tuckman-1965"><span class="typ">Fachbuch</span> Tuckman, B. W.: Developmental sequence in small groups, Psychological Bulletin, Vol. 63, No. 6, 1965, S. 384–399. Fundstelle: Forming, Storming, Norming, Performing. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="b9-q11" data-src="tuckman-jensen-1977"><span class="typ">Fachbuch</span> Tuckman, B. W.; Jensen, M. A. C.: Stages of Small-Group Development Revisited, Group &amp; Organization Studies, Vol. 2, No. 4, 1977, S. 419–427. Fundstelle: fünfte Phase Adjourning. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="b9-q12" data-src="bsi-grundschutz-sicherheitsprozess"><span class="typ">Behörde</span> BSI: Online-Kurs IT-Grundschutz, Lerneinheit 2.1: Der Sicherheitsprozess, Bundesamt für Sicherheit in der Informationstechnik, Bonn. Fundstelle: PDCA-Zyklus nach Deming. <a href="https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/IT-Grundschutz/Zertifizierte-Informationssicherheit/IT-Grundschutzschulung/Online-Kurs-IT-Grundschutz/Lektion_2_Sicherheitsmanagement/Lektion_2_01/Lektion_2_01_node.html">bsi.bund.de, Online-Kurs IT-Grundschutz, Lerneinheit 2.1</a> <span class="abruf">(abgerufen 2026-09-06)</span></li>
+    <li id="b9-q13" data-src="istqb-glossar"><span class="typ">Fachbuch</span> International Software Testing Qualifications Board (ISTQB): Standard Glossar der Testbegriffe im Software-Testing. Fundstelle: Teststufen (Unit-, Integrations-, System-, Abnahmetest), Testverfahren (Blackbox, Whitebox). <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="b9-q14" data-src="bgb-werkvertrag"><span class="typ">Gesetz</span> Bürgerliches Gesetzbuch (BGB) in der Fassung der Bekanntmachung vom 2. Januar 2002 (BGBl. I S. 42), § 631 und § 640 (Werkvertrag, Abnahme). <a href="https://www.gesetze-im-internet.de/bgb/__631.html">gesetze-im-internet.de/bgb/__631.html</a> <span class="abruf">(abgerufen 2026-09-03)</span></li>
+    <li id="b9-q15" data-src="ihk-korrekturhinweise"><span class="typ">IHK-Konvention</span> ZPA Nord-West: Deckblatt-Bearbeitungshinweise 1 bis 10 und Allgemeine Korrekturhinweise zur AP1, Aufgabensätze und Lösungshinweise. Fundstelle: Hinweis 4 (nur die geforderte Anzahl wird bewertet), Hinweis 6 (Stichworte zulässig), Dimension der Aufgabenstellung. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="b9-q16" data-src="ihk-ap1-h2024"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Herbst 2024, Teil 1: Einrichten eines IT-gestützten Arbeitsplatzes, Aufgabe 4.1 (lokale Datei).</li>
+    <li id="b9-q17" data-src="ihk-ap1-h2022"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Herbst 2022, Teil 1: Einrichten eines IT-gestützten Arbeitsplatzes, Aufgaben 1.3 bis 1.5 (lokale Datei).</li>
+    <li id="b9-q18" data-src="ihk-ap1-f2022"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Frühjahr 2022, Teil 1: Einrichten eines IT-gestützten Arbeitsplatzes, Aufgaben 1.4 und 1.5 (lokale Datei).</li>
+    <li id="b9-q19" data-src="ihk-ap1-h2021"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Herbst 2021, Teil 1: Einrichten eines IT-gestützten Arbeitsplatzes, Aufgaben 1.1, 1.2 und 3.1 (lokale Datei).</li>
+    <li id="b9-q20" data-src="ihk-ap1-f2023"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Frühjahr 2023, Teil 1: Einrichten eines IT-gestützten Arbeitsplatzes, Aufgaben 4.2 und 4.3 (lokale Datei).</li>
+    <li id="b9-q21" data-src="ihk-ap1-h2023"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Herbst 2023, Teil 1: Einrichten eines IT-gestützten Arbeitsplatzes, Aufgaben 1.4 und 4.2 (lokale Datei).</li>
+  </ol>
+</section>
+
+</section>

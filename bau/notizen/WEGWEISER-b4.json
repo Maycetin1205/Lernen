@@ -2,80 +2,93 @@
  {
   "pruefung": "F22",
   "nr": "2.1",
-  "ziel": "b4-k8",
-  "hinweis": ""
+  "ziel": "b4-ihk-f22-2-1",
+  "hinweis": "",
+  "lektion": "b4-k8"
  },
  {
   "pruefung": "F22",
   "nr": "2.2",
-  "ziel": "b4-k8",
-  "hinweis": ""
+  "ziel": "b4-ihk-f22-2-2",
+  "hinweis": "",
+  "lektion": "b4-k8"
  },
  {
   "pruefung": "F22",
   "nr": "2.3",
-  "ziel": "b4-k9",
-  "hinweis": ""
+  "ziel": "b4-ihk-f22-2-3",
+  "hinweis": "",
+  "lektion": "b4-k9"
  },
  {
   "pruefung": "F22",
   "nr": "2.4",
-  "ziel": "b4-k4",
-  "hinweis": "Dual-Channel-Absatz mit der Belegung A1+B1 oder A2+B2 aus dem Heft"
+  "ziel": "b4-ihk-f22-2-4",
+  "hinweis": "Dual-Channel-Absatz mit der Belegung A1+B1 oder A2+B2 aus dem Heft",
+  "lektion": "b4-k4"
  },
  {
   "pruefung": "F22",
   "nr": "2.5",
-  "ziel": "b4-k7",
-  "hinweis": ""
+  "ziel": "b4-ihk-f22-2-5",
+  "hinweis": "",
+  "lektion": "b4-k7"
  },
  {
   "pruefung": "F22",
   "nr": "2.6",
-  "ziel": "b4-k2",
-  "hinweis": "DVI jetzt im Text und in Abb. B4-5"
+  "ziel": "b4-ihk-f22-2-6",
+  "hinweis": "DVI jetzt im Text und in Abb. B4-5",
+  "lektion": "b4-k2"
  },
  {
   "pruefung": "F22",
   "nr": "2.7",
-  "ziel": "b4-k14",
-  "hinweis": "Eigener Abschnitt BIOS FlashBack"
+  "ziel": "b4-ihk-f22-2-7",
+  "hinweis": "Eigener Abschnitt BIOS FlashBack",
+  "lektion": "b4-k14"
  },
  {
   "pruefung": "F22",
   "nr": "2.8",
-  "ziel": "b4-k2",
-  "hinweis": ""
+  "ziel": "b4-ihk-f22-2-8",
+  "hinweis": "",
+  "lektion": "b4-k2"
  },
  {
   "pruefung": "F22",
   "nr": "2.9",
-  "ziel": "b4-k10",
-  "hinweis": ""
+  "ziel": "b4-ihk-f22-2-9",
+  "hinweis": "",
+  "lektion": "b4-k10"
  },
  {
   "pruefung": "F22",
   "nr": "2.10",
-  "ziel": "b4-k13",
-  "hinweis": "Cache im Baustein 1 mit Abb. B4-1"
+  "ziel": "b4-ihk-f22-2-10",
+  "hinweis": "Cache im Baustein 1 mit Abb. B4-1",
+  "lektion": "b4-k13"
  },
  {
   "pruefung": "H22",
   "nr": "2.8",
-  "ziel": "b4-k15",
-  "hinweis": "Eigener Abschnitt Barcode/QR/RFID mit der Hefttabelle"
+  "ziel": "b4-ihk-h22-2-8",
+  "hinweis": "Eigener Abschnitt Barcode/QR/RFID mit der Hefttabelle",
+  "lektion": "b4-k15"
  },
  {
   "pruefung": "F23",
   "nr": "1.1",
-  "ziel": "b4-k12",
-  "hinweis": "Abb. B4-7 jetzt mit All-in-One-PC statt Tablet"
+  "ziel": "b4-ihk-f23-1-1",
+  "hinweis": "Abb. B4-7 jetzt mit All-in-One-PC statt Tablet",
+  "lektion": "b4-k12"
  },
  {
   "pruefung": "F24",
   "nr": "1.4",
-  "ziel": "b4-k2",
-  "hinweis": "DVI jetzt im Text und in Abb. B4-5"
+  "ziel": "b4-ihk-f24-1-4",
+  "hinweis": "DVI jetzt im Text und in Abb. B4-5",
+  "lektion": "b4-k2"
  },
  {
   "pruefung": "H24",

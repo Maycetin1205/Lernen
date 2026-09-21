@@ -1,0 +1,112 @@
+[
+ {
+  "pruefung": "F22",
+  "nr": "3.5",
+  "ziel": "a1-k10",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "3.6",
+  "ziel": "a1-k9",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "3.7",
+  "ziel": "a1-k8",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F22",
+  "nr": "3.8",
+  "ziel": "a1-k5",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H22",
+  "nr": "3.1",
+  "ziel": "a1-k12",
+  "hinweis": "IPv6-Vorteile im Baustein IPv6 verstehen"
+ },
+ {
+  "pruefung": "H22",
+  "nr": "3.2",
+  "ziel": "a1-k12",
+  "hinweis": "Standortpraefix und Teilnetz-ID mit Abb. A1-9 und der Loesung 2001:0da8:5f2d / 0028"
+ },
+ {
+  "pruefung": "H22",
+  "nr": "3.3",
+  "ziel": "a1-k12",
+  "hinweis": "2^16 = 65.536 Teilnetze im Baustein IPv6 verstehen"
+ },
+ {
+  "pruefung": "H22",
+  "nr": "3.4",
+  "ziel": "a1-k13",
+  "hinweis": "Netzbild-Adressen und Gateway im Abschnitt IPv6 im Netzbild"
+ },
+ {
+  "pruefung": "H22",
+  "nr": "3.5",
+  "ziel": "a1-k13",
+  "hinweis": "ping ::1 und ping Gateway im Abschnitt IPv6 im Netzbild"
+ },
+ {
+  "pruefung": "H22",
+  "nr": "3.6",
+  "ziel": "a1-k13",
+  "hinweis": "Link-Local fe80:: automatisch gebildet"
+ },
+ {
+  "pruefung": "F24",
+  "nr": "2.3",
+  "ziel": "a1-k12",
+  "hinweis": "Ausschreiben, 128 Bit, /64 und Interface-ID am Beispiel der Aufgabe"
+ },
+ {
+  "pruefung": "F24",
+  "nr": "2.4",
+  "ziel": "a1-k8",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F24",
+  "nr": "2.7",
+  "ziel": "a1-k10",
+  "hinweis": "Absatz zur Zuordnung von IP- und MAC-Adresse aus ipconfig"
+ },
+ {
+  "pruefung": "H24",
+  "nr": "1.4",
+  "ziel": "a1-k8",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H24",
+  "nr": "1.5",
+  "ziel": "a1-original-1",
+  "hinweis": "",
+  "lektion": "a1-k7"
+ },
+ {
+  "pruefung": "H24",
+  "nr": "1.7",
+  "ziel": "a1-k10",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F25",
+  "nr": "1.6",
+  "ziel": "a1-k7",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H25",
+  "nr": "3.7",
+  "ziel": "a1-original-2",
+  "hinweis": "",
+  "lektion": "a1-k5"
+ }
+]

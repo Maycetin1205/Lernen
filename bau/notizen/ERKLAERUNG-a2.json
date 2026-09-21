@@ -1,0 +1,139 @@
+{
+"a2-ihk-h21-3-2": {
+ "denkweg": [
+  "Kosten sind immer Menge mal Preis. Suche die Menge und den Preis im Text.",
+  "Menge: 20 Postfächer, jedes braucht 2 Stunden, also 20 · 2 = 40 Stunden Arbeit.",
+  "Preis: 130 EUR je Stunde. 40 · 130 = 5.200 EUR.",
+  "Die Öffnungszeiten (18 bis 8 Uhr) stehen nur da, um dich zu beschäftigen. Für die Kosten brauchst du sie nicht. Lies die Frage: Gesamtkosten. Nur das."
+ ],
+ "mitnehmen": "Kosten = Stunden · Stundensatz. Stunden = Anzahl · Dauer je Stück. Zahlen, die die Frage nicht braucht, sind Köder."
+},
+"a2-ihk-h21-3-3": {
+ "denkweg": [
+  "Gesamtarbeit kennst du aus 3.2: 40 Stunden.",
+  "Ein Mensch schafft 8 Stunden am Tag. 40 / 8 = 5 Arbeitstage für einen allein.",
+  "Zwei Leute arbeiten gleichzeitig, also halbiert sich die Zeit: 5 / 2 = 2,5 Tage.",
+  "Einen halben Tag gibt es im Kalender nicht, darum ließ die IHK auch 3 Tage gelten. Schreib die Rechnung hin und sag, was du rundest."
+ ],
+ "mitnehmen": "Dauer = Gesamtstunden / (Stunden je Tag · Anzahl Leute). Wenn eine krumme Zahl herauskommt, Rundung begründen."
+},
+"a2-ihk-f22-4-3": {
+ "denkweg": [
+  "Zwei Wege, dieselbe Zeit (zehn Jahre): selbst bauen oder Lizenzen kaufen. Rechne erst aus, was Selbstbauen über zehn Jahre insgesamt kostet.",
+  "Entwicklung: 12.000 Stunden · 75 EUR = 900.000 EUR, einmalig.",
+  "Wartung: 140 Stunden je Jahr · 10 Jahre · 75 EUR = 105.000 EUR.",
+  "Zusammen 1.005.000 EUR für zehn Jahre. Je Jahr sind das 100.500 EUR.",
+  "Lizenzen kosten 25 EUR je Stück und Jahr. Wie viele Lizenzen kosten je Jahr genauso viel? 100.500 / 25 = 4.020. Bei 4.020 Lizenzen sind beide Wege gleich teuer, ab da ist Selbstbauen günstiger.",
+  "Das ist eine Gewinnschwelle (Break-even), nur in Stück statt in Zeit: Fixe Kosten der Eigenentwicklung geteilt durch Kosten je Lizenz."
+ ],
+ "mitnehmen": "Eigenbau gegen Kauf: alle Eigenkosten über den Zeitraum summieren, durch den Vergleichspreis je Stück teilen. Das Ergebnis ist die Stückzahl, ab der Eigenbau sich lohnt."
+},
+"a2-ihk-h22-1-6": {
+ "denkweg": [
+  "Ein Stundensatz ist: Was kostet der Mensch im Jahr, geteilt durch die Stunden, die er wirklich arbeitet.",
+  "Wie viele Tage arbeitet er wirklich? 260 Tage minus 30 Urlaub minus 5 krank minus 5 Feiertage = 220 Tage. Nur an denen entsteht Leistung.",
+  "Stunden im Jahr: 220 · 7,8 = 1.716 Stunden.",
+  "140.000 EUR / 1.716 Stunden = 81,59 EUR je Stunde.",
+  "Vergleich: intern 81,59 EUR, extern 85 EUR. Intern ist knapp günstiger. Das Wort 'effektiv' heißt genau das: nur die tatsächlich geleisteten Stunden zählen."
+ ],
+ "mitnehmen": "Effektiver Stundensatz = Jahreskosten / (tatsächliche Arbeitstage · Stunden je Tag). Urlaub, Krankheit und Feiertage immer erst abziehen."
+},
+"a2-ihk-f23-2-1": {
+ "denkweg": [
+  "Die Tabelle ist eine Treppe von oben nach unten. Du gehst sie je Anbieter Zeile für Zeile durch: Listenpreis, minus Rabatt, gleich Zieleinkaufspreis, minus Skonto, gleich Bareinkaufspreis, plus Bezugskosten, gleich Bezugspreis.",
+  "Rabatt: Prozent vom Listenpreis. Tech-ware: 1.071 · 20 % = 214,20 EUR. Abziehen: 856,80 EUR Zieleinkaufspreis.",
+  "Skonto: Prozent vom Zieleinkaufspreis, nicht vom Listenpreis. 856,80 · 2 % = 17,14 EUR. Abziehen: 839,66 EUR Bareinkaufspreis. Bei den anderen beiden ist Rabatt und Skonto 0, da bleibt der Preis stehen.",
+  "Bezugskosten: Wer zahlt den Transport? Das sagt die Lieferbedingung. 'frei Haus': Verkäufer zahlt alles, für dich 0 EUR. 'frachtfrei': Verkäufer zahlt bis zur Entladestation, du zahlst nur das letzte Rollgeld, 55 EUR je 100 Stück = 0,55 EUR je Stück. 'ab Werk': du zahlst alles, 45 + 100 + 55 = 200 EUR je 100 Stück = 2,00 EUR je Stück.",
+  "Bezugskosten dazuzählen: 886,86 EUR, 901,25 EUR, 841,66 EUR. Jedes gefüllte Feld ist ein Punkt, also lohnt sich jede Zeile, auch wenn eine spätere falsch ist."
+ ],
+ "mitnehmen": "Bezugskalkulation ist eine Treppe: Listenpreis minus Rabatt minus Skonto plus Bezugskosten. Skonto immer vom schon rabattierten Preis. Lieferbedingung sagt, welchen Teil des Transports du zahlst."
+},
+"a2-ihk-f23-2-2": {
+ "denkweg": [
+  "Der Bezugspreis ist nur eine Zahl. Frage dich: Was kann bei einem billigen Lieferanten schiefgehen, das später Geld kostet?",
+  "Er liefert zu spät oder unzuverlässig. Er hat schlechten Service. Viele Geräte sind kaputt (Reklamationen). Er ist bei Problemen nicht kulant. Vielleicht sitzt er weit weg oder hat kurze Garantie.",
+  "Drei davon in je einem Stichwort nennen. Jeder Grund muss etwas sein, das dem Käufer nützt, nicht nur 'ist sympathischer'."
+ ],
+ "mitnehmen": "Lieferantenwahl ist nie nur Preis: Zuverlässigkeit, Lieferzeit, Qualität, Service, Garantie, Kulanz. Drei davon kannst du immer nennen."
+},
+"a2-ihk-f23-2-4": {
+ "denkweg": [
+  "Kauf: einmal 300.000 EUR, fertig.",
+  "Leasing: monatliche Rate über die ganze Laufzeit. Erst die Monate zählen: 5 Jahre · 12 = 60 Monate.",
+  "60 · 6.000 EUR = 360.000 EUR Gesamtkosten Leasing.",
+  "Differenz: 360.000 minus 300.000 = 60.000 EUR. Leasing ist um 60.000 EUR teurer. Schreib den Satz dazu, die Richtung des Unterschieds ist Teil der Antwort."
+ ],
+ "mitnehmen": "Leasing gesamt = Rate · Monate. Jahre immer erst in Monate umrechnen. Dann mit dem Kaufpreis vergleichen und sagen, was teurer ist."
+},
+"a2-ihk-h23-2-5": {
+ "denkweg": [
+  "Ziel: ein Preis je Minute, der alle Kosten einer Nacht genau deckt. Also: alle Kosten der Nacht zusammenzählen, dann durch alle Anrufminuten teilen.",
+  "Kosten Teil 1, Bereitschaft: Drei Leute sitzen die ganze Nacht bereit, 20 bis 6 Uhr sind 10 Stunden. (12 + 15 + 20) EUR je Stunde · 10 = 470 EUR. Das fällt an, auch wenn niemand anruft.",
+  "Kosten Teil 2, Anrufe: Je Stufe Minuten mal Minutensatz. 150 · 0,50 = 75, 100 · 1,00 = 100, 50 · 1,50 = 75. Zusammen 250 EUR.",
+  "Gesamtkosten: 470 + 250 = 720 EUR je Nacht.",
+  "Minuten, die man verkaufen kann: 150 + 100 + 50 = 300. Preis je Minute: 720 / 300 = 2,40 EUR.",
+  "Fünf Schritte, je einer ein Punkt. Schreib jeden als eigene Zeile hin."
+ ],
+ "mitnehmen": "Einheitspreis = Gesamtkosten / Gesamtmenge. Gesamtkosten sind Fixkosten (Bereitschaft, fällt immer an) plus variable Kosten (je Minute)."
+},
+"a2-ihk-f24-1-3": {
+ "denkweg": [
+  "Gefragt sind Kosten je Monat. Alles, was einmalig gezahlt wird, musst du auf Monate verteilen. Alles, was schon monatlich ist, übernimmst du.",
+  "Rabatt zuerst, aber nur auf PC und Monitor: mal 0,95 (100 % minus 5 %).",
+  "Monitore: 5 · 450 · 0,95 = 2.137,50 EUR, vier Jahre Nutzung = 48 Monate, also 44,53 EUR je Monat.",
+  "PCs: 5 · 720 · 0,95 = 3.420 EUR, drei Jahre = 36 Monate, also 95,00 EUR je Monat.",
+  "Wartung: 1.200 EUR je Jahr / 12 = 100 EUR je Monat. Software: 5 · 50 = 250 EUR je Monat, ist schon monatlich.",
+  "Summe: 44,53 + 95,00 + 100 + 250 = 489,53 EUR je Monat."
+ ],
+ "mitnehmen": "Monatskosten: Anschaffung durch Nutzungsmonate, Jahreskosten durch 12, Monatskosten so lassen, dann addieren. Rabatt nur da, wo er ausdrücklich gilt."
+},
+"a2-ihk-h24-2-6": {
+ "denkweg": [
+  "Liste jede Position auf und rechne Menge mal Preis: 65 Zylinder · 512 = 33.280 EUR. 80 Transponder · 39 = 3.120 EUR. 1 Programmiergerät = 2.300 EUR.",
+  "Die Lizenz ist jährlich, der Zeitraum sind fünf Jahre: 5 · 349 = 1.745 EUR. Das ist die Zeile, die man leicht vergisst oder nur einmal rechnet.",
+  "Alles addieren: 40.445 EUR netto.",
+  "Brutto heißt mit Mehrwertsteuer: netto · 1,19 = 48.129,55 EUR. Nicht 19 % abziehen, sondern draufrechnen.",
+  "Jede Zeile war ein Punkt. Sechs Zeilen, sechs Punkte."
+ ],
+ "mitnehmen": "Einmalige Kosten einmal, laufende Kosten mal Anzahl Jahre. Netto ist ohne Steuer, brutto = netto · 1,19."
+},
+"a2-ihk-f25-1-3": {
+ "denkweg": [
+  "Drei Kostenarten je Monat: das Gerät selbst, das Drucken, die Wartung.",
+  "Gerät: Kaufpreis auf die Nutzungsmonate verteilen: 2.844 / 36 = 79 EUR je Monat.",
+  "Drucken: Seiten mal Preis je Seite, getrennt nach Farbe: 2.000 · 0,05 = 100 EUR, 500 · 0,07 = 35 EUR, zusammen 135 EUR.",
+  "Wartung: 10 EUR je Monat, steht so da.",
+  "Summe: 79 + 135 + 10 = 224 EUR je Monat. Auf ganze Euro runden war verlangt, passt schon."
+ ],
+ "mitnehmen": "Gerätekosten je Monat = Kaufpreis / Nutzungsmonate. Verbrauchskosten = Menge · Stückpreis. Feste Monatsposten einfach dazu."
+},
+"a2-ihk-f25-4-3": {
+ "denkweg": [
+  "Sammle alle Posten für ein Jahr und für drei Anwälte.",
+  "Gebühr: 100 EUR je Monat und Benutzer. 100 · 12 Monate · 3 Anwälte = 3.600 EUR.",
+  "Schulung: 1.800 EUR je Anwalt und Jahr · 3 = 5.400 EUR.",
+  "Entgangener Umsatz: Während der drei Schulungsstunden verdient der Anwalt nichts. 3 Stunden · 200 EUR = 600 EUR je Anwalt, · 3 = 1.800 EUR. Das ist kein Geld, das abfließt, sondern Geld, das nicht reinkommt. Zählt trotzdem als Kosten der Entscheidung.",
+  "Gesamt: 3.600 + 5.400 + 1.800 = 10.800 EUR je Jahr."
+ ],
+ "mitnehmen": "Jahreskosten = Monatsgebühr · 12 · Nutzer plus Einmalposten je Nutzer. Entgangener Umsatz (Ausfallzeit · Stundensatz) gehört dazu, wenn die Aufgabe ihn nennt."
+},
+"a2-ihk-h25-1-4": {
+ "denkweg": [
+  "Rabatt ist ein Preisnachlass ohne Bedingung 'schnell zahlen' (das wäre Skonto). Frage dich: Warum sollte ein Verkäufer freiwillig weniger nehmen? Weil er dafür etwas bekommt.",
+  "Er bekommt mehr Menge: Mengenrabatt, große Bestellungen senken seine Kosten je Stück.",
+  "Er bekommt einen neuen Kunden: Neukundenrabatt als Lockmittel. Oder er hält einen alten: Treuerabatt.",
+  "Er bekommt Planbarkeit: Frühbesteller- oder Saisonrabatt füllt leere Zeiten.",
+  "Zwei Gründe nennen und je in einem Satz erklären, was der Verkäufer davon hat. Zwei Punkte je Grund, also Nennung plus Erklärung."
+ ],
+ "mitnehmen": "Rabattgründe: Menge, Neukunde, Treue, frühe Bestellung. Immer mit dem Nutzen für den Verkäufer begründen. Skonto ist dagegen der Nachlass fürs schnelle Zahlen."
+},
+"a2-ihk-h25-2-6": {
+ "denkweg": [
+  "Der Preis gilt je Paket zu 5 GiB. Erst herausfinden, wie viele Pakete du brauchst: 15 GiB / 5 GiB = 3 Pakete je Jahr.",
+  "Kosten je Jahr: 3 · 21 EUR = 63 EUR.",
+  "Zehn Jahre: 63 · 10 = 630 EUR.",
+  "Falle: nicht 15 · 21 rechnen, der Preis gilt je Paket, nicht je GiB."
+ ],
+ "mitnehmen": "Bei Paketpreisen erst Bedarf durch Paketgröße teilen (bei Rest aufrunden), dann mal Preis, dann mal Jahre."
+}
+}

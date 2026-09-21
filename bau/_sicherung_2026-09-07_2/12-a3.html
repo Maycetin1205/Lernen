@@ -1,0 +1,333 @@
+<section class="kapitel" id="a3" data-gruppe="A">
+
+<header class="kapitel-kopf">
+  <p class="kapitel-nr">A3 · Verfahren</p>
+  <h2>Nutzwertanalyse</h2>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a3-worum">Worum es geht</a><a href="#a3-begriffe">Begriffe</a><a href="#a3-kern">Das Verfahren</a><a href="#a3-original">So hat die IHK gefragt</a><a href="#a3-variante">Jetzt du</a><a href="#a3-selbstcheck">Selbstcheck</a><a href="#a3-quellen">Quellen</a></nav>
+  <p class="kam-dran">Kam dran: <span>AP1 Herbst 2022, 3.7 (10 P)</span> · <span>AP1 Frühjahr 2023, 1.2 bis 1.4 (22 P)</span> · <span>AP1 Frühjahr 2024, 1.1, 1.2 (6 P)</span> · <span>AP1 Frühjahr 2025, 1.1, 1.2 (7 P)</span></p>
+  <label class="sitzt"><input type="checkbox" data-key="a3"> Sitzt</label>
+</header>
+
+<section id="a3-worum">
+  <h3>Worum es geht</h3>
+  <p>Ein mittelständisches Logistikunternehmen plant die Anschaffung neuer mobiler Datenerfassungsgeräte für das Hochregallager. Zur Auswahl stehen drei Hersteller. Die Entscheidung kann nicht allein über den Anschaffungspreis fallen, da Akkulaufzeit, Fallfestigkeit, Reparaturdauer und Betriebssystemunterstützung für den fehlerfreien Betrieb entscheidend sind. Die Nutzwertanalyse (NWA) führt qualitative und quantitative Anforderungen in einer nachvollziehbaren Bewertungsmatrix zusammen. In der IHK-Abschlussprüfung ist die Nutzwertanalyse eine wiederkehrende Punktbank: Verlangt werden das fehlerfreie Berechnen der gewichteten Teilnutzwerte, das Ermitteln der Gesamtrangfolge sowie die kritische Begründung der Auswahlentscheidung unter Berücksichtigung von K.-o.-Kriterien.<sup class="q"><a href="#a3-q1" title="Zangemeister 1970">1</a></sup></p>
+</section>
+
+<section id="a3-begriffe">
+  <h3>Begriffe</h3>
+  <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a3-begriff-kriterium">Kriterium und Zielsystem</a><a href="#a3-begriff-gewichtung">Gewichtung</a><a href="#a3-begriff-punktwert">Erfüllungsgrad und Punktwert</a><a href="#a3-begriff-teilnutzwert">Teilnutzwert</a><a href="#a3-begriff-gesamtnutzwert">Gesamtnutzwert und Rangfolge</a><a href="#a3-begriff-ko-kriterium">K.-o.-Kriterium</a><a href="#a3-begriff-sensitivitaet">Sensitivität</a></nav>
+
+  <dl class="begriff" id="a3-begriff-kriterium">
+    <dt>Kriterium und Zielsystem <span class="en">(Evaluation Criterion)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein quantifizierbares oder qualitatives Merkmal zur Bewertung von Handlungsalternativen im Rahmen eines hierarchisch gegliederten Zielsystems nach Zangemeister.<sup class="q"><a href="#a3-q1" title="Zangemeister 1970">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Typische Kriterien bei der IT-Beschaffung sind Energieeffizienz, Schnittstellenvielfalt, Ergonomie, Hersteller-Support und Kompatibilität.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Monetäre Kriterien (reine Anschaffungskosten) werden methodisch sauber getrennt von nicht-monetären Nutzkriterien erfasst.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Kriterien sind meist in der Aufgabenstellung vorgegeben oder müssen aus einem Anforderungsprofil herausgearbeitet werden.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a3-begriff-gewichtung">
+    <dt>Gewichtung <span class="en">(Weighting Factor)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Die relative Bedeutung eines Kriteriums im Verhältnis zu den übrigen Kriterien; die Summe aller Gewichtungen muss zwingend 100 Prozent (oder 1,0) ergeben.<sup class="q"><a href="#a3-q2" title="Wöhe ABWL">2</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Wird durch die Prioritäten der Unternehmensführung festgelegt, beispielsweise höhere Gewichtung der Datensicherheit gegenüber dem Design.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Immer die Summe der Gewichte prüfen: Ergibt die Summe nicht 100 %, liegt ein Rechen- oder Übertragungsfehler vor.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Häufig fehlt ein Gewichtswert in der Aufgabentabelle und muss als Differenz zu 100 Prozent errechnet werden.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a3-begriff-punktwert">
+    <dt>Erfüllungsgrad und Punktwert <span class="en">(Raw Score, Performance Rating)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Ein numerischer Wert auf einer definierten Skala (meist 1 bis 10 oder 1 bis 5 Punkte), der misst, wie gut eine Alternative ein einzelnes Kriterium erfüllt.<sup class="q"><a href="#a3-q1" title="Zangemeister 1970">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Ermöglicht den Vergleich völlig verschiedener Eigenschaften (wie Garantiezeit in Monaten und Akkulaufzeit in Stunden) auf einer einheitlichen Skala.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Rohpunkte (ungewichtet) messen die reine Produkteigenschaft; erst durch Multiplikation mit dem Gewicht entsteht der Teilnutzwert.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Skalenrichtung beachten: Meist bedeutet die höchste Punktzahl die beste Bewertung; die Legende der Aufgabenstellung ist verbindlich.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a3-begriff-teilnutzwert">
+    <dt>Teilnutzwert <span class="en">(Weighted Score)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Das mathematische Produkt aus dem Gewichtungsfaktor eines Kriteriums und dem vergebenen Punktwert der jeweiligen Handlungsalternative.<sup class="q"><a href="#a3-q1" title="Zangemeister 1970">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Zeigt auf einen Blick, welchen messbaren Nutzenbeitrag eine Einzeleigenschaft zum Gesamtergebnis der Alternative liefert.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Teilnutzwert = Gewicht * Punktwert. Wenn Gewicht in Prozent (z. B. 25 %), dann 0,25 * Punkte rechnen.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>In Tabellen ist jede Zeile einzeln auszurechnen; die Prüfer vergeben oft Teilpunkte für jede korrekt berechnete Tabellenspalte.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a3-begriff-gesamtnutzwert">
+    <dt>Gesamtnutzwert und Rangfolge <span class="en">(Total Utility, Ranking)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Die Summe aller gewichteten Teilnutzwerte einer Alternative; sie bestimmt die finale Rangfolge der verglichenen Optionen.<sup class="q"><a href="#a3-q2" title="Wöhe ABWL">2</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Die Alternative mit dem höchsten Gesamtnutzwert stellt unter den gesetzten Kriterien die nutzenmaximale Lösung dar.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Der Gesamtnutzwert ist eine relative Kennzahl; er sagt nichts darüber aus, ob die Option betriebswirtschaftlich bezahlbar ist.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Abschließender Antwortsatz gefordert: Nennung des Siegers mit Punktzahl und Begründung des Vorsprungs vor Platz 2.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a3-begriff-ko-kriterium">
+    <dt>K.-o.-Kriterium <span class="en">(Knock-out Criterion, Must-Have)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Eine zwingende Mindestanforderung oder Ausschlussbedingung, deren Nichterfüllung zum sofortigen Ausschluss einer Alternative führt – unabhängig von ihren sonstigen Punktwerten.<sup class="q"><a href="#a3-q3" title="IHK-Konvention">3</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Beispiele: Ein Notebook erfüllt nicht das Maximalgewicht von 1,5 kg oder eine Software erfüllt nicht die DSGVO-Vorgaben.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>K.-o.-Kriterien gehören nicht in die Punktegewichtung, sondern werden als vorgeschalteter Filter geprüft.</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Beliebte Prüfungsfalle: Eine Alternative hat den höchsten Gesamtnutzwert, verletzt aber ein K.-o.-Kriterium und scheidet aus.</p></dd>
+  </dl>
+
+  <dl class="begriff" id="a3-begriff-sensitivitaet">
+    <dt>Sensitivität <span class="en">(Sensitivity Analysis)</span></dt>
+    <dd><span class="label">Was es ist</span><p>Die Überprüfung der Stabilität des Entscheidungsergebnisses bei Variation von Gewichtungen oder Punktwerten zur Aufdeckung von Scheingenauigkeit.<sup class="q"><a href="#a3-q1" title="Zangemeister 1970">1</a></sup></p></dd>
+    <dd><span class="label">Wo es dir begegnet</span><p>Schützt davor, dass geringfügige, willkürliche Verschiebungen bei der Gewichtung das Auswahlergebnis manipulieren.</p></dd>
+    <dd><span class="label">Nicht verwechseln mit</span><p>Sensitivität fragt: Wie stark muss sich ein Kriterium ändern, damit ein anderer Kandidat gewinnt?</p></dd>
+    <dd><span class="label">So fragt die IHK</span><p>Grenzen der NWA nennen: Subjektivität der Punktevergabe und willkürliche Festlegung der Gewichtungsfaktoren.</p></dd>
+  </dl>
+
+</section>
+
+<section id="a3-kern">
+  <h3>Das Verfahren</h3>
+
+  <p>Die Nutzwertanalyse strukturiert mehrdimensionale Entscheidungsprozesse in vier aufeinanderfolgende Phasen nach Zangemeister<sup class="q"><a href="#a3-q1" title="Zangemeister 1970">1</a></sup>:</p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 160" role="img" aria-labelledby="a3-abb1-t">
+      <title id="a3-abb1-t">Der Ablauf der Nutzwertanalyse in vier Schritten</title>
+      <rect class="w" x="20" y="40" width="130" height="50"/>
+      <text class="mitte tb" x="85" y="65">1. Kriterien</text>
+      <text class="mitte t2 klein" x="85" y="80">definieren</text>
+      
+      <line class="a" x1="150" y1="65" x2="175" y2="65" marker-end="url(#pfeil-a)"/>
+      
+      <rect class="f" x="175" y="40" width="130" height="50"/>
+      <text class="mitte tb" x="240" y="65">2. Gewichten</text>
+      <text class="mitte t2 klein" x="240" y="80">Summe = 100 %</text>
+      
+      <line class="a" x1="305" y1="65" x2="330" y2="65" marker-end="url(#pfeil-a)"/>
+      
+      <rect class="f" x="330" y="40" width="130" height="50"/>
+      <text class="mitte tb" x="395" y="65">3. Bewerten</text>
+      <text class="mitte t2 klein" x="395" y="80">Punkte 1 bis 10</text>
+      
+      <line class="a" x1="460" y1="65" x2="485" y2="65" marker-end="url(#pfeil-a)"/>
+      
+      <rect class="w" x="485" y="40" width="135" height="50"/>
+      <text class="mitte tb" x="552" y="65">4. Summieren</text>
+      <text class="mitte t2 klein" x="552" y="80">Rangfolge bilden</text>
+    </svg>
+    <figcaption>Abb. A3-1: Die vier methodischen Phasen der Nutzwertanalyse von der Kriterienfestlegung zur Rangfolge.</figcaption>
+  </figure>
+
+  <h4>Gewichtungsverteilung und Entstehung der Teilnutzwerte</h4>
+  <p>Jeder Teilnutzwert spiegelt wider, wie stark die Einzeleigenschaft das Gesamtergebnis prägt. Ein hoher Punktwert bei einem schwach gewichteten Kriterium trägt wenig zum Gesamtnutzen bei, während ein Kriterium mit 40 Prozent Gewichtung die Entscheidung dominiert:</p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 180" role="img" aria-labelledby="a3-abb2-t">
+      <title id="a3-abb2-t">Zusammenhang zwischen Gewichtung und Teilnutzwert</title>
+      <text class="tb" x="30" y="30">Kriteriengewichtung (Gesamt 100 %)</text>
+      <rect class="f" x="30" y="45" width="200" height="35"/>
+      <text class="mitte klein" x="130" y="67">Akkulaufzeit (35 %)</text>
+      <rect class="w" x="230" y="45" width="150" height="35"/>
+      <text class="mitte klein" x="305" y="67">Robustheit (25 %)</text>
+      <rect class="f" x="380" y="45" width="120" height="35"/>
+      <text class="mitte klein" x="440" y="67">Support (20 %)</text>
+      <rect class="w" x="500" y="45" width="110" height="35"/>
+      <text class="mitte klein" x="555" y="67">Display (20 %)</text>
+      
+      <text class="tb" x="30" y="115">Teilnutzwert-Beitrag (Gewicht * Rohpunkte)</text>
+      <rect class="a" x="30" y="125" width="180" height="25"/>
+      <text class="ta klein" x="220" y="142">0,35 * 8 P = 2,80 Teilnutzen</text>
+    </svg>
+    <figcaption>Abb. A3-2: Aus der Kriteriengewichtung und den Einzelpunktwerten entsteht der gewichtete Nutzenbeitrag.</figcaption>
+  </figure>
+
+  <h4>Integration von K.-o.-Kriterien im Entscheidungsablauf</h4>
+  <p>Vor der eigentlichen Berechnung müssen alle Alternativen auf Erfüllung zwingender Mindestvorgaben geprüft werden. Ein Produkt, das eine Mindestanforderung verfehlt, scheidet unmittelbar aus:</p>
+
+  <figure class="abb">
+    <svg viewBox="0 0 640 190" role="img" aria-labelledby="a3-abb3-t">
+      <title id="a3-abb3-t">Entscheidungsablauf mit vorgeschalteter K.-o.-Prüfung</title>
+      <rect class="w" x="30" y="30" width="160" height="45"/>
+      <text class="mitte tb" x="110" y="55">Alternative prüfen</text>
+      
+      <line class="a" x1="190" y1="52" x2="230" y2="52" marker-end="url(#pfeil-a)"/>
+      
+      <polygon class="f" points="290,25 350,52 290,80 230,52"/>
+      <text class="mitte klein tb" x="290" y="56">K.-o.-Test?</text>
+      
+      <line class="a" x1="350" y1="52" x2="410" y2="52" marker-end="url(#pfeil-a)"/>
+      <text class="klein ta" x="365" y="45">Ja (erfüllt)</text>
+      
+      <rect class="w" x="410" y="30" width="200" height="45"/>
+      <text class="mitte tb" x="510" y="50">Nutzwertanalyse</text>
+      <text class="mitte klein t2" x="510" y="65">Teilnutzwerte berechnen</text>
+      
+      <line class="l" x1="290" y1="80" x2="290" y2="130" marker-end="url(#pfeil)"/>
+      <text class="klein rechts" x="280" y="110">Nein</text>
+      
+      <rect class="f" x="200" y="130" width="180" height="40"/>
+      <text class="mitte tb ta" x="290" y="155">Sofortiger Ausschluss</text>
+    </svg>
+    <figcaption>Abb. A3-3: K.-o.-Kriterien fungieren als vorgeschalteter Filter vor der eigentlichen Nutzwertberechnung.</figcaption>
+  </figure>
+
+  <h4>Vollständiges Rechenweg-Schema in der Bewertungsmatrix</h4>
+  <p>In der Prüfung wird die Bewertungsmatrix zeilenweise berechnet. Das folgende Schema zeigt die normgerechte Dokumentation mit ausgeschriebenem Rechenweg in den Tabellenzellen<sup class="q"><a href="#a3-q3" title="IHK-Konvention">3</a></sup>:</p>
+
+  <div class="tabelle"><table>
+    <caption>Vollständig gerechnete Nutzwertanalyse für zwei Server-Modelle (Skala 1 bis 10)</caption>
+    <tr><th rowspan="2">Kriterium</th><th rowspan="2" class="z">Gewichtung (g)</th><th colspan="2" class="mitte">Alternative Alpha</th><th colspan="2" class="mitte">Alternative Beta</th></tr>
+    <tr><th class="z">Rohpunkte (p)</th><th class="z">Teilnutzen (g * p)</th><th class="z">Rohpunkte (p)</th><th class="z">Teilnutzen (g * p)</th></tr>
+    <tr><td>Energieeffizienz</td><td class="z">30 % (0,30)</td><td class="z">8</td><td class="z">0,30 * 8 = 2,40</td><td class="z">6</td><td class="z">0,30 * 6 = 1,80</td></tr>
+    <tr><td>Wartungsfreundlichkeit</td><td class="z">25 % (0,25)</td><td class="z">7</td><td class="z">0,25 * 7 = 1,75</td><td class="z">9</td><td class="z">0,25 * 9 = 2,25</td></tr>
+    <tr><td>Herstellergarantie</td><td class="z">25 % (0,25)</td><td class="z">9</td><td class="z">0,25 * 9 = 2,25</td><td class="z">6</td><td class="z">0,25 * 6 = 1,50</td></tr>
+    <tr><td>Erweiterbarkeit (RAM/PCIe)</td><td class="z">20 % (0,20)</td><td class="z">6</td><td class="z">0,20 * 6 = 1,20</td><td class="z">8</td><td class="z">0,20 * 8 = 1,60</td></tr>
+    <tr class="summe"><td><strong>Gesamtnutzwert</strong></td><td class="z"><strong>100 % (1,00)</strong></td><td class="z"><strong>–</strong></td><td class="z"><strong>7,60 Punkte</strong></td><td class="z"><strong>–</strong></td><td class="z"><strong>7,15 Punkte</strong></td></tr>
+    <tr><td><strong>Rangfolge</strong></td><td class="z"><strong>–</strong></td><td colspan="2" class="mitte"><strong>Rang 1 (Sieger)</strong></td><td colspan="2" class="mitte"><strong>Rang 2</strong></td></tr>
+  </table></div>
+
+  <h4>Rechenweg-Schema</h4>
+<pre class="rechenweg">Alternative Alpha:
+Teilnutzwert 1 = 0,30 * 8 = 2,40
+Teilnutzwert 2 = 0,25 * 7 = 1,75
+Teilnutzwert 3 = 0,25 * 9 = 2,25
+Teilnutzwert 4 = 0,20 * 6 = 1,20
+Gesamtnutzwert  = 2,40 + 1,75 + 2,25 + 1,20 = 7,60 Punkte (Rang 1)
+
+Alternative Beta:
+Teilnutzwert 1 = 0,30 * 6 = 1,80
+Teilnutzwert 2 = 0,25 * 9 = 2,25
+Teilnutzwert 3 = 0,25 * 6 = 1,50
+Teilnutzwert 4 = 0,20 * 8 = 1,60
+Gesamtnutzwert  = 1,80 + 2,25 + 1,50 + 1,60 = 7,15 Punkte (Rang 2)</pre>
+
+  <div class="merke" data-art="Typischer Fehler">
+    <p>Prüfungsfalle K.-o.-Kriterium: Wenn in der Aufgabenstellung steht, dass ein Modell mindestens 3 Jahre Garantie bieten muss oder maximal 1.500 Watt aufnehmen darf, scheidet jedes Modell aus, das diese Schwelle verletzt – selbst wenn es nach der Punktematrix auf Rang 1 landen würde.</p>
+  </div>
+
+  <div class="merke" data-art="Prüfungsnotiz">
+    <p>Kritik an der Nutzwertanalyse: In Erklärungsaufgaben verlangt die IHK oft zwei Schwachstellen der Methode. Standardantworten: Subjektivität bei der Punktevergabe (Bewertungen beruhen auf Schätzungen) und willkürliche Festlegung der Gewichtungsfaktoren (Scheingenauigkeit).</p>
+  </div>
+
+</section>
+
+<section id="a3-original">
+  <h3>So hat die IHK gefragt</h3>
+
+  <article class="aufgabe" id="a3-original-1">
+    <p class="herkunft">AP1 Frühjahr 2025, Aufgabe 1.1, 6 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a3-q4" title="AP1 Frühjahr 2025">4</a></sup></p>
+    <div class="text">
+      <p>Eine Kanzlei beschafft neue Multifunktionsgeräte; monatlich fallen etwa 2.000 Seiten schwarzweiß und 500 Seiten farbig an. Drei Geräte stehen zur Wahl. Die Druckqualität liegt bei allen dreien bei 1.200 x 1.200 dpi und unterscheidet die Geräte daher nicht; die Entscheidungsmatrix enthält nur diese vier Kriterien:</p>
+      <ul>
+        <li>Geschwindigkeit Druck: Gerät 1: 40 Seiten/min, Gerät 2: 62 Seiten/min, Gerät 3: 50 Seiten/min</li>
+        <li>Geschwindigkeit Scan: Gerät 1: 20 Seiten/min, Gerät 2: 50 Seiten/min, Gerät 3: 40 Seiten/min</li>
+        <li>Wartungskosten: Gerät 1: 50 EUR/Monat, Gerät 2: 10 EUR/Monat, Gerät 3: 15 EUR/Monat</li>
+        <li>Preis: Gerät 1: 3.456 EUR, Gerät 2: 2.844 EUR, Gerät 3: 1.656 EUR</li>
+      </ul>
+      <p>Vervollständigen Sie die Entscheidungsmatrix: Vergeben Sie je Kriterienzeile an die drei Geräte die Rangwerte 1 bis 3 (3 = bester Wert, 1 = schlechtester Wert) und bilden Sie die Ergebniszeile.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p><strong>Bewertungsrichtung je Kriterium:</strong> Bei beiden Geschwindigkeiten ist der größere Wert besser, bei Wartungskosten und Preis der kleinere. Gewichtungen sind hier nicht vorgegeben, alle vier Zeilen zählen gleich.</p>
+        <ul>
+          <li><strong>Geschwindigkeit Druck</strong> (40 / 62 / 50): Gerät 1 = 1, Gerät 2 = 3, Gerät 3 = 2.</li>
+          <li><strong>Geschwindigkeit Scan</strong> (20 / 50 / 40): Gerät 1 = 1, Gerät 2 = 3, Gerät 3 = 2.</li>
+          <li><strong>Wartungskosten</strong> (50 / 10 / 15 EUR): Gerät 1 = 1, Gerät 2 = 3, Gerät 3 = 2.</li>
+          <li><strong>Preis</strong> (3.456 / 2.844 / 1.656 EUR): Gerät 1 = 1, Gerät 2 = 2, Gerät 3 = 3.</li>
+        </ul>
+        <p><strong>Ergebniszeile:</strong></p>
+        <ol>
+          <li>Gerät 1: 1 + 1 + 1 + 1 = <strong>4 Punkte</strong></li>
+          <li>Gerät 2: 3 + 3 + 3 + 2 = <strong>11 Punkte</strong></li>
+          <li>Gerät 3: 2 + 2 + 2 + 3 = <strong>9 Punkte</strong></li>
+        </ol>
+        <p>Die höchste Punktsumme erreicht Gerät 2; es wird beschafft.</p>
+        <p><strong>Punkteverteilung:</strong> 6 Punkte laut Aufgabenheft; die Lösungshinweise weisen keine Einzelaufteilung aus. Als Näherung entfällt je etwa 1 Punkt auf die vier Kriterienzeilen und etwa 2 Punkte auf die vollständig richtige Ergebniszeile.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="a3-original-2">
+    <p class="herkunft">AP1 Frühjahr 2024, Aufgabe 1.2, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a3-q5" title="AP1 Frühjahr 2024">5</a></sup></p>
+    <div class="text">
+      <p>Für fünf CAD-Arbeitsplätze wurden vier Angebote mit einer Nutzwertanalyse bewertet. Die Gesamtnutzwerte lauten: Anbieter 1: 285, Anbieter 2: 215, Anbieter 3: 355, Anbieter 4: 310. Anschließend wird im Projekt festgelegt, dass ausschließlich eine im eigenen Haus betriebene Lösung zulässig ist. Anbieter 3 liefert seine Lösung ausschließlich als Software as a Service.</p>
+      <p>Bestimmen Sie unter dieser Voraussetzung den Anbieter, der den Auftrag erhalten soll.</p>
+    </div>
+    <details>
+      <summary>Lösung mit Punktelogik</summary>
+      <div class="inhalt">
+        <p><strong>Begründung:</strong></p>
+        <p>Den Auftrag erhält <strong>Anbieter 4</strong>. Die verpflichtende Betriebsform im eigenen Haus ist ein zwingendes <strong>K.-o.-Kriterium</strong> (Ausschlusskriterium). Anbieter 3 erfüllt es nicht und scheidet trotz des höchsten Nutzwerts von 355 Punkten aus. Von den verbleibenden Angeboten hat Anbieter 4 mit 310 Punkten den höchsten Gesamtnutzwert.</p>
+        <p><strong>Punkteverteilung:</strong> 1 Punkt für die Wahl von Anbieter 4, 1 Punkt für den Ausschluss von Anbieter 3 wegen des K.-o.-Kriteriums (insgesamt 2 Punkte).</p>
+      </div>
+    </details>
+  </article>
+
+</section>
+
+<section id="a3-variante">
+  <h3>Jetzt du</h3>
+
+  <article class="aufgabe" id="a3-variante-1">
+    <p class="herkunft">Variante zu Aufgabe 1.1 (Frühjahr 2025)</p>
+    <div class="text">
+      <p>Eine Softwarefirma vergleicht drei NAS-Systeme für die Sicherung ihrer Entwicklungsdaten. Folgende Werte liegen vor:</p>
+      <ul>
+        <li>Schreibrate: NAS 1: 180 MB/s, NAS 2: 320 MB/s, NAS 3: 260 MB/s</li>
+        <li>Herstellergarantie: NAS 1: 2 Jahre, NAS 2: 5 Jahre, NAS 3: 3 Jahre</li>
+        <li>Leistungsaufnahme: NAS 1: 38 W, NAS 2: 52 W, NAS 3: 45 W</li>
+        <li>Preis: NAS 1: 1.100 EUR, NAS 2: 1.650 EUR, NAS 3: 1.850 EUR</li>
+      </ul>
+      <p>Vervollständigen Sie die ungewichtete Entscheidungsmatrix mit den Rangwerten 1 bis 3 je Zeile (3 = bester Wert) und ermitteln Sie das Gerät mit der höchsten Punktsumme.</p>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p><strong>Lösungsweg:</strong> Bei Schreibrate und Garantie ist der größere Wert besser, bei Leistungsaufnahme und Preis der kleinere.</p>
+        <ul>
+          <li><strong>Schreibrate</strong> (180 / 320 / 260 MB/s): NAS 1 = 1, NAS 2 = 3, NAS 3 = 2.</li>
+          <li><strong>Garantie</strong> (2 / 5 / 3 Jahre): NAS 1 = 1, NAS 2 = 3, NAS 3 = 2.</li>
+          <li><strong>Leistungsaufnahme</strong> (38 / 52 / 45 W): NAS 1 = 3, NAS 2 = 1, NAS 3 = 2.</li>
+          <li><strong>Preis</strong> (1.100 / 1.650 / 1.850 EUR): NAS 1 = 3, NAS 2 = 2, NAS 3 = 1.</li>
+        </ul>
+        <p><strong>Ergebniszeile:</strong> NAS 1: 1 + 1 + 3 + 3 = 8 Punkte; NAS 2: 3 + 3 + 1 + 2 = 9 Punkte; NAS 3: 2 + 2 + 2 + 1 = 7 Punkte.</p>
+        <p><strong>Ergebnis:</strong> NAS 2 erreicht mit 9 Punkten die höchste Summe und wird beschafft. Das billigste und sparsamste Gerät NAS 1 verliert, weil es bei Schreibrate und Garantie jeweils den letzten Rang belegt.</p>
+      </div>
+    </details>
+  </article>
+
+  <article class="aufgabe" id="a3-variante-2">
+    <p class="herkunft">Variante zu Aufgabe 1.2 (Frühjahr 2024)</p>
+    <div class="text">
+      <p>Bei der Beschaffung neuer Außendienst-Notebooks erreicht Gerät ProBook 8,4 Punkte und Gerät TravelAir 8,1 Punkte. In der Ausschreibung wurde gefordert, dass das Gewicht der Geräte maximal 1.300 Gramm betragen darf. ProBook wiegt laut Hersteller 1.450 Gramm, TravelAir wiegt 1.180 Gramm.</p>
+      <p>Entscheiden Sie begründet, welches Gerät beschafft werden muss.</p>
+    </div>
+    <details>
+      <summary>Lösung</summary>
+      <div class="inhalt">
+        <p><strong>Lösungsweg:</strong></p>
+        <p>Beschafft werden muss das Gerät TravelAir. Das geforderte Maximalgewicht von 1.300 Gramm ist ein K.-o.-Kriterium. Da das ProBook mit 1.450 Gramm die zwingende Gewichtsobergrenze überschreitet, wird es disqualifiziert. Die Punktezahl ist in diesem Fall irrelevant.</p>
+      </div>
+    </details>
+  </article>
+
+</section>
+
+<section id="a3-selbstcheck">
+  <h3>Selbstcheck</h3>
+  <ol class="selbstcheck">
+    <li>Warum müssen monetäre Kostenkriterien sauber von den Nutzwertkriterien getrennt werden?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Weil die Nutzwertanalyse die qualitative und technische Leistungsfähigkeit misst. Werden Kosten als normales Kriterium eingerechnet, verzerrt dies das Bild. Die saubere Methode ist die Kosten-Nutzen-Analyse: Gesamtnutzwert geteilt durch Anschaffungs- bzw. Lebenszykluskosten.</p></div></details>
+    </li>
+    <li>Was ist der Unterschied zwischen einem normalen Bewertungskriterium und einem K.-o.-Kriterium?
+      <details><summary>Antwort</summary><div class="inhalt"><p>Ein normales Kriterium fließt mit seinem Gewichtungsprozentsatz in die Gesamtsumme ein; schwache Leistungen können durch Stärken bei anderen Kriterien kompensiert werden. Ein K.-o.-Kriterium ist eine unabdingbare Mindestbedingung: Wird sie nicht erfüllt, führt dies zum sofortigen Ausschluss der Alternative.</p></div></details>
+    </li>
+    <li>Nennen Sie zwei wesentliche methodische Kritikpunkte an der Nutzwertanalyse.
+      <details><summary>Antwort</summary><div class="inhalt"><p>Erstens die Subjektivität: Die Vergabe von Punkten und die Festlegung der Gewichtungsfaktoren beruhen auf Ermessen des Entscheiders. Zweitens Scheingenauigkeit: Kommazahlen im Gesamtnutzen täuschen eine mathematische Exaktheit vor, die die subjektiven Schätzwerte nicht besitzen.</p></div></details>
+    </li>
+  </ol>
+</section>
+
+<section id="a3-quellen">
+  <h3>Quellen dieses Kapitels</h3>
+  <ol class="quellenliste">
+    <li id="a3-q1" data-src="zangemeister-1970"><span class="typ">Fachbuch</span> Zangemeister, C.: Nutzwertanalyse in der Systemtechnik – Eine Methodik zur multidimensionalen Bewertung und Auswahl von Projektalternativen, Wittemann, München 1970. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a3-q2" data-src="woehe-nwa"><span class="typ">Fachbuch</span> Wöhe, G.; Döring, U.; Brösel, G.: Einführung in die Allgemeine Betriebswirtschaftslehre, 27. Aufl., Vahlen, München 2020, S. 105–112 (Nutzwertanalyse). <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a3-q3" data-src="ihk-konvention-nwa"><span class="typ">IHK-Konvention</span> ZPA Nord-West: Lösungshinweise zu Nutzwertanalysen in der AP1, Tabellenaufbau und Bewertungskonventionen. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a3-q4" data-src="ihk-ap1-f2025"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Frühjahr 2025, Teil 1, Aufgabe 1.1. <span class="abruf">(nicht online geprüft)</span></li>
+    <li id="a3-q5" data-src="ihk-ap1-f2024"><span class="typ">IHK-Prüfung</span> ZPA Nord-West: Aufgabenheft und Lösungshinweise Abschlussprüfung Frühjahr 2024, Teil 1, Aufgabe 1.2. <span class="abruf">(nicht online geprüft)</span></li>
+  </ol>
+</section>
+
+</section>

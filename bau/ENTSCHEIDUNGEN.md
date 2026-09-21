@@ -617,3 +617,300 @@ dieselben 17 Hinweise wie vorher (a7 steht jetzt mit 4675 im Richtwert-Hinweis).
 7 Abbildungen, keine Textueberlappung; Streifen a7-teil5.png angesehen: die vier Formen sitzen im Raster,
 die Schraegen der Verzweigung schneiden die Bedingung nicht, die Akzentzeile steht im Schleifenkopf. Koffer
 mit genau drei Dateien aktualisiert.
+
+## AG – 2026-09-15: Aufgaben werden im Kapitel nicht vorgerechnet (Prototyp A4)
+
+Ausloeser: Der Lernende wollte F22 4.5 (100 MiByte ueber 40 Mbit/s Upload) allein mit der Lerndatei loesen und scheiterte. Der Wegweiser fuehrt nach a4-k5; dort standen nur eine Vorab-Frage, ein Absatz zur Netto-Bandbreite und die Rechenkette als Bild. Es fehlten: Upload statt Download, MiByte = 1.024 · 1.024, kbit/s bzw. Mbit/s mal 1.000 bzw. 1.000.000.
+
+Messung ueber alle 252 Wegweiser-Zeilen (Aufgabenkennung wie "F22 4.5" im Text des eigenen Kapitels, Wegweiser-Tabelle ausgenommen): 59 Aufgaben werden namentlich behandelt, 193 nicht. Je Kapitel fehlen am meisten in B1 (27), B11 (19), B10 (15), B5 (13), B9 (13), A2 (12), A1 (11), A7 (11). Skript: Zaehlung ad hoc im Scratchpad, Kennungssuche per Regex.
+
+Prototyp (nur A4, Abschnitt a4-k5): Ueberschrift "2. Uebertragungszeit: Wie lange dauert der Upload?", fuenf Schritte (Richtung, Byte, Bit, bit/s, Teilen und Runden), F22 4.5 als pre.rechenweg, Punktehinweis mit der Download-Falle, Netto-Bandbreite als Zusatzabsatz, Abb. A4-4 neu als Zwei-Zeilen-Bild (Datei oben, Leitung unten, rechts Teilen und Runden), Kasten "Fuer die Pruefung reicht" mit Verweis auf a4-original-2 (F24 4.7). Neue Quelle a4-q10 (ihk-ap1-f2022). A4 jetzt 3538 Woerter. Sicherung des Vorzustands: Scratchpad-Kopie 13-a4.vorher.html und git.
+
+Regel fuer das Ausrollen (noch nicht freigegeben): Jede Wegweiser-Zielstelle braucht die Aufgabe selbst in Schritten vorgerechnet oder durchgesprochen, mit Kennung im Text, so dass die Zaehlung sie findet. Reihenfolge nach Fehlzahl, ein Kapitel je Durchgang, Vorschau je Kapitel.
+
+## AH – 2026-09-15: Jede Pruefungsaufgabe geloest in der Datei
+
+Auftrag des Lernenden: komplette Pruefungen mit der Datei loesen koennen, jeder Schritt und Begriff erklaert. Abschnitt AG hatte gezeigt, dass 193 von 252 Aufgaben nur bei Theorie landeten.
+
+Umsetzung per Skript (Scratchpad geloest.py, Quelle bleibt notizen/20xx-*.md mit Aufgabe in eigenen Worten, Material, Loesungskern und Bemerkung aus den IHK-Loesungshinweisen): je Kapitel ein Abschnitt `<section id="<kap>-geloest">` vor dem Selbstcheck, darin `<details class="geloest">` mit einem `article.aufgabe` je Aufgabe (`id="<kap>-ihk-<pruefung>-<nr>"`, z. B. a4-ihk-f22-4-5): Herkunftszeile mit Quellenverweis, Titel mit Operator und Heftbezeichnung, Aufgabentext, Material, Zeile "Der Weg dahin" mit Link zur Lektion (Kernueberschrift oder Begriffskarte), Loesung mit Punktelogik zugeklappt, Bemerkung als "Warum so, und worauf die IHK achtet". 192 Artikel; die 60 Aufgaben mit bestehender Originalaufgabe blieben unveraendert. Fehlende IHK-Quellen je Kapitel ergaenzt (11 Eintraege in a1, a2, a7, b2).
+
+Wegweiser: alle 192 Eintraege haben jetzt `lektion` (bisheriges Ziel) und `ziel` (Artikel). wegweiser-bauen.py kennt `-ihk-` ("Diese Aufgabe geloest, mit Punkten") und akzeptiert Begriffskarten als Lektionsziel. Teil 2 zeigt bei allen 252 Zeilen zwei Links.
+
+Bauregeln angepasst: check.js zaehlt `<section id="..-geloest">` nicht als Lesetext (die Zaehlung war vorher am ersten `</details>` der verschachtelten Klappen abgebrochen), sucht VORLAGE/PLATZHALTER/TODO nur in Grossbuchstaben (das Wort "Vorlage" steht in Aufgabentexten), Klasse `geloest` erlaubt, A7-Grenze 4750. 99-fuss.html: beim Sprung auf eine id in zugeklappten Klappen werden die Klappen auf dem Weg geoeffnet (hashchange und Laden). Geprueft im Browser: #a4-ihk-f22-4-5 oeffnet die Klappe, Artikel oben im Fenster, 192 Artikel im DOM, keine Skriptfehler.
+
+Sicherung vor dem Lauf: bau/_sicherung_2026-09-15_vorGeloest/ (kapitel, WEGWEISER-*.json, check.js, wegweiser-bauen.py).
+
+Offen und ehrlich benannt: Die Loesungen sind die IHK-Loesungskerne in Notizform, nicht in jedem Fall eine Schritt-fuer-Schritt-Erklaerung wie in a4-k5. Naechster Schritt, wenn der Lernende es so will: die Rechenaufgaben unter den 192 von Hand als fuenf Zeilen mit Einheiten ausschreiben, Kapitel fuer Kapitel.
+
+## AI – 2026-09-16: A1 als Prototyp wirklich von null (Auftrag AUFTRAG-OPUS-2026-09-16.md)
+
+Auftrag des Lernenden: nicht die Aufgaben loesen, sondern Kapitel, nach denen er eine unbekannte Aufgabe selbst loest. Die bisherigen Kapitel hiessen "Lektion von null", setzten aber Woerter voraus, die er nicht hat.
+
+Befund an A1 vor dem Umbau: Der Kern (1.849 Woerter) begann mit "Ein PC muss vor jedem Versand entscheiden" und setzte damit Netz, Paket, Switch, Router und Gateway als bekannt voraus. Die Stellenwerte 128 bis 1 standen nur im Bild, ohne Herleitung; Dezimal nach Binaer wurde nie gezeigt. Hexadezimal war nirgends erklaert, obwohl zehn der 18 Pruefungsaufgaben (IPv6, MAC) es voraussetzen. Netz- und Broadcastadresse waren eine Regel ohne Grund. Die Richtung "Bedarf an Geraeten -> Praefix" (Teilnetze bilden) fehlte ganz.
+
+Neuer Kern, 14 Abschnitte, 3.727 Woerter, 12 Abbildungen: k1 Was ein Netz, ein Paket, ein Switch und ein Router sind; k2 vier Oktette und warum bei 255 Schluss ist; k3 Bit und Binaer mit beiden Rechenrichtungen (Abziehleiter fuer 75 als pre.rechenweg); k4 Maske als Schnitt, mit dem Vergleich des Netzanteils als Grund; k5 die vier Adressen samt Begruendung (alle Geraetebits 0 bzw. 1) und dem Fuenf-Zeilen-Schema; k6 Maske dezimal; k7 Geraet einrichten, letzte und vorletzte nutzbare Adresse; k8 DHCP, Lease und was in ipconfig /all vom DHCP stammt; k9 Teilnetze aus einem Bedarf (neu, Abb. A1-8); k10 Hexadezimal (neu, Abb. A1-9); k11 IPv6-Schreibweise; k12 IPv6-Aufbau; k13 IPv6 im Netzbild; k14 MAC-Adresse (neu Abb. A1-12). Zwei neue Begriffskarten (Blockgroesse und Teilnetz, Hexadezimal), zusammen 10.
+
+Ids: k5, k6, k7, k8, k12, k13 behalten ihre Bedeutung. Verschoben wurden nur zwei Ziele, in WEGWEISER-a1.json nachgezogen: IPv6-Schreibweise k9 -> k11 (F22 3.6), MAC k10 -> k14 (F22 3.5, F24 2.7, H24 1.7). Abbildungen alt 8 und 9 wurden zu 10 und 11, drei sind neu.
+
+Selbsttest nach Regel 7 des Auftrags: alle 18 Pruefungsaufgaben des Kapitels allein mit dem Kapiteltext durchgegangen. Eine Luecke gefunden und geschlossen: F24 2.4 verlangt, in einer ipconfig-Ausgabe die vom DHCP stammenden Angaben zu benennen; dazu gab es keinen Satz. Jetzt Absatz in k8 mit der Falle, dass physische Adresse und fe80:: gerade nicht vom DHCP kommen.
+
+Wortgrenze: `pruef/check.js` fuehrt a1 mit 6000 statt 4500 (aktuell 5.444). Begruendung ist dieser Abschnitt; der Lernende hat Verstaendlichkeit ausdruecklich ueber Kuerze gestellt. Alle anderen Kapitel unveraendert bei 4500, a7 bei 4750.
+
+Pruefungen: check, wegweiser-bauen (18 Aufgaben verlinkt, Teil 2 mit 252 Zeilen), bauen-in-bau (1.792 KB, keine Fehler), abnahme (keine Befunde), svgcheck ueber alle 12 Abbildungen ohne Befund. Sicherung des Vorzustands im Scratchpad als 10-a1.vorher.html und in git. Datei an allen drei Orten gleich (bau, Desktop/Lernen, Koffer).
+
+Offen: Das Ausrollen auf die anderen 19 Kapitel wartet auf das Urteil des Lernenden zu A1. Reihenfolge laut Auftrag: A4, A2, A9, A7, dann A3, A5, A6, A8, dann die B-Kapitel.
+
+### AI.2 – 2026-09-16: A4 von null (Einheiten, Speicher, Datenrate)
+
+Befund vorher: Der Kern hatte 1.900 Woerter und vier Abbildungen. Abschnitt a4-k5 (Uebertragungszeit) war seit AG die gute Fuenf-Schritte-Lektion, der Rest nicht. a4-k3 nannte die 1.024, ohne sie herzuleiten, und sagte nicht, welche Leiter wann gilt; a4-k4 bestand aus vier abstrakten Formelzeilen ohne eine einzige vorgerechnete Zahl, obwohl fuenf der zwoelf Aufgaben dort landen. Nirgends standen: 2 hoch n als Zahl der Moeglichkeiten, dpi und Zoll, die Farbanzahl aus der Farbtiefe, die Prozentfrage "um wie viel Prozent steigt".
+
+Neu geschrieben wurden a4-k1 bis a4-k4, dazu der neue Abschnitt a4-k10. k1: was eine Datei, ein Speicher und eine Leitung sind, und die drei Stolperstellen (Faktor 8, zwei Bedeutungen von Mega, die richtige Zahl der Aufgabe). k2: Bit als Schalter, Verdopplung, 2 hoch n (Abb. A4-1 neu), Byte als 256 Moeglichkeiten fuer ein Zeichen, Faktor 8 zwischen Datei und Leitung, Merksatz zur Rechenrichtung. k3: beide Leitern, 1.024 hergeleitet aus 2^10, Regel "das kleine i entscheidet, Leitungen immer 1.000", Stufenzahl beim Teilen, F22 2.11 und H22 2.3 vorgerechnet samt Unterschied aufrunden/kaufmaennisch. k4: Grundgleichung Anzahl mal Groesse je Stueck, F24 3.4 und H25 2.4 (mischt kB und KiB in einem Satz) als Rechenwege, Prozent-Zuwachs mit dem alten Wert als Nenner (F24 3.6). k10: Pixel, Farbtiefe als Speicher und zugleich als Farbanzahl (F24 3.5), dpi und Zoll, H22 2.2 in sieben Zeilen vorgerechnet (Abb. A4-5 neu).
+
+Ids: k5, k7, k8, k9, k6 unveraendert in Bedeutung und Text. Neu ist k10; in WEGWEISER-a4.json zeigen H22 2.2 und F24 3.5 jetzt dorthin statt auf k4. Abbildungen nach Lesereihenfolge neu nummeriert: neu 1 (Verdopplungsleiter), alt 1 bis 3 wurden 2 bis 4, neu 5 (Scankette), alt 4 wurde 6.
+
+Zwei Merke-Bloecke aufgeloest, um bei sechs zu bleiben: Der "Typische Fehler" zur Praefix-Kollision steht seit k3 als Regel im Fliesstext; der UTF-8-Hinweis ist jetzt ein Absatz im Abschnitt ueber Text- und Binaerdateien, wo er thematisch hingehoert.
+
+Selbsttest: alle zwoelf Aufgaben allein mit dem Kapiteltext durchgegangen, jede wird von einem benannten Absatz getragen, keine Luecke offen.
+
+Wortgrenze a4 in pruef/check.js auf 6000 (aktuell 5.210), Begruendung wie bei A1.
+
+Annahme, die ich ohne Rueckfrage getroffen habe: Die Abschnittsnummern laufen in A4 nicht fortlaufend (k10 sitzt zwischen k4 und k5), weil ein Umnummerieren aller Ziele in WEGWEISER-a4.json keinen Nutzen fuer den Lernenden haette. Die ids sind Sprungziele, keine Reihenfolge.
+
+Pruefungen: check, wegweiser-bauen (12 Aufgaben), vorschau mit svgcheck ueber 6 Abbildungen ohne Befund, bauen-in-bau (1.807 KB, keine Fehler), abnahme ohne Befund. Sicherung: bau/_sicherung_2026-09-16_vonnull/13-a4.html. Datei an allen drei Orten gleich.
+
+### AI.3 – 2026-09-16: A2 von null (kaufmaennisch rechnen)
+
+Befund vorher: Der Kern erklaerte die Bezugskalkulation (Rabatt, Skonto, Bezugskosten), Kostenketten, Mischkalkulation, Ratendarlehen und Gewinnschwelle brauchbar und mit Rechenwegen. Sieben der 16 Aufgaben hatten aber ueberhaupt keinen Lernabschnitt: Ihr Wegweiser zeigte auf eine Begriffskarte. Fuenfmal war es dieselbe Aufgabenart, naemlich Gesamtkosten ueber einen Zeitraum (F24 1.3, H24 2.6, F25 1.3, F25 4.3, H25 2.6, zusammen 22 Punkte), dazu Kauf gegen Leasing (F23 2.4) und die Frage nach Gruenden fuer den teureren Lieferanten (F23 2.2). Die Mehrwertsteuer kam im Kapitel nirgends vor, obwohl H24 2.6 netto und brutto verlangt.
+
+Neu sind drei Abschnitte, eingefuegt zwischen a2-k6 und a2-k9: a2-k11 Netto, brutto und die Mehrwertsteuer (mal 1,19 hin, geteilt durch 1,19 zurueck, und warum nicht 19 Prozent abziehen). a2-k12 Einmalige und laufende Kosten, der Kern der Luecke: erst jede Position in einmalig oder laufend sortieren, dann alles auf denselben Zeitraum bringen, dazu die Signalwoerter "je Arbeitsplatz" gegen "fuer saemtliche Geraete"; F25 1.3, F24 1.3 und H24 2.6 vollstaendig vorgerechnet, H25 2.6 (Pakete) und F25 4.3 (entgangener Umsatz als Kostenposition) als Sonderfaelle im Text. a2-k13 Kaufen oder leasen mit F23 2.4. Dazu ein Absatz in a2-k5 zu den qualitativen Gruenden beim Lieferantenvergleich (F23 2.2).
+
+Neue Abbildung A2-2: fuenf Jahre als Zeitstrahl, oben der Kaufpreis nur im ersten Jahr, unten die Lizenz in jedem Jahr. Die alten Abbildungen 2 bis 4 wurden zu 3 bis 5. Der erste svgcheck-Lauf brach ab ("Headless fehlgeschlagen", zwei Headless-Laeufe gleichzeitig); der Wiederholungslauf fand zwei echte Ueberlappungen in A2-2, weil die zweizeiligen Beschriftungen nur 12 px Abstand hatten. Auf 16 px gesetzt, danach null Befunde. Merke fuer neue Bilder: zweizeilige Beschriftungen in Klasse t2 brauchen mindestens 16 px Zeilenabstand.
+
+Wegweiser: sieben Lektionsziele umgezogen, fuenf auf a2-k12, eines auf a2-k13, eines auf a2-k5. Damit zeigt keine Aufgabe des Kapitels mehr auf eine Begriffskarte statt auf eine Lektion.
+
+Selbsttest: alle 16 Aufgaben allein mit dem Kapiteltext durchgegangen, jede wird von einem benannten Absatz getragen.
+
+Wortgrenze a2 in pruef/check.js auf 6000 (aktuell 4.774). Merke-Bloecke im Kern: 6, also innerhalb des Richtwerts. Pruefungen: check, wegweiser-bauen (16 Aufgaben), svgcheck ohne Befund, bauen-in-bau (1.819 KB, keine Fehler), abnahme ohne Befund. Sicherung: bau/_sicherung_2026-09-16_vonnull/11-a2.html. Datei an allen drei Orten gleich.
+
+### AI.4 – 2026-09-16: A9 von null (Datenbank, ER-Modell, SQL)
+
+Befund vorher: Der Modellteil (a9-k1 bis a9-k11) ist schon eine Lektion von null und bleibt unveraendert: Redundanzproblem im Fall, Tabelle als Raster, Primaer- und Fremdschluessel, Entitaeten, Kardinalitaeten in drei Notationen, n:m mit Verbindungstabelle, Weg vom Modell zu Tabellen, Normalformen. Die Luecke war a9-k12 (SQL): Dort landen acht der 17 Aufgaben, der Abschnitt bestand aber aus einer Schlagwortliste, einem Syntaxblock und einer Zuordnungstabelle. Keine einzige Tabelle mit echten Zeilen, kein Abfrageergebnis, keine der acht Aufgaben vorgerechnet.
+
+a9-k12 neu geschrieben: Was eine Abfrage ist (sie liefert wieder eine Tabelle und aendert nichts), die sechs Teile als deutscher Satz gelesen, dann Stufe fuer Stufe SELECT und FROM, WHERE mit dem Unterschied zwischen Auswaehlen und Anzeigen (H22 4.1 vorgerechnet: OrderID gehoert ins WHERE, nicht ins SELECT), AND bei mehreren Bedingungen, der Gegensatz COUNT gegen SUM an H22 4.2 und H22 4.3, GROUP BY mit H23 4.7, DISTINCT mit H23 4.8, das Rueckwaertslesen einer fertigen Abfrage mit H23 4.9 und zuletzt der JOIN ueber die Fremdschluesselbedingung. Die Zuordnungstabelle der Bausteine bleibt am Ende stehen.
+
+Neue Abbildung A9-7: eine Ticket-Tabelle mit drei Zeilen und darunter drei Abfragen mit ihrem jeweiligen Ergebnis (Zeilen, eine einzige Zahl, eine Zeile je Gruppe). Die bisherigen Abbildungen A9-7 und A9-8 in den Aufgabenteilen wurden zu A9-8 und A9-9.
+
+Merke-Bloecke: Der Hinweis auf dialektabhaengige Funktionsnamen (Year, Month, NOW) ist jetzt ein Absatz statt eines Kastens, damit der Kern bei sechs Kaesten bleibt.
+
+Selbsttest: alle 17 Aufgaben durchgegangen. Am duennsten bleibt F23 4.6 (Datum, Betrag und Wahrheitswert in einer Bedingung); getragen wird sie von der AND-Regel, dem Absatz zu den Datumsfunktionen und der Bausteintabelle. Keine Wegweiser-Ziele verschoben, die ids k1 bis k12 behalten ihre Bedeutung.
+
+Wortgrenze a9 auf 6000 (aktuell 4.773). Pruefungen: check, wegweiser-bauen (17 Aufgaben), svgcheck ohne Befund, bauen-in-bau (1.826 KB, keine Fehler), abnahme ohne Befund. Sicherung: bau/_sicherung_2026-09-16_vonnull/18-a9.html. Datei an allen drei Orten gleich.
+
+### AI.5 – 2026-09-16: A7 von null (Programmlogik, Struktogramm)
+
+Befund vorher: Das Kapitel ist seit Abschnitt X und AF schon eine Lektion von null (Variable als Kaestchen, Bedingung, Feld, Schleife, Akkumulator, Schreibtischtest als Tabelle, verschachtelte Schleifen, zweidimensionale Felder, boolesche Ausdruecke, Fehlerarten). Zwei Luecken blieben. Erstens zeigte a7-k13 zwar die vier Sinnbilder nach DIN 66261, fuehrte aber keine der beiden Struktogramm-Aufgaben vor, obwohl genau diese Bauart gefragt wird: ein halb leeres Struktogramm und eine Liste von Anweisungen, die einsortiert werden muessen. Zweitens nannte a7-k11 zwar die Auswahlkriterien fuer eine Programmiersprache, aber nicht die von der IHK verlangte Antwortform.
+
+Neu in a7-k13: die drei Fragen, mit denen jede Anweisung ihren Platz findet (einmal vorher, in jedem Durchlauf, oder bei zwei Rahmen die Frage je PC gegen je Software), dann F22 4.4 vollstaendig einsortiert mit dem Hinweis auf die entscheidende Zeile SoftwareNr = 0 innerhalb der aeusseren Schleife, danach H22 4.4 als die andere Bauart mit Abbruch ueber eine Bedingung, Maszeinstellung vor der Schleife und dem Hochzaehlen als Schutz vor der Endlosschleife.
+
+Neu in a7-k11: H24 2.2 verlangt Kriterium plus Begruendung, ein Sprachname ist keine Antwort (ein Punkt fuer das Kriterium, zwei fuer die Begruendung). H24 2.3 verlangt beim Vergleich Compiler gegen Interpreter den Zeitpunkt der Uebersetzung und die Folge daraus; zwei nebeneinandergestellte Begriffe ohne Wirkung geben die halbe Punktzahl.
+
+Beim Schreiben zuerst die falschen Quellennummern gesetzt (a7-q9 und a7-q10 sind Python-Glossar und Java-Spezifikation, nicht die Pruefungen). Berichtigt auf a7-q13 fuer Fruehjahr 2022 und a7-q14 fuer Herbst 2022. Merke: Die q-Nummern sind je Kapitel verschieden, vor dem Setzen die Quellenliste des Kapitels lesen.
+
+Keine ids verschoben, keine Wegweiser-Aenderung, keine neue Abbildung. Wortgrenze a7 von 4750 auf 6000 (aktuell 5.204). Pruefungen: check, wegweiser-bauen (12 Aufgaben), bauen-in-bau (1.829 KB, keine Fehler), abnahme ohne Befund. Sicherung: bau/_sicherung_2026-09-16_vonnull/16-a7.html. Datei an allen drei Orten gleich.
+
+### AI.6 – 2026-09-16: A3 (Nutzwertanalyse)
+
+Befund: Das Kapitel war schon eine Lektion von null und ist es geblieben. Es erklaert Gewichtung und Punktwert vor der Rechnung, zeigt beide Schreibweisen (Prozent und Punkte), hat eine vollstaendig gerechnete Tabelle, das Rueckwaertsrechnen fehlender Zellen aus F24, die K.-o.-Kriterien vor der Rechnung und die Entscheidung mit Begruendung. Alle acht Aufgaben hatten bereits einen benannten Abschnitt. Ein Umbau war nicht noetig und waere Selbstzweck gewesen.
+
+Eine Luecke war trotzdem da: H22 3.7, mit zehn Punkten die groesste Aufgabe des Kapitels, stand nur als Nebensatz im Text. Sie ist jetzt in a3-k4 vollstaendig vorgerechnet, in drei Schritten: Bezugspreise je Geraet (1.015, 1.110, 1.300 EUR, "frei Haus" heisst keine Lieferkosten), dann die Noten von 1 bis 3 je Kriterium, dann Gewicht mal Note und die Spaltensummen 64, 57 und 77. Davor steht die Regel, die in keiner Aufgabe erklaert wird: je Kriterium sortieren und die beste Note an das beste Angebot geben, wobei beim Preis billig und bei der Lieferzeit kurz das Bessere ist.
+
+Der Fall taugt als Beleg fuer die Kapitelthese: Der teuerste Anbieter gewinnt, weil Lieferzeit, Qualitaet und Erfahrung zusammen schwerer wiegen als der Preis. Genau das steht jetzt als Schlusssatz dabei.
+
+Keine ids verschoben, keine neue Abbildung, keine Wortgrenze geaendert (Kapitel bleibt unter 4500). Pruefungen: check, wegweiser-bauen (8 Aufgaben), bauen-in-bau (1.831 KB, keine Fehler), abnahme ohne Befund. Sicherung: bau/_sicherung_2026-09-16_vonnull/12-a3.html. Datei an allen drei Orten gleich.
+
+### AI.7 – 2026-09-16: A5 (Strom und Energiekosten) geprueft, kein Umbau
+
+Durchgesehen wie die anderen Kapitel, Ergebnis: A5 erfuellt die Regeln des Auftrags bereits. Der Einstieg erklaert Spannung, Stromstaerke und Leistung ueber das Bild von Druck und Wassermenge, bevor eine Formel faellt, und das Formeldreieck steht als Abbildung daneben. Jeder der acht Abschnitte hat eine Vorabfrage und rechnet mit Zahlen: Ueberlastnachweis an der 16-A-Leiste mit der Spannung 230 V, die man im Kopf haben muss; Watt zu Euro; Wirkungsgrad mit der Richtung P_auf = P_ab durch Wirkungsgrad; Lastanteil mit F24 3.8 vollstaendig durchgerechnet; Netzteilauswahl mit Reserve und der Unterscheidung Reserve gegen Wirkungsgrad; Amortisation mit Abbildung des Schnittpunkts; USV mit t = E / P.
+
+Selbsttest: alle sieben Aufgaben gehen auf. H25 3.5 (USB-Strom bei 5 V) ist im Text namentlich vorgerechnet, H25 3.6 (Stoerung durch USB-Versorgung) folgt daraus im selben Abschnitt. H21 2.1, H21 2.2 und F24 3.7 sind zusaetzlich als Originalaufgaben im Kapitel geloest.
+
+Keine Aenderung vorgenommen. Ein Umbau waere Selbstzweck gewesen und haette ein funktionierendes Kapitel angefasst. Sicherung trotzdem abgelegt: bau/_sicherung_2026-09-16_vonnull/14-a5.html.
+
+### AI.8 – 2026-09-16: A6 (Netzplan und Balkenplan)
+
+Befund: Vorwaerts- und Rueckwaertsrechnung, Puffer, kritischer Pfad und die Wirkung einer Verzoegerung sind bereits sauber von null erklaert, mit Abbildungen und Zahlen. Zwei Luecken im Balkenplan-Abschnitt a6-k7.
+
+Erste Luecke, und die ist heikel: Das Kapitel benutzte stillschweigend zwei verschiedene Tageszaehlungen. Im Netzplan sind FAZ und FEZ Zeitpunkte, ein Vorgang von Zeitpunkt 9 bis 15 dauert sechs Tage. Der Balkenplan der Pruefung hat dagegen nummerierte Tagesspalten ab dem ersten Tag, dort belegt ein Vorgang von drei Tagen die Spalten 1 bis 3. Wer das vermischt, zeichnet jeden Balken einen Tag zu lang. Beide Zaehlweisen stehen jetzt nebeneinander, mit der Regel letzter Tag ist Anfangstag plus Dauer minus 1.
+
+Zweite Luecke: H23 4.3 (Balkenplan aus einer Vorgangsliste zeichnen, sechs Punkte) ist jetzt als Tabelle mit Anfang und Ende je Vorgang vorgerechnet, einschliesslich der Regel, dass ein Vorgang am Tag nach dem spaetesten seiner Vorgaenger beginnt. Eigene Vorwaertsrechnung stimmt mit den Loesungshinweisen ueberein (B 4 bis 9, D 4 bis 11, E 4 bis 8, C 10 bis 13, F 14 bis 16, G 17 bis 18). Dazu die Gegenueberstellung fuer H23 4.1: Der Balkenplan zeigt wann, der Netzplan zeigt woran es haengt, je zwei Merkmale.
+
+Sprachregel in pruef/check.js geschaerft: Die Regel gegen Lernplaene hat auf jedes "Tag 9" angeschlagen, also auf die Termine im Netzplan selbst; sie stand schon vor diesem Umbau als Hinweis in jedem Lauf. Sie greift jetzt nur noch, wenn "Tag N" oder "Woche N" eine Aufzaehlung oder Ueberschrift anfuehrt (Elementanfang oder folgender Doppelpunkt). Nach der Aenderung meldet weder A6 noch die Gesamtdatei diesen Hinweis; es waren durchweg Fehlalarme.
+
+Wortgrenze a6 auf 6000 (aktuell 4.766); die Liste der Ausnahmen in check.js ist jetzt ein Array. Pruefungen: check, wegweiser-bauen (9 Aufgaben), bauen-in-bau (1.833 KB, keine Fehler), abnahme ohne Befund. Sicherung: bau/_sicherung_2026-09-16_vonnull/15-a6.html.
+
+### AI.9 – 2026-09-16: A8 (UML) geprueft, kein Umbau
+
+A8 erfuellt die Regeln bereits. Der Einstieg zeigt das Problem an einem mehrdeutigen Satz aus dem Fall ("ab 1.000 Euro schaut der Chef mit drauf" heisst freigeben oder nur ansehen?) und begruendet daraus, warum feste Symbole noetig sind. Danach die drei Diagrammarten mit je einer Leitfrage (wer darf was, in welcher Reihenfolge, welche Daten gehoeren zusammen) und dem Hinweis, woran man im Aufgabentext erkennt, welche Art gemeint ist. Jede Art hat einen eigenen Abschnitt mit Vorabfrage, vollstaendiger Abbildung und Zeichenregeln, dazu ein Zeichenschema und ein Abschnitt mit vier typischen Zeichenfehlern als Gegenueberstellung.
+
+Alle vier Aufgaben des Kapitels sind zusaetzlich als geloeste Originalaufgaben enthalten (a8-original-1 bis 4). Selbsttest ohne Befund. Keine Aenderung vorgenommen. Sicherung: bau/_sicherung_2026-09-16_vonnull/17-a8.html.
+
+### AI.10 – 2026-09-16: B5 (Netzbetrieb, Dienste, Cloud)
+
+Befund: Das Kapitel hat fuenfzehn kurze Abschnitte von der Fehlersuche ueber Verkabelung, WLAN und VLAN bis Cloud und Container, durchweg mit Abbildungen. Drei der 13 Aufgaben hatten aber nur eine Begriffskarte als Lernziel, also keinen Abschnitt.
+
+Geschlossen wurden alle drei. ARP steht jetzt in b5-k4, wo es hingehoert: Der PC kennt die MAC-Adresse des Nachbarn nicht, er fragt danach, und die Antwort landet in der Tabelle, die arp -a zeigt. F24 2.5 ist daran erklaert, einschliesslich der Bedeutung des Typs "dynamisch". Neuer Abschnitt b5-k16 zu den Mailprotokollen: SMTP zum Versenden, POP3 laedt herunter und loescht auf dem Server, IMAP laesst die Nachrichten dort; F25 2.8 wird mit dem Mehrgeraete-Zugriff begruendet. In b5-k14 kommt der Vergleich Cloud gegen eigenen Serverraum dazu, mit je vier Punkten fuer und gegen, wie F22 4.2 sie verlangt.
+
+Wegweiser: drei Lektionsziele von Begriffskarten auf Abschnitte umgezogen (b5-k4, b5-k14, b5-k16). Damit zeigt in B5 keine Aufgabe mehr auf eine Karte.
+
+Beim Setzen der Quellenverweise erneut die falschen Nummern erwischt (b5-q16 bis b5-q19 sind nicht in der Reihenfolge der Jahre vergeben). Vor dem Schreiben die Quellenliste des Kapitels lesen, das ist jetzt das zweite Mal.
+
+Keine neue Abbildung, keine Wortgrenze noetig (4.287 Woerter). Pruefungen: check, wegweiser-bauen (13 Aufgaben), bauen-in-bau (1.836 KB, keine Fehler), abnahme ohne Befund. Sicherung: bau/_sicherung_2026-09-16_vonnull/24-b5.html.
+
+### AI.11 – 2026-09-16: B1 (IT-Sicherheit) geprueft, kein Umbau
+
+B1 ist das am besten gebaute der bisher geprueften B-Kapitel und erfuellt die Regeln vollstaendig. Es faengt ausdruecklich nicht bei den Massnahmen an, sondern beim Schaden: Der Einstieg zeigt, warum eine Aufzaehlung aus Firewall und Passwoertern die Kundenfrage nicht beantwortet. Daraus folgt die Antwortkette moeglicher Schaden, verletztes Schutzziel, wirksame Massnahme, die als Abbildung B1-1 dasteht und genau die Form ist, die die IHK bewertet. Danach Schutzbedarf, Zutritt gegen Zugang gegen Zugriff, Anmeldung, Passwoerter, Rechteminimierung, Gruppenrichtlinien, Updates, Haertung, Malware, Phishing, Massnahmen auf den drei Ebenen Technik, Organisation und Verhalten, Risiken, englischer Fachtext und BSI.
+
+Alle 30 Aufgaben zeigen auf einen Abschnitt, keine auf eine Begriffskarte. Stichprobe an den fuenf Aufgaben des dichtesten Abschnitts b1-k7: Haertung erklaeren (F23 3.3), Bordmittel nennen (F23 3.5) und das Risiko manipulierter Geraete aus der Lieferkette (H25 3.4) stehen dort woertlich, mit Abbildung B1-5 als Fuenf-Punkte-Liste.
+
+Keine Aenderung vorgenommen. 4.179 Woerter, unter der Grenze. Sicherung: bau/_sicherung_2026-09-16_vonnull/20-b1.html.
+
+### AI.12 – 2026-09-16: B9 (Projekt) geprueft, kein Umbau
+
+B9 erfuellt die Regeln. Der Einstieg macht die eigentliche Arbeit sichtbar: Aus "Akten weg, bis zum Jahreswechsel, und teuer darf es nicht werden" laesst sich kein Angebot rechnen, und daraus folgt die Kette vom vagen Wunsch ueber pruefbare Anforderungen zum Auftrag und zum geplanten Weg. Danach die vier Merkmale eines Projekts als Abbildung, fuenf Wege der Bedarfsanalyse mit Vor- und Nachteil je Weg, Lastenheft gegen Pflichtenheft als Tabelle nach wer, was und wann, die Pflichtangaben eines Angebots, SMART mit einem ausformulierten Beispielziel, die Phasenfolge, Wasserfall gegen V-Modell gegen iterativ, Scrum, Kanban, Stakeholder und Abnahme.
+
+Alle 13 Aufgaben zeigen auf einen Abschnitt. Stichprobe am dichtesten Abschnitt b9-k3: fuenf Inhalte eines Lastenhefts (H21 3.1), zwei Unterschiede zum Pflichtenheft (F23 4.2) und zwei weitere Inhalte (F23 4.3) stehen alle in der Tabelle dort.
+
+Keine Aenderung. 4.457 Woerter, knapp unter der Grenze; weitere Ergaenzungen in diesem Kapitel brauchen erst eine Anhebung. Sicherung: bau/_sicherung_2026-09-16_vonnull/28-b9.html.
+
+### AI.13 – 2026-09-16: B7 (Datensicherung und RAID) geprueft, kein Umbau
+
+B7 erfuellt die Regeln. Der Einstieg trennt Kopie von Sicherung an zwei echten Faellen und nennt die drei Bedingungen, ab wann eine Sicherung eine ist. Die Sicherungsarten werden an einem Wochenplan mit festen Zahlen durchgespielt, RAID an drei Grundideen, und die Nutzkapazitaet steht als Tabelle mit n und K samt gerechnetem Beispiel fuer acht Platten. Der Sonderfall ungleich grosser Platten aus H22 2.4 ist vorgerechnet (zwei mit 3 TB, sieben mit 2 TB, K ist 2 TB, also 16 TB, und von jeder grossen Platte liegt 1 TB brach). JBOD steht mit der Gegenueberstellung zu RAID 0 genau in der Form, in der die Loesungshinweise zu H22 2.6 werten. Verfuegbarkeit wird von Prozent in Ausfallstunden je Jahr umgerechnet.
+
+Alle sieben Aufgaben zeigen auf einen Abschnitt und werden dort namentlich behandelt. Keine Aenderung. 4.492 Woerter, dicht an der Grenze. Sicherung: bau/_sicherung_2026-09-16_vonnull/26-b7.html.
+
+### AI.14 – 2026-09-16: B2 (Verschluesselung) geprueft, kein Umbau
+
+B2 erfuellt die Regeln. Der Einstieg erklaert zuerst, was ein Schluessel ueberhaupt ist (eine sehr lange Zahl, nicht das Verfahren, das oeffentlich bekannt ist), und stellt dann das eigentliche Problem: Wie kommt ein gemeinsames Geheimnis zum Empfaenger, ohne dass es abgefangen wird. Aus dieser Frage folgen symmetrisch und asymmetrisch, nebeneinander als Tabelle mit Staerke und Preis. Danach Ablauf der asymmetrischen Ver- und Entschluesselung, Datentraegerverschluesselung mit TPM, Signatur, Hashwert beim Download, Passwortspeicherung mit Salt, Zertifikate, Verbindungsarten, VPN, SSH gegen Telnet, WPA-PSK gegen Enterprise und Transport- gegen Ende-zu-Ende-Verschluesselung.
+
+Alle 13 Aufgaben zeigen auf einen Abschnitt, keine auf eine Begriffskarte. Keine Aenderung. 3.959 Woerter. Sicherung: bau/_sicherung_2026-09-16_vonnull/21-b2.html.
+
+### AI.15 – 2026-09-16: B3 (Datenschutz) geprueft, kein Umbau
+
+B3 erfuellt die Regeln. Der Einstieg trennt die beiden Fragen sauber: Datensicherheit fragt, ob jemand an die Daten kommt, der nicht soll; Datenschutz fragt, ob man diese Daten ueberhaupt haben und damit arbeiten darf. Ein verschluesselter, geharteter Bestand kann also trotzdem verboten sein. Danach personenbezogene Daten mit Beispielen bis zur IP-Adresse, der Grundsatz verboten es sei denn erlaubt, die drei Rollen betroffene Person, Verantwortlicher und Auftragsverarbeiter als Abbildung, der Vertrag nach Art. 28, dann zwoelf nummerierte Abschnitte von den sieben Grundsaetzen ueber Betroffenenrechte, Fristen, TOM und Datenpanne bis zu KI-Diensten ausserhalb der EU.
+
+Alle sechs Aufgaben zeigen auf einen Abschnitt und sind dort namentlich beantwortet, einschliesslich der von den Loesungshinweisen zusaetzlich anerkannten Antworten zu H23 3.1 (Strafgesetzbuch, Art. 10 GG, Landesdatenschutzgesetze). Keine Aenderung. 3.932 Woerter. Sicherung: bau/_sicherung_2026-09-16_vonnull/22-b3.html.
+
+### AI.16 – 2026-09-16: B4 (Hardware und Schnittstellen) geprueft, kein Umbau
+
+B4 erfuellt die Regeln. Der Einstieg fasst alle Aufgabenarten in eine Frage zusammen (passt das zusammen, und warum) und zerlegt sie in drei Bedeutungen von Passen: Form, Verfahren und Verbund. Danach erklaert das Kapitel zuerst, was ueberhaupt in einem Rechner steckt, im Bild eines Bueros mit Sachbearbeiter, Schreibtisch und Aktenschrank, bevor ein einziges Bauteil im Detail vorkommt. Die vierzehn Abschnitte gehen dann von CPU und Kernen ueber Waermeleitpaste, RAM, DDR-Zahlen, HDD gegen SSD, SATA gegen M.2 gegen NVMe, Anschlussformen, BIOS FlashBack, Funksymbole, Peripherie und Bauformen bis zu Barcode, QR-Code und RFID.
+
+Der Abschnitt zu den Anschluessen nennt die Pruefungsbilder einzeln mit ihrer Zuordnung (F22 2.6, F24 1.4, F25 1.4) und trennt ausdruecklich Steckerform von Uebertragungsstandard. Alle 17 Aufgaben zeigen auf einen Abschnitt. Keine Aenderung. 4.443 Woerter, dicht an der Grenze. Sicherung: bau/_sicherung_2026-09-16_vonnull/23-b4.html.
+
+### AI.17 – 2026-09-16: B6 (Software und Lizenzen) geprueft, kein Umbau
+
+B6 erfuellt die Regeln. Der Einstieg buendelt drei scheinbar unverbundene Kundenfragen (warum bricht das Kopieren ab, darf ich das kostenlose Programm zwoelfmal einsetzen, warum zeigt die Website keine freien Termine) und ordnet sie drei Ebenen zu. Danach die Schichten von der Hardware ueber Firmware und Treiber zum Betriebssystem und zur Anwendung als Abbildung, mit einem Druckauftrag als durchlaufendem Beispiel, dann die fuenf Verwaltungsaufgaben eines Betriebssystems, Dateisysteme und ihre Grenzen, Make or Buy, Fremdvergabe, Dateiformate, Open Source gegen proprietaer, Copyleft gegen permissiv, statische gegen dynamische Website, Frontend gegen Backend und die Sprachen dafuer.
+
+Alle acht Aufgaben zeigen auf einen Abschnitt. Keine Aenderung. 3.974 Woerter. Sicherung: bau/_sicherung_2026-09-16_vonnull/25-b6.html.
+
+### AI.18 – 2026-09-16: B8 (Ergonomie und Nachhaltigkeit) geprueft, kein Umbau
+
+B8 erfuellt die Regeln. Einstieg ueber drei Fehler in einem Raum, dann die Reihenfolge beim Einstellen eines Arbeitsplatzes, Telearbeit mit den vier Anschaffungen, die zu einem Notebook dazugehoeren, Homeoffice mit Vor- und Nachteilen, Interaktionsprinzipien, Barrierefreiheit in der Kette Pflicht, Prinzip, Massnahme, Hilfsmittel, Lebenszyklus und Energiekosten.
+
+Alle sechs Aufgaben sind getragen: H23 2.1 und H23 2.4 im Text, H23 2.2, H23 2.3 und H24 4.5 zusaetzlich als vollstaendig geloeste Originalaufgaben im Kapitel. Keine Aenderung. Sicherung: bau/_sicherung_2026-09-16_vonnull/27-b8.html.
+
+### AI.19 – 2026-09-16: B10 (Kommunikation und Service) geprueft, kein Umbau
+
+B10 erfuellt die Regeln. Der Einstieg zeigt den Widerspruch, um den es geht: Der Techniker findet nichts, die Kanzleileiterin hat trotzdem recht, weil der Fehler vor und hinter dem System liegt. Daraus folgen die drei Teile einer Einfuehrung (Bedarf verstehen, Leute mitnehmen, hinterher pruefen), die vier Schritte durch ein Kundengespraech als Abbildung, das Vier-Seiten-Modell an einem einzigen Satz durchdekliniert samt der typischen Verwechslung von Beziehung und Appell, dann Folien, Leistungsangebote in Kundennutzen uebersetzt, Einweisungsformen, Ablehnungsgruende, KI im Ablauf, Chatbot, Serviceablauf, Servicequalitaet, Remote gegen Vor Ort und die kostenpflichtige Hotline.
+
+Alle 16 Aufgaben zeigen auf einen Abschnitt. Keine Aenderung. 4.208 Woerter. Sicherung: bau/_sicherung_2026-09-16_vonnull/29-b10.html.
+
+### AI.20 – 2026-09-16: B11 (Vertraege und Kaufmaennisches) geprueft, kein Umbau
+
+B11 erfuellt die Regeln. Der Einstieg stellt die Frage, ob ueberhaupt ein Vertrag zustande gekommen ist, und trennt dann Werkvertrag von Dienstvertrag als Ergebnis gegen Bemuehen. Danach Rechnungspflichtangaben mit Kontrollvorgaengen, Faelligkeit, Skonto und Verzug, E-Rechnung und GiroCode mit den sechs Gruenden dafuer und vier dagegen, Kaufvertragsstoerungen, Gewaehrleistung gegen Garantie, Leasing mit Eigentum und Besitz, Leasingende, Unternehmensziele und Marktformen, Preisbestimmung und Rechtsformen mit Vollmachten.
+
+Alle 20 Aufgaben zeigen auf einen Abschnitt. Stichprobe am dichtesten Abschnitt b11-k11: die vier Aspekte der Preisbestimmung und beide Gefahren (zu hoch kostet Kunden, zu niedrig deckt die Kosten nicht) stehen dort und beantworten H23 1.5 bis 1.7 unmittelbar. Keine Aenderung. 4.480 Woerter, dicht an der Grenze. Sicherung: bau/_sicherung_2026-09-16_vonnull/30-b11.html.
+
+## AJ – 2026-09-16 abends: Jede Aufgabe im Lernabschnitt anbinden (A-Kapitel)
+
+Ausloeser: Der Lernende fragte, ob die Themen so ausgearbeitet sind, dass er damit alle Aufgaben loesen kann. Statt zu behaupten, gemessen: Ein Skript prueft fuer jede der 252 Aufgaben, ob ihr Lernabschnitt (Feld "lektion" im Wegweiser) die Aufgabenkennung im Text enthaelt. Ergebnis vor dieser Arbeit: 76 von 252, vorher am 15.09. waren es 59. Meine Aussage vom selben Tag, jede Aufgabe werde von einem benannten Absatz getragen, war damit zu stark; sie stimmte fuer die sieben an diesem Tag umgebauten Kapitel, nicht fuer die dreizehn geprueften.
+
+Was die Zahl misst und was nicht: Sie zaehlt die Kennung, nicht das Verstaendnis. In B7 steht die Gegenueberstellung JBOD gegen RAID 0 wortgleich mit den Loesungshinweisen, ohne das Kuerzel H22 2.6 daneben. Fuer Wissensfragen ist das vertretbar. Fuer Aufgaben, bei denen etwas zu produzieren ist (rechnen, zeichnen, eine Abfrage schreiben), ist die Anbindung dagegen der Unterschied zwischen "ich verstehe den Absatz" und "ich weiss, dass genau das die Aufgabe loest".
+
+Deshalb zuerst alle neun A-Kapitel angebunden, das sind die Produzier-Kapitel. Jetzt 103 von 103. Form der Anbindung, je nach Aufgabenart: bei Rechenaufgaben ein pre.rechenweg mit den Zahlen der Aufgabe (A1 F22 3.8 und H25 3.7, A1 F25 1.6 und H24 1.5, A7 H25 4.7 und 4.8 mit der falschen und der richtigen Akkumulatorzeile); bei Erklaeraufgaben ein Absatz mit der geforderten Antwortform (A9 H25 4.1 bis 4.3 aus dem englischen Fachtext, A5 H25 3.5 und 3.6); bei Zeichenaufgaben der Weg in Schritten plus Verweis auf die vollstaendig geloeste Originalaufgabe (A8 H23 1.1 und H24 2.4, A6 H21 1.3 und F25 3.1, A9 H22 4.5).
+
+Zwei Sachfehler dabei gefunden und mitkorrigiert: In A7 fehlte die Regel, dass ein addierender Sammler bei 0 und ein multiplizierender bei 1 beginnt; genau daran haengt H25 4.7. In A5 war H25 3.6 (Stoerung durch USB-Versorgung) nur implizit beantwortet.
+
+Wortgrenze: a5 dazu auf 6000. Die Ausnahmeliste in pruef/check.js umfasst jetzt a1, a2, a4, a5, a6, a7, a9. A3 (3.558) und A8 (4.178) bleiben unter 4500. Der bestehende Hinweis "a8: 4 Original-Aufgaben (hoechstens 3)" stammt nicht aus dieser Arbeit und bleibt als Hinweis stehen.
+
+Pruefungen: check je Kapitel, wegweiser-bauen (252 Zeilen), bauen-in-bau (1.856 KB, keine Fehler), abnahme ohne Befund. Datei an allen drei Orten gleich. Offen: dieselbe Anbindung in den B-Kapiteln, dort fehlen noch 122 von 149; B4 und B3 sind schon weitgehend angebunden.
+
+### AJ.2 – 2026-09-16 abends: Anbindung in allen zwanzig Kapiteln abgeschlossen
+
+Nach den A-Kapiteln auch alle elf B-Kapitel angebunden. Messung jetzt 252 von 252; vor dieser Arbeit 76, davor am 15.09. 59.
+
+Form in den B-Kapiteln: je Abschnitt ein Absatz "So fragt die IHK hier", der die dort beantworteten Aufgaben mit Kennung nennt und dazu die verlangte Antwortform, also wie viele Nennungen, ob eine Begruendung dazugehoert und worauf die Loesungshinweise achten. Beispiel B1 Haertung: fuenf Aufgaben in einem Absatz, von "Begriff erklaeren" bis "Risiko der Lieferkette". Damit sieht der Lernende am Ende jedes Abschnitts, was dieser Abschnitt in der Pruefung wert ist, ohne den Wegweiser aufklappen zu muessen.
+
+Ein Werkzeug dafuer im Scratchpad: bruecken.py liest die Quellennummern aus der Quellenliste des jeweiligen Kapitels, statt sie zu raten. Das war noetig, weil die q-Nummern je Kapitel anders vergeben sind und ich sie vorher zweimal falsch gesetzt hatte.
+
+Drei Fehler beim ersten Lauf, alle gefunden und behoben: In B6 und B7 sassen drei Einschuebe einen Abschnitt zu frueh, weil der Text vor der falschen Ueberschrift eingefuegt wurde; die Regel lautet, vor die NAECHSTE Ueberschrift einzusetzen, damit der Absatz am Ende des gemeinten Abschnitts steht. In B11 stand "H23 1.5 und 1.6" verkuerzt, was die Messung fuer 1.6 nicht findet; Kennungen immer ausschreiben.
+
+Wortgrenze 6000 gilt jetzt fuer a1, a2, a4, a5, a6, a7, a9, b1, b5, b7, b9, b10, b11. Die uebrigen sieben Kapitel bleiben unter 4500.
+
+Pruefungen: check je Kapitel, wegweiser-bauen (252 Zeilen), bauen-in-bau (1.882 KB, keine Fehler), abnahme ohne Befund. Datei an allen drei Orten gleich.
+
+Was weiterhin offen ist und nicht behauptet werden soll: Nur 103 der 252 Lernabschnitte enthalten einen Rechenweg oder eine Tabelle. Das ist bei Wissensfragen richtig so, bei den uebrigen Rechen- und Zeichenaufgaben waere ein vorgefuehrtes Beispiel noch besser. Und ob die Erklaerungen beim Lernenden ankommen, ist damit nicht gemessen.
+
+### AJ.3 – 2026-09-16 nachts: Alle neuen Einschuebe gegen die Loesungshinweise gelesen
+
+Ausloeser: Der Lernende fragte, ob die neuen Absaetze inhaltlich stimmen. Sie waren nicht geprueft. Die 55 Einschuebe des letzten B-Durchgangs hatte ich aus den Aufgabentiteln geschrieben, nicht aus den Loesungen. Werkzeug dafuer gebaut: scratchpad/gegenlesen.py stellt jeden Einschub neben die Loesung der Aufgaben, die er nennt.
+
+Ergebnis: 25 Stellen in neun Kapiteln geaendert, davon fuenf sachlich falsch.
+
+Die fuenf Fehler: (1) B5 F22 3.4 behauptete eine Laengenangabe aus einem Kabeltester; tatsaechlich geht es um Werte im Windows-Statusfenster (Medienstatus, Signalqualitaet, Aktivitaet) und die Deutung, dass Schicht 1 fehlerfrei ist. (2) B5 H24 1.6 und H25 3.8 waren mit "die Beschriftung im Verteiler entscheidet" falsch zusammengefasst; H24 1.6 ist ein Ausprobieren per Ping, H25 3.8 fragt nach dem im Rack gepatchten Port. (3) B6 F24 3.1 nannte Arbeitsschritte statt der gefragten Informationswege (Suchmaschine, Forum, Hersteller, Fachliteratur). (4) B7 F24 4.3 erfand eine "Rueckspielprobe"; die Loesung nennt Verschluesselung mit Passwort und das Generationenprinzip. (5) B8 zog H23 2.1, 2.2 und 2.3 zu einer Liste zusammen, obwohl die drei Aufgaben drei verschiedene Antworten haben (Kommunikationsausstattung mit Begruendung, Maengel des Tablets, ergonomische Ergaenzungen am Notebook).
+
+Die uebrigen zwanzig Aenderungen waren nicht falsch, aber zu vage: Ich hatte das Vorgehen beschrieben, wo die Pruefung eine Antwort verlangt. Jetzt stehen die erwarteten Antworten da, etwa Oligopol und Polypol in B11, die vier Leistungsmerkmale in B6, die Phasenreihenfolge des Datenbankentwurfs in B9, die Trennung wirtschaftlicher und sozialer Aspekte beim Chatbot in B10.
+
+Regel daraus, fuer jeden weiteren Einschub: Erst die Loesung des Aufgabenartikels lesen, dann schreiben. Bei Nenn-Aufgaben gehoert die anerkannte Antwort in den Text, nicht der Weg dorthin. Und die Punkteteilung mitnennen, wo sie in den Hinweisen steht.
+
+Wortgrenze b4 auf 6000, damit die ausfuehrlichere Fassung passt. Pruefungen: alle Kapitel einzeln gruen, wegweiser-bauen 252 Zeilen, bauen-in-bau 1.890 KB keine Fehler, abnahme ohne Befund, Messung weiterhin 252 von 252. Datei an allen drei Orten gleich.
+
+## AK – 2026-09-16 nachts: Wortliste in Teil 0
+
+Ausloeser: Der Lernende sagte, er habe bei Netzwerk, Subnetting, dezimal, binaer, Gateway, Firewall, DNS, Subnetz, Host, SQL und Pseudocode wirklich kein Vorwissen. Nachgesehen, ob diese Woerter ueberhaupt nachschlagbar sind: Firewall, Host, Switch, Router, Paket, Server und SQL kommen zusammen mehrere hundert Mal in der Datei vor und hatten keinen einzigen Eintrag im Glossar. Host allein 71-mal, Server 139-mal.
+
+Grund dafuer: Die Begriffskarten am Kapitelende behandeln das Pruefungsvokabular des jeweiligen Kapitels, nicht die Alltagswoerter, auf denen alles aufsetzt. Und je Kapitel sind hoechstens zwoelf Karten erlaubt, in A1 sind bereits zehn vergeben.
+
+Deshalb ein neuer Abschnitt in Teil 0 statt weiterer Karten: "Die Woerter, die ueberall vorkommen", 32 Eintraege als Tabelle mit Wort, einem Satz Alltagssprache und einem Link ins zustaendige Kapitel. Enthalten sind Netz, Paket, Bit, Byte, dezimal, binaer, hexadezimal, IP-Adresse, MAC-Adresse, Host, Server, Client, Switch, Router, Gateway, Subnetz, Subnetzmaske, Firewall, DNS, DHCP, Port, Protokoll, LAN und WLAN, Betriebssystem, Datei, Datenbank, Tabelle, SQL, Pseudocode, Variable, Schleife, Cloud. Am Ende der Hinweis, dass das Glossar in Teil 4 alle 179 Begriffe listet und jedes Kapitel seine eigenen Karten hat.
+
+Bewusst keine neuen Begriffskarten in den Kapiteln: Die Kartenobergrenze in check.js bleibt unangetastet, und die Wortliste steht dort, wo ein Anfaenger sie braucht, naemlich vor dem ersten Kapitel.
+
+Nicht geaendert: Firewall bleibt im Stoff ein Nebenthema (sie taucht in den 252 Aufgaben nur als eine moegliche Nennung unter den Bordmitteln auf). Der eine Satz in der Wortliste plus die Stelle in B1 reichen dafuer; ein eigener Abschnitt waere Stoff, der nicht gepruef wird.
+
+Pruefungen: check auf 01-benutzung gruen, bauen-in-bau 1.896 KB keine Fehler, abnahme ohne Befund. Datei an allen drei Orten gleich.
+
+### AK.2 – 2026-09-16 nachts: Einstiegspfad in Teil 0 berichtigt
+
+Beim Pruefen der Wortliste aufgefallen: Der Lernpfad "Wenn du bei null anfaengst" schickte den Anfaenger zuerst nach B5, mit der Begruendung, dort werde erklaert, was eine Adresse, ein Switch und ein Router sind. Das stimmt nicht. B5 beginnt mit dem Sieben-Schichten-Modell und setzt Kabel, Dose, Switch, Adresse, Server und Protokoll bereits voraus; es ist ein Suchraster fuer die Fehlersuche, kein Einstieg. Zusaetzlich stand darueber der Satz "Nicht bei A1. Subnetting ist das abstrakteste Thema der Datei."
+
+Beides war vor dem heutigen Umbau richtig und ist es seitdem nicht mehr: A1 faengt jetzt mit Netz, Paket, Switch, Router, Bit, Binaer und Hexadezimal an und setzt nichts voraus. Der Pfad beginnt deshalb ab sofort mit A1, danach folgt B5 mit dem Hinweis, warum es dort und nicht davor steht. Davor steht ein Verweis auf die neue Wortliste. Der abratende Satz zu A1 ist ersetzt durch den Hinweis, dass das Kapitel vorn bei null anfaengt und man nach dem vierten Abschnitt aufhoeren darf, wenn das Rechnen zu viel wird.
+
+Merke fuer kuenftige Umbauten: Wenn ein Kapitel von null neu geschrieben wird, gehoert der Lernpfad in Teil 0 mitgeprueft. Er beschreibt Voraussetzungen, die sich mit dem Umbau aendern.
+
+Pruefungen: check gruen, bauen-in-bau 1.897 KB keine Fehler, abnahme ohne Befund, Datei an allen drei Orten gleich.
+
+## AL – 2026-09-16: Aufraeumen in bau/
+
+Der Lernende bat, alles Sinnlose zu loeschen. Vorher 1,4 GB, nachher 162 MB.
+
+Geloescht, weil es bei jedem Lauf neu entsteht oder nachbaubar ist:
+- 55 Ordner "profil-*" mit zusammen 887 MB. Das sind Wegwerf-Browserprofile, die pruef/vorschau.py und pruef/svgcheck.py fuer den Headless-Edge anlegen (History, Login Data, Sessions und so weiter). Sie entstehen beim naechsten Vorschaulauf von selbst wieder.
+- notizen/scratch-e1, -e2 und -e3 mit zusammen 102 MB: Seitenrenders als PNG plus PDF-Ausschnitte aus den Extraktionsphasen E1 bis E3. Die Ergebnisse dieser Phasen stehen als notizen/20xx-*.md daneben, die vollstaendigen PDFs liegen im Koffer.
+- In den beiden grossen Sicherungen vom 9. September die mitkopierten notizen/scratch-* und notizen/vorschau, rund 300 MB. Die Sicherungen behalten Kapitel, Skripte und alle .md- und .json-Dateien.
+
+Bewusst behalten:
+- _sicherung_2026-09-08_pdf (35 MB): Darin liegt das unveraenderte Original der Pruefungs-PDF, aus dem pruef/tipps-pdf.py die Fassung mit den Randkaesten erzeugt. Ohne dieses Original laesst sich das Tipp-PDF nicht neu bauen.
+- notizen/k2-pruefung/uml-2.5.1.pdf (18 MB): die zitierte UML-Spezifikation aus Kapitel A8.
+- notizen/vorschau mit 203 PNG- und HTML-Dateien (35 MB): die gerenderten Kapitelstreifen und die svgcheck-Befunde.
+- Alle Kapitelsicherungen und alle 131 Dateien in notizen/ (.md und .json), darunter die Wegweiser und die Aufgabenextraktionen.
+
+Nachgeprueft: check gruen, bauen-in-bau 1.897 KB ohne Fehler, Datei an allen drei Orten identisch. Merke: Die Profilordner wachsen bei jedem Vorschaulauf wieder; nach groesseren Renderserien erneut loeschen.

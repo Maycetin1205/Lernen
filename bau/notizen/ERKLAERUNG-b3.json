@@ -1,0 +1,34 @@
+{
+"b3-ihk-h21-4-4": {
+ "denkweg": [
+  "Welche Daten schützt das Gesetz besonders? Alles, was sich auf eine bestimmte Person bezieht: Name, Adresse, Geburtsdatum, und erst recht Gesundheitsdaten. Das heißt personenbezogene Daten.",
+  "In einer Arztpraxis sind das Patientendaten und Mitarbeiterdaten. Gesundheitsdaten sind sogar eine besondere Kategorie mit noch strengeren Regeln.",
+  "Rechtsgrundlage: DSGVO (EU-weit) und BDSG (deutsche Ergänzung). Eins nennen reicht.",
+  "Ein Punkt für die Datenart, ein Punkt für das Gesetz."
+ ],
+ "mitnehmen": "Personenbezogene Daten = alles, was einer Person zuzuordnen ist. Gesundheit, Religion, Herkunft sind besondere Kategorien. Gesetze: DSGVO und BDSG."
+},
+"b3-ihk-h23-3-1": {
+ "denkweg": [
+  "Denk von groß nach klein: EU, Bund, Land. EU: DSGVO. Bund: Bundesdatenschutzgesetz (BDSG). Land: Landesdatenschutzgesetz.",
+  "Dazu Gesetze, die Datenmissbrauch bestrafen: Strafgesetzbuch (Ausspähen von Daten) und das Grundgesetz mit dem Fernmeldegeheimnis.",
+  "Zwei nennen, je ein Punkt. DSGVO und BDSG sind die sichersten Antworten."
+ ],
+ "mitnehmen": "Datenschutzgesetze: DSGVO (EU), BDSG (Bund), Landesdatenschutzgesetze. Merkreihenfolge groß nach klein."
+},
+"b3-ihk-f25-2-1": {
+ "denkweg": [
+  "Mandantendaten sind personenbezogene Daten. Das Gesetz für personenbezogene Daten ist die DSGVO.",
+  "Ein Wort, ein Punkt. BDSG wäre auch vertretbar, die IHK erwartete DSGVO."
+ ],
+ "mitnehmen": "Bei 'rechtliche Grundlage für den Schutz von Personendaten' immer DSGVO nennen."
+},
+"b3-ihk-f25-2-2": {
+ "denkweg": [
+  "Zweck eines Datenschutzgesetzes: Es schützt Menschen, nicht Daten. Es sagt, wer Personendaten wann verarbeiten darf und wie sie zu sichern sind.",
+  "In einem Satz: Personenbezogene Daten vor unbefugtem Zugriff, Veränderung und Weitergabe schützen, damit die Rechte der Betroffenen gewahrt bleiben.",
+  "Zwei Punkte: Schutzgegenstand (Personendaten) und Schutzwirkung (kein unbefugter Zugriff oder Weitergabe)."
+ ],
+ "mitnehmen": "DSGVO-Zweck: Schutz der Grundrechte natürlicher Personen bei der Verarbeitung ihrer Daten. Grundsätze: Zweckbindung, Datensparsamkeit, Sicherheit, Betroffenenrechte."
+}
+}

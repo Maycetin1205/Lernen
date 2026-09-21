@@ -198,6 +198,8 @@ ol.selbstcheck>li{margin-bottom:1rem;font-weight:600;font-size:1.0625rem}
   dl.begriff{margin:0 0 1rem}
   .kapitel-kopf,.aufgabe,figure.abb{background:#fff}
   summary{color:inherit}
+  details[open] summary{background:#fff;color:#000}
+  details[open] summary::before{color:#000}
   a{color:inherit;text-decoration:none}
   ol.quellenliste a[href^="http"]::after{content:" " attr(href);color:#666;word-break:break-all}
   sup.q a{color:#000}
@@ -281,11 +283,11 @@ marker#pfeil-g path{fill:var(--grau)}
     <caption>Wo die Antwort steht</caption>
     <tr><th>Prüfung</th><th>Aufgabe</th><th>Worum es ging</th><th>Hier steht es</th></tr>
     <tr><td>Herbst 2021</td><td>3.6</td><td>RAID 0, 1 und 5 erklären und auswählen</td><td><a href="#b7-k5">Erst lernen: RAID: drei Grundideen</a><br><a href="#b7-original-1">Dann prüfen: Gelöste Originalaufgabe mit Lösung</a></td></tr>
-    <tr><td>Herbst 2021</td><td>4.6</td><td>Risiken einer Sicherung auf derselben Festplatte</td><td><a href="#b7-k3">Risiken einer Sicherung auf derselben Festplatte</a></td></tr>
-    <tr><td>Herbst 2021</td><td>4.7</td><td>Verbesserungsvorschlag zur Datensicherung</td><td><a href="#b7-k3">Risiken einer Sicherung auf derselben Festplatte</a></td></tr>
+    <tr><td>Herbst 2021</td><td>4.6</td><td>Risiken einer Sicherung auf derselben Festplatte</td><td><a href="#b7-k3">Erst lernen: Risiken einer Sicherung auf derselben Festplatte</a><br><a href="#b7-ihk-h21-4-6">Dann prüfen: Diese Aufgabe gelöst, mit Punkten</a></td></tr>
+    <tr><td>Herbst 2021</td><td>4.7</td><td>Verbesserungsvorschlag zur Datensicherung</td><td><a href="#b7-k3">Erst lernen: Risiken einer Sicherung auf derselben Festplatte</a><br><a href="#b7-ihk-h21-4-7">Dann prüfen: Diese Aufgabe gelöst, mit Punkten</a></td></tr>
     <tr><td>Herbst 2022</td><td>2.4</td><td>Maximale RAID-5-Nutzkapazität heterogener Platten berechnen</td><td><a href="#b7-k8">Erst lernen: Nutzkapazität: die kleinste Platte zählt</a><br><a href="#b7-original-2">Dann prüfen: Gelöste Originalaufgabe mit Lösung</a></td></tr>
-    <tr><td>Herbst 2022</td><td>2.5</td><td>JBOD-Kapazität derselben Festplatten berechnen</td><td><a href="#b7-k9">JBOD: Platten einfach hintereinander</a></td></tr>
-    <tr><td>Herbst 2022</td><td>2.6</td><td>Vorteile von JBOD gegenüber RAID 0 beschreiben</td><td><a href="#b7-k9">JBOD: Platten einfach hintereinander</a></td></tr>
+    <tr><td>Herbst 2022</td><td>2.5</td><td>JBOD-Kapazität derselben Festplatten berechnen</td><td><a href="#b7-k9">Erst lernen: JBOD: Platten einfach hintereinander</a><br><a href="#b7-ihk-h22-2-5">Dann prüfen: Diese Aufgabe gelöst, mit Punkten</a></td></tr>
+    <tr><td>Herbst 2022</td><td>2.6</td><td>Vorteile von JBOD gegenüber RAID 0 beschreiben</td><td><a href="#b7-k9">Erst lernen: JBOD: Platten einfach hintereinander</a><br><a href="#b7-ihk-h22-2-6">Dann prüfen: Diese Aufgabe gelöst, mit Punkten</a></td></tr>
     <tr><td>Frühjahr 2024</td><td>4.3</td><td>Externe Sicherungsmedien zuverlässig einsetzen</td><td><a href="#b7-k4">Erst lernen: Externe Sicherungsmedien</a><br><a href="#b7-original-3">Dann prüfen: Gelöste Originalaufgabe mit Lösung</a></td></tr>
   </table></div></nav>
   </details>
@@ -461,6 +463,71 @@ Verfügbarkeit
 </div></details></article>
 </section>
 
+<section id="b7-geloest">
+  <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
+  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <details class="geloest"><summary>Gelöste Aufgaben aufklappen (4 Aufgaben)</summary>
+  <article class="aufgabe" id="b7-ihk-h21-4-6">
+    <p class="herkunft">AP1 Herbst 2021, Aufgabe 4.6, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b7-q10" title="AP1 Herbst 2021">10</a></sup></p>
+    <div class="text">
+      <p><strong>Risiken einer Sicherung auf derselben Festplatte</strong> (Operator: Erklären, im Heft 4. Aufgabe fa))</p>
+<p>Die Gebührenabrechnungssoftware ist so eingerichtet, dass der Datenbestand freitags beim Herunterfahren des PCs auf einer speziell eingerichteten Partition derselben Festplatte gesichert wird. Der Leiterin des Praxismanagements sind die Risiken aufzuzeigen; zwei davon sind zu beschreiben.</p>
+      <p><strong>Material im Heft:</strong></p><p>Keins.</p>
+      <p>Der Weg dahin: <a href="#b7-k3">Risiken einer Sicherung auf derselben Festplatte</a></p>
+    </div>
+    <details><summary>Lösung mit Punktelogik</summary><div class="inhalt">
+<p>2 Punkte, also je Risiko 1 Punkt.</p>
+      <ul><li>Keine zeitliche und räumliche Trennung der gesicherten Daten vorhanden.</li><li>Wöchentlicher Sicherungszyklus zu lang; Rekonstruktion bei Datenverlust kaum möglich bzw. sehr aufwendig.</li></ul>
+      <p><strong>Warum so, und worauf die IHK achtet:</strong></p><p>Das ist genau das Gegenbeispiel zur 3-2-1-Regel: eine Kopie, ein Medium, ein Ort.</p>
+    </div></details>
+  </article>
+
+  <article class="aufgabe" id="b7-ihk-h21-4-7">
+    <p class="herkunft">AP1 Herbst 2021, Aufgabe 4.7, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b7-q10" title="AP1 Herbst 2021">10</a></sup></p>
+    <div class="text">
+      <p><strong>Verbesserungsvorschlag zur Datensicherung</strong> (Operator: Nennen, im Heft 4. Aufgabe fb))</p>
+<p>Der Leiterin des Praxismanagements ist ein konkreter Verbesserungsvorschlag zu unterbreiten.</p>
+      <p><strong>Material im Heft:</strong></p><p>Keins.</p>
+      <p>Der Weg dahin: <a href="#b7-k3">Risiken einer Sicherung auf derselben Festplatte</a></p>
+    </div>
+    <details><summary>Lösung mit Punktelogik</summary><div class="inhalt">
+<p>2 Punkte, also je Vorschlag 1 Punkt.</p>
+      <ul><li>Externe Sicherung.</li><li>Sicherungskonzept mit zumindest täglicher Sicherung der veränderten Daten.</li><li>Ergänzung im Lösungshinweis: Alle relevanten Daten müssen regelmäßig auf geeignete externe Medien gesichert werden; das externe Medium ist abzumelden und sicher an einem anderen Ort zu verwahren.</li></ul>
+      <p><strong>Warum so, und worauf die IHK achtet:</strong></p><p>„Täglich veränderte Daten sichern" ist die inkrementelle oder differenzielle Sicherung, ohne dass das Heft den Begriff nennt.</p>
+    </div></details>
+  </article>
+
+  <article class="aufgabe" id="b7-ihk-h22-2-5">
+    <p class="herkunft">AP1 Herbst 2022, Aufgabe 2.5, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b7-q11" title="AP1 Herbst 2022">11</a></sup></p>
+    <div class="text">
+      <p><strong>JBOD-Kapazität derselben Festplatten berechnen</strong> (Operator: Rechnen, im Heft 2. Aufgabe cb))</p>
+<p>Berechne die Kapazität, wenn dieselben zwei 3-TB- und sieben 2-TB-Platten als JBOD zu einem logischen Volume zusammengefasst werden. Der Aufgabentext verlangt TB und einen Rechenweg.</p>
+      <p><strong>Material im Heft:</strong></p><p>Das Antwortfeld ist abweichend vom Aufgabentext mit TiB beschriftet.</p>
+      <p>Der Weg dahin: <a href="#b7-k9">JBOD: Platten einfach hintereinander</a></p>
+    </div>
+    <details><summary>Lösung mit Punktelogik</summary><div class="inhalt">
+<p>L addiert 2 × 3 und 7 × 2 zu 20 und bezeichnet das Ergebnis als 20 TiB; 2 Punkte insgesamt. In den einzelnen Zeilen mischt L die Einheiten TB und TiB.</p>
+      <p>Nachrechnung aus den Eingabewerten in S: 2 × 3 TB + 7 × 2 TB = 20 TB. Bei expliziter Umrechnung sind dies 20 × 10^12 / 2^40 = 18,189894035458565 TiB. Die IHK-Angabe 20 TiB bleibt nur als historischer Lösungshinweis mit erklärender Fußnote verwendbar.</p>
+      <p><strong>Warum so, und worauf die IHK achtet:</strong></p><p>Zweitzuordnung a4. Der Einheitenwiderspruch ist in S und L visuell bestätigt. Quelle: S, Seite 5; L, Seite 3; Node-Nachrechnung im Anhang; ENTSCHEIDUNGEN-E1.md.</p>
+    </div></details>
+  </article>
+
+  <article class="aufgabe" id="b7-ihk-h22-2-6">
+    <p class="herkunft">AP1 Herbst 2022, Aufgabe 2.6, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b7-q11" title="AP1 Herbst 2022">11</a></sup></p>
+    <div class="text">
+      <p><strong>Vorteile von JBOD gegenüber RAID 0 beschreiben</strong> (Operator: Erklären, im Heft 2. Aufgabe cc))</p>
+<p>Beschreibe zwei Vorteile eines JBOD-Verbunds gegenüber einem RAID-0-Verbund.</p>
+      <p><strong>Material im Heft:</strong></p><p>JBOD wird im Aufgabenblock als Zusammenfassung mehrerer Laufwerke zu einem logischen Volume verwendet.</p>
+      <p>Der Weg dahin: <a href="#b7-k9">JBOD: Platten einfach hintereinander</a></p>
+    </div>
+    <details><summary>Lösung mit Punktelogik</summary><div class="inhalt">
+<p>4 Punkte insgesamt; L nennt keine getrennte Teilpunktzeile. Genannte Möglichkeiten: ohne RAID-Controller realisierbar; unterschiedliche Plattengrößen vollständig nutzbar; keine identischen Platten nötig; vergleichsweise einfach erweiterbar. Andere fachlich richtige Vorteile sind zulässig.</p>
+      <p><strong>Warum so, und worauf die IHK achtet:</strong></p><p>Die Controlleraussage aus L ist keine allgemeine Abgrenzung zu jeder Software-RAID-Implementierung; im Kapitel nur als IHK-Konvention kennzeichnen oder nach Primärquellenprüfung auf tragfähige Vergleichskriterien beschränken. Quelle: S, Seite 5; L, Seite 3.</p>
+    </div></details>
+  </article>
+  </details>
+</section>
+
 <section id="b7-selbstcheck"><h3>Selbstcheck</h3><ol class="selbstcheck"><li>Warum ist eine Sicherung auf einer zweiten Partition derselben Festplatte keine Sicherung im Sinne der 3-2-1-Regel?<details><summary>Antwort</summary><div class="inhalt"><p>Es fehlen zweites Medium und zweiter Ort. Ein Defekt der Platte, ein Diebstahl oder ein Brand trifft Originaldaten und Sicherung zugleich.</p></div></details></li>
 <li>Wie viele Sicherungen brauchst du bei inkrementeller und bei differenzieller Sicherung für den Stand von Donnerstagabend, wenn sonntags voll gesichert wird?<details><summary>Antwort</summary><div class="inhalt"><p>Inkrementell fünf: die Vollsicherung vom Sonntag und die Sicherungen von Montag bis Donnerstag. Differenziell zwei: die Vollsicherung und die differenzielle Sicherung vom Donnerstag.</p></div></details></li>
 <li>Sechs Platten zu je 2&nbsp;TB laufen im RAID 5. Wie groß ist die Nutzkapazität?<details><summary>Antwort</summary><div class="inhalt"><p>(6&nbsp;−&nbsp;1)&nbsp;×&nbsp;2&nbsp;TB&nbsp;=&nbsp;10&nbsp;TB von 12&nbsp;TB brutto. Eine Plattenkapazität geht für die Parität verloren, das sind hier gut 16&nbsp;% der Bruttokapazität.</p></div></details></li>
@@ -630,6 +697,17 @@ Verfügbarkeit
     });
   }catch(e){}
 })();
+  /* Sprung zu einer Stelle in einer zugeklappten Klappe: Klappen auf dem Weg öffnen */
+  try{
+    var oeffneZiel=function(){
+      var id=decodeURIComponent((location.hash||'').slice(1)); if(!id) return;
+      var el=document.getElementById(id); if(!el) return;
+      var p=el.parentNode, offen=false;
+      while(p && p!==document){ if(p.tagName==='DETAILS' && !p.open){ p.open=true; offen=true; } p=p.parentNode; }
+      if(offen){ setTimeout(function(){ el.scrollIntoView(); },0); }
+    };
+    window.addEventListener('hashchange',oeffneZiel); oeffneZiel();
+  }catch(e){}
 </script>
 </body>
 </html>

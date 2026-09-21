@@ -1,0 +1,47 @@
+[
+ {
+  "pruefung": "H21",
+  "nr": "2.1",
+  "ziel": "a5-original-2",
+  "hinweis": "",
+  "lektion": "a5-k5"
+ },
+ {
+  "pruefung": "H21",
+  "nr": "2.2",
+  "ziel": "a5-original-3",
+  "hinweis": "",
+  "lektion": "a5-k7"
+ },
+ {
+  "pruefung": "H21",
+  "nr": "2.4",
+  "ziel": "a5-k9",
+  "hinweis": "Eigener Baustein: Grenze 16 A x 230 V = 3.680 W, Bedarf 4.140 W, Vergleich, mit Balkenbild Abb. A5-2"
+ },
+ {
+  "pruefung": "F24",
+  "nr": "3.7",
+  "ziel": "a5-original-1",
+  "hinweis": "",
+  "lektion": "a5-k6"
+ },
+ {
+  "pruefung": "F24",
+  "nr": "3.8",
+  "ziel": "a5-k10",
+  "hinweis": "Eigener Baustein Lastanteil mit der Originalrechnung 260,00 EUR und Ersatzwert 300,00 EUR"
+ },
+ {
+  "pruefung": "H25",
+  "nr": "3.5",
+  "ziel": "a5-k2",
+  "hinweis": "Die Rechnung 24 V x 0,5 A = 12 W und 12 W / 5 V = 2,4 A steht jetzt als Beispiel im Baustein 1"
+ },
+ {
+  "pruefung": "H25",
+  "nr": "3.6",
+  "ziel": "a5-k2",
+  "hinweis": "Baustein 1 erklaert, warum ein USB-Anschluss (0,5 A bzw. 0,9 A) die 2,4 A nicht liefert und das Geraet gestoert arbeitet"
+ }
+]

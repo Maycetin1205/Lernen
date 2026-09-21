@@ -1,0 +1,6 @@
+14-a5: Keine Fehler.
+15-a6: Keine Fehler.
+16-a7: Keine Fehler.
+17-a8: Keine Fehler.
+18-a9: Keine Fehler.
+Kapitelübergreifende IDs eindeutig; Quellen-URLs in geprüfter Quellenliste vorhanden.

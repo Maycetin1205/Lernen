@@ -1,0 +1,182 @@
+[
+ {
+  "pruefung": "H21",
+  "nr": "4.1",
+  "ziel": "b1-k14",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H21",
+  "nr": "4.2",
+  "ziel": "b1-k2",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H21",
+  "nr": "4.3",
+  "ziel": "b1-k15",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H21",
+  "nr": "4.5",
+  "ziel": "b1-k4",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F23",
+  "nr": "3.2",
+  "ziel": "b1-k13",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F23",
+  "nr": "3.3",
+  "ziel": "b1-k7",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F23",
+  "nr": "3.4",
+  "ziel": "b1-k7",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F23",
+  "nr": "3.5",
+  "ziel": "b1-k7",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F23",
+  "nr": "3.6",
+  "ziel": "b1-k5",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F23",
+  "nr": "3.7",
+  "ziel": "b1-k5",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "3.2",
+  "ziel": "b1-k2",
+  "hinweis": "Nur Zutrittsschutz und sichere Anmeldung (Zutritt/Zugang) werden hier abgedeckt; sichere Datenkommunikation (VPN) und Transport von Datenträgern stehen nicht in B1 (siehe B2)."
+ },
+ {
+  "pruefung": "H23",
+  "nr": "3.3",
+  "ziel": "b1-k4",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H23",
+  "nr": "3.5",
+  "ziel": "b1-k14",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F24",
+  "nr": "4.1",
+  "ziel": "b1-k10",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F24",
+  "nr": "4.4",
+  "ziel": "b1-k8",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F24",
+  "nr": "4.5",
+  "ziel": "b1-k8",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F24",
+  "nr": "4.6",
+  "ziel": "b1-k10",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H24",
+  "nr": "1.1",
+  "ziel": "b1-k2",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H24",
+  "nr": "1.2",
+  "ziel": "b1-k11",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H24",
+  "nr": "1.3",
+  "ziel": "b1-k7",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H24",
+  "nr": "3.5",
+  "ziel": "b1-k9",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H24",
+  "nr": "3.6",
+  "ziel": "b1-original-3",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H24",
+  "nr": "3.7",
+  "ziel": "b1-k10",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H24",
+  "nr": "3.8",
+  "ziel": "b1-k10",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F25",
+  "nr": "1.7",
+  "ziel": "b1-k12",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F25",
+  "nr": "1.8",
+  "ziel": "b1-k16",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "F25",
+  "nr": "2.4",
+  "ziel": "b1-k14",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H25",
+  "nr": "3.2",
+  "ziel": "b1-original-1",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H25",
+  "nr": "3.3",
+  "ziel": "b1-original-2",
+  "hinweis": ""
+ },
+ {
+  "pruefung": "H25",
+  "nr": "3.4",
+  "ziel": "b1-k7",
+  "hinweis": ""
+ }
+]

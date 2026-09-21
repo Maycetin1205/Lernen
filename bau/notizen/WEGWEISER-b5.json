@@ -9,50 +9,58 @@
  {
   "pruefung": "F22",
   "nr": "3.4",
-  "ziel": "b5-k3",
-  "hinweis": ""
+  "ziel": "b5-ihk-f22-3-4",
+  "hinweis": "",
+  "lektion": "b5-k3"
  },
  {
   "pruefung": "F22",
   "nr": "3.9",
-  "ziel": "b5-k2",
-  "hinweis": "Aufgabe verlangt die Schlussfolgerung 'fehlende IP-Zuteilung' am Ende einer mehrteiligen Fehlersuche; das Kapitel zeigt nur das allgemeine Stufenschema (Abb. B5-2, Stufe 3 Adresse und Gateway), nicht diese konkrete Schlussfolgerung."
+  "ziel": "b5-ihk-f22-3-9",
+  "hinweis": "Aufgabe verlangt die Schlussfolgerung 'fehlende IP-Zuteilung' am Ende einer mehrteiligen Fehlersuche; das Kapitel zeigt nur das allgemeine Stufenschema (Abb. B5-2, Stufe 3 Adresse und Gateway), nicht diese konkrete Schlussfolgerung.",
+  "lektion": "b5-k2"
  },
  {
   "pruefung": "F22",
   "nr": "4.2",
-  "ziel": "b5-begriff-cloud",
-  "hinweis": ""
+  "ziel": "b5-ihk-f22-4-2",
+  "hinweis": "",
+  "lektion": "b5-k14"
  },
  {
   "pruefung": "H22",
   "nr": "2.7",
-  "ziel": "b5-k12",
-  "hinweis": ""
+  "ziel": "b5-ihk-h22-2-7",
+  "hinweis": "",
+  "lektion": "b5-k12"
  },
  {
   "pruefung": "F24",
   "nr": "2.1",
-  "ziel": "b5-k9",
-  "hinweis": ""
+  "ziel": "b5-ihk-f24-2-1",
+  "hinweis": "",
+  "lektion": "b5-k9"
  },
  {
   "pruefung": "F24",
   "nr": "2.2",
-  "ziel": "b5-k1",
-  "hinweis": ""
+  "ziel": "b5-ihk-f24-2-2",
+  "hinweis": "",
+  "lektion": "b5-k1"
  },
  {
   "pruefung": "F24",
   "nr": "2.5",
-  "ziel": "b5-begriff-dienste",
-  "hinweis": ""
+  "ziel": "b5-ihk-f24-2-5",
+  "hinweis": "",
+  "lektion": "b5-k4"
  },
  {
   "pruefung": "F24",
   "nr": "2.6",
-  "ziel": "b5-k13",
-  "hinweis": ""
+  "ziel": "b5-ihk-f24-2-6",
+  "hinweis": "",
+  "lektion": "b5-k13"
  },
  {
   "pruefung": "H24",
@@ -64,14 +72,16 @@
  {
   "pruefung": "F25",
   "nr": "1.5",
-  "ziel": "b5-k10",
-  "hinweis": ""
+  "ziel": "b5-ihk-f25-1-5",
+  "hinweis": "",
+  "lektion": "b5-k10"
  },
  {
   "pruefung": "F25",
   "nr": "2.8",
-  "ziel": "b5-begriff-mail",
-  "hinweis": ""
+  "ziel": "b5-ihk-f25-2-8",
+  "hinweis": "",
+  "lektion": "b5-k16"
  },
  {
   "pruefung": "H25",

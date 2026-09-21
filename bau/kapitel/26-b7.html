@@ -10,11 +10,11 @@
     <caption>Wo die Antwort steht</caption>
     <tr><th>Prüfung</th><th>Aufgabe</th><th>Worum es ging</th><th>Hier steht es</th></tr>
     <tr><td>Herbst 2021</td><td>3.6</td><td>RAID 0, 1 und 5 erklären und auswählen</td><td><a href="#b7-k5">Erst lernen: RAID: drei Grundideen</a><br><a href="#b7-original-1">Dann prüfen: Gelöste Originalaufgabe mit Lösung</a></td></tr>
-    <tr><td>Herbst 2021</td><td>4.6</td><td>Risiken einer Sicherung auf derselben Festplatte</td><td><a href="#b7-k3">Risiken einer Sicherung auf derselben Festplatte</a></td></tr>
-    <tr><td>Herbst 2021</td><td>4.7</td><td>Verbesserungsvorschlag zur Datensicherung</td><td><a href="#b7-k3">Risiken einer Sicherung auf derselben Festplatte</a></td></tr>
+    <tr><td>Herbst 2021</td><td>4.6</td><td>Risiken einer Sicherung auf derselben Festplatte</td><td><a href="#b7-k3">Erst lernen: Risiken einer Sicherung auf derselben Festplatte</a><br><a href="#b7-ihk-h21-4-6">Dann prüfen: Diese Aufgabe gelöst, mit Punkten</a></td></tr>
+    <tr><td>Herbst 2021</td><td>4.7</td><td>Verbesserungsvorschlag zur Datensicherung</td><td><a href="#b7-k3">Erst lernen: Risiken einer Sicherung auf derselben Festplatte</a><br><a href="#b7-ihk-h21-4-7">Dann prüfen: Diese Aufgabe gelöst, mit Punkten</a></td></tr>
     <tr><td>Herbst 2022</td><td>2.4</td><td>Maximale RAID-5-Nutzkapazität heterogener Platten berechnen</td><td><a href="#b7-k8">Erst lernen: Nutzkapazität: die kleinste Platte zählt</a><br><a href="#b7-original-2">Dann prüfen: Gelöste Originalaufgabe mit Lösung</a></td></tr>
-    <tr><td>Herbst 2022</td><td>2.5</td><td>JBOD-Kapazität derselben Festplatten berechnen</td><td><a href="#b7-k9">JBOD: Platten einfach hintereinander</a></td></tr>
-    <tr><td>Herbst 2022</td><td>2.6</td><td>Vorteile von JBOD gegenüber RAID 0 beschreiben</td><td><a href="#b7-k9">JBOD: Platten einfach hintereinander</a></td></tr>
+    <tr><td>Herbst 2022</td><td>2.5</td><td>JBOD-Kapazität derselben Festplatten berechnen</td><td><a href="#b7-k9">Erst lernen: JBOD: Platten einfach hintereinander</a><br><a href="#b7-ihk-h22-2-5">Dann prüfen: Diese Aufgabe gelöst, mit Punkten</a></td></tr>
+    <tr><td>Herbst 2022</td><td>2.6</td><td>Vorteile von JBOD gegenüber RAID 0 beschreiben</td><td><a href="#b7-k9">Erst lernen: JBOD: Platten einfach hintereinander</a><br><a href="#b7-ihk-h22-2-6">Dann prüfen: Diese Aufgabe gelöst, mit Punkten</a></td></tr>
     <tr><td>Frühjahr 2024</td><td>4.3</td><td>Externe Sicherungsmedien zuverlässig einsetzen</td><td><a href="#b7-k4">Erst lernen: Externe Sicherungsmedien</a><br><a href="#b7-original-3">Dann prüfen: Gelöste Originalaufgabe mit Lösung</a></td></tr>
   </table></div></nav>
   </details>
@@ -47,6 +47,7 @@
 <p><strong>Der Ort der Sicherung</strong> entscheidet, wovor sie schützt. Liegt sie auf derselben Platte wie das Original, hilft sie nur gegen versehentliches Löschen. Ein Plattendefekt, ein Diebstahl oder ein Brand trifft Original und Sicherung zugleich. Wird dazu nur einmal in der Woche gesichert, ist im schlimmsten Fall die Arbeit von fünf Tagen weg. Die 3-2-1-Regel beantwortet beide Punkte: drei Kopien, auf zwei verschiedenen Medienarten, eine davon außer Haus (Abb. B7-2).<sup class="q"><a href="#b7-q2" title="Ursprung der 3-2-1-Regel: drei Kopien, zwei Medien, eine Kopie außer Haus">2</a></sup></p>
 <figure class="abb"><svg viewBox="0 0 640 240" role="img" aria-labelledby="b7-abb2-t"><title id="b7-abb2-t">Aufbau der 3-2-1-Regel</title><text x="320" y="24" class="mitte">Drei Kopien, zwei Medien, eine Kopie außer Haus</text><rect class="d" x="10" y="44" width="400" height="152"/><text x="22" y="64" class="t2">Betriebsstandort</text><rect class="w" x="26" y="84" width="160" height="48"/><text x="106" y="106" class="mitte">Kopie 1</text><text x="106" y="124" class="mitte t2">Server, interne Platten</text><rect class="w" x="232" y="84" width="160" height="48"/><text x="312" y="106" class="mitte">Kopie 2</text><text x="312" y="124" class="mitte t2">NAS im Haus</text><rect class="w" x="452" y="84" width="176" height="48"/><text x="540" y="106" class="mitte">Kopie 3</text><text x="540" y="124" class="mitte t2">externe Festplatte</text><rect class="a" x="452" y="84" width="176" height="48"/><line class="l" x1="192" y1="108" x2="226" y2="108" marker-end="url(#pfeil)"/><line class="l" x1="398" y1="108" x2="446" y2="108" marker-end="url(#pfeil)"/><text x="106" y="152" class="mitte t2">Medium A</text><text x="312" y="152" class="mitte t2">Medium B</text><text x="540" y="152" class="mitte t2">Medium B</text><text x="540" y="178" class="mitte ta">abgemeldet, anderer Ort</text><text x="320" y="222" class="mitte t2">Fällt der Standort aus, bleibt Kopie 3 erreichbar.</text></svg><figcaption>Abb. B7-2: Die 3-2-1-Regel. Im Akzent die eine Kopie, die das Haus verlässt. Ohne sie sind drei Kopien nur drei Kopien im selben Brandabschnitt.</figcaption></figure>
 
+  <p><strong>So fragt die IHK hier:</strong> H21 4.6 verlangt zwei Risiken der Sicherung auf derselben Platte, je Risiko ein Punkt: Es fehlt die räumliche <em>und</em> die zeitliche Trennung, denn Original und Kopie liegen auf demselben Medium am selben Ort; und ein wöchentlicher Zyklus ist zu lang, sodass sich eine Woche Arbeit kaum wiederherstellen lässt. H21 4.7 verlangt zwei Verbesserungen, ebenfalls je einen Punkt: Sicherung auf ein externes Medium, das nach dem Lauf abgemeldet und an einem anderen Ort verwahrt wird, und ein Konzept mit mindestens täglicher Sicherung der veränderten Daten. <sup class="q"><a href="#b7-q10" title="AP1 Herbst 2021">10</a></sup></p>
 <h4 id="b7-k4">Externe Sicherungsmedien</h4>
 <p><strong>Eine externe Platte</strong> wird erst durch drei Betriebsregeln zu einer guten Sicherung (Abb. B7-3).<sup class="q"><a href="#b7-q1" title="Datensicherungskonzept: Generationenprinzip, Aufbewahrung, Wiederherstellungstests">1</a></sup></p>
 <ol>
@@ -56,6 +57,7 @@
 </ol>
 <figure class="abb"><svg viewBox="0 0 640 238" role="img" aria-labelledby="b7-abb3-t"><title id="b7-abb3-t">Drei Betriebsregeln für die Sicherung</title><rect class="w" x="20" y="20" width="600" height="58"/><text x="34" y="45" class="ta">1</text><text x="54" y="45" class="tb">Generationenprinzip</text><text x="54" y="66" class="t2">nummerierte Datenträger in fester Reihenfolge wechseln, ältere Stände bleiben</text><rect class="w" x="20" y="90" width="600" height="58"/><text x="34" y="115" class="ta">2</text><text x="54" y="115" class="tb">Trennung vom Netz</text><text x="54" y="136" class="t2">ein abgemeldeter oder unveränderbarer Datenträger wird nicht mitverschlüsselt</text><rect class="a" x="20" y="160" width="600" height="58"/><text x="34" y="185" class="ta">3</text><text x="54" y="185" class="tb">Wiederherstellungstest</text><text x="54" y="206" class="t2">erst ein erfolgreiches Zurückspielen belegt die Brauchbarkeit</text></svg><figcaption>Abb. B7-3: Die drei Betriebsregeln. Ohne die dritte weißt du nicht, ob die Sicherung überhaupt etwas taugt. Zu Angriffen auf laufende Systeme siehe B1.</figcaption></figure>
 
+  <p><strong>So fragt die IHK hier:</strong> F24 4.3 verlangt, wie externe Sicherungsmedien zuverlässig eingesetzt werden. Erwartet werden zwei Punkte: Die Datenträger werden verschlüsselt und mit einem Passwort geschützt, damit eine verlorene Platte nichts preisgibt. Und sie werden in einer festen Reihenfolge gewechselt, sodass mehrere Sicherungsstände nebeneinander bestehen; nach der letzten Platte beginnt man wieder bei der ersten. Das heißt Generationenprinzip. Dazu gehört, den Datenträger nach der Sicherung abzumelden und getrennt zu verwahren. <sup class="q"><a href="#b7-q12" title="AP1 Frühjahr 2024">12</a></sup></p>
 <h4 id="b7-k5">RAID: drei Grundideen</h4>
 <p><strong>Frage vorab:</strong> Der Chef legt dir eine zweite Platte hin. Was machst du damit, damit der Server einen Plattenausfall übersteht?</p>
 <details><summary>Antwort</summary><div class="inhalt"><p>Dieselben Daten doppelt schreiben. Fällt eine Platte aus, hat die andere noch alles.</p></div></details>
@@ -92,6 +94,7 @@
 <div class="merke" data-art="Für die Prüfung reicht"><p>Hinschreiben musst du nur drei Sätze: RAID 0 ist schnell und hält keinen Ausfall aus, RAID 1 spiegelt und kostet die Hälfte des Platzes, RAID 5 verträgt eine kaputte Platte und kostet den Platz einer Platte. Bei der Auswahl nennst du zwei Dinge: ob eine Platte ausfallen darf und wie viel Platz übrig bleibt. Die Prüfsumme selbst musst du nie ausrechnen.</p></div>
 <div class="merke" data-art="Merke"><p>RAID ist kein Backup. Ein Verbund trägt den Defekt einer Platte, mehr nicht. Löschst du eine Datei, ist sie auf allen Platten gelöscht. Gegen Löschen, fehlerhafte Programme, Diebstahl, Brand oder verschlüsselnde Angreifer hilft nur eine getrennte Sicherung.</p></div>
 
+  <p><strong>So fragt die IHK hier:</strong> H21 3.6 verlangt RAID 0, 1 und 5 erklärt und eine Auswahl begründet. Nenne je Stufe, was sie mit den Daten macht, was sie an Ausfall verträgt und was sie an Platz kostet. Die erwartete Entscheidung ist RAID 5: RAID 0 bietet gar keine Sicherheit, RAID 1 kostet die Hälfte der Kapazität, und nur RAID 5 verbindet Ausfalltoleranz mit geringem Kapazitätsverlust. <sup class="q"><a href="#b7-q10" title="AP1 Herbst 2021">10</a></sup></p>
 <h4 id="b7-k8">Nutzkapazität: die kleinste Platte zählt</h4>
 <p><strong>Frage vorab:</strong> Drei Platten zu je 2&nbsp;TB liegen im RAID 5. Wie viel Platz bleibt für Daten?</p>
 <details><summary>Antwort</summary><div class="inhalt"><p>4&nbsp;TB. Genau eine Plattenkapazität geht für die Prüfsumme ab, egal wie viele Platten es sind.</p></div></details>
@@ -99,11 +102,13 @@
 <figure class="abb"><svg viewBox="0 0 640 201" role="img" aria-labelledby="b7-abb6-t"><title id="b7-abb6-t">Nutzkapazität und erlaubter Ausfall der RAID-Stufen</title><rect class="f" x="142" y="20" width="110.5" height="29"/><text x="197.2" y="42" class="tb mitte">RAID 0</text><rect class="f" x="264.5" y="20" width="110.5" height="29"/><text x="319.8" y="42" class="tb mitte">RAID 1</text><rect class="a" x="387" y="20" width="110.5" height="29"/><text x="442.2" y="42" class="tb mitte">RAID 5</text><rect class="f" x="509.5" y="20" width="110.5" height="29"/><text x="564.8" y="42" class="tb mitte">RAID 10</text><text x="20" y="78" class="t2 tb">Nutzkapazität</text><rect class="w" x="142" y="57" width="110.5" height="31"/><text x="197.2" y="79" class="mitte">n × K</text><rect class="w" x="264.5" y="57" width="110.5" height="31"/><text x="319.8" y="79" class="mitte">(n / 2) × K</text><rect class="w" x="387" y="57" width="110.5" height="31"/><text x="442.2" y="79" class="mitte">(n − 1) × K</text><rect class="w" x="509.5" y="57" width="110.5" height="31"/><text x="564.8" y="79" class="mitte">(n / 2) × K</text><text x="20" y="117" class="t2 tb">Bei 8 Platten</text><text x="20" y="133" class="t2 tb">zu 4 TB</text><rect class="w" x="142" y="96" width="110.5" height="48"/><text x="197.2" y="118" class="mitte">32 TB</text><rect class="w" x="264.5" y="96" width="110.5" height="48"/><text x="319.8" y="118" class="mitte">16 TB</text><rect class="w" x="387" y="96" width="110.5" height="48"/><text x="442.2" y="118" class="mitte">28 TB</text><rect class="w" x="509.5" y="96" width="110.5" height="48"/><text x="564.8" y="118" class="mitte">16 TB</text><text x="20" y="173" class="t2 tb">Ausfall erlaubt</text><rect class="w" x="142" y="152" width="110.5" height="31"/><text x="197.2" y="174" class="mitte">keiner</text><rect class="w" x="264.5" y="152" width="110.5" height="31"/><text x="319.8" y="174" class="mitte">1 je Paar</text><rect class="w" x="387" y="152" width="110.5" height="31"/><text x="442.2" y="174" class="mitte">1 Platte</text><rect class="w" x="509.5" y="152" width="110.5" height="31"/><text x="564.8" y="174" class="mitte">1 je Spiegel</text></svg><figcaption>Abb. B7-6: Die vier Stufen nebeneinander, gerechnet mit acht Platten zu 4 TB. n ist die Anzahl der Platten, K die Kapazität der kleinsten Platte. RAID 1 und RAID 10 sind hier gleich groß.</figcaption></figure>
 <p><strong>Sind die Platten ungleich groß</strong>, nimmt der Verbund von jeder Platte nur so viel, wie die kleinste hat; der Rest der größeren Platten bleibt ungenutzt. Herbst 2022 rechnet genau das: zwei Platten mit 3&nbsp;TB und sieben mit 2&nbsp;TB im RAID 5. K ist 2&nbsp;TB, also (9 − 1) × 2&nbsp;TB = 16&nbsp;TB. Von jeder 3-TB-Platte liegt 1&nbsp;TB brach.<sup class="q"><a href="#b7-q11" title="Lösungshinweise Herbst 2022, Aufgabe 2.4">11</a></sup></p>
 
+  <p><strong>So fragt die IHK hier:</strong> H22 2.4 verlangt die maximale Nutzkapazität eines RAID 5 aus ungleich großen Platten. Die Rechnung steht oben; entscheidend ist, dass K die Größe der kleinsten Platte ist. <sup class="q"><a href="#b7-q11" title="AP1 Herbst 2022">11</a></sup></p>
 <h4 id="b7-k9">JBOD: Platten einfach hintereinander</h4>
 <p><strong>JBOD</strong> (Just a Bunch of Disks, „nur ein Haufen Platten“) ist kein RAID. Die Platten werden zu einem einzigen großen Laufwerk hintereinandergehängt, ohne Streifen, ohne Spiegel, ohne Prüfsumme. Die Kapazität ist deshalb die Summe aller Platten. Mit den Platten aus Herbst 2022 sind das 2 × 3&nbsp;TB + 7 × 2&nbsp;TB = 20&nbsp;TB, vier Terabyte mehr als im RAID 5, weil nichts für die Prüfsumme abgeht und die großen Platten ganz genutzt werden.<sup class="q"><a href="#b7-q11" title="Lösungshinweise Herbst 2022, Aufgabe 2.5">11</a></sup></p>
 <p><strong>Gegenüber RAID 0</strong> hat JBOD drei Vorteile und teilt einen Nachteil. Die Tabelle stellt beide nebeneinander, so wie die Lösungshinweise es werten.<sup class="q"><a href="#b7-q11" title="Lösungshinweise Herbst 2022, Aufgabe 2.6 (IHK-Konvention)">11</a></sup></p>
 <div class="tabelle"><table><caption>JBOD gegen RAID 0 nach den Lösungshinweisen zu Herbst 2022, Aufgabe 2.6</caption><thead><tr><th>Frage</th><th>JBOD</th><th>RAID 0</th></tr></thead><tbody><tr><td>Ungleich große Platten?</td><td>werden ganz genutzt</td><td>nur die Größe der kleinsten zählt</td></tr><tr><td>RAID-Controller nötig?</td><td>nein</td><td>ja</td></tr><tr><td>Später eine Platte dazu?</td><td>einfach anhängen</td><td>Verbund neu aufbauen</td></tr><tr class="hervor"><td>Eine Platte fällt aus</td><td>nur die Daten dieser Platte sind weg</td><td>alles ist weg, jede Datei lag über alle Platten verteilt</td></tr></tbody></table></div>
 
+  <p><strong>So fragt die IHK hier:</strong> H22 2.5 verlangt die Kapazität derselben Platten als JBOD, also die Summe aller Platten. H22 2.6 verlangt Vorteile gegenüber RAID 0, vier Punkte. Anerkannt sind: ohne RAID-Controller zu verwirklichen, unterschiedlich große Platten werden vollständig genutzt, es braucht keine baugleichen Platten, und der Verbund lässt sich einfach erweitern. <sup class="q"><a href="#b7-q11" title="AP1 Herbst 2022">11</a></sup></p>
 <h4 id="b7-k6">Verfügbarkeit als Prozentwert</h4>
 <p><strong>Frage vorab:</strong> Ein Vertrag verspricht 99&nbsp;% Verfügbarkeit. Wie viele Stunden Ausfall im Jahr sind das?</p>
 <details><summary>Antwort</summary><div class="inhalt"><p>1&nbsp;% von 8.760 Stunden, also 87,6 Stunden. Das sind mehr als drei ganze Tage.</p></div></details>
@@ -188,6 +193,71 @@ Verfügbarkeit
 </ol>
 <p>Ein regelmäßiger Rückspieltest gehört ebenfalls dazu.</p>
 </div></details></article>
+</section>
+
+<section id="b7-geloest">
+  <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
+  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <details class="geloest"><summary>Gelöste Aufgaben aufklappen (4 Aufgaben)</summary>
+  <article class="aufgabe" id="b7-ihk-h21-4-6">
+    <p class="herkunft">AP1 Herbst 2021, Aufgabe 4.6, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b7-q10" title="AP1 Herbst 2021">10</a></sup></p>
+    <div class="text">
+      <p><strong>Risiken einer Sicherung auf derselben Festplatte</strong> (Operator: Erklären, im Heft 4. Aufgabe fa))</p>
+<p>Die Gebührenabrechnungssoftware ist so eingerichtet, dass der Datenbestand freitags beim Herunterfahren des PCs auf einer speziell eingerichteten Partition derselben Festplatte gesichert wird. Der Leiterin des Praxismanagements sind die Risiken aufzuzeigen; zwei davon sind zu beschreiben.</p>
+      <p><strong>Material im Heft:</strong></p><p>Keins.</p>
+      <p>Der Weg dahin: <a href="#b7-k3">Risiken einer Sicherung auf derselben Festplatte</a></p>
+    </div>
+    <details><summary>Lösung mit Punktelogik</summary><div class="inhalt">
+<p>2 Punkte, also je Risiko 1 Punkt.</p>
+      <ul><li>Keine zeitliche und räumliche Trennung der gesicherten Daten vorhanden.</li><li>Wöchentlicher Sicherungszyklus zu lang; Rekonstruktion bei Datenverlust kaum möglich bzw. sehr aufwendig.</li></ul>
+      <p><strong>Warum so, und worauf die IHK achtet:</strong></p><p>Das ist genau das Gegenbeispiel zur 3-2-1-Regel: eine Kopie, ein Medium, ein Ort.</p>
+    </div></details>
+  </article>
+
+  <article class="aufgabe" id="b7-ihk-h21-4-7">
+    <p class="herkunft">AP1 Herbst 2021, Aufgabe 4.7, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b7-q10" title="AP1 Herbst 2021">10</a></sup></p>
+    <div class="text">
+      <p><strong>Verbesserungsvorschlag zur Datensicherung</strong> (Operator: Nennen, im Heft 4. Aufgabe fb))</p>
+<p>Der Leiterin des Praxismanagements ist ein konkreter Verbesserungsvorschlag zu unterbreiten.</p>
+      <p><strong>Material im Heft:</strong></p><p>Keins.</p>
+      <p>Der Weg dahin: <a href="#b7-k3">Risiken einer Sicherung auf derselben Festplatte</a></p>
+    </div>
+    <details><summary>Lösung mit Punktelogik</summary><div class="inhalt">
+<p>2 Punkte, also je Vorschlag 1 Punkt.</p>
+      <ul><li>Externe Sicherung.</li><li>Sicherungskonzept mit zumindest täglicher Sicherung der veränderten Daten.</li><li>Ergänzung im Lösungshinweis: Alle relevanten Daten müssen regelmäßig auf geeignete externe Medien gesichert werden; das externe Medium ist abzumelden und sicher an einem anderen Ort zu verwahren.</li></ul>
+      <p><strong>Warum so, und worauf die IHK achtet:</strong></p><p>„Täglich veränderte Daten sichern" ist die inkrementelle oder differenzielle Sicherung, ohne dass das Heft den Begriff nennt.</p>
+    </div></details>
+  </article>
+
+  <article class="aufgabe" id="b7-ihk-h22-2-5">
+    <p class="herkunft">AP1 Herbst 2022, Aufgabe 2.5, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b7-q11" title="AP1 Herbst 2022">11</a></sup></p>
+    <div class="text">
+      <p><strong>JBOD-Kapazität derselben Festplatten berechnen</strong> (Operator: Rechnen, im Heft 2. Aufgabe cb))</p>
+<p>Berechne die Kapazität, wenn dieselben zwei 3-TB- und sieben 2-TB-Platten als JBOD zu einem logischen Volume zusammengefasst werden. Der Aufgabentext verlangt TB und einen Rechenweg.</p>
+      <p><strong>Material im Heft:</strong></p><p>Das Antwortfeld ist abweichend vom Aufgabentext mit TiB beschriftet.</p>
+      <p>Der Weg dahin: <a href="#b7-k9">JBOD: Platten einfach hintereinander</a></p>
+    </div>
+    <details><summary>Lösung mit Punktelogik</summary><div class="inhalt">
+<p>L addiert 2 × 3 und 7 × 2 zu 20 und bezeichnet das Ergebnis als 20 TiB; 2 Punkte insgesamt. In den einzelnen Zeilen mischt L die Einheiten TB und TiB.</p>
+      <p>Nachrechnung aus den Eingabewerten in S: 2 × 3 TB + 7 × 2 TB = 20 TB. Bei expliziter Umrechnung sind dies 20 × 10^12 / 2^40 = 18,189894035458565 TiB. Die IHK-Angabe 20 TiB bleibt nur als historischer Lösungshinweis mit erklärender Fußnote verwendbar.</p>
+      <p><strong>Warum so, und worauf die IHK achtet:</strong></p><p>Zweitzuordnung a4. Der Einheitenwiderspruch ist in S und L visuell bestätigt. Quelle: S, Seite 5; L, Seite 3; Node-Nachrechnung im Anhang; ENTSCHEIDUNGEN-E1.md.</p>
+    </div></details>
+  </article>
+
+  <article class="aufgabe" id="b7-ihk-h22-2-6">
+    <p class="herkunft">AP1 Herbst 2022, Aufgabe 2.6, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b7-q11" title="AP1 Herbst 2022">11</a></sup></p>
+    <div class="text">
+      <p><strong>Vorteile von JBOD gegenüber RAID 0 beschreiben</strong> (Operator: Erklären, im Heft 2. Aufgabe cc))</p>
+<p>Beschreibe zwei Vorteile eines JBOD-Verbunds gegenüber einem RAID-0-Verbund.</p>
+      <p><strong>Material im Heft:</strong></p><p>JBOD wird im Aufgabenblock als Zusammenfassung mehrerer Laufwerke zu einem logischen Volume verwendet.</p>
+      <p>Der Weg dahin: <a href="#b7-k9">JBOD: Platten einfach hintereinander</a></p>
+    </div>
+    <details><summary>Lösung mit Punktelogik</summary><div class="inhalt">
+<p>4 Punkte insgesamt; L nennt keine getrennte Teilpunktzeile. Genannte Möglichkeiten: ohne RAID-Controller realisierbar; unterschiedliche Plattengrößen vollständig nutzbar; keine identischen Platten nötig; vergleichsweise einfach erweiterbar. Andere fachlich richtige Vorteile sind zulässig.</p>
+      <p><strong>Warum so, und worauf die IHK achtet:</strong></p><p>Die Controlleraussage aus L ist keine allgemeine Abgrenzung zu jeder Software-RAID-Implementierung; im Kapitel nur als IHK-Konvention kennzeichnen oder nach Primärquellenprüfung auf tragfähige Vergleichskriterien beschränken. Quelle: S, Seite 5; L, Seite 3.</p>
+    </div></details>
+  </article>
+  </details>
 </section>
 
 <section id="b7-selbstcheck"><h3>Selbstcheck</h3><ol class="selbstcheck"><li>Warum ist eine Sicherung auf einer zweiten Partition derselben Festplatte keine Sicherung im Sinne der 3-2-1-Regel?<details><summary>Antwort</summary><div class="inhalt"><p>Es fehlen zweites Medium und zweiter Ort. Ein Defekt der Platte, ein Diebstahl oder ein Brand trifft Originaldaten und Sicherung zugleich.</p></div></details></li>
