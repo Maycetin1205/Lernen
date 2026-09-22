@@ -1,236 +1,388 @@
-<title>Subnetting-Trainer</title>
+<title>IP-Adressen-Trainer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
 :root{
-  --grund:#EEF2F6; --flaeche:#FFFFFF; --tinte:#14213D; --grau:#5B6478; --linie:#D5DCE6;
-  --gelb:#F2B705; --gelb-hell:#FFF4CC; --blau:#1F5FBF; --blau-hell:#E3ECFA;
+  color-scheme:light;
+  --grund:#F1F4F8; --flaeche:#FFFFFF; --tinte:#14213D; --grau:#5B6478; --linie:#D6DDE7;
+  --netz:#1F5FBF; --netz-hell:#DCE8FB; --host:#F2B705; --host-hell:#FFF3C4;
   --gruen:#1E8A4C; --gruen-hell:#E1F4E8; --rot:#C2362B; --rot-hell:#FBE5E2;
-  --zelle:#DCE3EC; --zelle-b:#C7D2E0;
+  --lila:#6B4FC8; --lila-hell:#ECE7FB; --zelle:#E3E8EF;
   --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
   --sans:"Source Sans 3","Segoe UI",system-ui,sans-serif;
   --mono:"JetBrains Mono","Cascadia Mono",Consolas,monospace;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  color-scheme:dark;
-  --grund:#0F1626; --flaeche:#18223A; --tinte:#E8EDF6; --grau:#A3AEC4; --linie:#2C3A58;
-  --gelb:#F5C431; --gelb-hell:#3A3113; --blau:#6FA0F0; --blau-hell:#1D2C4D;
-  --gruen:#4CC47F; --gruen-hell:#16382A; --rot:#F07A6E; --rot-hell:#442022;
-  --zelle:#26334F; --zelle-b:#34446A;
-}}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --grund:#0F1626; --flaeche:#18223A; --tinte:#E8EDF6; --grau:#A3AEC4; --linie:#2C3A58;
-  --gelb:#F5C431; --gelb-hell:#3A3113; --blau:#6FA0F0; --blau-hell:#1D2C4D;
-  --gruen:#4CC47F; --gruen-hell:#16382A; --rot:#F07A6E; --rot-hell:#442022;
-  --zelle:#26334F; --zelle-b:#34446A;
-}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{background:var(--grund);color:var(--tinte);font:17px/1.55 var(--sans);padding-inline:16px;padding-block:0 5rem}
-.rahmen{max-width:52rem;margin:0 auto}
+html,body{background:var(--grund);color:var(--tinte)}
+body{font:17px/1.55 var(--sans);padding-inline:24px;padding-block:0 6rem}
+.rahmen{max-width:80rem;margin:0 auto}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.02em}
-.mono,code,input.mono{font-family:var(--mono)}
-button{font:inherit;cursor:pointer}
-:focus-visible{outline:3px solid var(--blau);outline-offset:2px}
+.mono{font-family:var(--mono)}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:3px solid var(--netz);outline-offset:2px}
 
-/* Kopf */
-header.kopf{padding-block:1.6rem 1rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;align-items:end;justify-content:space-between}
+header.kopf{padding-block:1.8rem 1rem;display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:end;justify-content:space-between}
 .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grau)}
-h1{font-size:clamp(2rem,6vw,2.9rem);font-weight:800;line-height:1.05}
-h1 .kabel{background:linear-gradient(transparent 62%,var(--gelb) 62%,var(--gelb) 90%,transparent 90%)}
-.wert{display:flex;gap:.5rem;flex-wrap:wrap}
-.pille{display:inline-flex;align-items:center;gap:.35rem;background:var(--flaeche);border:1px solid var(--linie);border-radius:999px;padding:.25rem .75rem;font-size:.85rem;font-weight:600}
+h1{font-size:2.9rem;font-weight:800;line-height:1.05}
+h1 .strich{background:linear-gradient(transparent 62%,var(--host) 62%,var(--host) 90%,transparent 90%)}
+.pillen{display:flex;gap:.5rem;flex-wrap:wrap}
+.pille{display:inline-flex;gap:.35rem;align-items:center;background:var(--flaeche);border:1px solid var(--linie);border-radius:999px;padding:.3rem .85rem;font-size:.88rem;font-weight:600}
 .pille b{font-family:var(--mono)}
+.pille.gold{background:var(--host);border-color:var(--host)}
 
-/* Reiter */
-nav.reiter{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--grund);display:flex;gap:.35rem;padding-block:.6rem;overflow-x:auto;scrollbar-width:none}
-nav.reiter button{flex:0 0 auto;border:1.5px solid var(--linie);background:var(--flaeche);color:var(--tinte);border-radius:10px;padding:.5rem .9rem;font-weight:700;font-size:.95rem}
-nav.reiter button[aria-selected="true"]{background:var(--tinte);color:var(--grund);border-color:var(--tinte)}
-section.seite{display:grid;gap:1.1rem;padding-top:.6rem}
-.karte{background:var(--flaeche);border:1px solid var(--linie);border-radius:16px;padding:1.25rem clamp(1rem,3vw,1.6rem)}
-.karte h2{font-size:1.45rem;font-weight:800;margin-bottom:.5rem}
-.karte h3{font-size:1.1rem;font-weight:800;margin-bottom:.35rem}
-.karte p{margin:.5rem 0;max-width:62ch}
-.leise{color:var(--grau);font-size:.93rem}
+nav.reiter{position:sticky;top:0;z-index:5;background:var(--grund);display:flex;gap:.4rem;padding-block:.7rem;border-bottom:1px solid var(--linie)}
+nav.reiter button{border:1.5px solid var(--linie);background:var(--flaeche);border-radius:10px;padding:.55rem 1.1rem;font-weight:700}
+nav.reiter button[aria-selected="true"]{background:var(--tinte);color:#fff;border-color:var(--tinte)}
+nav.reiter .rechts{margin-left:auto}
+section.seite{display:grid;gap:1.4rem;padding-top:1.4rem}
+.karte{background:var(--flaeche);border:1px solid var(--linie);border-radius:18px;padding:1.5rem 1.8rem}
+.karte>h2{font-size:1.6rem;font-weight:800;margin-bottom:.3rem}
+.karte h3{font-size:1.15rem;font-weight:800;margin-bottom:.3rem}
+.unter{color:var(--grau);margin:0 0 1rem;max-width:70ch}
+p{margin:.45rem 0;max-width:68ch}
+.zwei{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:2rem;align-items:start}
+@media (max-width:900px){.zwei{grid-template-columns:1fr}}
+.klein{font-size:.9rem;color:var(--grau)}
+.kasten{background:var(--grund);border-radius:12px;padding:.9rem 1.1rem}
+.kasten.gelb{background:var(--host-hell)}
+.kasten b.gross{display:block;font:700 1.35rem var(--mono)}
 
-/* Begriffe: kein Googeln */
-.begriff{border:0;background:none;padding:0;color:inherit;font-weight:700;border-bottom:2px dotted var(--blau);cursor:help}
-#erklaerung{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(34rem,calc(100% - 32px));background:var(--tinte);color:var(--grund);border-radius:14px;padding:1rem 1.1rem;box-shadow:0 12px 40px rgba(0,0,0,.3);z-index:20}
+/* Begriffe */
+.begriff{border:0;background:none;padding:0;font-weight:700;border-bottom:2px dotted var(--netz);cursor:help}
+#erklaerung{position:fixed;right:24px;bottom:24px;width:25rem;max-width:calc(100% - 48px);background:var(--tinte);color:#fff;border-radius:14px;padding:1rem 2.2rem 1rem 1.1rem;box-shadow:0 14px 40px rgba(20,33,61,.3);z-index:20}
 #erklaerung b{display:block;font-family:var(--display);font-size:1.1rem;margin-bottom:.2rem}
-#erklaerung .zu{position:absolute;top:.5rem;right:.6rem;background:none;border:0;color:inherit;font-size:1.3rem;line-height:1}
+#erklaerung .zu{position:absolute;top:.45rem;right:.6rem;background:none;border:0;color:#fff;font-size:1.4rem;line-height:1}
 
-/* Schritte */
-.schritte{display:grid;gap:.75rem;margin:.8rem 0 0;padding:0;list-style:none;counter-reset:s}
-.schritte li{display:grid;grid-template-columns:2.2rem 1fr;gap:.75rem;align-items:start}
-.schritte li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--gelb);color:#14213D;font-weight:800;font-family:var(--display)}
-.schritte li p{margin:.15rem 0}
-
-/* Adressband */
-.band-steuer{display:flex;flex-wrap:wrap;gap:.8rem 1.4rem;align-items:center;margin:.6rem 0 1rem}
-.band-steuer label{font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:.5rem}
-.band-steuer input[type=range]{width:11rem;accent-color:var(--blau)}
-.band-steuer input[type=number]{width:4.6rem;font:600 1rem var(--mono);padding:.3rem .4rem;border:1.5px solid var(--linie);border-radius:8px;background:var(--grund);color:var(--tinte)}
-.praefix-anzeige{font:700 1.3rem var(--mono);color:var(--blau);min-width:3ch}
-.band{display:grid;grid-template-columns:repeat(32,1fr);gap:2px}
-@media (max-width:640px){.band{grid-template-columns:repeat(16,1fr)}}
-.band span{aspect-ratio:1;border-radius:3px;background:var(--zelle)}
-.band span.b{background:var(--zelle-b)}
-.band span.eigen{background:var(--blau-hell);outline:1px solid var(--blau)}
-.band span.netz{background:var(--gruen)}
-.band span.bc{background:var(--rot)}
-.band span.host{background:var(--gelb);outline:2px solid var(--tinte)}
-.legende{display:flex;flex-wrap:wrap;gap:.4rem 1rem;margin-top:.7rem;font-size:.85rem;color:var(--grau)}
-.legende i{display:inline-block;width:.85rem;height:.85rem;border-radius:3px;vertical-align:-2px;margin-right:.3rem}
-.ergebnis{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.6rem;margin-top:1rem}
-.ergebnis div{background:var(--grund);border-radius:10px;padding:.55rem .75rem}
-.ergebnis small{display:block;color:var(--grau);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+/* Bits */
+.steuer{display:flex;flex-wrap:wrap;gap:1rem 1.6rem;align-items:center;margin-bottom:1.1rem}
+.steuer label{font-weight:700;display:flex;align-items:center;gap:.5rem}
+.ipfelder{display:flex;align-items:center;gap:.2rem;font:700 1.2rem var(--mono)}
+.ipfelder input{width:3.6rem;font:700 1.15rem var(--mono);text-align:center;padding:.3rem;border:2px solid var(--linie);border-radius:8px;background:var(--grund);color:var(--tinte)}
+input[type=range]{width:14rem;accent-color:var(--netz)}
+.praefix{font:800 1.6rem var(--mono);color:var(--netz);min-width:3.2ch}
+.bits{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem}
+.oktett{display:grid;gap:.3rem}
+.oktett .dez{text-align:center;font:700 1.3rem var(--mono)}
+.oktett .reihe{display:grid;grid-template-columns:repeat(8,1fr);gap:3px}
+.oktett .reihe span{aspect-ratio:1/1.15;display:grid;place-items:center;border-radius:5px;font:700 .95rem var(--mono);background:var(--zelle)}
+.oktett .reihe span.n{background:var(--netz);color:#fff}
+.oktett .reihe span.h{background:var(--host);color:var(--tinte)}
+.oktett .wert{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;font:500 .62rem var(--mono);color:var(--grau);text-align:center}
+.oktett .mdez{text-align:center;font:700 1.05rem var(--mono);color:var(--netz)}
+.reihenname{font-size:.8rem;font-weight:700;color:var(--grau);text-transform:uppercase;letter-spacing:.08em;margin:.9rem 0 .35rem}
+.teile{display:flex;height:2.1rem;border-radius:8px;overflow:hidden;margin-top:1rem;font-weight:700;font-size:.9rem}
+.teile div{display:grid;place-items:center;white-space:nowrap;overflow:hidden;transition:flex-basis .25s}
+.teile .n{background:var(--netz);color:#fff}.teile .h{background:var(--host)}
+.ergebnis{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-top:1.1rem}
+.ergebnis div{background:var(--grund);border-radius:10px;padding:.6rem .8rem}
+.ergebnis small{display:block;color:var(--grau);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
 .ergebnis b{font:700 1.02rem var(--mono);overflow-wrap:anywhere}
-.rechnung{margin-top:.8rem;font:500 .92rem/1.7 var(--mono);background:var(--gelb-hell);border-radius:10px;padding:.7rem .9rem;overflow-x:auto}
 
-/* Training */
-.stufen{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:.5rem}
-.stufe{border:1.5px solid var(--linie);background:var(--flaeche);color:var(--tinte);border-radius:12px;padding:.6rem .75rem;text-align:left;display:grid;gap:.15rem}
-.stufe[aria-pressed="true"]{border-color:var(--blau);background:var(--blau-hell)}
-.stufe strong{font-size:.95rem}
-.sterne{font-size:.8rem;color:var(--grau);letter-spacing:.1em}
-.sterne .voll{color:var(--gelb)}
-.aufgabe{margin-top:1rem}
-.frage{font-size:1.2rem;font-weight:600;margin:.2rem 0 .8rem}
-.frage .mono{background:var(--grund);padding:.05rem .35rem;border-radius:6px;white-space:nowrap}
-.felder{display:grid;gap:.6rem}
-.feld{display:grid;grid-template-columns:minmax(9rem,12rem) 1fr;gap:.6rem;align-items:center}
-@media (max-width:520px){.feld{grid-template-columns:1fr;gap:.2rem}}
-.feld label{font-weight:700;font-size:.95rem}
-.feld input[type=text]{width:100%;font:600 1.05rem var(--mono);padding:.55rem .7rem;border:2px solid var(--linie);border-radius:10px;background:var(--grund);color:var(--tinte)}
-.feld input.ok{border-color:var(--gruen);background:var(--gruen-hell)}
-.feld input.falsch{border-color:var(--rot);background:var(--rot-hell)}
+/* Band */
+.band{display:grid;grid-template-columns:repeat(32,1fr);gap:3px}
+.band span{aspect-ratio:1;border-radius:3px;background:var(--zelle);position:relative}
+.band span.b{background:#D2DAE5}
+.band span.eigen{background:var(--netz-hell);box-shadow:inset 0 0 0 1px var(--netz)}
+.band span.netzadr{background:var(--gruen)}
+.band span.bc{background:var(--rot)}
+.band span.ich{background:var(--host);box-shadow:inset 0 0 0 2px var(--tinte)}
+.legende{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin-top:.8rem;font-size:.88rem;color:var(--grau)}
+.legende i{display:inline-block;width:.9rem;height:.9rem;border-radius:3px;vertical-align:-2px;margin-right:.35rem}
+
+/* Adressleiste (DHCP) */
+.leiste{display:grid;grid-template-columns:6.5rem 6.5rem 1.4fr 3fr 6.5rem;gap:4px;margin-top:.4rem}
+.leiste .seg{border-radius:8px;padding:.55rem .6rem;text-align:center;font-weight:700;font-size:.9rem;line-height:1.25}
+.leiste .seg small{display:block;font:600 .8rem var(--mono);opacity:.85;margin-top:.15rem}
+/* Konsole */
+.konsole{background:#10192E;color:#DCE6F5;border-radius:12px;padding:1rem 0;font:500 .95rem/1.9 var(--mono);overflow-x:auto}
+.konsole .zeile{display:flex;gap:.8rem;align-items:center;padding:0 1rem;border:0;background:none;width:100%;text-align:left;color:inherit;font:inherit}
+.konsole .zeile:hover,.konsole .zeile.an{background:#22335A}
+.konsole .nr{flex:0 0 1.6rem;height:1.6rem;border-radius:50%;background:var(--host);color:var(--tinte);display:grid;place-items:center;font:800 .8rem var(--sans)}
+.konsole .schluessel{color:#8FA3C4;white-space:pre}
+.erkl{min-height:12rem}
+.erkl .quelle{margin-top:.6rem}
+
+/* IPv6 */
+.v6{display:grid;grid-template-columns:repeat(8,1fr);gap:.4rem}
+.v6 .blk{border-radius:8px;padding:.5rem .2rem;text-align:center;font:700 1.05rem var(--mono)}
+.v6 .blk small{display:block;font:600 .65rem var(--sans);opacity:.75}
+.v6 .p{background:var(--netz);color:#fff}.v6 .s{background:var(--lila);color:#fff}.v6 .i{background:var(--host)}
+.v6 .blk .null{opacity:.55}
+.klammern{display:grid;grid-template-columns:repeat(8,1fr);gap:.4rem;margin-top:.35rem;font-size:.82rem;font-weight:700;text-align:center}
+.klammern div{border-top:3px solid currentColor;padding-top:.25rem}
+.regeln{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-top:1rem}
+.regel .vorher,.regel .nachher{font:600 .95rem var(--mono);padding:.4rem .6rem;border-radius:8px;overflow-wrap:anywhere}
+.regel .vorher{background:var(--rot-hell)}.regel .nachher{background:var(--gruen-hell)}
+.regel .pfeil{text-align:center;color:var(--grau);font-size:.9rem;margin:.2rem 0}
+.v6ein{width:100%;font:700 1.1rem var(--mono);padding:.55rem .75rem;border:2px solid var(--linie);border-radius:10px;background:var(--grund);color:var(--tinte)}
+
+/* Netzbild */
+.netzbild{position:relative;background:var(--grund);border-radius:14px;margin-top:.6rem}
+.netzbild svg.linien{position:absolute;inset:0;width:100%;height:100%}
+.netzbild svg.linien line{stroke:#8795AD;stroke-width:3;vector-effect:non-scaling-stroke}
+.geraet{position:absolute;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:.25rem;width:15.5rem}
+.geraet .symbol{width:3.6rem;height:3.6rem}
+.geraet .name{font-weight:700;font-size:.92rem;text-align:center;line-height:1.2;background:var(--grund);padding:.05rem .4rem;border-radius:6px}
+.geraet .schild{background:var(--flaeche);border:1.5px solid var(--linie);border-radius:10px;padding:.4rem .55rem;display:grid;gap:.25rem;width:100%}
+.geraet .schild div{display:grid;grid-template-columns:auto 1fr;gap:.4rem;align-items:center;font-size:.78rem}
+.geraet .schild span{color:var(--grau);font-weight:700}
+.geraet .schild code{font:600 .8rem var(--mono);overflow-wrap:anywhere}
+.geraet .schild input{width:100%;font:600 .8rem var(--mono);padding:.3rem .4rem;border:2px solid var(--host);border-radius:7px;background:var(--host-hell);color:var(--tinte)}
+
+/* Felder allgemein */
+.felder{display:grid;gap:.65rem}
+.feld{display:grid;grid-template-columns:15rem 1fr;gap:.8rem;align-items:center}
+.feld label{font-weight:700}
+.feld input[type=text]{width:100%;font:600 1.05rem var(--mono);padding:.55rem .75rem;border:2px solid var(--linie);border-radius:10px;background:var(--grund);color:var(--tinte)}
+input.ok{border-color:var(--gruen)!important;background:var(--gruen-hell)!important}
+input.falsch{border-color:var(--rot)!important;background:var(--rot-hell)!important}
 .wahl{display:flex;gap:.5rem;flex-wrap:wrap}
-.wahl button{border:2px solid var(--linie);background:var(--grund);color:var(--tinte);border-radius:10px;padding:.5rem 1.2rem;font-weight:700}
-.wahl button[aria-pressed="true"]{border-color:var(--blau);background:var(--blau-hell)}
-.knoepfe{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
-.haupt{background:var(--tinte);color:var(--grund);border:0;border-radius:10px;padding:.65rem 1.3rem;font-weight:700}
-.neben{background:none;border:1.5px solid var(--linie);color:var(--tinte);border-radius:10px;padding:.6rem 1.1rem;font-weight:700}
-.rueck{margin-top:1rem;border-radius:12px;padding:.8rem 1rem}
+.wahl button{border:2px solid var(--linie);background:var(--grund);border-radius:10px;padding:.5rem 1.1rem;font-weight:700}
+.wahl button[aria-pressed="true"]{border-color:var(--netz);background:var(--netz-hell)}
+.wahl button.ok{border-color:var(--gruen);background:var(--gruen-hell)}
+.wahl button.falsch{border-color:var(--rot);background:var(--rot-hell)}
+.knoepfe{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem}
+.haupt{background:var(--tinte);color:#fff;border:0;border-radius:10px;padding:.7rem 1.4rem;font-weight:700}
+.neben{background:var(--flaeche);border:1.5px solid var(--linie);border-radius:10px;padding:.65rem 1.2rem;font-weight:700}
+.rueck{margin-top:1rem;border-radius:12px;padding:.85rem 1.1rem}
 .rueck.gut{background:var(--gruen-hell);border:1.5px solid var(--gruen)}
 .rueck.schlecht{background:var(--rot-hell);border:1.5px solid var(--rot)}
-.rueck strong{font-family:var(--display);font-size:1.1rem}
-.rueck .rechnung{background:var(--flaeche)}
-.stand{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem}
-@keyframes hops{0%{transform:scale(1)}40%{transform:scale(1.15)}100%{transform:scale(1)}}
+.rueck strong{font-family:var(--display);font-size:1.15rem}
+.weg{margin-top:.6rem;font:500 .95rem/1.8 var(--mono);background:var(--flaeche);border-radius:10px;padding:.7rem .95rem;overflow-x:auto}
+
+/* Üben */
+.ueben{display:grid;grid-template-columns:18rem minmax(0,1fr);gap:1.6rem;align-items:start}
+.stufen{display:grid;gap:.45rem}
+.stufen h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--grau);margin:.6rem 0 .1rem}
+.stufe{border:1.5px solid var(--linie);background:var(--flaeche);border-radius:12px;padding:.6rem .8rem;text-align:left;display:grid;grid-template-columns:1fr auto;gap:.1rem .6rem;align-items:center}
+.stufe[aria-pressed="true"]{border-color:var(--netz);background:var(--netz-hell)}
+.stufe strong{font-size:.97rem}
+.stufe .info{grid-column:1;font-size:.82rem;color:var(--grau)}
+.stufe .sterne{grid-row:1/3;grid-column:2;font-size:.85rem;color:#C5CDD9;letter-spacing:.05em}
+.stufe .sterne .voll{color:var(--host)}
+.frage{font-size:1.3rem;font-weight:600;margin:0 0 1rem;max-width:none}
+.frage .mono{background:var(--grund);padding:.05rem .4rem;border-radius:6px}
+.zaehler{display:flex;gap:.5rem;margin-top:1.1rem}
+@keyframes hops{40%{transform:scale(1.18)}}
 .hops{animation:hops .35s ease}
 @media (prefers-reduced-motion:reduce){.hops{animation:none}}
 
-/* IHK */
-.quelle{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blau)}
-.punkte{float:right;font:700 .85rem var(--mono);background:var(--gelb);color:#14213D;border-radius:6px;padding:.1rem .45rem}
-.material{font:500 .9rem/1.6 var(--mono);background:var(--grund);border-radius:10px;padding:.7rem .9rem;margin:.6rem 0;overflow-x:auto}
+/* Prüfung */
+.pkopf{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;flex-wrap:wrap}
+.quelle{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--netz)}
+.pktag{font:700 .9rem var(--mono);background:var(--host);border-radius:7px;padding:.15rem .55rem}
+.herkunft{font-size:.82rem;font-weight:700;border-radius:999px;padding:.15rem .6rem}
+.herkunft.ihk{background:var(--gruen-hell);color:var(--gruen)}
+.herkunft.selbst{background:var(--lila-hell);color:var(--lila)}
+.material{font:500 .92rem/1.75 var(--mono);background:#10192E;color:#DCE6F5;border-radius:10px;padding:.7rem 1rem;margin:.6rem 0 1rem;overflow-x:auto;white-space:pre}
+.gesamt{position:sticky;top:4rem;z-index:4}
+.fortschritt{height:.7rem;background:var(--zelle);border-radius:99px;overflow:hidden;margin-top:.5rem}
+.fortschritt div{height:100%;background:var(--gruen);width:0;transition:width .4s}
+.selbstcheck{margin-top:.8rem;border:2px dashed var(--linie);border-radius:12px;padding:.8rem 1rem}
 
 /* Spickzettel */
-.tabelle-huelle{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
-th,td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--linie);white-space:nowrap}
+th,td{text-align:left;padding:.5rem .7rem;border-bottom:1px solid var(--linie)}
 th{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--grau)}
-td{font-family:var(--mono);font-weight:500}
-tr.merk td{background:var(--gelb-hell)}
-.fallen{display:grid;gap:.6rem;margin:.6rem 0 0;padding:0;list-style:none}
-.fallen li{border-left:4px solid var(--rot);padding:.2rem 0 .2rem .8rem}
+td{font-family:var(--mono)}
+tr.merk td{background:var(--host-hell)}
+.fallen{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin:0;padding:0;list-style:none}
+.fallen li{border-left:5px solid var(--rot);background:var(--grund);border-radius:0 10px 10px 0;padding:.6rem .9rem}
 </style>
 
 <div class="rahmen">
 <header class="kopf">
   <div>
-    <div class="eyebrow">AP1 · Thema A1</div>
-    <h1>Subnetting in <span class="kabel">einer Stunde</span></h1>
+    <div class="eyebrow">AP1 · Netzwerk</div>
+    <h1>IP-Adressen, <span class="strich">wie die IHK sie fragt</span></h1>
   </div>
-  <div class="wert">
-    <span class="pille">kam dran <b>7 von 10</b> Prüfungen</span>
-    <span class="pille">Ø <b>5,8 P</b> je Prüfung</span>
+  <div class="pillen">
+    <span class="pille">IP-Aufgaben in <b>7 von 10</b> Prüfungen</span>
+    <span class="pille">alles aus den Original-PDFs</span>
   </div>
 </header>
 
 <nav class="reiter" role="tablist" aria-label="Bereiche">
-  <button role="tab" id="t-verstehen" aria-selected="true" data-seite="verstehen">1 · Verstehen</button>
-  <button role="tab" id="t-ueben" aria-selected="false" data-seite="ueben">2 · Üben</button>
-  <button role="tab" id="t-ihk" aria-selected="false" data-seite="ihk">3 · Echte IHK-Aufgaben</button>
-  <button role="tab" id="t-spick" aria-selected="false" data-seite="spick">Spickzettel</button>
+  <button role="tab" id="t-ipv4" aria-selected="true" data-seite="ipv4">IPv4 verstehen</button>
+  <button role="tab" id="t-lesen" aria-selected="false" data-seite="lesen">ipconfig lesen</button>
+  <button role="tab" id="t-ipv6" aria-selected="false" data-seite="ipv6">IPv6 verstehen</button>
+  <button role="tab" id="t-ueben" aria-selected="false" data-seite="ueben">Üben</button>
+  <button role="tab" id="t-pruefung" aria-selected="false" data-seite="pruefung">Echte Prüfungsaufgaben</button>
+  <button role="tab" id="t-spick" aria-selected="false" data-seite="spick" class="rechts">Spickzettel</button>
 </nav>
 
-<!-- VERSTEHEN -->
-<section class="seite" id="verstehen">
+<!-- IPv4 -->
+<section class="seite" id="ipv4">
   <div class="karte">
-    <h2>Worum es geht</h2>
-    <p>Jedes Gerät im Netz hat eine <button class="begriff" data-b="ip">IP-Adresse</button>, zum Beispiel <span class="mono">192.168.16.52</span>. Die ersten drei Zahlen sind in der Prüfung fast immer fest. <strong>Alles spielt sich in der letzten Zahl ab</strong>: 0 bis 255, also 256 Plätze.</p>
-    <p>Das <button class="begriff" data-b="praefix">Präfix</button> (<span class="mono">/25</span>, <span class="mono">/26</span> …) schneidet diese 256 Plätze in gleich große Blöcke. Jeder Block ist ein eigenes Netz. Das ist das ganze Geheimnis.</p>
+    <h2>Eine Adresse, zwei Teile</h2>
+    <p class="unter">Eine <button class="begriff" data-b="ip">IP-Adresse</button> sind 32 Schalter (Bits), in vier Gruppen zu 8. Das <button class="begriff" data-b="praefix">Präfix</button> sagt, wie viele Schalter von links zum <b style="color:var(--netz)">Netz</b> gehören. Der Rest ist für die <b style="background:var(--host);padding:0 .25rem;border-radius:4px">Geräte</b>. Stell selbst ein:</p>
+    <div class="steuer">
+      <div class="ipfelder" aria-label="IP-Adresse"><input id="o0" type="text" value="192" inputmode="numeric">.<input id="o1" type="text" value="168" inputmode="numeric">.<input id="o2" type="text" value="16" inputmode="numeric">.<input id="o3" type="text" value="52" inputmode="numeric"></div>
+      <label for="regler">Präfix <input type="range" id="regler" min="8" max="30" value="25"> <span class="praefix" id="p-anz">/25</span></label>
+    </div>
+    <div class="reihenname">IP-Adresse in Bits</div>
+    <div class="bits" id="bits"></div>
+    <div class="reihenname">Subnetzmaske: Einsen fürs Netz, Nullen für Geräte</div>
+    <div class="bits" id="mbits"></div>
+    <div class="teile"><div class="n" id="teil-n"></div><div class="h" id="teil-h"></div></div>
+    <div class="ergebnis" id="erg"></div>
   </div>
 
   <div class="karte">
-    <h2>Probier es aus</h2>
-    <p class="leise">Schieb das Präfix hin und her und ändere die letzte Zahl. Jedes Kästchen ist eine Adresse von .0 bis .255.</p>
-    <div class="band-steuer">
-      <label for="regler">Präfix <input type="range" id="regler" min="24" max="30" value="25"> <span class="praefix-anzeige" id="p-anz">/25</span></label>
-      <label for="letzte">192.168.16.<input type="number" id="letzte" min="0" max="255" value="52"></label>
+    <h2>Das Netz als Block</h2>
+    <p class="unter">Die letzte Zahl geht von 0 bis 255: 256 Kästchen. Das Präfix schneidet sie in gleich große Blöcke. Dein Gerät liegt in genau einem davon. Der erste Platz ist die <button class="begriff" data-b="netzadr">Netzadresse</button>, der letzte der <button class="begriff" data-b="bc">Broadcast</button>, beide sind für Geräte verboten.</p>
+    <div class="zwei">
+      <div>
+        <div class="band" id="band" aria-hidden="true"></div>
+        <div class="legende">
+          <span><i style="background:var(--gruen)"></i>Netzadresse</span>
+          <span><i style="background:var(--rot)"></i>Broadcast</span>
+          <span><i style="background:var(--host);box-shadow:inset 0 0 0 2px var(--tinte)"></i>dein Gerät</span>
+          <span><i style="background:var(--netz-hell);box-shadow:inset 0 0 0 1px var(--netz)"></i>dein Netz</span>
+          <span><i style="background:#D2DAE5"></i>andere Netze</span>
+        </div>
+      </div>
+      <div>
+        <h3>Rechenweg in 5 Zeilen</h3>
+        <div class="weg" id="band-weg" style="background:var(--host-hell)"></div>
+        <p class="klein" id="band-hinweis"></p>
+      </div>
     </div>
-    <div class="band" id="band" aria-hidden="true"></div>
-    <div class="legende">
-      <span><i style="background:var(--gruen)"></i>Netzadresse</span>
-      <span><i style="background:var(--rot)"></i>Broadcast</span>
-      <span><i style="background:var(--gelb);outline:2px solid var(--tinte)"></i>dein Gerät</span>
-      <span><i style="background:var(--blau-hell);outline:1px solid var(--blau)"></i>dein Netz</span>
-    </div>
-    <div class="ergebnis" id="band-erg"></div>
-    <div class="rechnung" id="band-weg"></div>
   </div>
 
   <div class="karte">
-    <h2>Der Rechenweg, immer derselbe</h2>
-    <ol class="schritte">
-      <li><div><p><strong>Hostbits:</strong> 32 − Präfix. Bei /25: 32 − 25 = <b>7</b>.</p></div></li>
-      <li><div><p><strong>Blockgröße:</strong> 2 hoch Hostbits. 2⁷ = <b>128</b>. So viele Adressen hat ein Netz.</p></div></li>
-      <li><div><p><strong>Maske:</strong> 256 − Blockgröße, das ist die letzte Zahl der <button class="begriff" data-b="maske">Subnetzmaske</button>. 256 − 128 = 128 → <b class="mono">255.255.255.128</b></p></div></li>
-      <li><div><p><strong>Block finden:</strong> Blöcke starten bei 0, 128 … (immer + Blockgröße). 52 liegt im Block <b>0 bis 127</b>.</p></div></li>
-      <li><div><p><strong>Ablesen:</strong> Anfang = <button class="begriff" data-b="netz">Netzadresse</button> (.0), Ende = <button class="begriff" data-b="bc">Broadcast</button> (.127), dazwischen die Geräte: 128 − 2 = <b>126</b> nutzbare <button class="begriff" data-b="host">Hosts</button>.</p></div></li>
-    </ol>
-    <p class="leise">Das ist genau Aufgabe 2a aus der Prüfung Frühjahr 2026 (4 Punkte). Weiter geht es mit „2 · Üben“.</p>
+    <h2>Welche Adresse darf ein Gerät fest bekommen?</h2>
+    <p class="unter">So war es in Herbst 2024 (4 Punkte): Netz 192.168.20.0/24, Router auf .1, <button class="begriff" data-b="dhcp">DHCP</button> verteilt .20 bis .254. Eine feste Adresse muss außerhalb von allem liegen, was schon vergeben ist.</p>
+    <div class="leiste" id="leiste"></div>
+    <div class="zwei" style="margin-top:1rem">
+      <div class="kasten gelb"><b>Nur hier ist Platz:</b> .2 bis .19. Jede Adresse davon gibt den Punkt, z. B. <span class="mono">192.168.20.10</span>.</div>
+      <div class="kasten"><b>Gateway</b> ist immer der Router: <span class="mono">192.168.20.1</span>. Maske für /24: <span class="mono">255.255.255.0</span>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ipconfig -->
+<section class="seite" id="lesen" hidden>
+  <div class="karte">
+    <h2>Eine ipconfig-Ausgabe lesen</h2>
+    <p class="unter">Diese Ausgabe stand genau so in Frühjahr 2024, fast gleich auch in Frühjahr 2022. Klick eine Zeile an: rechts steht, was sie bedeutet und was die IHK dazu gefragt hat.</p>
+    <div class="zwei">
+      <div class="konsole" id="konsole"></div>
+      <div class="erkl kasten" id="konsole-erkl"><b>← Zeile anklicken</b></div>
+    </div>
+  </div>
+  <div class="karte">
+    <h2>Die Adresse, die nichts Gutes heißt: 169.254.x.x</h2>
+    <div class="zwei">
+      <div>
+        <p>Herbst 2024 (2 Punkte): Der PC zeigt <span class="mono">169.254.122.115</span>. Warum?</p>
+        <p>Der PC wollte seine Adresse vom DHCP-Server holen. Es hat niemand geantwortet. Also hat er sich selbst eine aus dem Bereich 169.254.x.x gegeben (<button class="begriff" data-b="apipa">APIPA</button>).</p>
+        <p class="klein">Offizielle Lösung: „Der PC war für eine dynamische IP-Adressvergabe vorkonfiguriert. Ein DHCP-Server konnte jedoch noch nicht erreicht werden. Daher hat sich der PC diese IP-Adresse selbst vergeben.“</p>
+      </div>
+      <svg viewBox="0 0 420 180" role="img" aria-label="PC fragt DHCP-Server, keine Antwort, PC nimmt 169.254-Adresse" style="width:100%">
+        <rect x="10" y="50" width="110" height="80" rx="12" fill="#DCE8FB" stroke="#1F5FBF" stroke-width="2"/>
+        <text x="65" y="85" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-weight="700" font-size="16" fill="#14213D">PC</text>
+        <text x="65" y="108" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#14213D">169.254.122.115</text>
+        <rect x="300" y="50" width="110" height="80" rx="12" fill="#E3E8EF" stroke="#8795AD" stroke-width="2" stroke-dasharray="6 5"/>
+        <text x="355" y="87" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-weight="700" font-size="15" fill="#5B6478">DHCP-Server</text>
+        <text x="355" y="108" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="13" fill="#5B6478">nicht erreichbar</text>
+        <line x1="125" y1="75" x2="290" y2="75" stroke="#1F5FBF" stroke-width="3"/><polygon points="290,68 302,75 290,82" fill="#1F5FBF"/>
+        <text x="210" y="65" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="13" fill="#14213D">„Gib mir eine Adresse!“</text>
+        <line x1="290" y1="110" x2="160" y2="110" stroke="#C2362B" stroke-width="3" stroke-dasharray="7 6"/>
+        <text x="225" y="100" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="13" fill="#C2362B">keine Antwort</text>
+        <text x="215" y="160" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-weight="700" font-size="14" fill="#14213D">→ PC vergibt sich selbst 169.254.x.x</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- IPv6 -->
+<section class="seite" id="ipv6" hidden>
+  <div class="karte">
+    <h2>IPv6: 128 Bit in 8 Blöcken</h2>
+    <p class="unter">IPv4 hat 32 Bit, IPv6 hat 128 Bit. Geschrieben in 8 Blöcken zu je 4 Hex-Zeichen (16 Bit), getrennt durch Doppelpunkte. Bei <span class="mono">/64</span> sind die linken 4 Blöcke das <b style="color:var(--netz)">Präfix</b>, die rechten 4 der <b style="background:var(--host);padding:0 .25rem;border-radius:4px">Interface-Identifier</b> (das Gerät).</p>
+    <label class="klein" for="v6ein" style="font-weight:700;color:var(--tinte)">Tipp eine gekürzte Adresse ein, sie wird ausgeschrieben:</label>
+    <input class="v6ein" id="v6ein" type="text" value="fe80::521a:c5ff:fef2:38b7" spellcheck="false" autocomplete="off">
+    <div class="v6" id="v6bild" style="margin-top:1rem"></div>
+    <div class="klammern"><div style="grid-column:1/5;color:var(--netz)">Präfix /64 (64 Bit)</div><div style="grid-column:5/9;color:#9A7300">Interface-Identifier (64 Bit)</div></div>
+    <p class="klein" id="v6info"></p>
+  </div>
+
+  <div class="karte">
+    <h2>Die zwei Kürzungsregeln</h2>
+    <p class="unter">Nur diese zwei. Wer sie rückwärts anwendet, kann jede Adresse ausschreiben. Das brachte in Frühjahr 2024 2 Punkte und in Herbst 2022 4 Punkte.</p>
+    <div class="regeln">
+      <div class="regel kasten"><h3>1. Führende Nullen im Block weglassen</h3><div class="vorher">2001:<b>0</b>da8:5f2d:<b>00</b>28:…</div><div class="pfeil">↓</div><div class="nachher">2001:da8:5f2d:28:…</div><p class="klein">Rückwärts: jeden Block links mit Nullen auf 4 Zeichen auffüllen.</p></div>
+      <div class="regel kasten"><h3>2. Nullblöcke am Stück durch :: ersetzen, nur einmal</h3><div class="vorher">fe80:<b>0000:0000:0000</b>:521a:c5ff:fef2:38b7</div><div class="pfeil">↓</div><div class="nachher">fe80::521a:c5ff:fef2:38b7</div><p class="klein">Rückwärts: Blöcke zählen, bis 8 mit 0000 auffüllen.</p></div>
+    </div>
+  </div>
+
+  <div class="karte">
+    <h2>Standortpräfix, Teilnetz-ID, Gerät</h2>
+    <p class="unter">Herbst 2022: <span class="mono">2001:da8:5f2d:28::/64</span> besteht aus einem 48-Bit-Standortpräfix und einer 16-Bit-Teilnetz-ID. So sieht das aus:</p>
+    <div class="v6" id="v6h22"></div>
+    <div class="klammern"><div style="grid-column:1/4;color:var(--netz)">Standortpräfix 48 Bit</div><div style="grid-column:4/5;color:var(--lila)">Teilnetz-ID 16 Bit</div><div style="grid-column:5/9;color:#9A7300">Interface-ID 64 Bit</div></div>
+    <div class="zwei" style="margin-top:1.2rem">
+      <div class="kasten gelb"><b>Wie viele Teilnetze?</b> Die Teilnetz-ID hat 16 Bit, also <b class="gross">2^16 = 65.536</b></div>
+      <div class="kasten"><b>fe80:: am Anfang</b> heißt <button class="begriff" data-b="linklokal">link-lokal</button>. Die Adresse hat sich der Rechner selbst gegeben, auch wenn niemand eine konfiguriert hat.</div>
+    </div>
   </div>
 </section>
 
 <!-- UEBEN -->
 <section class="seite" id="ueben" hidden>
   <div class="karte">
-    <h2>Üben, bis es sitzt</h2>
-    <p class="leise">Unendlich viele Aufgaben. Fünf richtig am Stück geben den vollen Stern-Balken. Liegst du falsch, siehst du sofort den Rechenweg mit deinen Zahlen.</p>
-    <div class="stufen" id="stufen"></div>
-    <div class="aufgabe" id="aufgabe"></div>
-    <div class="stand" id="stand"></div>
+    <div class="ueben">
+      <div class="stufen" id="stufen"></div>
+      <div>
+        <div id="aufgabe"></div>
+        <div class="zaehler" id="zaehler"></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- IHK -->
-<section class="seite" id="ihk" hidden>
-  <p class="leise">Sinngemäß wiedergegeben. Erst selbst lösen, dann prüfen: Die Punkte werden so vergeben wie in den IHK-Lösungshinweisen.</p>
-  <div id="ihk-liste" style="display:grid;gap:1.1rem"></div>
+<!-- PRUEFUNG -->
+<section class="seite" id="pruefung" hidden>
+  <div class="karte gesamt">
+    <div class="pkopf"><h2 style="font-size:1.3rem">Deine Punkte aus echten Prüfungsaufgaben</h2><span class="pille gold"><b id="gesamt-p">0</b> von <b id="gesamt-max">0</b> Punkten</span></div>
+    <div class="fortschritt"><div id="gesamt-balken"></div></div>
+  </div>
+  <div id="pliste" style="display:grid;gap:1.4rem"></div>
 </section>
 
-<!-- SPICKZETTEL -->
+<!-- SPICK -->
 <section class="seite" id="spick" hidden>
-  <div class="karte">
-    <h2>Die Tabelle zum Auswendiglernen</h2>
-    <p class="leise">Die gelben Zeilen kommen am häufigsten dran.</p>
-    <div class="tabelle-huelle"><table>
-      <thead><tr><th>Präfix</th><th>Subnetzmaske</th><th>Block</th><th>Hosts</th></tr></thead>
-      <tbody id="spick-tab"></tbody>
-    </table></div>
+  <div class="zwei">
+    <div class="karte">
+      <h2>Tabelle zum Auswendiglernen</h2>
+      <p class="unter">Gelb: kam in den Prüfungen vor (/24, /25, /26).</p>
+      <table><thead><tr><th>Präfix</th><th>Subnetzmaske</th><th>Block</th><th>Geräte</th></tr></thead><tbody id="spick-tab"></tbody></table>
+    </div>
+    <div class="karte">
+      <h2>IPv4 gegen IPv6</h2>
+      <table><thead><tr><th></th><th>IPv4</th><th>IPv6</th></tr></thead><tbody>
+        <tr><td style="font-family:var(--sans);font-weight:700">Länge</td><td>32 Bit</td><td>128 Bit</td></tr>
+        <tr><td style="font-family:var(--sans);font-weight:700">Schreibweise</td><td>dezimal, Punkte</td><td>hexadezimal, Doppelpunkte</td></tr>
+        <tr><td style="font-family:var(--sans);font-weight:700">Beispiel</td><td>192.168.0.52</td><td>fe80::521a:c5ff:fef2:38b7</td></tr>
+        <tr><td style="font-family:var(--sans);font-weight:700">selbst vergeben</td><td>169.254.x.x</td><td>fe80::</td></tr>
+        <tr><td style="font-family:var(--sans);font-weight:700">sich selbst (Loopback)</td><td>127.0.0.1</td><td>::1</td></tr>
+        <tr><td style="font-family:var(--sans);font-weight:700">beides betreiben</td><td colspan="2" style="font-family:var(--sans)">Dual-Stack: Geräte sprechen IPv4 und IPv6 gleichzeitig</td></tr>
+      </tbody></table>
+    </div>
   </div>
   <div class="karte">
     <h2>Fallen, die Punkte kosten</h2>
     <ul class="fallen">
-      <li><strong>Hosts = Block − 2.</strong> Netzadresse und Broadcast darf kein Gerät bekommen. Bei /25 also 126, nicht 128.</li>
-      <li><strong>Blöcke starten immer bei 0.</strong> Nicht bei der Adresse aus der Aufgabe.</li>
-      <li><strong>Broadcast = nächster Blockanfang − 1.</strong> Bei .64/27: 64 + 32 − 1 = .95.</li>
-      <li><strong>Gateway</strong> ist die Adresse des Routers. Steht sie in der Aufgabe, schreib genau die hin, nicht „die erste Adresse“.</li>
-      <li><strong>Feste IP</strong> nie aus dem <button class="begriff" data-b="dhcp">DHCP</button>-Bereich nehmen, sonst gibt es zwei Geräte mit derselben Adresse.</li>
-      <li><strong>Maske dezimal</strong> heißt ausgeschrieben: 255.255.255.192, nicht /26.</li>
+      <li><b>Geräte = Block − 2.</b> Bei /25 also 126, nicht 128.</li>
+      <li><b>Blöcke beginnen bei 0.</b> Nicht bei der Adresse aus der Aufgabe.</li>
+      <li><b>„Letzte mögliche Adresse“</b> ist Broadcast − 1, also .254 bei /24, nicht .255.</li>
+      <li><b>Gateway = Adresse des Routers.</b> Steht sie im Bild, genau die abschreiben.</li>
+      <li><b>Feste IP nie aus dem DHCP-Bereich</b>, sonst gibt es sie doppelt.</li>
+      <li><b>Maske dezimal</b> heißt 255.255.255.0 ausschreiben, nicht /24.</li>
+      <li><b>:: nur einmal</b> pro IPv6-Adresse, sonst ist sie nicht eindeutig.</li>
+      <li><b>Ungekürzt</b> heißt: jeder Block 4 Zeichen, alle 8 Blöcke da.</li>
     </ul>
   </div>
 </section>
@@ -240,19 +392,21 @@ tr.merk td{background:var(--gelb-hell)}
 
 <script>
 const $=s=>document.querySelector(s);
-const speicher={lies(k,d){try{const v=localStorage.getItem('subnet.'+k);return v?JSON.parse(v):d}catch(e){return d}},
-  schreib(k,v){try{localStorage.setItem('subnet.'+k,JSON.stringify(v))}catch(e){}}};
+const speicher={lies(k,d){try{const v=localStorage.getItem('ipt.'+k);return v?JSON.parse(v):d}catch(e){return d}},
+  schreib(k,v){try{localStorage.setItem('ipt.'+k,JSON.stringify(v))}catch(e){}}};
 
-/* Begriffe: Erklärung direkt am Wort */
+/* Begriffe */
 const BEGRIFFE={
-  ip:['IP-Adresse','Die Nummer eines Geräts im Netz, vier Zahlen von 0 bis 255, z. B. 192.168.16.52. Sie wird vergeben, nicht eingebaut.'],
-  praefix:['Präfix (/25)','Sagt, wie viele der 32 Bit einer Adresse zum Netz gehören. Der Rest (32 − Präfix) ist für die Geräte. Je größer das Präfix, desto kleiner das Netz.'],
-  maske:['Subnetzmaske','Dieselbe Information wie das Präfix, nur als vier Zahlen geschrieben: /25 = 255.255.255.128. Die letzte Zahl ist 256 − Blockgröße.'],
-  netz:['Netzadresse','Die allererste Adresse eines Blocks. Sie ist der Name des Netzes und darf keinem Gerät gegeben werden.'],
-  bc:['Broadcast-Adresse','Die allerletzte Adresse eines Blocks. Was dorthin geht, bekommen alle Geräte im Netz. Kein Gerät darf sie bekommen.'],
-  host:['Host','Ein Gerät im Netz: PC, Drucker, Kamera, Server. Nutzbare Hosts = alle Adressen des Blocks außer Netzadresse und Broadcast.'],
-  dhcp:['DHCP','Dienst, der Geräten automatisch eine IP-Adresse gibt. Er verteilt nur aus seinem Bereich; feste Adressen gehören außerhalb davon.'],
-  gateway:['Standardgateway','Die Adresse des Routers im eigenen Netz. Dorthin schickt ein Gerät alles, was nicht ins eigene Netz gehört, z. B. ins Internet.']
+ ip:['IP-Adresse','Die Nummer eines Geräts im Netz. IPv4: vier Zahlen von 0 bis 255, z. B. 192.168.16.52. Wird vergeben (von Hand oder per DHCP), nicht eingebaut.'],
+ praefix:['Präfix (/25)','Wie viele der 32 Bit von links zum Netz gehören. Der Rest (32 − Präfix) ist für die Geräte. Großes Präfix = kleines Netz.'],
+ maske:['Subnetzmaske','Dasselbe wie das Präfix, als vier Zahlen: Einsen fürs Netz, Nullen für die Geräte. /25 = 255.255.255.128.'],
+ netzadr:['Netzadresse','Erste Adresse eines Blocks, der Name des Netzes. Kein Gerät darf sie bekommen.'],
+ bc:['Broadcast-Adresse','Letzte Adresse eines Blocks. Was dorthin geht, bekommen alle Geräte im Netz. Kein Gerät darf sie bekommen.'],
+ dhcp:['DHCP','Dienst (meist im Router), der Geräten automatisch IP-Adresse, Maske, Gateway und DNS-Server gibt. Er verteilt nur aus seinem Bereich (DHCP-Range).'],
+ gateway:['Standardgateway','Die Adresse des Routers im eigenen Netz. Dorthin schickt ein Gerät alles, was nicht ins eigene Netz gehört.'],
+ apipa:['APIPA','Automatic Private IP Addressing: Findet ein PC keinen DHCP-Server, gibt er sich selbst eine Adresse aus 169.254.0.0/16. Damit kommt er nicht ins Internet.'],
+ linklokal:['Link-lokale IPv6-Adresse','Beginnt mit fe80::. Jedes IPv6-Gerät gibt sie sich selbst, sie gilt nur im eigenen Netzabschnitt und wird nicht geroutet.'],
+ mac:['MAC-Adresse','Die physische Adresse der Netzwerkkarte, vom Hersteller fest vergeben. 48 Bit, geschrieben wie 50-1A-C5-F2-38-B7.']
 };
 const box=$('#erklaerung');
 document.addEventListener('click',e=>{
@@ -263,125 +417,230 @@ document.addEventListener('click',e=>{
 
 /* Reiter */
 const reiter=[...document.querySelectorAll('nav.reiter button')];
-function zeige(id){reiter.forEach(r=>{const an=r.dataset.seite===id;r.setAttribute('aria-selected',an);$('#'+r.dataset.seite).hidden=!an});speicher.schreib('reiter',id);window.scrollTo({top:0})}
+function zeige(id){if(!$('#'+id))id='ipv4';reiter.forEach(r=>{const an=r.dataset.seite===id;r.setAttribute('aria-selected',an);$('#'+r.dataset.seite).hidden=!an});speicher.schreib('reiter',id);window.scrollTo({top:0})}
 reiter.forEach(r=>r.addEventListener('click',()=>zeige(r.dataset.seite)));
 
-/* Rechnen */
+/* IPv4-Rechnen */
 const block=p=>2**(32-p);
-const maskeLetzte=p=>256-block(p);
-const maske=p=>'255.255.255.'+maskeLetzte(p);
-function netzVon(letzte,p){const b=block(p);const n=Math.floor(letzte/b)*b;return{b,n,bc:n+b-1}}
-function weg(basis,letzte,p){
-  const {b,n,bc}=netzVon(letzte,p);
-  return `Hostbits: 32 − ${p} = ${32-p}<br>Block: 2^${32-p} = ${b}<br>Maske: 256 − ${b} = ${256-b} → ${maske(p)}<br>`+
-  `Blöcke: ${blockListe(b)} → .${letzte} liegt in .${n} bis .${bc}<br>`+
-  `Netz ${basis}.${n} · Broadcast ${basis}.${bc} · Hosts ${b} − 2 = ${b-2}`;
-}
-function blockListe(b){const l=[];for(let x=0;x<256&&l.length<6;x+=b)l.push('.'+x);if(256/b>6)l.push('…');return l.join(', ')}
+const maskeZahl=p=>p===0?0:(0xFFFFFFFF<<(32-p))>>>0;
+const zuText=n=>[24,16,8,0].map(s=>(n>>>s)&255).join('.');
+const maske=p=>zuText(maskeZahl(p));
+const letzteMaske=p=>256-block(p);
+function netzVon(l,p){const b=block(p);const n=Math.floor(l/b)*b;return{b,n,bc:n+b-1}}
+function wegText(basis,l,p){const {b,n,bc}=netzVon(l,p);
+  const bl=[];for(let x=0;x<256&&bl.length<5;x+=b)bl.push('.'+x);if(256/b>5)bl.push('…');
+  return `1. Hostbits: 32 − ${p} = ${32-p}<br>2. Block: 2^${32-p} = ${b}<br>3. Maske: 256 − ${b} = ${256-b} → ${maske(p)}<br>4. Blöcke ${bl.join(', ')} → .${l} liegt in .${n} bis .${bc}<br>5. Netz ${basis}.${n} · Broadcast ${basis}.${bc} · Geräte ${b} − 2 = ${b-2}`}
 
-/* Adressband */
+/* Bits-Bild */
+function oktettHTML(wert,start,p,maskeReihe){
+  const bits=wert.toString(2).padStart(8,'0').split('');
+  return `<div class="oktett">${maskeReihe?'':`<div class="dez">${wert}</div>`}<div class="reihe">${bits.map((b,i)=>`<span class="${start+i<p?'n':'h'}">${b}</span>`).join('')}</div>${maskeReihe?`<div class="mdez">${wert}</div>`:`<div class="wert">${[128,64,32,16,8,4,2,1].map(x=>`<i>${x}</i>`).join('')}</div>`}</div>`}
+function ipLesen(){return [0,1,2,3].map(i=>Math.max(0,Math.min(255,parseInt($('#o'+i).value)||0)))}
+function zeichneV4(){
+  const p=+$('#regler').value, ip=ipLesen();$('#p-anz').textContent='/'+p;
+  const m=maskeZahl(p), ipz=((ip[0]<<24)|(ip[1]<<16)|(ip[2]<<8)|ip[3])>>>0;
+  $('#bits').innerHTML=ip.map((o,k)=>oktettHTML(o,k*8,p,false)).join('');
+  $('#mbits').innerHTML=[24,16,8,0].map((s,k)=>oktettHTML((m>>>s)&255,k*8,p,true)).join('');
+  $('#teil-n').style.flexBasis=(p/32*100)+'%';$('#teil-n').textContent=`Netzteil ${p} Bit`;
+  $('#teil-h').style.flexBasis=((32-p)/32*100)+'%';$('#teil-h').textContent=`Geräte ${32-p} Bit`;
+  const net=(ipz&m)>>>0, bc=(net|(~m>>>0))>>>0;
+  $('#erg').innerHTML=[['Subnetzmaske',maske(p)],['Nutzbare Geräte',(2**(32-p)-2).toLocaleString('de-DE')],['Netzadresse',zuText(net)],['Broadcast',zuText(bc)]].map(([k,v])=>`<div><small>${k}</small><b>${v}</b></div>`).join('');
+  zeichneBand(ip,p);
+}
 const band=$('#band');for(let i=0;i<256;i++)band.appendChild(document.createElement('span'));
-function zeichne(){
-  const p=+$('#regler').value;let l=Math.max(0,Math.min(255,parseInt($('#letzte').value)||0));
-  $('#p-anz').textContent='/'+p;
+function zeichneBand(ip,p){
+  const l=ip[3],basis=ip.slice(0,3).join('.');
+  if(p<24){[...band.children].forEach(z=>z.className='eigen');band.children[l].className='ich';
+    $('#band-weg').innerHTML=`Bei /${p} gehören alle 256 Plätze der letzten Zahl zu deinem Netz,<br>das Netz reicht sogar über mehrere dritte Zahlen.<br>In der AP1 kamen nur /24, /25 und /26 vor.`;$('#band-hinweis').textContent='Schieb das Präfix auf 24 bis 30, dann siehst du die Blöcke.';return}
   const {b,n,bc}=netzVon(l,p);
-  [...band.children].forEach((z,i)=>{z.className='';
-    if(Math.floor(i/b)%2)z.classList.add('b');
-    if(i>=n&&i<=bc)z.classList.add('eigen');
-    if(i===n)z.className='netz';if(i===bc)z.className='bc';if(i===l&&l!==n&&l!==bc)z.className='host';
-    if(i===l&&(l===n||l===bc))z.style.outline='2px solid var(--tinte)';else z.style.outline='';});
-  const warn=(l===n||l===bc)?' <span style="color:var(--rot)">(darf kein Gerät bekommen!)</span>':'';
-  $('#band-erg').innerHTML=[['Subnetzmaske',maske(p)],['Nutzbare Hosts',b-2],['Netzadresse','192.168.16.'+n],['Broadcast','192.168.16.'+bc]]
-    .map(([k,v])=>`<div><small>${k}</small><b>${v}</b></div>`).join('');
-  $('#band-weg').innerHTML=weg('192.168.16',l,p)+warn;
+  [...band.children].forEach((z,i)=>{z.className=Math.floor(i/b)%2?'b':'';if(i>=n&&i<=bc)z.className='eigen';if(i===n)z.className='netzadr';if(i===bc)z.className='bc';if(i===l&&l!==n&&l!==bc)z.className='ich'});
+  $('#band-weg').innerHTML=wegText(basis,l,p);
+  $('#band-hinweis').innerHTML=(l===n||l===bc)?'<b style="color:var(--rot)">Achtung: Diese Adresse darf kein Gerät bekommen.</b>':`Dein Netz hat ${b} Plätze, ${b-2} davon für Geräte.`;
 }
-$('#regler').addEventListener('input',zeichne);$('#letzte').addEventListener('input',zeichne);zeichne();
+['#regler','#o0','#o1','#o2','#o3'].forEach(s=>$(s).addEventListener('input',zeichneV4));zeichneV4();
 
-/* Training */
+/* DHCP-Leiste */
+$('#leiste').innerHTML=[['var(--gruen)','#fff','Netzadresse','.0'],['var(--netz)','#fff','Router','.1'],['var(--host)','var(--tinte)','frei für feste IPs','.2 bis .19'],['#C9D2DF','var(--tinte)','DHCP-Bereich','.20 bis .254'],['var(--rot)','#fff','Broadcast','.255']]
+  .map(([bg,fg,t,z])=>`<div class="seg" style="background:${bg};color:${fg}">${t}<small>${z}</small></div>`).join('');
+
+/* Konsole */
+const KONSOLE=[
+ ['Physische Adresse . . . . . . . . ','50-1A-C5-F2-38-B7','MAC-Adresse','Die fest vom Hersteller vergebene Adresse der Netzwerkkarte (OSI-Schicht 2).','Frühjahr 2022: „Beschreiben Sie die Herkunft dieser Adresse“ (2 P). Frühjahr 2024: der Schicht 2 zuordnen.'],
+ ['DHCP aktiviert. . . . . . . . . . ','Ja','DHCP','Der PC holt sich seine Adresse automatisch vom DHCP-Server.','Frühjahr 2022: „Nennen Sie den Server, der beim Erneuern der IP-Adresse kontaktiert wurde“ → DHCP-Server (1 P). Frühjahr 2024: der Schicht 7 zuordnen.'],
+ ['Verbindungslokale IPv6-Adresse  . ','fe80::521a:c5ff:fef2:38b7%5','Link-lokale IPv6-Adresse','Beginnt mit fe80. Hat sich der Rechner selbst gegeben, unabhängig vom Netz. %5 ist nur die Nummer der Netzwerkkarte im PC und gehört nicht zur Adresse.','Frühjahr 2024 (5 P): Länge 128 Bit, ungekürzt fe80:0000:0000:0000:521a:c5ff:fef2:38b7, Präfixlänge 64, Interface-Identifier 521a:c5ff:fef2:38b7.'],
+ ['IPv4-Adresse  . . . . . . . . . . ','192.168.0.52','IPv4-Adresse des PCs','Mit der Maske darunter (/24) gilt: Netz 192.168.0.0, das Gerät ist .52, Broadcast 192.168.0.255.','Frühjahr 2022 (3 P): Netzadresse, Hostadresse, Broadcastadresse angeben.'],
+ ['Subnetzmaske  . . . . . . . . . . ','255.255.255.0','Subnetzmaske','Dreimal 255 = 24 Einsen = /24. Die ersten drei Zahlen sind das Netz, die letzte Zahl ist das Gerät.','Frühjahr 2024 (2 P): Welche Informationen stellt der DHCP-Server bereit? → IPv4-Adresse und Subnetzmaske.']
+];
+$('#konsole').innerHTML=KONSOLE.map(([k,v],i)=>`<button class="zeile" data-i="${i}"><span class="nr">${i+1}</span><span><span class="schluessel">${k}: </span>${v}</span></button>`).join('');
+document.querySelectorAll('.konsole .zeile').forEach(z=>z.onclick=()=>{
+  document.querySelectorAll('.konsole .zeile').forEach(x=>x.classList.toggle('an',x===z));
+  const [,,t,e,q]=KONSOLE[z.dataset.i];
+  $('#konsole-erkl').innerHTML=`<h3>${t}</h3><p>${e}</p><div class="quelle"><span class="herkunft ihk">So kam es dran</span><p class="klein">${q}</p></div>`;});
+
+/* IPv6 */
+function v6aus(s){
+  s=String(s).trim().toLowerCase().replace(/%.*$/,'').replace(/\/\d+$/,'');
+  if(!/^[0-9a-f:]+$/.test(s)||(s.match(/::/g)||[]).length>1)return null;
+  let teile;
+  if(s.includes('::')){const [l,r]=s.split('::');const L=l?l.split(':'):[],R=r?r.split(':'):[];if(L.length+R.length>7)return null;teile=[...L,...Array(8-L.length-R.length).fill('0'),...R]}
+  else teile=s.split(':');
+  if(teile.length!==8||teile.some(t=>t.length<1||t.length>4))return null;
+  return teile.map(t=>t.padStart(4,'0'));
+}
+function v6kurz(bl){
+  const t=bl.map(x=>x.replace(/^0+(?=.)/,''));
+  let best=[-1,0],cur=[-1,0];
+  t.forEach((x,i)=>{if(x==='0'){if(cur[0]<0)cur=[i,0];cur[1]++;if(cur[1]>best[1])best=[...cur]}else cur=[-1,0]});
+  if(best[1]<2)return t.join(':');
+  return t.slice(0,best[0]).join(':')+'::'+t.slice(best[0]+best[1]).join(':');
+}
+function v6Bild(ziel,bl,orig,arten){
+  const eingetippt=orig?v6OriginalBloecke(orig):null;
+  ziel.innerHTML=bl.map((b,i)=>{const e=eingetippt?eingetippt[i]:b;const auf=b.length-e.length;
+    const txt=auf>0?`<span class="null">${b.slice(0,auf)}</span>${b.slice(auf)}`:b;
+    return `<div class="blk ${arten[i]}">${txt}<small>${(i*16)}–${i*16+15}</small></div>`}).join('');
+}
+function v6OriginalBloecke(s){s=s.trim().toLowerCase().replace(/%.*$/,'').replace(/\/\d+$/,'');
+  if(s.includes('::')){const [l,r]=s.split('::');const L=l?l.split(':'):[],R=r?r.split(':'):[];return [...L,...Array(8-L.length-R.length).fill(''),...R]}return s.split(':')}
+function zeichneV6(){const s=$('#v6ein').value;const bl=v6aus(s);
+  if(!bl){$('#v6info').innerHTML='<b style="color:var(--rot)">Das ist keine gültige IPv6-Adresse.</b> Erlaubt: 0–9, a–f, Doppelpunkte, höchstens ein ::';return}
+  v6Bild($('#v6bild'),bl,s,['p','p','p','p','i','i','i','i']);
+  $('#v6info').innerHTML=`Ungekürzt: <b class="mono">${bl.join(':')}</b><br>Blass = Nullen, die beim Kürzen weggefallen waren.`}
+$('#v6ein').addEventListener('input',zeichneV6);zeichneV6();
+v6Bild($('#v6h22'),v6aus('2001:da8:5f2d:28::'),'2001:da8:5f2d:28::',['p','p','p','s','i','i','i','i']);
+
+/* Netzbild */
+const SYMBOL={
+ router:`<svg class="symbol" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#1F5FBF"/><path d="M18 24h18l-5-5M42 36H24l5 5" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+ switch:`<svg class="symbol" viewBox="0 0 60 60"><rect x="4" y="16" width="52" height="28" rx="6" fill="#14213D"/><path d="M14 26h26l-4-4M46 34H20l4 4" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+ pc:`<svg class="symbol" viewBox="0 0 60 60"><rect x="6" y="8" width="48" height="32" rx="4" fill="#14213D"/><rect x="10" y="12" width="40" height="24" rx="2" fill="#DCE8FB"/><rect x="24" y="42" width="12" height="6" fill="#14213D"/><rect x="16" y="48" width="28" height="4" rx="2" fill="#14213D"/></svg>`,
+ drucker:`<svg class="symbol" viewBox="0 0 60 60"><rect x="16" y="6" width="28" height="14" fill="#fff" stroke="#14213D" stroke-width="3"/><rect x="6" y="20" width="48" height="22" rx="5" fill="#14213D"/><rect x="16" y="36" width="28" height="18" fill="#fff" stroke="#14213D" stroke-width="3"/><circle cx="46" cy="28" r="3" fill="#F2B705"/></svg>`,
+ geraet:`<svg class="symbol" viewBox="0 0 60 60"><rect x="6" y="16" width="48" height="28" rx="5" fill="#14213D"/><rect x="12" y="22" width="10" height="10" fill="#fff"/><circle cx="28" cy="26" r="2.5" fill="#F2B705"/><circle cx="35" cy="26" r="2.5" fill="#F2B705"/><rect x="40" y="22" width="9" height="14" fill="#8795AD"/></svg>`,
+ wolke:`<svg class="symbol" viewBox="0 0 60 60"><path d="M16 44h30a10 10 0 0 0 0-20 14 14 0 0 0-27-3 11 11 0 0 0-3 23z" fill="#fff" stroke="#14213D" stroke-width="3"/></svg>`
+};
+function netzbild({hoehe,geraete,linien},praefix){
+  return `<div class="netzbild" style="height:${hoehe}rem"><svg class="linien" viewBox="0 0 100 100" preserveAspectRatio="none">${linien.map(([a,b])=>{const A=geraete.find(g=>g.id===a),B=geraete.find(g=>g.id===b);return `<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}"/>`}).join('')}</svg>
+  ${geraete.map(g=>`<div class="geraet" style="left:${g.x}%;top:${g.y}%">${SYMBOL[g.symbol]}<div class="name">${g.name}</div>${g.zeilen?`<div class="schild">${g.zeilen.map(([k,v])=>`<div><span>${k}</span>${typeof v==='string'?`<code>${v}</code>`:`<input type="text" id="${praefix}${v.id}" aria-label="${g.name} ${k}" autocomplete="off" spellcheck="false">`}</div>`).join('')}</div>`:''}</div>`).join('')}</div>`}
+
+/* Üben */
 const r=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
 const wahl=a=>a[Math.floor(Math.random()*a.length)];
-const praefix=()=>wahl([24,25,25,26,26,26,27,27,27,28,28,29,30]);
-const basis=()=>wahl([`192.168.${r(0,254)}`,`10.${r(0,254)}.${r(0,254)}`,`172.${r(16,31)}.${r(0,254)}`]);
-const norm=s=>String(s).trim().replace(/\s+/g,'').replace(/^\//,'').replace(/,/g,'.');
-
+const praefixZ=()=>wahl([24,25,25,26,26,26,27,27,28,28,29,30]);
+const basisZ=()=>wahl([`192.168.${r(0,254)}`,`10.${r(0,254)}.${r(0,254)}`,`172.${r(16,31)}.${r(0,254)}`]);
+const norm=s=>String(s).trim().replace(/\s+/g,'').replace(/,/g,'.').toLowerCase();
+const gleich=soll=>v=>norm(v)===norm(soll);
+const gleichV6=soll=>v=>{const a=v6aus(v),b=v6aus(soll);return!!a&&!!b&&a.join()===b.join()};
+function zufallV6(){const gr=[];const vor=wahl(['2001:0db8','fe80:0000','2001:0da8','fd00:00a1']).split(':');gr.push(...vor);
+  for(let i=2;i<8;i++)gr.push(Math.random()<.35?'0000':(Math.random()<.4?'00':'')+r(0,65535).toString(16).padStart(4,'0').slice(Math.random()<.4?2:0).padStart(4,'0'));
+  if(Math.random()<.7){const s=r(2,5),l=r(2,Math.min(3,8-s));for(let i=s;i<s+l;i++)gr[i]='0000'}
+  return gr.map(x=>x.slice(-4).padStart(4,'0'))}
 const STUFEN=[
- {id:'maske',name:'Präfix ↔ Maske',info:'Aufwärmen',neu(){const p=praefix();
-   return Math.random()<.5
-    ?{frage:`Wie lautet die Subnetzmaske zu <span class="mono">/${p}</span>?`,felder:[['Subnetzmaske',maske(p)]],weg:`Block 2^${32-p} = ${block(p)}, 256 − ${block(p)} = ${maskeLetzte(p)} → ${maske(p)}`}
-    :{frage:`Welches Präfix gehört zu <span class="mono">${maske(p)}</span>?`,felder:[['Präfix (Zahl)',String(p)]],weg:`256 − ${maskeLetzte(p)} = ${block(p)} = 2^${32-p} → ${32-p} Hostbits → 32 − ${32-p} = /${p}`}}},
- {id:'hosts',name:'Wie viele Geräte?',info:'Block − 2',neu(){const p=praefix();
-   return{frage:`Wie viele nutzbare Hosts hat ein Netz mit <span class="mono">/${p}</span>?`,felder:[['Nutzbare Hosts',String(block(p)-2)]],weg:`2^(32 − ${p}) = ${block(p)} Adressen − Netzadresse − Broadcast = ${block(p)-2}`}}},
- {id:'netz',name:'Netz & Broadcast',info:'Block finden',neu(){const p=praefix(),ba=basis(),l=r(1,254),{n,bc}=netzVon(l,p);
-   return{frage:`Ein Gerät hat <span class="mono">${ba}.${l}/${p}</span>.`,felder:[['Netzadresse',`${ba}.${n}`],['Broadcast',`${ba}.${bc}`]],weg:weg(ba,l,p)}}},
- {id:'voll',name:'Wie in der Prüfung',info:'4 Felder, 4 Punkte',neu(){const p=praefix(),ba=basis(),l=r(1,254),{b,n,bc}=netzVon(l,p);
-   return{frage:`Die Kamera bekommt <span class="mono">${ba}.${l}/${p}</span>. Ermitteln Sie:`,felder:[['Subnetzmaske',maske(p)],['Nutzbare Hosts',String(b-2)],['Netzadresse',`${ba}.${n}`],['Broadcast',`${ba}.${bc}`]],weg:weg(ba,l,p)}}},
- {id:'fall',name:'Praxisfälle',info:'Gateway, letzter Host, gleiches Netz',neu(){const p=wahl([25,26,27,28,29]),ba=basis(),b=block(p),n=b*r(0,256/b-1),bc=n+b-1,art=r(0,2);
-   if(art===0)return{frage:`Netz <span class="mono">${ba}.${n}/${p}</span>. Der Router hat die erste nutzbare Adresse, der Drucker soll die letzte nutzbare bekommen.`,felder:[['Standardgateway',`${ba}.${n+1}`],['IP des Druckers',`${ba}.${bc-1}`]],weg:`Block ${b}: .${n} bis .${bc}. Erste nutzbare .${n}+1 = .${n+1}, letzte nutzbare .${bc}−1 = .${bc-1}`};
-   if(art===1){const a=r(n+1,bc-1),gleich=Math.random()<.5;let c;if(gleich)c=r(n+1,bc-1);else{c=(n+b+r(1,b-2))%256;if(c>=n&&c<=bc)c=(bc+2)%256}
-     const {n:n2,bc:bc2}=netzVon(c,p);const ja=n2===n;
-     return{frage:`PC A hat <span class="mono">${ba}.${a}/${p}</span>, PC B hat <span class="mono">${ba}.${c}/${p}</span>. Liegen beide im selben Netz?`,wahl:ja?'Ja':'Nein',weg:`Block ${b}: A liegt in .${n}–.${bc}, B liegt in .${n2}–.${bc2} → ${ja?'gleiches Netz':'verschiedene Netze, sie brauchen einen Router'}`}}
-   return{frage:`Netz <span class="mono">${ba}.${n}/${p}</span>. Wie lautet die Broadcast-Adresse und wie viele Geräte passen hinein?`,felder:[['Broadcast',`${ba}.${bc}`],['Nutzbare Hosts',String(b-2)]],weg:`Broadcast = ${n} + ${b} − 1 = .${bc}; Hosts = ${b} − 2 = ${b-2}`}}}
+ {id:'maske',gruppe:'IPv4',name:'Präfix ↔ Maske',info:'/26 = 255.255.255.192',neu(){const p=praefixZ();
+   return Math.random()<.5?{frage:`Wie lautet die Subnetzmaske zu <span class="mono">/${p}</span>?`,felder:[['Subnetzmaske',gleich(maske(p)),maske(p)]],weg:`Block 2^${32-p} = ${block(p)} → 256 − ${block(p)} = ${letzteMaske(p)} → ${maske(p)}`}
+   :{frage:`Welches Präfix gehört zu <span class="mono">${maske(p)}</span>?`,felder:[['Präfix',v=>norm(v).replace('/','')===String(p),'/'+p]],weg:`256 − ${letzteMaske(p)} = ${block(p)} = 2^${32-p} → ${32-p} Hostbits → 32 − ${32-p} = /${p}`}}},
+ {id:'hosts',gruppe:'IPv4',name:'Wie viele Geräte?',info:'Block − 2',neu(){const p=praefixZ();
+   return{frage:`Wie viele Geräte passen in ein Netz mit <span class="mono">/${p}</span>?`,felder:[['Nutzbare Adressen',gleich(block(p)-2),String(block(p)-2)]],weg:`2^(32 − ${p}) = ${block(p)} Adressen − Netzadresse − Broadcast = ${block(p)-2}`}}},
+ {id:'netz',gruppe:'IPv4',name:'Netz & Broadcast',info:'Block finden',neu(){const p=praefixZ(),ba=basisZ(),l=r(1,254),{n,bc}=netzVon(l,p);
+   return{frage:`Ein Gerät hat <span class="mono">${ba}.${l}/${p}</span>.`,felder:[['Netzadresse',v=>norm(v).replace(/\/\d+$/,'')===`${ba}.${n}`,`${ba}.${n}`],['Broadcast',gleich(`${ba}.${bc}`),`${ba}.${bc}`]],weg:wegText(ba,l,p)}}},
+ {id:'voll',gruppe:'IPv4',name:'Wie Frühjahr 2026',info:'4 Felder, 4 Punkte',neu(){const p=praefixZ(),ba=basisZ(),l=r(1,254),{b,n,bc}=netzVon(l,p);
+   return{frage:`Die Kamera bekommt <span class="mono">${ba}.${l}/${p}</span>. Errechnen Sie:`,felder:[['Subnetzmaske',gleich(maske(p)),maske(p)],['Anzahl nutzbarer IP-Adressen',gleich(b-2),String(b-2)],['Netzadresse',v=>norm(v).replace(/\/\d+$/,'')===`${ba}.${n}`,`${ba}.${n}`],['Broadcast-Adresse',gleich(`${ba}.${bc}`),`${ba}.${bc}`]],weg:wegText(ba,l,p)}}},
+ {id:'fall',gruppe:'IPv4',name:'Netzplan ergänzen',info:'Gateway, letzte Adresse',neu(){const p=wahl([24,25,26,27,28]),ba=basisZ(),b=block(p),n=b*r(0,256/b-1),bc=n+b-1,art=r(0,1);
+   if(art===0)return{frage:`Netz <span class="mono">${ba}.${n}/${p}</span>. Die <b>letzte</b> mögliche Adresse bekommt das Gateway, die <b>vorletzte</b> der Drucker (wie Frühjahr 2025).`,felder:[['Gateway',gleich(`${ba}.${bc-1}`),`${ba}.${bc-1}`],['Drucker',gleich(`${ba}.${bc-2}`),`${ba}.${bc-2}`]],weg:`Block ${b}: .${n} bis .${bc}. Broadcast .${bc} ist verboten → letzte nutzbare .${bc-1}, vorletzte .${bc-2}`};
+   return{frage:`Netz <span class="mono">${ba}.${n}/${p}</span>, Router auf der <b>ersten</b> nutzbaren Adresse. Ein neues Terminal bekommt die <b>letzte</b> mögliche Adresse (wie Herbst 2025).`,felder:[['IP-Adresse',gleich(`${ba}.${bc-1}`),`${ba}.${bc-1}`],['Subnetzmaske',gleich(maske(p)),maske(p)],['Standardgateway',gleich(`${ba}.${n+1}`),`${ba}.${n+1}`]],weg:`Block ${b}: .${n} bis .${bc}. Erste nutzbare .${n+1} (Router), letzte nutzbare .${bc-1}. Maske 256 − ${b} = ${256-b}`}}},
+ {id:'v6aus',gruppe:'IPv6',name:'Ausschreiben',info:'wie Frühjahr 2024',neu(){const bl=zufallV6(),k=v6kurz(bl);
+   return{frage:`Schreiben Sie <span class="mono">${k}</span> ungekürzt.`,felder:[['Ungekürzt',v=>{const a=norm(v);return a===bl.join(':')},bl.join(':')]],weg:`Blöcke zählen, mit :: fehlende Blöcke als 0000 einsetzen, jeden Block links auf 4 Zeichen auffüllen:<br>${bl.join(':')}`}}},
+ {id:'v6kurz',gruppe:'IPv6',name:'Kürzen',info:'beide Regeln',neu(){const bl=zufallV6(),k=v6kurz(bl);
+   return{frage:`Kürzen Sie <span class="mono">${bl.join(':')}</span> so weit wie möglich.`,felder:[['Gekürzt',v=>{const a=v6aus(v);return!!a&&a.join()===bl.join()&&norm(v).length<=k.length},k]],weg:`Regel 1: führende Nullen weg. Regel 2: die längste Kette von Nullblöcken einmal durch :: ersetzen.<br>${k}`}}},
+ {id:'v6teile',gruppe:'IPv6',name:'Präfix & Teilnetze',info:'wie Herbst 2022',neu(){const bl=zufallV6(),k=v6kurz(bl);
+   if(Math.random()<.5)return{frage:`<span class="mono">${k}/64</span>: Wie lautet der Interface-Identifier ungekürzt?`,felder:[['Interface-ID',v=>norm(v)===bl.slice(4).join(':'),bl.slice(4).join(':')]],weg:`/64 = die ersten 4 Blöcke sind das Präfix, die letzten 4 der Interface-Identifier: ${bl.slice(4).join(':')}`};
+   const s=wahl([48,52,56,60]);return{frage:`Ein Standort hat ein <span class="mono">/${s}</span>-Präfix. Die Teilnetze sind <span class="mono">/64</span>. Wie viele Teilnetze sind möglich?`,felder:[['Anzahl',v=>{const a=norm(v).replace(/\./g,'');return a===String(2**(64-s))||a===`2^${64-s}`},`2^${64-s} = ${(2**(64-s)).toLocaleString('de-DE')}`]],weg:`Teilnetz-ID = 64 − ${s} = ${64-s} Bit → 2^${64-s} = ${(2**(64-s)).toLocaleString('de-DE')} Teilnetze`}}}
 ];
-let stand=speicher.lies('stand',{});let aktiv=speicher.lies('stufe','maske');let jetzt=null;let geprueft=false;
+let stand=speicher.lies('stand',{}),aktiv=speicher.lies('stufe','maske'),jetzt=null,geprueft=false;
+if(!STUFEN.find(s=>s.id===aktiv))aktiv='maske';
 function sterne(id){const s=(stand[id]||{}).best||0;return Array.from({length:5},(_,i)=>`<span class="${i<s?'voll':''}">★</span>`).join('')}
-function stufenZeichnen(){$('#stufen').innerHTML=STUFEN.map(s=>`<button class="stufe" id="st-${s.id}" aria-pressed="${s.id===aktiv}" data-id="${s.id}"><strong>${s.name}</strong><span class="leise">${s.info}</span><span class="sterne">${sterne(s.id)}</span></button>`).join('');
+function stufenZeichnen(){let g='';$('#stufen').innerHTML=STUFEN.map(s=>{const k=s.gruppe!==g?`<h3>${s.gruppe}</h3>`:'';g=s.gruppe;
+  return k+`<button class="stufe" id="st-${s.id}" aria-pressed="${s.id===aktiv}" data-id="${s.id}"><strong>${s.name}</strong><span class="info">${s.info}</span><span class="sterne">${sterne(s.id)}</span></button>`}).join('');
   document.querySelectorAll('.stufe').forEach(b=>b.onclick=()=>{aktiv=b.dataset.id;speicher.schreib('stufe',aktiv);stufenZeichnen();neueAufgabe()})}
-function neueAufgabe(){
-  jetzt=STUFEN.find(s=>s.id===aktiv).neu();geprueft=false;
-  const felder=jetzt.felder?`<div class="felder">${jetzt.felder.map(([k],i)=>`<div class="feld"><label for="f${i}">${k}</label><input type="text" class="mono" id="f${i}" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="decimal"></div>`).join('')}</div>`
-    :`<div class="wahl">${['Ja','Nein'].map(w=>`<button type="button" aria-pressed="false" data-w="${w}">${w}</button>`).join('')}</div>`;
-  $('#aufgabe').innerHTML=`<p class="frage">${jetzt.frage}</p><form id="form">${felder}<div class="knoepfe"><button class="haupt" type="submit" id="pruef">Prüfen</button><button class="neben" type="button" id="weiter">Andere Aufgabe</button></div></form><div id="rueck"></div>`;
-  document.querySelectorAll('.wahl button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.wahl button').forEach(x=>x.setAttribute('aria-pressed',x===b))});
-  $('#form').onsubmit=e=>{e.preventDefault();geprueft?neueAufgabe():pruefen()};
-  $('#weiter').onclick=neueAufgabe;
-  const f=$('#f0');if(f)f.focus({preventScroll:true});
-  standZeichnen();
-}
-function pruefen(){
-  let alle=true;
-  if(jetzt.felder){jetzt.felder.forEach(([,soll],i)=>{const el=$('#f'+i);const ok=norm(el.value)===norm(soll);el.classList.toggle('ok',ok);el.classList.toggle('falsch',!ok);if(!ok)alle=false})}
-  else{const g=document.querySelector('.wahl button[aria-pressed="true"]');if(!g){$('#rueck').innerHTML='<div class="rueck schlecht">Wähle erst Ja oder Nein.</div>';return}alle=g.dataset.w===jetzt.wahl}
+function neueAufgabe(){jetzt=STUFEN.find(s=>s.id===aktiv).neu();geprueft=false;
+  $('#aufgabe').innerHTML=`<p class="frage">${jetzt.frage}</p><form id="form"><div class="felder">${jetzt.felder.map(([k],i)=>`<div class="feld"><label for="f${i}">${k}</label><input type="text" id="f${i}" autocomplete="off" spellcheck="false"></div>`).join('')}</div><div class="knoepfe"><button class="haupt" type="submit" id="pruef">Prüfen</button><button class="neben" type="button" id="andere">Andere Aufgabe</button></div></form><div id="rueck"></div>`;
+  $('#form').onsubmit=e=>{e.preventDefault();geprueft?neueAufgabe():pruefen()};$('#andere').onclick=neueAufgabe;
+  $('#f0').focus({preventScroll:true});zaehler();}
+function pruefen(){let alle=true;
+  jetzt.felder.forEach(([,ok],i)=>{const el=$('#f'+i),g=ok(el.value);el.classList.toggle('ok',g);el.classList.toggle('falsch',!g);if(!g)alle=false});
   const s=stand[aktiv]||{r:0,f:0,serie:0,best:0};
   if(alle){s.r++;s.serie++;s.best=Math.max(s.best,Math.min(5,s.serie))}else{s.f++;s.serie=0}
   stand[aktiv]=s;speicher.schreib('stand',stand);geprueft=true;
-  const loesung=jetzt.felder?jetzt.felder.map(([k,v])=>`${k}: <b>${v}</b>`).join(' · '):`Antwort: <b>${jetzt.wahl}</b>`;
-  $('#rueck').innerHTML=alle
-    ?`<div class="rueck gut"><strong>Richtig.</strong> ${s.serie>=5?'Fünf am Stück, die Stufe sitzt. Nimm die nächste.':`Serie: ${s.serie}`}</div>`
-    :`<div class="rueck schlecht"><strong>Noch nicht.</strong> ${loesung}<div class="rechnung">${jetzt.weg}</div></div>`;
-  $('#pruef').textContent='Nächste Aufgabe';
-  stufenZeichnen();standZeichnen(true);
-  $('#rueck').scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function standZeichnen(hops){const s=stand[aktiv]||{r:0,f:0,serie:0};
-  $('#stand').innerHTML=`<span class="pille">richtig <b>${s.r}</b></span><span class="pille">falsch <b>${s.f}</b></span><span class="pille ${hops?'hops':''}">Serie <b>${s.serie}</b></span>`}
+  $('#rueck').innerHTML=alle?`<div class="rueck gut"><strong>Richtig.</strong> ${s.serie>=5?'Fünf am Stück: Die Stufe sitzt, nimm die nächste.':`Serie ${s.serie}. Enter für die nächste.`}</div>`
+   :`<div class="rueck schlecht"><strong>Noch nicht.</strong> Richtig wäre: ${jetzt.felder.map(([k,,v])=>`${k} <b class="mono">${v}</b>`).join(' · ')}<div class="weg">${jetzt.weg}</div></div>`;
+  $('#pruef').textContent='Nächste Aufgabe';$('#pruef').focus({preventScroll:true});stufenZeichnen();zaehler(true)}
+function zaehler(h){const s=stand[aktiv]||{r:0,f:0,serie:0};$('#zaehler').innerHTML=`<span class="pille">richtig <b>${s.r}</b></span><span class="pille">falsch <b>${s.f}</b></span><span class="pille ${h?'hops':''}">Serie <b>${s.serie}</b></span>`}
 stufenZeichnen();neueAufgabe();
 
-/* Echte IHK-Aufgaben */
-const IHK=[
- {quelle:'Frühjahr 2026 · Aufgabe 2a',punkte:4,text:'Ihr Netzwerkadministrator gibt Ihnen für die erste Kamera die IP-Adresse <span class="mono">192.168.16.52/25</span> vor. Errechnen Sie:',
-  felder:[['Subnetzmaske',v=>norm(v)==='255.255.255.128','255.255.255.128'],['Anzahl nutzbarer IP-Adressen',v=>norm(v)==='126','126'],['Netzadresse',v=>norm(v)==='192.168.16.0','192.168.16.0'],['Broadcast-Adresse',v=>norm(v)==='192.168.16.127','192.168.16.127']],
-  punkte_text:'Je 1 Punkt pro Feld. Häufigster Fehler: 128 statt 126 Hosts.'},
- {quelle:'Herbst 2024 · Aufgabe 1.5',punkte:4,text:'Ein Präsentationsrechner soll feste Netzwerkparameter erhalten. Im Netz <span class="mono">192.168.20.0/24</span> vergibt der DHCP-Server nur <span class="mono">.20</span> bis <span class="mono">.254</span>. Der Router ist unter <span class="mono">192.168.20.1</span> erreichbar.',
-  wahl:{frage:'Welcher Auswahlknopf?',opt:['IP-Adresse automatisch beziehen','Folgende IP-Adresse verwenden'],soll:1},
-  felder:[['IP-Adresse',v=>{const m=norm(v).match(/^192\.168\.20\.(\d+)$/);return!!m&&+m[1]>=2&&+m[1]<=19},'eine aus 192.168.20.2 bis .19'],['Subnetzmaske',v=>norm(v)==='255.255.255.0','255.255.255.0'],['Standardgateway',v=>norm(v)==='192.168.20.1','192.168.20.1']],
-  punkte_text:'Je 1 Punkt: Auswahlknopf, IP aus dem freien Bereich (.1 ist der Router, ab .20 verteilt DHCP), Maske, Gateway.'},
- {quelle:'Herbst 2025 · Aufgabe 3.7',punkte:3,text:'Am Switch hängen ein Router <span class="mono">172.16.10.1/24</span>, ein Konnektor <span class="mono">172.16.10.10/24</span> und ein PC <span class="mono">172.16.10.25/24</span>. Ein Kartenterminal soll alle Geräte und das Internet erreichen und bekommt die <strong>letzte mögliche Hostadresse</strong>.',
-  felder:[['IP-Adresse',v=>norm(v)==='172.16.10.254','172.16.10.254'],['Subnetzmaske',v=>norm(v)==='255.255.255.0','255.255.255.0'],['Standardgateway',v=>norm(v)==='172.16.10.1','172.16.10.1']],
-  punkte_text:'Je 1 Punkt. .255 ist der Broadcast, deshalb ist .254 die letzte Hostadresse. Gateway ist der Router.'}
+/* Echte Prüfungsaufgaben */
+const imNetz29=v=>{const a=v6aus(v);return!!a&&a.slice(0,4).join(':')==='2001:0da8:5f2d:0029'&&!['0000:0000:0000:0000','0000:0000:0000:0001','0000:0000:0000:0002','0000:0000:0000:0020','ffff:ffff:ffff:ffff'].includes(a.slice(4).join(':'))};
+const gw29=gleichV6('2001:da8:5f2d:29::1');
+const PRUEF=[
+ {id:'f26',quelle:'Frühjahr 2026 · 2a',punkte:4,herkunft:'selbst',
+  text:'Ihr Netzwerkadministrator gibt Ihnen für die erste Kamera die IP-Adresse <span class="mono">192.168.16.52/25</span> vor. Errechnen Sie:',
+  felder:[['Subnetzmaske',gleich('255.255.255.128'),'255.255.255.128'],['Anzahl nutzbarer IP-Adressen',gleich('126'),'126'],['Netzadresse',v=>norm(v).replace(/\/25$/,'')==='192.168.16.0','192.168.16.0'],['Broadcast-Adresse',gleich('192.168.16.127'),'192.168.16.127']]},
+ {id:'f22',quelle:'Frühjahr 2022 · 3fb',punkte:3,herkunft:'ihk',
+  text:'Nach dem Erneuern der IP-Adresse zeigt ipconfig:',material:'IPv4-Adresse  . . . : 192.168.0.52\nSubnetzmaske  . . . : 255.255.255.0\nStandardgateway . . : 192.168.0.1',nach:'Geben Sie die Adressen des angegebenen Hosts an.',
+  felder:[['Netzadresse',v=>['192.168.0.0','192.168.0.0/24'].includes(norm(v)),'192.168.0.0/24'],['Hostadresse',v=>['192.168.0.52','0.0.0.52'].includes(norm(v)),'192.168.0.52 (oder 0.0.0.52)'],['Broadcastadresse',gleich('192.168.0.255'),'192.168.0.255']]},
+ {id:'h24',quelle:'Herbst 2024 · 1da und 1db',punkte:6,herkunft:'ihk',
+  text:'Vorgaben für den Präsentationsrechner, statische Adressvergabe:',material:'Netzwerk:   192.168.20.0/24\nDHCP-Range: 192.168.20.20 - 192.168.20.254\nRouter:     192.168.20.1',
+  selbst:{frage:'da) Der PC zeigt 169.254.122.115. Begründen Sie diese „Vorkonfiguration“. (2 P)',loesung:'Der PC war für eine dynamische IP-Adressvergabe vorkonfiguriert. Ein DHCP-Server konnte jedoch noch nicht erreicht werden. Daher hat sich der PC diese IP-Adresse selbst vergeben.',punkte:2},
+  wahl:{frage:'db) Auswahlknopf',opt:['IP-Adresse automatisch beziehen','Folgende IP-Adresse verwenden'],soll:1},
+  felder:[['IP-Adresse',v=>{const m=norm(v).match(/^192\.168\.20\.(\d+)$/);return!!m&&+m[1]>=2&&+m[1]<=19},'192.168.20.10 (richtig: .2 bis .19)'],['Subnetzmaske',gleich('255.255.255.0'),'255.255.255.0'],['Standardgateway',gleich('192.168.20.1'),'192.168.20.1']]},
+ {id:'f25',quelle:'Frühjahr 2025 · 1d',punkte:2,herkunft:'ihk',
+  text:'Die <b>letzte</b> mögliche IP-Adresse im Netz wird für das Gateway genutzt. Tragen Sie die <b>vorletzte</b> für „Druckstation 1“ ein.',
+  bild:{hoehe:22,geraete:[{id:'s',x:50,y:20,symbol:'switch',name:'Netzadresse 192.168.100.0/26'},{id:'a',x:17,y:70,symbol:'pc',name:'PC 1',zeilen:[['IP','192.168.100.21']]},{id:'b',x:50,y:70,symbol:'pc',name:'PC 2',zeilen:[['IP','192.168.100.42']]},{id:'c',x:83,y:70,symbol:'drucker',name:'Druckstation 1',zeilen:[['IP',{id:'d'}]]}],linien:[['s','a'],['s','b'],['s','c']]},
+  bildfelder:[['d','Druckstation 1',gleich('192.168.100.61'),'192.168.100.61']],punkteText:'/26: Block 64 → .0 bis .63. Broadcast .63, Gateway .62 (letzte), Drucker .61 (vorletzte).'},
+ {id:'h25',quelle:'Herbst 2025 · 3f',punkte:3,herkunft:'selbst',
+  text:'Konfigurieren Sie das Kartenterminal so, dass es mit PC, Konnektor und Router kommuniziert. Verwenden Sie die <b>letzte mögliche</b> IPv4-Adresse.',
+  bild:{hoehe:27,geraete:[{id:'r',x:17,y:22,symbol:'router',name:'Internet-Router',zeilen:[['IP','172.16.10.1/24']]},{id:'k',x:83,y:22,symbol:'geraet',name:'Konnektor',zeilen:[['IP','172.16.10.10/24']]},{id:'s',x:50,y:42,symbol:'switch',name:'Switch'},{id:'p',x:17,y:76,symbol:'pc',name:'PC',zeilen:[['IP','172.16.10.25/24']]},{id:'t',x:83,y:74,symbol:'geraet',name:'Kartenterminal',zeilen:[['IP',{id:'ip'}],['Maske',{id:'m'}],['Gateway',{id:'g'}]]}],linien:[['s','r'],['s','k'],['s','p'],['s','t']]},
+  bildfelder:[['ip','IP-Adresse',gleich('172.16.10.254'),'172.16.10.254'],['m','Subnetzmaske',gleich('255.255.255.0'),'255.255.255.0'],['g','Standard-Gateway',gleich('172.16.10.1'),'172.16.10.1']],punkteText:'.255 ist der Broadcast, also ist .254 die letzte mögliche Adresse. Gateway ist der Router.'},
+ {id:'f24',quelle:'Frühjahr 2024 · 2c',punkte:5,herkunft:'ihk',
+  text:'Analysieren Sie die angezeigte IPv6-Adresse <span class="mono">fe80::521a:c5ff:fef2:38b7</span>.',
+  felder:[['Länge in Bits',v=>norm(v).replace(/bits?$/,'')==='128','128'],['Ungekürzt (2 P)',v=>norm(v)==='fe80:0000:0000:0000:521a:c5ff:fef2:38b7','fe80:0000:0000:0000:521a:c5ff:fef2:38b7',2],['Präfixlänge',v=>norm(v).replace(/bits?$/,'').replace('/','')==='64','64'],['Interface-Identifier',v=>gleichV6('::521a:c5ff:fef2:38b7')('::'+norm(v))||norm(v)==='521a:c5ff:fef2:38b7','521a:c5ff:fef2:38b7']]},
+ {id:'h22',quelle:'Herbst 2022 · 3b, 3c, 3d',punkte:12,herkunft:'ihk',
+  text:'Globale Adresse <span class="mono">2001:da8:5f2d:28::/64</span>: 48-Bit-Standortpräfix und 16-Bit-Teilnetz-ID.',
+  felder:[['Ungekürztes Standortpräfix (2 P)',v=>norm(v)==='2001:0da8:5f2d','2001:0da8:5f2d',2],['Ungekürzte Teilnetz-ID (2 P)',gleich('0028'),'0028',2],['Anzahl Teilnetze (2 P)',v=>['2^16','65536','65.536'].includes(norm(v)),'2^16 = 65.536',2]],
+  nachBild:'3d) Vergeben Sie nutzbare IPv6-Adressen und Gateways. Alle Geräte sollen über den Router gewartet werden können. (6 P)',
+  bild:{hoehe:36,geraete:[{id:'r',x:50,y:14,symbol:'router',name:'Router',zeilen:[['Adresse','2001:da8:5f2d:29::1/64']]},{id:'s',x:50,y:45,symbol:'switch',name:'Switch',zeilen:[['Adresse','2001:da8:5f2d:29::2/64'],['Gateway',{id:'sg'}]]},{id:'a',x:16,y:83,symbol:'geraet',name:'Sensor',zeilen:[['Adresse',{id:'aa'}],['Gateway',{id:'ag'}]]},{id:'b',x:50,y:84,symbol:'geraet',name:'Steuerung',zeilen:[['Adresse',{id:'ba'}],['Gateway',{id:'bg'}]]},{id:'c',x:84,y:83,symbol:'pc',name:'Industrie-PC',zeilen:[['Adresse','2001:da8:5f2d:29::20/64'],['Gateway',{id:'cg'}]]}],linien:[['r','s'],['s','a'],['s','b'],['s','c']]},
+  bildfelder:[['sg','Switch Gateway',gw29,'2001:da8:5f2d:29::1'],['aa','Sensor Adresse',imNetz29,'z. B. 2001:da8:5f2d:29::18/64'],['ag','Sensor Gateway',gw29,'2001:da8:5f2d:29::1'],['ba','Steuerung Adresse',imNetz29,'z. B. 2001:da8:5f2d:29::19/64'],['bg','Steuerung Gateway',gw29,'2001:da8:5f2d:29::1'],['cg','PC Gateway',gw29,'2001:da8:5f2d:29::1']],
+  punkteText:'Offizielle Lösung zu 3d: Gateway überall 2001:da8:5f2d:29::1, Sensor ::18, Steuerung ::19. Jede freie Adresse aus 2001:da8:5f2d:29::/64 ist richtig.'}
 ];
-$('#ihk-liste').innerHTML=IHK.map((a,k)=>`<div class="karte"><span class="punkte">${a.punkte} P</span><div class="quelle">${a.quelle}</div><p>${a.text}</p>
- <form id="ihk${k}"><div class="felder">${a.wahl?`<div class="feld"><label>${a.wahl.frage}</label><div class="wahl">${a.wahl.opt.map((o,i)=>`<button type="button" aria-pressed="false" data-i="${i}">${o}</button>`).join('')}</div></div>`:''}
- ${a.felder.map(([n],i)=>`<div class="feld"><label for="ihk${k}f${i}">${n}</label><input type="text" class="mono" id="ihk${k}f${i}" autocomplete="off" spellcheck="false" inputmode="decimal"></div>`).join('')}</div>
- <div class="knoepfe"><button class="haupt" type="submit">Prüfen</button></div></form><div id="ihk${k}r"></div></div>`).join('');
-IHK.forEach((a,k)=>{const f=$('#ihk'+k);
-  f.querySelectorAll('.wahl button').forEach(b=>b.onclick=()=>f.querySelectorAll('.wahl button').forEach(x=>x.setAttribute('aria-pressed',x===b)));
-  f.onsubmit=e=>{e.preventDefault();let p=0;const fehl=[];
-    if(a.wahl){const g=f.querySelector('.wahl button[aria-pressed="true"]');if(g&&+g.dataset.i===a.wahl.soll)p++;else fehl.push(`${a.wahl.frage} <b>${a.wahl.opt[a.wahl.soll]}</b>`)}
-    a.felder.forEach(([n,ok,soll],i)=>{const el=$(`#ihk${k}f${i}`);const g=ok(el.value);el.classList.toggle('ok',g);el.classList.toggle('falsch',!g);if(g)p++;else fehl.push(`${n}: <b>${soll}</b>`)});
-    $('#ihk'+k+'r').innerHTML=`<div class="rueck ${p===a.punkte?'gut':'schlecht'}"><strong>${p} von ${a.punkte} Punkten.</strong> ${fehl.length?'Richtig wäre: '+fehl.join(' · '):''}<p class="leise" style="margin:.4rem 0 0">${a.punkte_text}</p></div>`;$('#ihk'+k+'r').scrollIntoView({block:'nearest',behavior:'smooth'});}});
+const erreicht=speicher.lies('pruef',{});
+function gesamt(){const max=PRUEF.reduce((a,x)=>a+x.punkte,0),ist=PRUEF.reduce((a,x)=>a+(erreicht[x.id]||0),0);
+  $('#gesamt-p').textContent=ist;$('#gesamt-max').textContent=max;$('#gesamt-balken').style.width=(ist/max*100)+'%'}
+$('#pliste').innerHTML=PRUEF.map(a=>`<div class="karte" id="k-${a.id}">
+ <div class="pkopf"><span class="quelle">${a.quelle}</span><span style="display:flex;gap:.5rem;align-items:center"><span class="herkunft ${a.herkunft}">${a.herkunft==='ihk'?'mit offizieller IHK-Lösung':'Lösung selbst gerechnet, keine IHK-Lösung im PDF'}</span><span class="pktag">${a.punkte} P</span></span></div>
+ <p style="margin-top:.6rem">${a.text}</p>${a.material?`<div class="material">${a.material}</div>`:''}${a.nach?`<p>${a.nach}</p>`:''}
+ <form id="pf-${a.id}">
+ ${a.selbst?`<div class="selbstcheck"><p><b>${a.selbst.frage}</b></p><p class="klein">Antwort im Kopf oder auf Papier formulieren, dann aufdecken.</p><button type="button" class="neben" id="${a.id}-zeig">Lösung aufdecken</button><div id="${a.id}-sl" hidden><p class="kasten gelb" style="max-width:none;margin-top:.6rem">${a.selbst.loesung}</p><div class="wahl"><button type="button" data-s="1">Hatte ich sinngemäß</button><button type="button" data-s="0">Hatte ich nicht</button></div></div></div>`:''}
+ ${a.wahl?`<div class="feld" style="margin-top:.8rem"><label>${a.wahl.frage}</label><div class="wahl" id="${a.id}-w">${a.wahl.opt.map((o,i)=>`<button type="button" aria-pressed="false" data-i="${i}">${o}</button>`).join('')}</div></div>`:''}
+ ${a.felder?`<div class="felder" style="margin-top:.8rem">${a.felder.map(([n],i)=>`<div class="feld"><label for="${a.id}-f${i}">${n}</label><input type="text" id="${a.id}-f${i}" autocomplete="off" spellcheck="false"></div>`).join('')}</div>`:''}
+ ${a.nachBild?`<p style="margin-top:1.2rem"><b>${a.nachBild}</b></p>`:''}
+ ${a.bild?netzbild(a.bild,a.id+'-'):''}
+ <div class="knoepfe"><button class="haupt" type="submit">Prüfen und Punkte zählen</button></div></form><div id="pr-${a.id}"></div></div>`).join('');
+PRUEF.forEach(a=>{
+  let selbstP=null;
+  if(a.selbst){$(`#${a.id}-zeig`).onclick=()=>{$(`#${a.id}-sl`).hidden=false};
+    document.querySelectorAll(`#${a.id}-sl .wahl button`).forEach(b=>b.onclick=()=>{selbstP=+b.dataset.s*a.selbst.punkte;document.querySelectorAll(`#${a.id}-sl .wahl button`).forEach(x=>{x.classList.toggle('ok',x===b&&b.dataset.s==='1');x.classList.toggle('falsch',x===b&&b.dataset.s==='0')})})}
+  if(a.wahl)document.querySelectorAll(`#${a.id}-w button`).forEach(b=>b.onclick=()=>document.querySelectorAll(`#${a.id}-w button`).forEach(x=>{x.setAttribute('aria-pressed',x===b);x.classList.remove('ok','falsch')}));
+  $(`#pf-${a.id}`).onsubmit=e=>{e.preventDefault();let p=0;const fehl=[];
+    if(a.selbst){if(selbstP===null)fehl.push('da) erst aufdecken und selbst bewerten');else p+=selbstP}
+    if(a.wahl){const g=document.querySelector(`#${a.id}-w button[aria-pressed="true"]`);const ok=g&&+g.dataset.i===a.wahl.soll;if(g)g.classList.add(ok?'ok':'falsch');if(ok)p++;else fehl.push(`Auswahlknopf: <b>${a.wahl.opt[a.wahl.soll]}</b>`)}
+    (a.felder||[]).forEach(([n,ok,soll,w],i)=>{const el=$(`#${a.id}-f${i}`),g=ok(el.value);el.classList.toggle('ok',g);el.classList.toggle('falsch',!g);if(g)p+=w||1;else fehl.push(`${n.replace(/ \(\d P\)/,'')}: <b class="mono">${soll}</b>`)});
+    (a.bildfelder||[]).forEach(([id,n,ok,soll])=>{const el=$(`#${a.id}-${id}`),g=ok(el.value);el.classList.toggle('ok',g);el.classList.toggle('falsch',!g);if(g)p++;else fehl.push(`${n}: <b class="mono">${soll}</b>`)});
+    erreicht[a.id]=Math.max(erreicht[a.id]||0,p);speicher.schreib('pruef',erreicht);gesamt();
+    $(`#pr-${a.id}`).innerHTML=`<div class="rueck ${p===a.punkte?'gut':'schlecht'}"><strong>${p} von ${a.punkte} Punkten.</strong> ${fehl.length?'<br>Richtig wäre: '+fehl.join(' · '):''}${a.punkteText?`<p class="klein" style="margin:.4rem 0 0">${a.punkteText}</p>`:''}</div>`;
+    $(`#pr-${a.id}`).scrollIntoView({block:'nearest',behavior:'smooth'});};
+});
+gesamt();
 
 /* Spickzettel */
-$('#spick-tab').innerHTML=[24,25,26,27,28,29,30].map(p=>`<tr class="${[24,25,26,27].includes(p)?'merk':''}"><td>/${p}</td><td>${maske(p)}</td><td>${block(p)}</td><td>${block(p)-2}</td></tr>`).join('');
+$('#spick-tab').innerHTML=[24,25,26,27,28,29,30].map(p=>`<tr class="${p<=26?'merk':''}"><td>/${p}</td><td>${maske(p)}</td><td>${block(p)}</td><td>${block(p)-2}</td></tr>`).join('');
 
-zeige(speicher.lies('reiter','verstehen'));
+zeige(speicher.lies('reiter','ipv4'));
 </script>
