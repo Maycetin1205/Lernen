@@ -138,8 +138,7 @@ pre.rechenweg{font:.9375rem/1.85 var(--mono);background:var(--flaeche);border-le
 
 
 
-/* Teil 2 als Pruefungsansicht: Kapitelkuerzel in der Zielspalte, Strichliste, Rueckweg-Leiste.
-   Strichliste und Leiste entstehen erst im Skript in 99-fuss.html; ohne JavaScript bleibt Teil 2 wie bisher. */
+/* Teil 2: Kapitelkuerzel und gut lesbare Sprunglinks in der Aufgabenmatrix. */
 #matrix td .kap{display:block;font-size:.6875rem;font-weight:800;letter-spacing:.1em;color:var(--grau)}
 
 /* Erst lernen / Dann pruefen sollen zwei Zeilen bleiben, auch wenn beide selbst umbrechen. */
@@ -147,9 +146,6 @@ pre.rechenweg{font:.9375rem/1.85 var(--mono);background:var(--flaeche);border-le
 #matrix td .kap ~ br{display:none}
 
 #matrix tr:target td{background:var(--akzent-hell)}
-
-#rueckweg a{color:var(--papier);font-size:.9375rem;font-weight:650;text-decoration-color:#7C818C}
-#rueckweg a:hover{text-decoration-color:var(--papier)}
 
 sup.q{font-size:.66rem;line-height:0;vertical-align:super;font-weight:800}
 sup.q a{text-decoration:none;padding:0 .1em;color:var(--akzent)}
@@ -166,21 +162,25 @@ ul.glossar li{break-inside:avoid;margin:0}
 
 
 @media (max-width:1100px){
-  html{font-size:16.5px}
+  html{font-size:16.5px;scroll-padding-top:5rem}
   body{display:block}
-  nav.inhalt{position:static;height:auto;border-right:0;border-bottom:1px solid var(--linie);padding:1.25rem}
-  nav.inhalt ol{columns:2;column-gap:1.5rem}
+  nav.inhalt{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:.45rem;height:auto;overflow-x:auto;overflow-y:hidden;white-space:nowrap;border-right:0;border-bottom:1px solid var(--linie);padding:.6rem .85rem;scrollbar-width:thin}
+  nav.inhalt .nav-titel{flex:0 0 auto;margin:0 .75rem 0 0}
+  nav.inhalt .nav-gruppe{flex:0 0 auto;margin:0 .3rem 0 .6rem}
+  nav.inhalt ol,nav.inhalt ol.nav-schnell{display:flex;flex:0 0 auto;gap:.12rem;columns:auto;margin:0;padding:0;border:0}
+  nav.inhalt li{flex:0 0 auto;margin:0}
+  nav.inhalt li a{white-space:nowrap}
   main{padding:2.25rem 1.25rem 6rem}
   h1{font-size:2.4rem}
   h2{font-size:1.9rem}
   ul.glossar{columns:1}
 }
-@media (max-width:640px){ nav.inhalt ol{columns:1} html{font-size:16px} h1{font-size:2rem} h2{font-size:1.6rem} }
+@media (max-width:640px){html{font-size:16px}h1{font-size:2rem}h2{font-size:1.6rem}nav.inhalt .nav-titel{font-size:1rem}}
 
 @media print{
   html{font-size:10pt;background:#fff}
   body{display:block}
-  nav.inhalt,nav.kapitel-wege,nav.begriffsliste,
+  nav.inhalt,nav.kapitel-wege,nav.begriffsliste,.skip{display:none}
   main{max-width:none;padding:0;margin:0}
   .kapitel,.teil{break-before:page;border-top:0;margin-top:0;padding-top:0}
   h2,h3{break-after:avoid}
@@ -188,13 +188,15 @@ ul.glossar li{break-inside:avoid;margin:0}
   section[id$="-begriffe"]{display:block}
   dl.begriff{margin:0 0 1rem}
   .kapitel-kopf,.aufgabe,figure.abb{background:#fff}
-  summary{color:inherit}
-  
-  
   a{color:inherit;text-decoration:none}
   ol.quellenliste a[href^="http"]::after{content:" " attr(href);color:#666;word-break:break-all}
   sup.q a{color:#000}
 }
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:focus-visible{outline:3px solid var(--akzent);outline-offset:3px}
+.skip{position:absolute;left:1rem;top:-5rem;z-index:30;background:var(--papier);padding:.5rem 1rem;border:2px solid var(--akzent)}
+.skip:focus{top:.5rem}
 
 /* Pfeilspitzen an die Stilfarben binden */
 marker#pfeil path{fill:var(--tinte)}
@@ -211,6 +213,7 @@ marker#pfeil-g path{fill:var(--grau)}
 </style>
 </head>
 <body>
+<a class="skip" href="#lernstart">Zum Lerninhalt springen</a>
 <nav class="inhalt" aria-label="Inhalt">
   <p class="nav-titel"><a href="#oben">AP1 Lerndatei</a></p>
   <ol class="nav-schnell">
@@ -296,12 +299,13 @@ marker#pfeil-g path{fill:var(--grau)}
 <p>Diese Datei enthält den Stoff der Abschlussprüfung Teil 1 in 20 Kapiteln. Teil A (A1 bis A9) sind Verfahren: Dinge, die man ausrechnet oder zeichnet und bei denen es eine eindeutig richtige Antwort gibt. Teil B (B1 bis B11) sind Erklärthemen: Dinge, bei denen die Punkte davon abhängen, ob du die richtigen Begriffe nennst, sie begründest und auf das Szenario der Aufgabe beziehst.</p>
 
 <h3>Der Aufbau jedes Kapitels</h3>
-<p>Jedes Kapitel hat dieselben sieben Abschnitte, immer in dieser Reihenfolge:</p>
+<p>Jedes Kapitel hat acht Abschnitte in derselben Reihenfolge:</p>
 <ol>
   <li><strong>Worum es geht.</strong> Ein konkreter Fall aus dem Alltag eines IT-Systemhauses, an dem das Thema hängt.</li>
   <li><strong>Das Verfahren</strong> beziehungsweise <strong>Die Sache.</strong> Der Kern, als Lektion von null: erst das Problem, dann die Bausteine, dann Schritt für Schritt mit einem Bild je Schritt. Am Ende steht die Zusammenfassung. Bei Rechenthemen steht hier auch das Rechenweg-Schema, das du in der Prüfung genau so hinschreibst.</li>
-  <li><strong>So hat die IHK gefragt.</strong> Eine bis drei Original-Aufgaben aus vergangenen Prüfungen, sinngemäß wiedergegeben, mit Saison, Aufgabennummer und Punktzahl. Die Lösung ist zugeklappt und erklärt, wofür es welche Punkte gibt.</li>
-  <li><strong>Jetzt du.</strong> Zu jeder Original-Aufgabe eine Variante mit anderen Zahlen oder anderem Szenario. Lösung zugeklappt.</li>
+  <li><strong>So hat die IHK gefragt.</strong> Eine bis drei Aufgaben aus vergangenen Prüfungen, sinngemäß wiedergegeben, mit Saison, Aufgabennummer und Punktzahl. Darunter steht der vollständige Rechenweg samt Punkteverteilung.</li>
+  <li><strong>Jetzt du.</strong> Eine Variante mit anderen Zahlen oder anderem Szenario und direkt darunter die ausführliche Lösung.</li>
+  <li><strong>Alle Prüfungsaufgaben, gelöst.</strong> Die übrigen Teilaufgaben des Kapitels mit Lösungsweg und Hinweisen auf typische Fehler.</li>
   <li><strong>Gelöste Kurzbeispiele.</strong> Typische Stolperstellen mit ausgeschriebener Lösung und Begründung.</li>
   <li><strong>Begriffe zum Nachschlagen.</strong> Jeder Fachbegriff des Kapitels als Karte mit vier Zeilen: <em>Was es ist</em> (in einem Satz Klartext, mit Quelle), <em>Wo es dir begegnet</em> (im Betrieb), <em>Nicht verwechseln mit</em> (womit man es verwechselt und woran man beides auseinanderhält), <em>So fragt die IHK</em>. Nicht am Stück lesen, sondern nachschlagen.</li>
   <li><strong>Quellen dieses Kapitels.</strong> Jede hochgestellte Zahl im Text führt hierher.</li>
@@ -310,27 +314,27 @@ marker#pfeil-g path{fill:var(--grau)}
 <h3>So arbeitest du ein Kapitel durch</h3>
 <ol>
   <li>Lies „Worum es geht“ und den Kern von vorn nach hinten. Schau dir jede Abbildung an, bis du sie aus dem Kopf nachzeichnen könntest. Fehlt dir ein Wort, schlag es hinten bei den Begriffen nach und lies weiter.</li>
-  <li>Löse die Original-Aufgabe auf Papier, bevor du die Lösung aufklappst. Papier und Taschenrechner, wie in der Prüfung.</li>
+  <li>Arbeite die sinngemäß wiedergegebene Prüfungsaufgabe auf Papier durch und vergleiche deinen Weg anschließend mit der direkt darunter stehenden Lösung.</li>
   <li>Löse die Variante. Erst wenn du die Variante ohne Nachschlagen richtig hast, gilt das Verfahren als verstanden.</li>
-  <li>Lösungen und Rechenwege nachlesen; die vollständigen Antworten bleiben sichtbar.</li>
+  <li>Lies die Rechenwege und Begründungen nach; alle Antworten sind unmittelbar sichtbar.</li>
 </ol>
 
 <h3>So arbeitest du eine Prüfung durch</h3>
 <ol>
-  <li>Löse die Prüfung auf Papier, so weit du kommst. Die Prüfungs-PDF liegt im Koffer, die Tipps stehen im Rand daneben.</li>
+  <li>Löse die Prüfung auf Papier, so weit du kommst. Die <a href="AP1_Pruefungen_2021-2025.pdf">neun Prüfungshefte als PDF</a> und die <a href="AP1_Loesungen_2021-2025.pdf">zugehörigen Lösungshinweise als PDF</a> liegen neben dieser HTML-Datei im Repository.</li>
   <li>Ruf danach in <a href="#pruefungen-einzeln">Teil 2</a> genau diese Prüfung auf. Dort steht jede Aufgabe mit ihren Punkten in einer eigenen Zeile.</li>
   <li>Nimm dir eine Aufgabe vor, bei der du gehängt hast. In der letzten Spalte steht meist zweierlei: „Erst lernen“ führt zu dem Abschnitt, der die Sache erklärt, „Dann prüfen“ zu derselben Aufgabe mit ausgeschriebener Lösung. Steht nur eine Zeile da, reicht der eine Abschnitt.</li>
-  <li>Unten am Bildschirm erscheint jetzt eine Leiste „zurück zu …“. Ein Klick darauf bringt dich in die Zeile zurück, aus der du gekommen bist, und du nimmst die nächste Aufgabe. Setz dabei das Häkchen „erledigt“; über der Tabelle steht dann, wie viele Aufgaben und wie viele Punkte du schon hast.</li>
+  <li>Vergleiche deine Antwort mit den <a href="AP1_Loesungen_2021-2025.pdf">Lösungshinweisen</a>. Kehre mit dem Zurück-Knopf des Browsers zur Aufgabenliste zurück und bearbeite die nächste Zeile.</li>
 </ol>
-<p>Die Häkchen stehen im Browser dieses Rechners. Auf einem anderen Gerät oder nach dem Löschen der Browserdaten sind sie weg. Das ist kein Fehler.</p>
+<p>Die Datei funktioniert ohne JavaScript und ohne Konto. Schreibe deine Ergebnisse bei Bedarf auf Papier; der Browser speichert keinen Lernstand.</p>
 
 <h3>Quellen lesen</h3>
 <p>Vor jeder Quelle steht ihr Typ. Die Typen bedeuten:</p>
 <div class="tabelle"><table>
 <tr><th>Typ</th><th>Bedeutung</th></tr>
 <tr><td><span class="typ">Gesetz</span></td><td>Gesetz oder EU-Verordnung im Wortlaut. Härteste Quelle.</td></tr>
-<tr><td><span class="typ">Norm</span></td><td>Norm oder Standard (DIN, ISO, IEC, IEEE, OMG, W3C). Verbindlich für die Fachwelt.</td></tr>
-<tr><td><span class="typ">RFC</span></td><td>Internet-Standard der IETF. Definiert Protokolle und Adressierung.</td></tr>
+<tr><td><span class="typ">Norm</span></td><td>Technische Spezifikation (DIN, ISO, IEC, IEEE, OMG, W3C); rechtlich verbindlich nur, wenn Gesetz oder Vertrag sie einbezieht.</td></tr>
+<tr><td><span class="typ">RFC</span></td><td>Technisches Dokument aus dem Internetstandardisierungsprozess; nicht jedes RFC ist selbst ein Standard.</td></tr>
 <tr><td><span class="typ">Behörde</span></td><td>BSI, BfDI, DGUV, Bundesnetzagentur, NIST und ähnliche. Amtliche Empfehlung.</td></tr>
 <tr><td><span class="typ">Hersteller</span></td><td>Dokumentation eines Herstellers oder Konsortiums (Microsoft, USB-IF, Python).</td></tr>
 <tr><td><span class="typ">Fachbuch</span></td><td>Lehrbuch oder wissenschaftliche Originalarbeit.</td></tr>
@@ -339,7 +343,7 @@ marker#pfeil-g path{fill:var(--grau)}
 </table></div>
 
 <h3>Drucken</h3>
-<p>Strg+P druckt die Datei mit allen Lösungen aufgeklappt, jedes Kapitel auf neuer Seite, Navigation ausgeblendet. Web-Adressen der Quellen werden im Druck ausgeschrieben.</p>
+<p>Mit Strg+P (Mac: Cmd+P) druckst du die Datei samt sichtbaren Lösungen. Jedes Kapitel beginnt auf einer neuen Seite, die Navigation wird ausgeblendet und die Web-Adressen der Quellen werden ausgeschrieben.</p>
 <h3 id="woerter">Die Wörter, die überall vorkommen</h3>
 <p>Diese Wörter benutzt die Datei in fast jedem Kapitel und erklärt sie jeweils dort, wo sie zuerst gebraucht werden. Wenn dir eines davon nichts sagt, steht hier der eine Satz, der reicht, um weiterzulesen. Die Spalte rechts führt zum Kapitel, in dem das Wort ausführlich drankommt.</p>
 <div class="tabelle"><table>
@@ -348,16 +352,16 @@ marker#pfeil-g path{fill:var(--grau)}
     <tr><td><strong>Netz</strong></td><td>Mehrere Geräte, die über Kabel oder Funk miteinander reden können.</td><td><a href="#b5">B5</a></td></tr>
     <tr><td><strong>Paket</strong></td><td>Alles, was verschickt wird, wird in kleine Stücke zerlegt. So ein Stück heißt Paket und trägt vorne Absender und Empfänger.</td><td><a href="#a1">A1</a></td></tr>
     <tr><td><strong>Bit</strong></td><td>Ein einzelner Schalter, der nur an oder aus sein kann, geschrieben als 1 oder 0. Kleiner geht es nicht.</td><td><a href="#a4">A4</a></td></tr>
-    <tr><td><strong>Byte</strong></td><td>Acht Bit zusammen. Reicht für ein Zeichen, also einen Buchstaben oder eine Ziffer.</td><td><a href="#a4">A4</a></td></tr>
+    <tr><td><strong>Byte</strong></td><td>Acht Bit. Ein ASCII-Zeichen benötigt ein Byte; andere Zeichen brauchen etwa in UTF-8 oft mehrere.</td><td><a href="#a4">A4</a></td></tr>
     <tr><td><strong>dezimal</strong></td><td>Die gewohnte Schreibweise mit den zehn Ziffern 0 bis 9.</td><td><a href="#a1">A1</a></td></tr>
     <tr><td><strong>binär</strong></td><td>Die Schreibweise des Rechners mit nur zwei Ziffern, 0 und 1. Jede Stelle nach links ist doppelt so viel wert.</td><td><a href="#a1">A1</a></td></tr>
     <tr><td><strong>hexadezimal</strong></td><td>Eine Schreibweise mit sechzehn Ziffern: nach der 9 kommen a bis f. Ein Zeichen steht für vier Bit.</td><td><a href="#a1">A1</a></td></tr>
     <tr><td><strong>IP-Adresse</strong></td><td>Die Nummer, unter der ein Gerät im Netz erreichbar ist, zum Beispiel 192.168.10.75. Sie wird vergeben, nicht eingebaut.</td><td><a href="#a1">A1</a></td></tr>
-    <tr><td><strong>MAC-Adresse</strong></td><td>Die feste Nummer der Netzwerkkarte, vom Hersteller eingebrannt. Sie wandert mit dem Gerät mit.</td><td><a href="#a1">A1</a></td></tr>
+    <tr><td><strong>MAC-Adresse</strong></td><td>Kennung einer Netzwerkschnittstelle. Oft ab Werk vergeben; sie kann auch lokal geändert oder etwa im WLAN zufällig gewählt werden.</td><td><a href="#a1">A1</a></td></tr>
     <tr><td><strong>Host</strong></td><td>Englisch für ein einzelnes Gerät im Netz. Wenn von Hosts die Rede ist, sind die PCs, Drucker und Server gemeint.</td><td><a href="#a1">A1</a></td></tr>
     <tr><td><strong>Server</strong></td><td>Ein Rechner, der anderen etwas bereitstellt: Dateien, E-Mails, eine Datenbank. Er läuft dauerhaft und wartet auf Anfragen.</td><td><a href="#b5">B5</a></td></tr>
     <tr><td><strong>Client</strong></td><td>Das Gegenstück: das Gerät, das beim Server etwas anfragt, meist der Arbeitsplatzrechner.</td><td><a href="#b5">B5</a></td></tr>
-    <tr><td><strong>Switch</strong></td><td>Der Verteiler im Haus. Er nimmt ein Paket an und gibt es an das richtige Gerät im selben Netz weiter.</td><td><a href="#a1">A1</a></td></tr>
+    <tr><td><strong>Switch</strong></td><td>Verbindet Geräte im lokalen Netz und leitet Ethernet-Rahmen anhand der Ziel-MAC-Adresse an einen passenden Anschluss weiter.</td><td><a href="#a1">A1</a></td></tr>
     <tr><td><strong>Router</strong></td><td>Die Tür nach draußen. Er verbindet dein Netz mit einem anderen Netz, meist mit dem Internet.</td><td><a href="#a1">A1</a></td></tr>
     <tr><td><strong>Gateway</strong></td><td>Die Adresse des Routers im eigenen Netz. Dorthin schickt ein PC alles, was nicht ins eigene Netz gehört.</td><td><a href="#a1">A1</a></td></tr>
     <tr><td><strong>Subnetz</strong></td><td>Ein abgetrennter Teil eines größeren Netzes. Geräte im selben Subnetz erreichen sich direkt.</td><td><a href="#a1">A1</a></td></tr>
@@ -370,7 +374,7 @@ marker#pfeil-g path{fill:var(--grau)}
     <tr><td><strong>LAN und WLAN</strong></td><td>Das Netz im Haus, einmal über Kabel (LAN) und einmal über Funk (WLAN).</td><td><a href="#b5">B5</a></td></tr>
     <tr><td><strong>Betriebssystem</strong></td><td>Das Programm, das den Rechner verwaltet: Speicher, Geräte, Dateien, Benutzer. Windows und Linux sind Betriebssysteme.</td><td><a href="#b6">B6</a></td></tr>
     <tr><td><strong>Datei</strong></td><td>Eine Reihe von Nullen und Einsen mit einem Namen. Ein Text, ein Foto und ein Programm sind alle nur das.</td><td><a href="#a4">A4</a></td></tr>
-    <tr><td><strong>Datenbank</strong></td><td>Eine geordnete Sammlung von Tabellen, in der jede Angabe nur einmal steht.</td><td><a href="#a9">A9</a></td></tr>
+    <tr><td><strong>Datenbank</strong></td><td>Organisierte Sammlung von Daten, häufig in Tabellen. Ein gutes Datenmodell vermeidet unnötige doppelte Angaben.</td><td><a href="#a9">A9</a></td></tr>
     <tr><td><strong>Tabelle</strong></td><td>Ein Raster aus Spalten und Zeilen. Jede Spalte ist eine Eigenschaft, jede Zeile ein einzelnes Ding.</td><td><a href="#a9">A9</a></td></tr>
     <tr><td><strong>SQL</strong></td><td>Die Sprache, in der man eine Datenbank etwas fragt. Eine Frage in SQL liefert wieder eine Tabelle zurück.</td><td><a href="#a9">A9</a></td></tr>
     <tr><td><strong>Pseudocode</strong></td><td>Ein Programmablauf in halber Alltagssprache aufgeschrieben, ohne eine echte Programmiersprache.</td><td><a href="#a7">A7</a></td></tr>
@@ -378,17 +382,17 @@ marker#pfeil-g path{fill:var(--grau)}
     <tr><td><strong>Schleife</strong></td><td>Eine Anweisung, die wiederholt wird, solange eine Bedingung gilt.</td><td><a href="#a7">A7</a></td></tr>
     <tr><td><strong>Cloud</strong></td><td>Rechner und Speicher, die jemand anderes betreibt und die du über das Internet nutzt.</td><td><a href="#b5">B5</a></td></tr>
 </table></div>
-<p>Ein Wort, das hier fehlt, findest du über das Glossar in Teil 4: Es listet alle Begriffe der Datei mit dem Kapitel dahinter. Und am Ende jedes Kapitels steht ein zugeklappter Abschnitt "Begriffe zum Nachschlagen" mit den Wörtern genau dieses Kapitels.</p>
+<p>Ein Wort, das hier fehlt, findest du über das <a href="#glossar">Glossar in Teil 4</a>: Es listet alle Begriffe der Datei mit ihrem Kapitel. Die Begriffe eines Kapitels stehen zusätzlich am Ende dieses Kapitels.</p>
 
 <h3>Wo du anfängst</h3>
-<p>Doch bei A1, aber nicht bei Subnetting. Das Kapitel beginnt seit dem Umbau mit den Grundlagen, auf denen fast alles andere aufsetzt: was ein Netz ist, was ein Paket, ein Switch und ein Router tun, was ein Bit ist und wie Binär- und Hexadezimalzahlen funktionieren. Das Rechnen mit Masken kommt erst danach, und wenn es dir zu viel wird, hör nach dem vierten Abschnitt auf und mach beim nächsten Kapitel weiter.</p>
+<p>Beginne mit A1 und lies erst die Grundlagen. Das Kapitel beginnt mit den Grundlagen, auf denen fast alles andere aufsetzt: was ein Netz ist, was ein Paket, ein Switch und ein Router tun, was ein Bit ist und wie Binär- und Hexadezimalzahlen funktionieren. Das Rechnen mit Masken kommt erst danach, und wenn es dir zu viel wird, hör nach dem vierten Abschnitt auf und mach beim nächsten Kapitel weiter.</p>
 
 <h4>Wenn du bei null anfängst</h4>
 <p>Diese Reihenfolge stellt die Grundlagen vor die Verfahren, die darauf aufbauen. Jede Zeile setzt nur voraus, was darüber steht.</p>
 <p>Vor der ersten Zeile steht die Liste <a href="#woerter">Die Wörter, die überall vorkommen</a>. Lies sie einmal durch, auch wenn dir vieles fremd vorkommt; du musst sie nicht behalten, nur wissen, dass du dort nachsehen kannst.</p>
 <ol>
   <li><a href="#a1">A1 IPv4, Subnetting und Netzkonfiguration</a> – fängt ganz vorn an: was ein Netz, ein Paket, ein Switch und ein Router sind, dann Bit und Binärzahlen, Hexadezimal, und erst danach das Rechnen mit Adressen und Masken. Dieses Kapitel setzt nichts voraus.</li>
-  <li><a href="#b5">B5 Netzbetrieb, Dienste und Cloud</a> – danach, nicht davor: Es ordnet die Geräte und Adressen aus A1 in ein Suchraster für die Fehlersuche ein und beginnt deshalb mit dem Sieben-Schichten-Modell.</li>
+  <li><a href="#b5">B5 Netzwerk-Grundlagen</a> – danach, nicht davor: Es ordnet die Geräte und Adressen aus A1 in ein Suchraster für die Fehlersuche ein und beginnt deshalb mit dem Sieben-Schichten-Modell.</li>
   <li><a href="#b9">B9 Projekt, Anforderungen und Vorgehen</a> – woher die Vorgangsliste kommt, mit der A6 rechnet.</li>
   <li><a href="#a6">A6 Netzplan und Gantt</a> – Termine und Puffer ausrechnen.</li>
   <li><a href="#a2">A2 Kaufmännisch rechnen</a> – Prozent, Rabatt, Skonto, Darlehen. Kommt in jeder Prüfung vor.</li>
@@ -424,14 +428,14 @@ marker#pfeil-g path{fill:var(--grau)}
 <div class="tabelle"><table>
 <caption>Prüfungssteckbrief der AP1 nach Ausbildungsverordnung</caption>
 <tr><th>Merkmal</th><th>Gesetzliche Festlegung</th><th>Bedeutung für den Prüfling</th></tr>
-<tr><td>Prüfungsbereich</td><td>Einrichten eines IT-gestützten Arbeitsplatzes (§ 9 FIAusbV)</td><td>Bundesweit einheitliche Aufgaben für alle IT-Berufe</td></tr>
-<tr><td>Prüfungszeit</td><td>90 Minuten (§ 9 Abs. 3 FIAusbV)</td><td>Feste Bearbeitungsdauer für den gesamten Aufgabensatz</td></tr>
-<tr><td>Gesamtpunktzahl</td><td>100 Punkte (§ 9 Abs. 3 FIAusbV)</td><td>Verteilt auf vier gebundene Handlungsschritte</td></tr>
-<tr><td>Gewichtung</td><td>20 Prozent der Gesamtnote (§ 16 Abs. 2 Nr. 1 FIAusbV)</td><td>Zählt unmittelbar in das Gesamtergebnis der Ausbildung</td></tr>
-<tr><td>Prüfungsform</td><td>Schriftliche Aufgabenstellung (§ 9 Abs. 3 FIAusbV)</td><td>Ausschließlich offene Aufgaben, kein Multiple-Choice</td></tr>
+<tr><td>Prüfungsbereich</td><td>Einrichten eines IT-gestützten Arbeitsplatzes (§ 9 Abs. 1 FIAusbV)</td><td>Gemeinsamer Prüfungsbereich der Fachinformatik-Fachrichtungen</td></tr>
+<tr><td>Prüfungszeit</td><td>90 Minuten (§ 9 Abs. 4 FIAusbV)</td><td>Feste Bearbeitungsdauer für den gesamten Aufgabensatz</td></tr>
+<tr><td>Gesamtpunktzahl</td><td>100 Punkte in den neun ausgewerteten Heften (Deckblatt; nicht § 9 FIAusbV)</td><td>Vier Hauptaufgaben mit unterschiedlich gewichteten Teilaufgaben</td></tr>
+<tr><td>Gewichtung</td><td>20 Prozent der Gesamtnote (FISI: § 24 Abs. 1 Nr. 1 FIAusbV; weitere Fachrichtungen: §§ 16, 32 und 40, jeweils Abs. 1 Nr. 1)</td><td>Zählt in das Gesamtergebnis der Ausbildung</td></tr>
+<tr><td>Prüfungsform</td><td>Schriftliche Bearbeitung (§ 9 Abs. 3 FIAusbV)</td><td>In den hier ausgewerteten Heften: offene Teilaufgaben</td></tr>
 </table></div>
 
-<p>Alle Aufgaben im Aufgabensatz sind ausnahmslos Pflichtaufgaben. Das Deckblatt weist links verbindlich vier Aufgaben aus; ein Wahlteil existiert nicht<sup class="q"><a href="#pruefung-q4" title="Deckblatt">4</a></sup>. Die Aufgabenstellung bezieht sich durchgehend auf ein übergeordnetes, fiktives Unternehmensszenario, das die Rahmenbedingungen für alle Teilaufgaben liefert.</p>
+<p>In den neun hier ausgewerteten Aufgabensätzen sind alle vier Hauptaufgaben Pflicht; ein Wahlteil ist auf den Deckblättern nicht vorgesehen<sup class="q"><a href="#pruefung-q4" title="Deckblatt">4</a></sup>. Die Aufgabenstellung bezieht sich durchgehend auf ein übergeordnetes, fiktives Unternehmensszenario, das die Rahmenbedingungen für alle Teilaufgaben liefert.</p>
 
 <div class="tabelle"><table>
 <caption>Aufgabenstruktur der neun ausgewerteten Prüfungen (Herbst 2021 bis Herbst 2025)</caption>
@@ -454,10 +458,10 @@ marker#pfeil-g path{fill:var(--grau)}
 <p>Zusätzlich steht für Hilfsaufzeichnungen beiliegendes Konzeptpapier zur Verfügung (Bearbeitungshinweis 10). Bewertet werden jedoch grundsätzlich nur Eintragungen im Aufgabensatz. Es gibt keine zugelassene Formelsammlung und kein Tabellenbuch während der Prüfung.</p>
 
 <h3>Wie Punkte entstehen: Die Korrekturpraxis</h3>
-<p>Die Punktevergabe folgt festen Regeln der Prüfungsaufgabenerstellungseinrichtung (ZPA Nord-West)<sup class="q"><a href="#pruefung-q4" title="IHK-Korrekturhinweise">4</a></sup>:</p>
+<p>Die folgenden Hinweise helfen beim Lesen der Deckblätter und der Lösungshinweise der hier ausgewerteten ZPA-Nord-West-Aufgabensätze<sup class="q"><a href="#pruefung-q4" title="IHK-Korrekturhinweise">4</a></sup>:</p>
 <ol>
   <li><strong>Kein Anspruch auf Ausschließlichkeit:</strong> Die amtlichen Lösungshinweise sind Korrekturhilfen. Sach- und fachgerechte Alternativen werden mit der vorgesehenen Punktzahl bewertet, auch wenn sie nicht wörtlich in den Hinweisen aufgeführt sind.</li>
-  <li><strong>Anzahl der Aspekte entspricht den Punkten:</strong> Wenn eine Aufgabe zwei Gründe verlangt und mit vier Punkten bewertet ist, gibt jeder vollständig ausgeführte Grund genau zwei Punkte. Werden drei Merkmale bei drei Punkten verlangt, gibt jedes Merkmal einen Punkt.</li>
+  <li><strong>Punkte je Aspekt prüfen:</strong> Aus der Gesamtpunktzahl allein folgt nicht automatisch die Verteilung. Zwei Gründe bei vier Punkten können je zwei Punkte bringen; maßgeblich sind die konkrete Aufgabe und ihre Lösungshinweise.</li>
   <li><strong>Strikte Umfangsregel:</strong> Werden laut Aufgabenstellung vier Angaben gefordert und sechs genannt, bewertet der Korrektor ausnahmslos die ersten vier Angaben (Bearbeitungshinweis 4). Überzählige Antworten werden gestrichen.</li>
   <li><strong>Teilpunkte für Rechenwege:</strong> Ein Rechenfehler im Endergebnis führt nicht zum Verlust aller Punkte. Für den korrekten Rechenansatz, Zwischenschritte und Formeln werden Teilpunkte vergeben.</li>
   <li><strong>Berücksichtigung von Folgefehlern:</strong> Wer mit einem gerundeten Zwischenwert weiterrechnen muss, rechnet nur mit diesem Wert weiter (Bearbeitungshinweis 9). Ein Folgefehler wird nicht mehrfach mit Punktabzug belegt, wenn die Folgerechnung in sich stimmig bleibt.</li>
@@ -501,7 +505,7 @@ marker#pfeil-g path{fill:var(--grau)}
 
 <h3>Entwicklung des AKA-Prüfungskatalogs</h3>
 <p>Die inhaltlichen Anforderungen basieren auf dem Stoffkatalog der Aufgabenstelle für kaufmännische Abschluss- und Zwischenprüfungen (AkA)<sup class="q"><a href="#pruefung-q3" title="AkA Prüfungskatalog">3</a></sup>. Zum Prüfungsjahr 2025 wurde der Katalog den technologischen Entwicklungen angepasst:</p>
-<p>Neu akzentuiert wurden Themen wie künstliche Intelligenz in der Betriebspraxis, Barrierefreiheit nach Barrierefreiheitsstärkungsgesetz und WCAG, moderne Authentifizierungsverfahren (Mehrfaktor-Authentifizierung, Hash-Verfahren) sowie UML-Aktivitätsdiagramme. Ältere Teilgebiete wie reine mechanische Bestückung oder starre Programmablaufpläne treten in der Prüfungspraxis seltener auf. Diese Lerndatei behandelt alle Themengebiete ausgewogen, um sowohl etablierte Grundlagen als auch neue Prüfungsschwerpunkte lückenlos abzudecken.</p>
+<p>Neu akzentuiert wurden Themen wie künstliche Intelligenz in der Betriebspraxis, Barrierefreiheit nach Barrierefreiheitsstärkungsgesetz und WCAG, moderne Authentifizierungsverfahren (Mehrfaktor-Authentifizierung, Hash-Verfahren) sowie UML-Aktivitätsdiagramme. Ältere Teilgebiete wie reine mechanische Bestückung oder starre Programmablaufpläne treten in der Prüfungspraxis seltener auf. Diese Lerndatei behandelt die Themen der ausgewerteten Prüfungen und ergänzende Grundlagen. Neue Prüfungen können andere Schwerpunkte setzen.</p>
 
 <h3>Quellen dieses Teils</h3>
 <ol class="quellenliste">
@@ -955,7 +959,7 @@ marker#pfeil-g path{fill:var(--grau)}
   <h3>Das Verfahren</h3>
 
   <h4 id="a1-k1">Das Problem: Wie findet eine Nachricht den richtigen Rechner?</h4>
-  <p><strong>Ein Netz ist erst einmal nur Verkabelung.</strong> Mehrere Geräte hängen an denselben Leitungen oder am selben Funknetz. Alles, was verschickt wird, eine Datei, eine Webseite, ein Druckauftrag, wird dafür in kleine Stücke zerlegt. So ein Stück heißt <strong>Paket</strong>. Vorne auf jedem Paket stehen zwei Angaben: von wem und an wen. Genau wie auf einem Briefumschlag.</p>
+  <p><strong>Ein Netz verbindet Geräte über Kabel oder Funk.</strong> Mehrere Geräte können so miteinander Daten austauschen. Alles, was verschickt wird, eine Datei, eine Webseite, ein Druckauftrag, wird dafür in kleine Stücke zerlegt. So ein Stück heißt <strong>Paket</strong>. Vorne auf jedem Paket stehen zwei Angaben: von wem und an wen. Genau wie auf einem Briefumschlag.</p>
   <p><strong>Damit ein Empfänger draufstehen kann, braucht jedes Gerät eine Nummer.</strong> Diese Nummer ist die <strong>IP-Adresse</strong>, zum Beispiel 192.168.10.75. Sie ist nicht fest eingebaut, sie wird vergeben. Eine Hausnummer gehört ja auch nicht zum Haus, sondern zur Straße.<sup class="q"><a href="#a1-q2" title="RFC 791, Adressierung">2</a></sup></p>
   <p><strong>Zwei Geräte verteilen die Pakete.</strong> Der <strong>Switch</strong> ist der Verteiler im Haus. Er nimmt ein Paket an und reicht es an das Gerät im selben Netz weiter. Der <strong>Router</strong> ist die Haustür. Er verbindet dein Netz mit einem anderen Netz, meistens mit dem Internet.</p>
   <p><strong>Vor jedem Versand steht deshalb eine Entscheidung:</strong> Sitzt der Empfänger in meinem eigenen Netz oder in einem fremden? Zum Drucker im eigenen Netz geht das Paket direkt über den Switch. Ins Internet geht es zuerst zum Router. Die Zieladresse allein verrät das aber nicht. Der PC muss zusätzlich wissen, wie weit sein eigenes Netz reicht. Genau das sagt ihm die <strong>Subnetzmaske</strong>. Ist die Maske falsch, trennt sie Geräte, die zusammengehören. Ist die Tür nach draußen falsch eingetragen, kommt nichts ins Internet.<sup class="q"><a href="#a1-q1" title="RFC 4632, Netzpräfix">1</a></sup></p>
@@ -1059,9 +1063,10 @@ Ergebnis: 75 = 01001011      Probe: 64 + 8 + 2 + 1 = 75</pre>
     <figcaption>Abb. A1-4: Die Adresse .75 fällt in den zweiten 64er-Block. Damit stehen Netz- und Broadcastadresse bereits fest.</figcaption>
   </figure>
 
-  <p><strong>Schritt 3: die vier festen Adressen.</strong> In jedem Block sind zwei Adressen vergeben, bevor ein einziges Gerät da ist. Die erste ist die <strong>Netzadresse</strong>, hier 192.168.10.64. Sie ist der Name des Netzes, so wie ein Straßenname. Die letzte ist die <strong>Broadcastadresse</strong>, hier 192.168.10.127. Ein Paket an sie geht an alle Geräte im Netz gleichzeitig, wie ein Aushang im Hausflur.</p>
-  <p><strong>Und warum ausgerechnet die erste und die letzte?</strong> Das ergibt sich aus den Schaltern. Stehen alle sechs Gerätebits auf 0, bleibt die kleinste Zahl des Blocks übrig, und dieses Muster ist als Name des Netzes vergeben. Stehen alle sechs auf 1, kommt die größte Zahl des Blocks heraus, und dieses Muster bedeutet alle zusammen. Für einzelne Geräte bleibt alles dazwischen: .65 bis .126, das sind 64 − 2 = 62 Adressen. Unser PC .75 liegt mittendrin (Abb. A1-5).<sup class="q"><a href="#a1-q1" title="RFC 4632, Netz- und Broadcastadresse">1</a></sup></p>
+  <p><strong>Schritt 3: die zwei reservierten Adressen.</strong> In gewöhnlichen IPv4-Subnetzen mit /30 oder kürzer sind zwei Adressen reserviert, bevor ein einziges Gerät da ist. Die erste ist die <strong>Netzadresse</strong>, hier 192.168.10.64. Sie ist der Name des Netzes, so wie ein Straßenname. Die letzte ist die <strong>Broadcastadresse</strong>, hier 192.168.10.127. Ein Paket an sie geht an alle Geräte im Netz gleichzeitig, wie ein Aushang im Hausflur.</p>
+  <p><strong>Und warum ausgerechnet die erste und die letzte?</strong> Das ergibt sich aus den Schaltern. Stehen alle sechs Gerätebits auf 0, bleibt die kleinste Zahl des Blocks übrig, und dieses Muster ist als Name des Netzes vergeben. Stehen alle sechs auf 1, kommt die größte Zahl des Blocks heraus, und dieses Muster bedeutet alle zusammen. Für einzelne Geräte bleiben in diesem /26-Netz .65 bis .126, also 64 − 2 = 62 Adressen. Unser PC .75 liegt mittendrin (Abb. A1-5).<sup class="q"><a href="#a1-q1" title="RFC 4632, Netz- und Broadcastadresse">1</a></sup></p>
 
+  <div class="merke" data-art="Ausnahme für Fortgeschrittene"><p>Die Regel „2<sup>Hostbits</sup> minus 2“ gilt für gewöhnliche IPv4-Subnetze bis /30. Auf einer Punkt-zu-Punkt-Verbindung können bei /31 beide Adressen genutzt werden; eine /32 bezeichnet genau eine Adresse. Für die üblichen Aufgaben mit /24 bis /30 verwendest du weiter die Rechnung oben. <a href="https://www.rfc-editor.org/rfc/rfc3021.html">RFC 3021 erläutert die /31-Ausnahme</a>.</p></div>
   <figure class="abb">
     <svg viewBox="0 0 640 180" role="img" aria-labelledby="a1-abb5-t">
       <title id="a1-abb5-t">Der Block von 64 bis 127 mit Netzadresse, nutzbaren Hosts und Broadcastadresse</title>
@@ -1103,7 +1108,7 @@ H25 3.7   gegeben 172.16.10.0/24, gesucht die letzte nutzbare Adresse
   <h4 id="a1-k6">Die Maske dezimal schreiben</h4>
   <p><strong>Frage vorab:</strong> Die Blockgröße ist 64. Wie heißt die Maske in der Punktschreibweise?</p>
   <p class="loesung-label">Lösung</p><div class="antwort"><p>255.255.255.192, denn die letzte Zahl ist 256 minus Blockgröße, also 256 − 64.</p></div>
-  <p><strong>Aus der Blockgröße folgt die letzte Zahl der Maske</strong> mit einer einzigen Rechnung: 256 − 64 = 192. Aus /26 wird so 255.255.255.192. Das funktioniert, weil sich Netzanteil und Hostanteil im letzten Oktett immer zu 256 ergänzen. Die Tabelle zeigt denselben Weg für alle Präfixe, die in Prüfungen vorkommen. Du musst sie nicht auswendig können, wenn du die Rechnung 256 minus Blockgröße im Kopf hast.</p>
+  <p><strong>Aus der Blockgröße folgt die letzte Zahl der Maske</strong> mit einer einzigen Rechnung: 256 − 64 = 192. Aus /26 wird so 255.255.255.192. Das funktioniert hier für Präfixe von /24 bis /30, bei denen der Schnitt im letzten Oktett liegt. Bei /23 oder kürzer musst du die früheren Oktette einbeziehen. Die Tabelle zeigt /24 bis /30. Du musst sie nicht auswendig können, wenn du die Rechnung 256 minus Blockgröße im Kopf hast.</p>
   <div class="tabelle"><table>
     <caption>Subnetzmasken und Hostkapazitäten von /24 bis /30</caption>
     <tr><th>Präfix</th><th>Dezimale Subnetzmaske</th><th class="z">Hostbits</th><th class="z">Schrittweite</th><th class="z">Gesamtadressen</th><th class="z">Nutzbare Hosts</th></tr>
@@ -1171,8 +1176,8 @@ H24 1.5   Netz 192.168.20.0/24, Router .1, DHCP vergibt .20 bis .254
   </figure>
 
   <p><strong>Eine Adresse wird nur auf Zeit vergeben.</strong> Diese Frist heißt Lease. Läuft sie ab, fragt der PC beim selben Server nach Verlängerung. Ein Server, der immer unter derselben Adresse erreichbar sein soll, wird deshalb entweder von Hand eingerichtet oder bekommt im DHCP eine feste Zuordnung zu seiner Hardware-Nummer.</p>
-  <p><strong>In der Ausgabe von <code>ipconfig /all</code> steht eine Zeile „DHCP aktiviert: Ja“.</strong> Vom Server zugeteilt sind dann die IPv4-Adresse, die Subnetzmaske und, sofern sie im Ausschnitt auftauchen, das Standardgateway und die DNS-Server. Zwei Angaben kommen nie vom DHCP: die physische Adresse, denn die steckt fest in der Netzwerkkarte, und die Adresse ab fe80::, die sich das Gerät selbst bildet. Wird nach den DHCP-Angaben gefragt, nennst du nur das, was im gezeigten Ausschnitt wirklich zu sehen ist.<sup class="q"><a href="#a1-q9" title="Microsoft Learn, ipconfig /all">9</a></sup></p>
-  <div class="merke" data-art="Prüfungsnotiz"><p>Eine Adresse 169.254.x.x bedeutet: Der Rechner hat keinen DHCP-Server gefunden und sich selbst eine Notadresse gegeben. Das heißt APIPA. Damit erreicht er nur Geräte im selben Kabelsegment, die ebenfalls so eine Notadresse tragen; ins Internet kommt er nicht, weil ihm ein Gateway fehlt. Es ist kein Adresskonflikt und kein Defekt der Netzwerkkarte.<sup class="q"><a href="#a1-q4" title="RFC 3927, dynamische Link-Local-Adresse">4</a></sup></p></div>
+  <p><strong>In der Ausgabe von <code>ipconfig /all</code> steht eine Zeile „DHCP aktiviert: Ja“.</strong> Vom Server zugeteilt sind dann die IPv4-Adresse, die Subnetzmaske und, sofern sie im Ausschnitt auftauchen, das Standardgateway und die DNS-Server. Nicht vom IPv4-DHCP-Server stammen die physische Adresse der Netzwerkschnittstelle und ihre lokale IPv6-Adresse ab fe80::. Wird nach den DHCP-Angaben gefragt, nennst du nur das, was im gezeigten Ausschnitt wirklich zu sehen ist.<sup class="q"><a href="#a1-q9" title="Microsoft Learn, ipconfig /all">9</a></sup></p>
+  <div class="merke" data-art="Prüfungsnotiz"><p>169.254.x.x ist eine IPv4-Link-Local-Adresse: Windows vergibt sie bei automatischer Konfiguration typischerweise selbst, wenn keine DHCP-Antwort kommt (APIPA). Sie dient der Kommunikation auf demselben lokalen Link, nicht dem Routing ins Internet. Prüfe DHCP und Netzverbindung; die Adresse allein beweist noch keinen Hardwaredefekt.<sup class="q"><a href="#a1-q4" title="RFC 3927, dynamische Link-Local-Adresse">4</a></sup></p></div>
 
   <p><strong>So kam das in den Prüfungen dran.</strong> F22 3.7 fragte nach dem Server, der beim Erneuern der Adresse kontaktiert wird; die Antwort ist der DHCP-Server. F24 2.4 wollte wissen, welche Angaben einer <code>ipconfig</code>-Ausgabe von diesem Server stammen, hier IPv4-Adresse und Subnetzmaske, weil Gateway und DNS im gezeigten Ausschnitt fehlten. Und H24 1.4 verlangte die Erklärung der Adresse 169.254.122.115: kein DHCP-Server erreichbar, der Rechner hat sich selbst eine Notadresse gegeben.<sup class="q"><a href="#a1-q15" title="AP1 Frühjahr 2022, Aufgabe 3.7">15</a></sup><sup class="q"><a href="#a1-q13" title="AP1 Frühjahr 2024, Aufgabe 2.4">13</a></sup><sup class="q"><a href="#a1-q10" title="AP1 Herbst 2024, Aufgabe 1.4">10</a></sup></p>
   <h4 id="a1-k9">Ein großes Netz in Teilnetze zerlegen</h4>
@@ -1314,11 +1319,11 @@ H24 1.5   Netz 192.168.20.0/24, Router .1, DHCP vergibt .20 bis .254
   <h4 id="a1-k14">MAC-Adresse: die Nummer der Netzwerkkarte</h4>
   <p><strong>Frage vorab:</strong> Eine IP-Adresse wird vergeben. Woher hat ein Gerät dann seine MAC-Adresse?</p>
   <p class="loesung-label">Lösung</p><div class="antwort"><p>Vom Hersteller. Sie ist in die Netzwerkkarte eingebrannt und wandert mit der Karte, nicht mit dem Standort.</p></div>
-  <p><strong>Neben der vergebenen IP-Adresse trägt jede Netzwerkkarte eine feste Nummer,</strong> die <strong>MAC-Adresse</strong>. Sie ist 48 Bit lang und wird als sechs Paare hexadezimal geschrieben, zum Beispiel 50-1A-C5-F2-38-B7. Sechs Paare zu je zwei Hexzeichen sind zwölf Zeichen, jedes Zeichen vier Bit, zusammen 48 Bit. Die ersten drei Paare sind die Herstellerkennung, genannt <strong>OUI</strong>, die letzten drei die laufende Nummer des Geräts beim Hersteller (Abb. A1-12).<sup class="q"><a href="#a1-q8" title="IEEE, OUI und EUI-48">8</a></sup></p>
+  <p><strong>Neben der IP-Adresse nutzt eine Netzwerkschnittstelle eine MAC-Adresse.</strong> Bei Ethernet ist sie üblicherweise 48 Bit lang und wird als sechs Paare hexadezimal geschrieben, zum Beispiel 50-1A-C5-F2-38-B7. Sechs Paare zu je zwei Hexzeichen sind zwölf Zeichen, jedes Zeichen vier Bit, zusammen 48 Bit. Bei klassisch vom Hersteller vergebenen Adressen stehen die ersten drei Paare für die <strong>OUI</strong> (die zugewiesene Organisationskennung), die letzten drei für eine vom Hersteller zugeteilte Kennung der Schnittstelle (Abb. A1-12).<sup class="q"><a href="#a1-q8" title="IEEE, OUI und EUI-48">8</a></sup></p>
 
   <figure class="abb">
     <svg viewBox="0 0 640 165" role="img" aria-labelledby="a1-abb12-t">
-      <title id="a1-abb12-t">Die MAC-Adresse 50-1A-C5-F2-38-B7 zerfällt in Herstellerkennung und Gerätenummer</title>
+      <title id="a1-abb12-t">Eine klassisch vergebene MAC-Adresse zerfällt in OUI und Schnittstellenkennung</title>
       <text class="t2 mitte" x="320" y="22">48 Bit, geschrieben als sechs Paare aus je zwei Hexzeichen</text>
       <rect class="f" x="20" y="32" width="96" height="44"/><text class="mono tb mitte" x="68" y="60">50</text>
       <rect class="f" x="120" y="32" width="96" height="44"/><text class="mono tb mitte" x="168" y="60">1A</text>
@@ -1330,17 +1335,17 @@ H24 1.5   Netz 192.168.20.0/24, Router .1, DHCP vergibt .20 bis .254
       <polyline class="l" points="324,86 324,96 620,96 620,86"/>
       <text class="tb mitte" x="168" y="116">Herstellerkennung OUI</text>
       <text class="t2 mitte" x="168" y="132">erste 24 Bit, vergeben von der IEEE</text>
-      <text class="tb mitte" x="472" y="116">Gerätenummer</text>
+      <text class="tb mitte" x="472" y="116">Schnittstellenkennung</text>
       <text class="t2 mitte" x="472" y="132">letzte 24 Bit, vergibt der Hersteller</text>
       <text class="t2 mitte" x="320" y="156">jedes Hexzeichen vier Bit, jedes Paar acht Bit, sechs Paare 48 Bit</text>
     </svg>
-    <figcaption>Abb. A1-12: Die vordere Hälfte nennt den Hersteller, die hintere das einzelne Gerät. Zusammen ergeben sechs Paare 48 Bit.</figcaption>
+    <figcaption>Abb. A1-12: Bei dieser klassisch vergebenen EUI-48-Adresse steht vorn die OUI und hinten die vom Hersteller vergebene Schnittstellenkennung. Zusammen ergeben sechs Hexpaare 48 Bit.</figcaption>
   </figure>
 
-  <p><strong>Der Unterschied zur IP-Adresse:</strong> Die MAC-Adresse klebt an der Hardware und ändert sich nicht, wenn das Gerät in ein anderes Netz umzieht. Die IP-Adresse beschreibt den Ort im Netz und wird beim Umzug neu vergeben. Unter Windows zeigt <code>ipconfig /all</code> beide an; die MAC-Adresse steht dort als Physische Adresse.<sup class="q"><a href="#a1-q9" title="Microsoft Learn, ipconfig">9</a></sup></p>
+  <p><strong>Der Unterschied zur IP-Adresse:</strong> Eine ab Werk vergebene MAC-Adresse gehört zunächst zur Netzwerkschnittstelle; manche Systeme verwenden stattdessen lokal festgelegte oder zufällige MAC-Adressen, etwa für WLAN. Die IP-Adresse hängt von der Konfiguration des jeweiligen Netzes ab. Unter Windows zeigt <code>ipconfig /all</code> beide an; die MAC-Adresse steht dort als Physische Adresse.<sup class="q"><a href="#a1-q9" title="Microsoft Learn, ipconfig">9</a></sup></p>
   <p><strong>So fragte F24 2.7:</strong> Die Ausgabe von ipconfig /all zeigte den eigenen PC mit der IPv4-Adresse 192.168.0.52 und der physischen Adresse 50-1A-C5-F2-38-B7. Der andere PC im Netz hatte 192.168.0.1 und die MAC d4-3f-cb-8c-37-8b. Merkhilfe: Die Ausgabe beschreibt immer nur das Gerät, auf dem der Befehl lief; alles andere gehört zum anderen Rechner. Vier Punkte für vier Zuordnungen.<sup class="q"><a href="#a1-q13" title="AP1 Frühjahr 2024, Aufgabe 2.7">13</a></sup></p>
 
-  <p><strong>Zwei Prüfungen fragten die Herkunft und den Befehl.</strong> In F22 3.5 war die Adresse 50-1A-C5-F2-38-B7 zu erklären: Sie ist die vom Hersteller fest vergebene Nummer der Netzwerkkarte, und die ersten drei Paare benennen den Hersteller. Sie erscheint auch dann, wenn gar kein Netzzugriff besteht, denn sie steckt in der Hardware. In H24 1.7 war ein Konsolenbefehl zu nennen, mit dem man sie ausliest, und ein Beispiel in hexadezimaler Schreibweise: <code>ipconfig /all</code> unter Windows, <code>getmac /v</code> ebenso, unter Linux <code>ip link</code> oder <code>ifconfig</code>; ein gültiges Beispiel ist A1-B3-54-64-C3-78, also sechs Paare aus je zwei Hexzeichen.<sup class="q"><a href="#a1-q15" title="AP1 Frühjahr 2022, Aufgabe 3.5">15</a></sup><sup class="q"><a href="#a1-q10" title="AP1 Herbst 2024, Aufgabe 1.7">10</a></sup></p>
+  <p><strong>Zwei Prüfungen fragten die Herkunft und den Befehl.</strong> In F22 3.5 war die Adresse 50-1A-C5-F2-38-B7 zu erklären: Sie ist die vom Hersteller fest vergebene Nummer der Netzwerkkarte, und die ersten drei Paare benennen den Hersteller. Die Schnittstelle kann ihre konfigurierte MAC-Adresse auch ohne bestehende Netzverbindung anzeigen. In H24 1.7 war ein Konsolenbefehl zu nennen, mit dem man sie ausliest, und ein Beispiel in hexadezimaler Schreibweise: <code>ipconfig /all</code> unter Windows, <code>getmac /v</code> ebenso, unter Linux <code>ip link</code> oder <code>ifconfig</code>; ein gültiges Beispiel ist A1-B3-54-64-C3-78, also sechs Paare aus je zwei Hexzeichen.<sup class="q"><a href="#a1-q15" title="AP1 Frühjahr 2022, Aufgabe 3.5">15</a></sup><sup class="q"><a href="#a1-q10" title="AP1 Herbst 2024, Aufgabe 1.7">10</a></sup></p>
   <div class="merke" data-art="Auf einen Blick"><p><strong>IPv4</strong> hat 32 Bit in vier Oktetten zu je 0 bis 255.</p><p><strong>Das Präfix</strong> trennt Netz und Gerät, /26 heißt 26 Netzbits.</p><p><strong>Die Blockgröße</strong> ist 2 hoch Hostbits und zugleich die Schrittweite.</p><p><strong>Erste Adresse</strong> ist das Netz, <strong>letzte</strong> der Broadcast, dazwischen die Geräte.</p><p><strong>Das Gateway</strong> ist die Routeradresse im eigenen Netz.</p><p><strong>DHCP</strong> vergibt automatisch, 169.254 heißt: kein DHCP erreicht.</p><p><strong>Hexadezimal</strong> zählt bis f, ein Zeichen sind vier Bit.</p></div>
 </section>
 
@@ -1468,7 +1473,7 @@ H24 1.5   Netz 192.168.20.0/24, Router .1, DHCP vergibt .20 bis .254
 
 <section id="a1-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 16 Aufgaben</h3>
   <article class="aufgabe" id="a1-ihk-f22-3-5">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 3.5, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a1-q15" title="AP1 Frühjahr 2022">15</a></sup></p>
@@ -1727,17 +1732,17 @@ H24 1.5   Netz 192.168.20.0/24, Router .1, DHCP vergibt .20 bis .254
       <p class="loesung-label">Lösung</p><div class="antwort"><p>Weil 192.168.5.127 bei /26 die Broadcastadresse des zweiten Subnetzes (192.168.5.64 bis 192.168.5.127) ist. Sie dient dem Rundruf an alle Stationen dieses Subnetzes.</p></div>
     </li>
     <li>Ein Windows-Rechner erhält per DHCP keine Antwort und zeigt die IP 169.254.12.34 an. Um welchen Mechanismus handelt es sich, und kann dieser Rechner damit Webseiten im Internet aufrufen?
-      <p class="loesung-label">Lösung</p><div class="antwort"><p>Es handelt sich um APIPA (Automatic Private IP Addressing, Link-Local nach RFC 3927). Der Rechner kann damit nur Knoten im selben physischen LAN-Segment erreichen, die ebenfalls APIPA nutzen. Der Zugriff auf das Internet oder entfernte Netze ist ausgeschlossen, da kein Standardgateway konfiguriert ist.</p></div>
+      <p class="loesung-label">Lösung</p><div class="antwort"><p>Es handelt sich um APIPA (Automatic Private IP Addressing, Link-Local nach RFC 3927). Damit kann er Geräte auf demselben lokalen Link erreichen, die passende Link-Local-Adressen verwenden. Diese Adresse wird nicht über Router ins Internet weitergeleitet.</p></div>
     </li>
     <li>Aus welchen zwei Teilen besteht eine 48 Bit lange MAC-Adresse, und welche Bedeutung haben sie?
-      <p class="loesung-label">Lösung</p><div class="antwort"><p>Die ersten 24 Bit (3 Byte) bilden die OUI (Organizationally Unique Identifier) und kennzeichnen den Chiphersteller. Die hinteren 24 Bit (3 Byte) sind die herstellerspezifische Serien- oder Gerätenummer des Netzwerkadapters.</p></div>
+      <p class="loesung-label">Lösung</p><div class="antwort"><p>Bei einer klassisch vom Hersteller vergebenen EUI-48-Adresse bilden die ersten 24 Bit die OUI der registrierten Organisation, häufig des Herstellers; die letzten 24 Bit vergibt diese Organisation für die Schnittstelle. Lokal vergebene oder zufällige MAC-Adressen lassen sich nicht so einem Hersteller zuordnen.</p></div>
     </li>
   </ol>
 </section>
 
 <section id="a1-begriffe">
   <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 10 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a1-begriff-ipv4">IPv4-Adresse</a><a href="#a1-begriff-netzmaske">Netzmaske und Präfix</a><a href="#a1-begriff-netzadresse">Netzadresse und Broadcastadresse</a><a href="#a1-begriff-standardgateway">Standardgateway</a><a href="#a1-begriff-private-ip">Private IP-Adressen</a><a href="#a1-begriff-apipa">APIPA</a><a href="#a1-begriff-mac">MAC-Adresse und OUI</a><a href="#a1-begriff-ipv6">IPv6-Adresse</a><a href="#a1-begriff-blockgroesse">Blockgröße und Teilnetz</a><a href="#a1-begriff-hex">Hexadezimal</a></nav>
 
@@ -1783,7 +1788,7 @@ H24 1.5   Netz 192.168.20.0/24, Router .1, DHCP vergibt .20 bis .254
 
   <dl class="begriff" id="a1-begriff-apipa">
     <dt>APIPA <span class="en">(Automatic Private IP Addressing)</span></dt>
-    <dd><span class="label">Was es ist</span><p>Eine selbst vergebene Notadresse aus 169.254.0.0/16, wenn der Rechner keinen DHCP-Server erreicht.<sup class="q"><a href="#a1-q4" title="RFC 3927">4</a></sup></p></dd>
+    <dd><span class="label">Was es ist</span><p>Eine lokal gewählte IPv4-Adresse aus 169.254.0.0/16, unter Windows typischerweise nach ausbleibender DHCP-Antwort.<sup class="q"><a href="#a1-q4" title="RFC 3927">4</a></sup></p></dd>
     <dd><span class="label">Wo es dir begegnet</span><p><code>ipconfig</code> zeigt zum Beispiel 169.254.122.115.</p></dd>
     <dd><span class="label">Nicht verwechseln mit</span><p>einem statischen Adresskonflikt. APIPA weist auf die ausgebliebene DHCP-Antwort.</p></dd>
     <dd><span class="label">So fragt die IHK</span><p>Ursache der 169.254-Adresse erklären.</p></dd>
@@ -1791,7 +1796,7 @@ H24 1.5   Netz 192.168.20.0/24, Router .1, DHCP vergibt .20 bis .254
 
   <dl class="begriff" id="a1-begriff-mac">
     <dt>MAC-Adresse und OUI <span class="en">(Media Access Control, Organizationally Unique Identifier)</span></dt>
-    <dd><span class="label">Was es ist</span><p>Die 48 Bit lange Hardware-Nummer einer Netzwerkschnittstelle. Die ersten drei Hexpaare bilden die Herstellerkennung OUI.<sup class="q"><a href="#a1-q8" title="IEEE OUI">8</a></sup></p></dd>
+    <dd><span class="label">Was es ist</span><p>Eine meist 48 Bit lange Kennung einer Netzwerkschnittstelle. Bei klassisch vergebenen EUI-48-Adressen enthalten die ersten drei Hexpaare die OUI; lokal gewählte Adressen bilden eine Ausnahme.<sup class="q"><a href="#a1-q8" title="IEEE OUI">8</a></sup></p></dd>
     <dd><span class="label">Wo es dir begegnet</span><p><code>ipconfig /all</code> zeigt die physische Adresse.</p></dd>
     <dd><span class="label">Nicht verwechseln mit</span><p>der IP-Adresse. Die MAC bleibt die Hardware-Nummer, die IP ordnet das Gerät im Netz ein.</p></dd>
     <dd><span class="label">So fragt die IHK</span><p>Die OUI aus einer MAC-Adresse ablesen.</p></dd>
@@ -2267,7 +2272,7 @@ H21 3.3   Gesamtdauer     20 · 2 h            = 40 h
 
 <section id="a2-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 14 Aufgaben</h3>
   <article class="aufgabe" id="a2-ihk-h21-3-2">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 3.2, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a2-q10" title="AP1 Herbst 2021">10</a></sup></p>
@@ -2498,14 +2503,14 @@ H21 3.3   Gesamtdauer     20 · 2 h            = 40 h
       <p class="loesung-label">Lösung</p><div class="antwort"><p>Die Formel lautet: Break-even-Menge = Fixkosten / Deckungsbeitrag je Stück. Der Deckungsbeitrag ist der Verkaufspreis abzüglich der variablen Stückkosten (db = p − kv); er gibt an, wie viel jedes verkaufte Stück zur Deckung der Fixkosten beiträgt.</p></div>
     </li>
     <li>Welche steuerliche Sonderregelung gilt seit dem BMF-Schreiben vom 22.02.2022 für die Nutzungsdauer von Computerhardware und Standardsoftware?
-      <p class="loesung-label">Lösung</p><div class="antwort"><p>Für digitale Wirtschaftsgüter wie Computerhardware, Notebooks, Peripheriegeräte und Betriebs-/Anwendersoftware kann steuerlich eine betriebsgewöhnliche Nutzungsdauer von einem Jahr zugrunde gelegt werden, was einer vollständigen Abschreibung im Anschaffungsjahr entspricht.</p></div>
+      <p class="loesung-label">Lösung</p><div class="antwort"><p>Für bestimmte Computerhardware und Software darf steuerlich eine Nutzungsdauer von einem Jahr angesetzt werden. Das BMF beanstandet es nicht, wenn die Abschreibung vollständig im Anschaffungsjahr erfolgt; das ist eine zulässige Handhabung, keine eigene Abschreibungsart.</p></div>
     </li>
   </ol>
 </section>
 
 <section id="a2-begriffe">
   <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 7 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a2-begriff-bezugspreis">Bezugspreis und Bezugskalkulation</a><a href="#a2-begriff-skonto">Skonto und Zahlungsziel</a><a href="#a2-begriff-laufende-kosten">Einmalige und laufende Kosten / TCO</a><a href="#a2-begriff-leasing">Leasing und Kauf</a><a href="#a2-begriff-ratendarlehen">Ratendarlehen</a><a href="#a2-begriff-break-even">Break-even-Point und Deckungsbeitrag</a><a href="#a2-begriff-afa">Abschreibung / AfA</a></nav>
 
@@ -2628,7 +2633,7 @@ H21 3.3   Gesamtdauer     20 · 2 h            = 40 h
   <h4 id="a3-k1">Das Problem: Der billigste ist nicht der beste</h4>
   <p><strong>Drei Geräte</strong> stehen zur Wahl, und keines ist in allem das beste. Das günstigste hält den Sturz vom Hubwagen nicht aus. Das robusteste kostet fast das Doppelte. Das dritte liegt überall im Mittelfeld. Nach dem Preis allein zu entscheiden, wäre falsch; nach Gefühl zu entscheiden, lässt sich niemandem erklären, am wenigsten der Geschäftsführung.</p>
   <p><strong>Die Nutzwertanalyse</strong> löst das, indem sie die Entscheidung in Zahlen zerlegt, die jeder nachrechnen kann. Zwei Angaben je Gerät und Eigenschaft: wie wichtig dir die Eigenschaft ist (die Gewichtung) und wie gut das Gerät sie erfüllt (der Punktwert). Beides malgenommen ergibt den Beitrag dieser Eigenschaft, alle Beiträge zusammen den Nutzwert des Geräts. Das höchste Ergebnis gewinnt.</p>
-  <p><strong>Die Gewichtung</strong> vergibst du vorher, nicht nachher, und zwar für alle Geräte gleich. Alle Gewichte zusammen ergeben 100&nbsp;%, damit sich nichts doppelt zählt. Der Punktwert dagegen wird je Gerät einzeln vergeben, meist auf einer Skala von 1 bis 5 oder 1 bis 10, die die Aufgabe vorgibt. Wer die Gewichtung erst festlegt, nachdem er die Angebote kennt, rechnet sich sein Wunschergebnis zurecht; genau das soll das Verfahren verhindern. In vier Phasen läuft es ab (Abb. A3-1).<sup class="q"><a href="#a3-q1" title="Zangemeister 1970">1</a></sup></p>
+  <p><strong>Die Gewichtung</strong> vergibst du vorher, nicht nachher, und zwar für alle Geräte gleich. Alle Gewichte zusammen ergeben 100&nbsp;%, damit die Gewichtung normiert ist. Ähnliche Kriterien solltest du trotzdem nicht doppelt bewerten. Der Punktwert dagegen wird je Gerät einzeln vergeben, meist auf einer Skala von 1 bis 5 oder 1 bis 10, die die Aufgabe vorgibt. Wer die Gewichtung erst festlegt, nachdem er die Angebote kennt, rechnet sich sein Wunschergebnis zurecht; genau das soll das Verfahren verhindern. In vier Phasen läuft es ab (Abb. A3-1).<sup class="q"><a href="#a3-q1" title="Zangemeister 1970">1</a></sup></p>
 
   <figure class="abb">
     <svg viewBox="0 0 640 160" role="img" aria-labelledby="a3-abb1-t">
@@ -2904,7 +2909,7 @@ Gesamtnutzwert  = 1,80 + 2,25 + 1,50 + 1,60 = 7,15 Punkte (Rang 2)</pre>
 
 <section id="a3-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 5 Aufgaben</h3>
   <article class="aufgabe" id="a3-ihk-h22-3-7">
     <p class="herkunft">AP1 Herbst 2022, Aufgabe 3.7, 10 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a3-q7" title="AP1 Herbst 2022">7</a></sup></p>
@@ -2987,8 +2992,8 @@ Gesamtnutzwert  = 1,80 + 2,25 + 1,50 + 1,60 = 7,15 Punkte (Rang 2)</pre>
 <section id="a3-beispiele">
   <h3>Gelöste Kurzbeispiele</h3>
   <ol class="kurzbeispiele">
-    <li>Warum müssen monetäre Kostenkriterien sauber von den Nutzwertkriterien getrennt werden?
-      <p class="loesung-label">Lösung</p><div class="antwort"><p>Weil die Nutzwertanalyse die qualitative und technische Leistungsfähigkeit misst. Werden Kosten als normales Kriterium eingerechnet, verzerrt dies das Bild. Die saubere Methode ist die Kosten-Nutzen-Analyse: Gesamtnutzwert geteilt durch Anschaffungs- bzw. Lebenszykluskosten.</p></div>
+    <li>Wie berücksichtigst du Kosten in einer Nutzwertanalyse, wenn der Preis als Kriterium vorgegeben ist?
+      <p class="loesung-label">Lösung</p><div class="antwort"><p>Der Preis darf ein gewichtetes Kriterium sein. Lege vorher eine nachvollziehbare Skala fest: geringere Kosten erhalten mehr Punkte. Werte den Preis genau einmal und mit demselben Gewicht für alle Angebote. Alternativ kannst du den rein technischen Nutzwert und die Kosten getrennt darstellen; entscheide nach der konkreten Aufgabenstellung.</p></div>
     </li>
     <li>Was ist der Unterschied zwischen einem normalen Bewertungskriterium und einem K.-o.-Kriterium?
       <p class="loesung-label">Lösung</p><div class="antwort"><p>Ein normales Kriterium fließt mit seinem Gewichtungsprozentsatz in die Gesamtsumme ein; schwache Leistungen können durch Stärken bei anderen Kriterien kompensiert werden. Ein K.-o.-Kriterium ist eine unabdingbare Mindestbedingung: Wird sie nicht erfüllt, führt dies zum sofortigen Ausschluss der Alternative.</p></div>
@@ -3001,7 +3006,7 @@ Gesamtnutzwert  = 1,80 + 2,25 + 1,50 + 1,60 = 7,15 Punkte (Rang 2)</pre>
 
 <section id="a3-begriffe">
   <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 7 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a3-begriff-kriterium">Kriterium und Zielsystem</a><a href="#a3-begriff-gewichtung">Gewichtung</a><a href="#a3-begriff-punktwert">Erfüllungsgrad und Punktwert</a><a href="#a3-begriff-teilnutzwert">Teilnutzwert</a><a href="#a3-begriff-gesamtnutzwert">Gesamtnutzwert und Rangfolge</a><a href="#a3-begriff-ko-kriterium">K.-o.-Kriterium</a><a href="#a3-begriff-sensitivitaet">Sensitivität</a></nav>
 
@@ -3144,7 +3149,7 @@ Gesamtnutzwert  = 1,80 + 2,25 + 1,50 + 1,60 = 7,15 Punkte (Rang 2)</pre>
       <text class="ta rechts" x="300" y="128">8 Schalter</text>
       <line class="a" x1="310" y1="124" x2="348" y2="124" marker-end="url(#pfeil-a)"/>
       <text class="ta" x="356" y="128">256 Möglichkeiten</text>
-      <text class="t2" x="480" y="128">ein Byte, ein Zeichen</text>
+      <text class="t2" x="480" y="128">ASCII: 1 Byte je Zeichen</text>
       <text class="ta rechts" x="300" y="156">10 Schalter</text>
       <line class="a" x1="310" y1="152" x2="348" y2="152" marker-end="url(#pfeil-a)"/>
       <text class="ta" x="356" y="156">1.024 Möglichkeiten</text>
@@ -3154,11 +3159,11 @@ Gesamtnutzwert  = 1,80 + 2,25 + 1,50 + 1,60 = 7,15 Punkte (Rang 2)</pre>
       <text class="t2" x="356" y="180">65.536 Möglichkeiten</text>
       <text class="t2" x="480" y="180">Farbtiefe 16 Bit</text>
     </svg>
-    <figcaption>Abb. A4-1: Verdoppeln statt Zählen. Aus dieser einen Regel folgen das Byte mit 256 Zeichen, die 1.024 der Speicherleiter und jede Farbtiefe.</figcaption>
+    <figcaption>Abb. A4-1: Verdoppeln statt Zählen. Ein Byte hat 256 mögliche Werte. Die Zuordnung zu Schriftzeichen hängt von der Kodierung ab; 1.024 und Farbtiefen folgen ebenfalls aus Zweierpotenzen.</figcaption>
   </figure>
 
-  <p><strong>Acht Bit zusammen heißen ein Byte.</strong> Acht Schalter ergeben 2<sup>8</sup> = 256 Möglichkeiten, und 256 reicht bequem für alle Buchstaben, Ziffern und Satzzeichen. Darum ist das Byte die Portion für ein Zeichen: Ein „A“ belegt ein Byte, eine Ziffer ebenso, auch das Leerzeichen.</p>
-  <p><strong>Und jetzt die erste Stolperstelle:</strong> Dateien und Speicher werden in Byte gezählt, Leitungen dagegen in Bit je Sekunde. Das ist kein Schikane, sondern kommt daher, dass eine Leitung die Schalter einzeln nacheinander überträgt, während eine Festplatte ganze Zeichen ablegt. Zwischen beiden Welten steht der Faktor 8 (Abb. A4-2).</p>
+  <p><strong>Acht Bit zusammen heißen ein Byte.</strong> Sie können 2<sup>8</sup> = 256 verschiedene Werte darstellen. Welche Zeichen daraus werden, entscheidet die Zeichenkodierung: ASCII-Zeichen wie „A“, eine Ziffer oder das Leerzeichen belegen in UTF-8 je ein Byte. Ein Umlaut wie „ü“ braucht dort zwei, viele Emojis brauchen vier. Ein Byte ist daher keine allgemeine Einheit für „ein Zeichen“.</p>
+  <p><strong>Und jetzt die erste Stolperstelle:</strong> Dateien und Speicher werden in Byte gezählt, Leitungen dagegen in Bit je Sekunde. Es sind unterschiedliche übliche Maßeinheiten; beide beschreiben Datenmengen beziehungsweise Datenraten. Für die Umrechnung gilt immer: 1 Byte = 8 Bit (Abb. A4-2).</p>
 
   <figure class="abb">
     <svg viewBox="0 0 640 252" role="img" aria-labelledby="a4-abb2-t">
@@ -3476,10 +3481,10 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
   <div class="merke" data-art="Für die Prüfung reicht"><p>Hinschreiben musst du nur die Kette mit Einheiten: erst die Menge für ein Stück, dann mal der Anzahl, dann die Umrechnung, zuletzt der Abschlag für die Kompression. Achte nur auf zwei Stellen: Bit oder Byte, und 1.000 oder 1.024. Jeder Zwischenschritt mit hingeschriebener Einheit ist ein Punkt, auch wenn die letzte Zahl daneben liegt.</p></div>
 
   <h4 id="a4-k9">Textdatei oder Binärdatei: ASCII gegen Binärformat</h4>
-  <p><strong>Jede Datei besteht aus Bytes.</strong> Der Unterschied liegt darin, was die Bytes bedeuten. In einer <strong>ASCII- oder Textdatei</strong> steht jedes Byte für ein Zeichen: Buchstabe, Ziffer, Leerzeichen, Zeilenumbruch. Die Zahl 1234 belegt vier Bytes, eines je Ziffer, und jeder Texteditor zeigt sie lesbar an. In einer <strong>Binärdatei</strong> stehen die Bytes für die Werte selbst, so wie das Programm sie im Speicher hält: Dieselbe Zahl passt in zwei Bytes, ist im Editor aber nur Zeichensalat. Binär ist kompakter und schneller zu lesen; Text ist für Menschen lesbar und mit jedem Editor zu ändern.<sup class="q"><a href="#a4-q4" title="RFC 3629: UTF-8, ASCII-kompatible Zeichenkodierung">4</a></sup></p>
-  <p><strong>F24 3.3</strong> fragte genau das an einer PLY-Datei: ASCII-Variante, mit einem Texteditor les- und bearbeitbar (zwei Punkte); Binärvariante, anwendungsspezifisch, braucht das passende Programm (zwei Punkte). Schließe daraus nicht, Textdateien lägen „nicht binär“ auf der Platte. Auch sie sind Bytes, nur eben Zeichen-Bytes.<sup class="q"><a href="#a4-q8" title="AP1 Frühjahr 2024, Aufgabe 3.3">8</a></sup></p>
+  <p><strong>Jede Datei besteht aus Bytes.</strong> Der Unterschied liegt darin, was die Bytes bedeuten. In einer <strong>ASCII-Datei</strong> steht jedes Byte für ein Zeichen. Bei UTF-8-Textdateien können Zeichen mehrere Bytes belegen; die vier ASCII-Ziffern „1234“ brauchen aber genau vier Bytes. Ein Texteditor kann sie lesen. In einem <strong>binären Zahlenformat</strong> könnte derselbe Zahlenwert als 16-Bit-Ganzzahl in zwei Bytes stehen; ein Texteditor zeigt diese Bytes nicht unbedingt als „1234“ an. Binärformate können für solche Daten kompakter sein, Textformate sind leichter direkt zu lesen.<sup class="q"><a href="#a4-q4" title="RFC 3629: UTF-8, ASCII-kompatible Zeichenkodierung">4</a></sup></p>
+  <p><strong>F24 3.3</strong> fragte genau das an einer PLY-Datei: ASCII-Variante, mit einem Texteditor les- und bearbeitbar (zwei Punkte); Binärvariante, anwendungsspezifisch, braucht das passende Programm (zwei Punkte). Schließe daraus nicht, Textdateien lägen „nicht binär“ auf der Platte. Auch Text wird als Bytes gespeichert; die Kodierung bestimmt, wie daraus Zeichen werden.<sup class="q"><a href="#a4-q8" title="AP1 Frühjahr 2024, Aufgabe 3.3">8</a></sup></p>
 
-  <p><strong>Wie viele Bytes ein Zeichen wirklich belegt,</strong> hängt an der Kodierung, also an der Tabelle, die Zeichen auf Zahlen abbildet. In UTF-8, der heute üblichen, belegen die Zeichen des englischen Alphabets je ein Byte. Umlaute und das ß brauchen zwei Byte, seltene Sonderzeichen bis zu vier. Die Dateigröße einer Textdatei ist also nur dann genau die Zahl der Zeichen, wenn keine Umlaute vorkommen.<sup class="q"><a href="#a4-q4" title="RFC 3629, UTF-8">4</a></sup></p>
+  <p><strong>Wie viele Bytes ein Zeichen wirklich belegt,</strong> hängt an der Kodierung, also an der Tabelle, die Zeichen auf Zahlen abbildet. In UTF-8, der heute üblichen, belegen die Zeichen des englischen Alphabets je ein Byte. Umlaute und das ß brauchen zwei Byte, seltene Sonderzeichen bis zu vier. Die Zahl der Bytes entspricht der Zahl der Zeichen nur bei Text aus einbyteigen Zeichen, zum Beispiel reinem ASCII in UTF-8. Zeilenumbrüche oder eine Bytereihenfolge-Markierung können zusätzlich Bytes belegen.<sup class="q"><a href="#a4-q4" title="RFC 3629, UTF-8">4</a></sup></p>
 
   <h4 id="a4-k6">Rechenweg-Schema</h4>
 <pre class="rechenweg">Gegeben: Backup-Volumen 450 GiB, Standleitung 100 Mbit/s, 85 % Nutzdatenrate
@@ -3615,7 +3620,7 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 
 <section id="a4-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 10 Aufgaben</h3>
   <article class="aufgabe" id="a4-ihk-f22-2-11">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 2.11, 1 Punkt, sinngemäß wiedergegeben<sup class="q"><a href="#a4-q10" title="AP1 Frühjahr 2022">10</a></sup></p>
@@ -3782,7 +3787,7 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 
 <section id="a4-begriffe">
   <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 8 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a4-begriff-bit-byte">Bit und Byte</a><a href="#a4-begriff-praefixe">SI-Präfixe und Binärpräfixe</a><a href="#a4-begriff-aufloesung">Bildauflösung, DPI und Farbtiefe</a><a href="#a4-begriff-audio">Audiodatenrate und Abtastung</a><a href="#a4-begriff-datenrate">Datenrate und Bandbreite</a><a href="#a4-begriff-uebertragungszeit">Übertragungszeit</a><a href="#a4-begriff-overhead">Protokoll-Overhead</a><a href="#a4-begriff-zahlensysteme">Zahlensysteme</a></nav>
 
@@ -3881,7 +3886,7 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 
 <section id="a5-worum">
   <h3>Worum es geht</h3>
-  <p>Eine Steuerkanzlei mit zwölf Arbeitsplätzen meldet, dass in einem Büro immer wieder die Sicherung fällt. Vor Ort hängen drei Rechner, ein Laserdrucker und eine Kaffeemaschine an einer einzigen Mehrfachsteckdose. Du sollst zwei Dinge liefern: den rechnerischen Nachweis, dass diese Steckdose überlastet ist, und ein Angebot über zwölf neue Rechner, in dem die Stromkosten über die Nutzungsdauer mitgerechnet sind. Beides ist dieselbe Rechnung in zwei Richtungen – Leistung, Zeit und Preis. Wer P&nbsp;=&nbsp;U&nbsp;·&nbsp;I und E&nbsp;=&nbsp;P&nbsp;·&nbsp;t sicher anwendet, kommt in wenigen Zeilen zum Ergebnis. Die Prüfung fragt das regelmäßig ab, weil ein Arbeitsplatz erst dann eingerichtet ist, wenn er sicher versorgt ist und im Betrieb bezahlbar bleibt.<sup class="q"><a href="#a5-q1" title="Hering, Physik für Ingenieure">1</a></sup></p>
+  <p>Eine Steuerkanzlei mit zwölf Arbeitsplätzen meldet, dass in einem Büro immer wieder die Sicherung fällt. Vor Ort hängen drei Rechner, ein Laserdrucker, eine Kaffeemaschine und ein Klimagerät an einer einzigen Mehrfachsteckdose. Du sollst zwei Dinge liefern: den rechnerischen Nachweis, dass diese Steckdose überlastet ist, und ein Angebot über zwölf neue Rechner, in dem die Stromkosten über die Nutzungsdauer mitgerechnet sind. Beides ist dieselbe Rechnung in zwei Richtungen – Leistung, Zeit und Preis. Wer P&nbsp;=&nbsp;U&nbsp;·&nbsp;I und E&nbsp;=&nbsp;P&nbsp;·&nbsp;t sicher anwendet, kommt in wenigen Zeilen zum Ergebnis. Die Prüfung fragt das regelmäßig ab, weil ein Arbeitsplatz erst dann eingerichtet ist, wenn er sicher versorgt ist und im Betrieb bezahlbar bleibt.<sup class="q"><a href="#a5-q1" title="Hering, Physik für Ingenieure">1</a></sup></p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 7 Aufgaben</h3>
   <nav aria-label="Prüfungsaufgaben dieses Kapitels"><div class="tabelle"><table>
     <caption>Wo die Antwort steht</caption>
@@ -3935,9 +3940,9 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
   <p><strong>Genau diese Umstellung verlangte H25 3.5:</strong> Ein Terminal hat ein Netzteil mit 24 V und 0,5 A und soll alternativ über USB mit 5 V laufen. Erst die Leistung ausrechnen, dann durch die neue Spannung teilen, wie oben gezeigt. H25 3.6 fragte anschließend nach der Störungsursache: Ein gewöhnlicher USB-Anschluss liefert diese Stromstärke nicht dauerhaft, erst recht nicht, wenn Tastatur, Maus und Scanner am selben Rechner mitversorgt werden.<sup class="q"><a href="#a5-q9" title="AP1 Herbst 2025, Aufgaben 3.5 und 3.6">9</a></sup></p>
 <h4 id="a5-k9">2. Der Überlastnachweis: Wie viel hält eine Steckdose aus?</h4>
   <p><strong>Frage vorab:</strong> Auf der Steckdosenleiste steht „maximal 16&nbsp;A“, auf den Geräten steht Watt. Welche Zahl fehlt dir zum Vergleichen?</p>
-  <p class="loesung-label">Lösung</p><div class="antwort"><p>Die Spannung. An jeder deutschen Steckdose sind es 230&nbsp;V, also hält die Leiste 230&nbsp;V&nbsp;·&nbsp;16&nbsp;A&nbsp;=&nbsp;3.680&nbsp;W aus.</p></div>
-  <p><strong>Zurück zur Kanzlei.</strong> Auf der Mehrfachsteckdose steht „maximal 16&nbsp;A“. Das ist die Menge, die die Leiste aushält. Auf den Geräten steht aber Watt. Um beides vergleichen zu können, rechnest du die Grenze in Watt um, und dafür fehlt die Spannung. Sie steht selten in der Aufgabe, denn in Deutschland liegen an jeder Steckdose 230&nbsp;V. Diese Zahl musst du im Kopf haben. Grenze: 16&nbsp;A&nbsp;·&nbsp;230&nbsp;V&nbsp;=&nbsp;3.680&nbsp;W.<sup class="q"><a href="#a5-q7" title="AP1 Herbst 2021, Aufgabe 2.4">7</a></sup></p>
-  <p><strong>Dann summierst du den Bedarf.</strong> Drei Rechner mit je 180&nbsp;W, ein Drucker mit 400&nbsp;W, eine Kaffeemaschine mit 1.200&nbsp;W und ein Klimagerät mit 2.000&nbsp;W: 3&nbsp;·&nbsp;180&nbsp;W&nbsp;+&nbsp;400&nbsp;W&nbsp;+&nbsp;1.200&nbsp;W&nbsp;+&nbsp;2.000&nbsp;W&nbsp;=&nbsp;4.140&nbsp;W. Zuletzt vergleichst du: 4.140&nbsp;W liegen über 3.680&nbsp;W, also fällt die Sicherung, gleichzeitiger Betrieb ist nicht möglich. Abb. A5-2 zeigt den Vergleich als Balken. Die drei Schritte Grenze, Bedarf, Vergleich sind in H21 2.4 auch die Punkte; schreibe alle drei hin, nicht nur das Ergebnis.<sup class="q"><a href="#a5-q7" title="AP1 Herbst 2021, Aufgabe 2.4">7</a></sup></p>
+  <p class="loesung-label">Lösung</p><div class="antwort"><p>Die Nennspannung des deutschen Stromnetzes beträgt 230&nbsp;V. Für die Prüfungsrechnung ergibt 230&nbsp;V&nbsp;·&nbsp;16&nbsp;A eine rechnerische Grenze von 3.680&nbsp;W für ohmsche Lasten; maßgeblich ist die angegebene Strombelastbarkeit der Leiste.</p></div>
+  <p><strong>Zurück zur Kanzlei.</strong> Auf der Mehrfachsteckdose steht „maximal 16&nbsp;A“. Das ist die Menge, die die Leiste aushält. Auf den Geräten steht aber Watt. Um beides vergleichen zu können, rechnest du die Grenze in Watt um, und dafür fehlt die Spannung. Wenn die Aufgabe keine andere Spannung vorgibt, rechne mit 230&nbsp;V Nennspannung. Für die vereinfachte Prüfungsrechnung ergibt sich bei 16&nbsp;A eine Grenze von 3.680&nbsp;W. Bei Wechselstrom hängt die tatsächliche Wirkleistung zusätzlich vom Leistungsfaktor ab; vergleiche im Praxisfall vor allem die zulässige Stromstärke der Leiste und des Stromkreises.<sup class="q"><a href="#a5-q7" title="AP1 Herbst 2021, Aufgabe 2.4">7</a></sup></p>
+  <p><strong>Dann summierst du den Bedarf.</strong> Drei Rechner mit je 180&nbsp;W, ein Drucker mit 400&nbsp;W, eine Kaffeemaschine mit 1.200&nbsp;W und ein Klimagerät mit 2.000&nbsp;W: 3&nbsp;·&nbsp;180&nbsp;W&nbsp;+&nbsp;400&nbsp;W&nbsp;+&nbsp;1.200&nbsp;W&nbsp;+&nbsp;2.000&nbsp;W&nbsp;=&nbsp;4.140&nbsp;W. Zuletzt vergleichst du: 4.140&nbsp;W liegen über der rechnerischen Grenze von 3.680&nbsp;W. Die Leiste beziehungsweise der Stromkreis darf so nicht belastet werden; ein Leitungsschutzschalter kann zeitverzögert auslösen. Abb. A5-2 zeigt den Vergleich als Balken. Die drei Schritte Grenze, Bedarf, Vergleich sind in H21 2.4 auch die Punkte; schreibe alle drei hin, nicht nur das Ergebnis.<sup class="q"><a href="#a5-q7" title="AP1 Herbst 2021, Aufgabe 2.4">7</a></sup></p>
 
   <figure class="abb">
     <svg viewBox="0 0 640 170" role="img" aria-labelledby="a5-abb2-t">
@@ -3954,7 +3959,7 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
       <line class="d" x1="508" y1="20" x2="508" y2="156"/>
       <text class="ta" x="562" y="127">+ 460 W</text>
     </svg>
-    <figcaption>Abb. A5-2: Der Bedarf ragt um 460 W über die Grenze der Leiste hinaus; deshalb fällt die Sicherung, sobald alle Geräte gleichzeitig laufen.</figcaption>
+    <figcaption>Abb. A5-2: Der rechnerische Bedarf liegt 460 W über der vereinfachten Grenze. Die Geräte sollten nicht zugleich an dieser Leiste betrieben werden; eine Sicherung löst bei Überlast nicht zwingend sofort aus.</figcaption>
   </figure>
 
   <h4 id="a5-k3">3. Von Watt zu Euro: Leistung mal Zeit</h4>
@@ -4222,7 +4227,7 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 
 <section id="a5-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 4 Aufgaben</h3>
   <article class="aufgabe" id="a5-ihk-h21-2-4">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 2.4, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a5-q7" title="AP1 Herbst 2021">7</a></sup></p>
@@ -4301,7 +4306,7 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 
 <section id="a5-begriffe">
   <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 8 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a5-begriff-uip">Spannung, Stromstärke und Leistung</a><a href="#a5-begriff-arbeit">Elektrische Arbeit und Kilowattstunde</a><a href="#a5-begriff-standby">Standby</a><a href="#a5-begriff-wirkungsgrad">Wirkungsgrad und 80 PLUS</a><a href="#a5-begriff-netzteil">Netzteil und Reserve</a><a href="#a5-begriff-amortisation">Amortisationszeit</a><a href="#a5-begriff-usv">Unterbrechungsfreie Stromversorgung</a><a href="#a5-begriff-belastbarkeit">Belastbarkeit und Gefahren des Stroms</a></nav>
 
@@ -4363,7 +4368,7 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 
   <dl class="begriff" id="a5-begriff-belastbarkeit">
     <dt>Belastbarkeit und Gefahren des Stroms <span class="en">(current rating, electrical hazard)</span></dt>
-    <dd><span class="label">Was es ist</span><p>Jede Leitung und jede Steckdosenleiste hält nur eine bestimmte Stromstärke aus, meist 16&nbsp;A. Bei 230&nbsp;V sind das 3.680&nbsp;W. Ziehen die Geräte zusammen mehr, fällt die Sicherung.<sup class="q"><a href="#a5-q2" title="IT-Handbuch, Elektrotechnik">2</a></sup><sup class="q"><a href="#a5-q10" title="DGUV Information 202-112, Abschnitt 2.2">10</a></sup></p></dd>
+    <dd><span class="label">Was es ist</span><p>Leitungen und Steckdosenleisten haben eine angegebene zulässige Stromstärke. Bei 16&nbsp;A und 230&nbsp;V Nennspannung ergibt die vereinfachte Rechnung 3.680&nbsp;W für ohmsche Lasten. Überschreite die Belastbarkeit nicht; Schutzeinrichtungen können bei Überlast zeitverzögert auslösen.<sup class="q"><a href="#a5-q2" title="IT-Handbuch, Elektrotechnik">2</a></sup><sup class="q"><a href="#a5-q10" title="DGUV Information 202-112, Abschnitt 2.2">10</a></sup></p></dd>
     <dd><span class="label">Wo es dir begegnet</span><p>Bei einer für 3.680&nbsp;W zugelassenen Leiste benötigen ein Drucker mit 1.200&nbsp;W und eine Kaffeemaschine mit 2.000&nbsp;W zusammen bereits 3.200&nbsp;W.</p></dd>
     <dd><span class="label">Nicht verwechseln mit</span><p>Stromschlag, Verbrennungen und Brand sind elektrische Gefährdungen. Beachte die zulässige Last, vermeide hintereinandergesteckte Leisten und schütze Leitungen vor Quetschung. Elektrische Anlagen lässt du fachkundig prüfen.<sup class="q"><a href="#a5-q10" title="DGUV Information 202-112, Abschnitt 2.2">10</a></sup></p></dd>
     <dd><span class="label">So fragt die IHK</span><p>Verwende die Spannung aus der Aufgabe beziehungsweise dem dort vorausgesetzten Netz. Für den Überlastnachweis: Grenzwert bestimmen, Bedarf summieren, vergleichen und Ergebnis begründen.</p></dd>
@@ -5079,7 +5084,7 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 
 <section id="a6-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 4 Aufgaben</h3>
   <article class="aufgabe" id="a6-ihk-h23-4-1">
     <p class="herkunft">AP1 Herbst 2023, Aufgabe 4.1, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a6-q6" title="AP1 Herbst 2023">6</a></sup></p>
@@ -5162,7 +5167,7 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 
 <section id="a6-begriffe">
   <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 8 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a6-begriff-vorgang">Vorgang und Anordnungsbeziehung</a><a href="#a6-begriff-faz-fez">FAZ und FEZ</a><a href="#a6-begriff-saz-sez">SAZ und SEZ</a><a href="#a6-begriff-gp">Gesamtpuffer</a><a href="#a6-begriff-fp">Freier Puffer</a><a href="#a6-begriff-kritischer-pfad">Kritischer Pfad</a><a href="#a6-begriff-meilenstein">Meilenstein</a><a href="#a6-begriff-gantt">Balkenplan</a></nav>
 
@@ -5846,7 +5851,7 @@ else
 
 <section id="a7-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 9 Aufgaben</h3>
   <article class="aufgabe" id="a7-ihk-f22-4-4">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 4.4, 9 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a7-q13" title="AP1 Frühjahr 2022">13</a></sup></p>
@@ -6046,7 +6051,7 @@ else
 
 <section id="a7-begriffe">
   <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 9 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a7-begriff-variable">Variable, Datentyp und Zuweisung</a><a href="#a7-begriff-bedingung">Bedingung und boolescher Ausdruck</a><a href="#a7-begriff-schleife">Schleife</a><a href="#a7-begriff-array">Array und Index</a><a href="#a7-begriff-akkumulator">Akkumulator</a><a href="#a7-begriff-pseudocode">Pseudocode</a><a href="#a7-begriff-schreibtischtest">Schreibtischtest</a><a href="#a7-begriff-compiler">Compiler und Interpreter</a><a href="#a7-begriff-fehler">Logischer Fehler und Laufzeitfehler</a></nav>
 
@@ -6800,7 +6805,7 @@ Klassendiagramm
 
 <section id="a8-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 0 Aufgaben</h3>
 
   
@@ -6826,7 +6831,7 @@ Klassendiagramm
 
 <section id="a8-begriffe">
   <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 9 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a8-begriff-akteur">Akteur</a><a href="#a8-begriff-anwendungsfall">Anwendungsfall und Systemgrenze</a><a href="#a8-begriff-include-extend">include und extend</a><a href="#a8-begriff-aktion">Aktion</a><a href="#a8-begriff-entscheidung">Entscheidungsknoten und Bedingung</a><a href="#a8-begriff-gabelung">Gabelung und Synchronisation</a><a href="#a8-begriff-klasse">Klasse, Attribut und Methode</a><a href="#a8-begriff-sichtbarkeit">Sichtbarkeit</a><a href="#a8-begriff-assoziation">Assoziation und Multiplizität</a></nav>
 
@@ -7625,7 +7630,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <section id="a9-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 14 Aufgaben</h3>
   <article class="aufgabe" id="a9-ihk-h22-4-1">
     <p class="herkunft">AP1 Herbst 2022, Aufgabe 4.1, 3 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a9-q10" title="AP1 Herbst 2022">10</a></sup></p>
@@ -7854,7 +7859,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <section id="a9-begriffe">
   <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 8 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#a9-begriff-entitaet">Entität und Attribut</a><a href="#a9-begriff-beziehung">Beziehung und Kardinalität</a><a href="#a9-begriff-primaerschluessel">Primärschlüssel</a><a href="#a9-begriff-fremdschluessel">Fremdschlüssel</a><a href="#a9-begriff-notation">Chen-Notation und Krähenfußnotation</a><a href="#a9-begriff-beziehungstabelle">Beziehungstabelle</a><a href="#a9-begriff-redundanz">Redundanz und Anomalie</a><a href="#a9-begriff-normalform">Normalform</a></nav>
 
@@ -8008,7 +8013,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
   <p><strong>So fragt die IHK hier:</strong> H21 4.1 verlangt, vorgegebene Maßnahmen den drei Schutzzielen zuzuordnen. H23 3.5 fragt, welche Schutzziele bei den Daten einer ausgebauten SSD betroffen sind, nämlich Vertraulichkeit und Integrität. F25 2.4 will umgekehrt zu einer beschriebenen Maßnahme das erreichte Schutzziel genannt haben. In allen drei Fällen ist die Antwort eines der drei Wörter plus ein Satz, welcher Schaden damit verhindert wird. <sup class="q"><a href="#b1-q6" title="AP1 Frühjahr 2025">6</a></sup><sup class="q"><a href="#b1-q10" title="AP1 Herbst 2021">10</a></sup><sup class="q"><a href="#b1-q12" title="AP1 Herbst 2023">12</a></sup></p>
 <h4 id="b1-k15">Baustein 2: Schutzbedarf, also wie schlimm der Schaden wäre</h4>
-<p><strong>Nicht alles</strong> braucht denselben Schutz. Bevor du Maßnahmen wählst, ordnest du jede Anwendung nach der Frage: Wie schlimm wäre der Schaden? Das BSI nennt das Schutzbedarfsfeststellung und kennt drei Stufen. Normal heißt: Der Schaden ist begrenzt und überschaubar. Hoch heißt: Der Schaden kann beträchtlich sein. Sehr hoch heißt: Der Schaden kann das Unternehmen in seiner Existenz bedrohen.<sup class="q"><a href="#b1-q7" title="BSI-Standard 200-2, Abschnitt Schutzbedarfsfeststellung: Kategorien normal, hoch, sehr hoch">7</a></sup></p>
+<p><strong>Nicht alles</strong> braucht denselben Schutz. Bevor du Maßnahmen wählst, ordnest du jede Anwendung nach der Frage: Wie schlimm wäre der Schaden? Das BSI nennt das Schutzbedarfsfeststellung und unterscheidet die Stufen normal, hoch und sehr hoch. Normal heißt: Der Schaden ist begrenzt und überschaubar. Hoch heißt: Der Schaden kann beträchtlich sein. Sehr hoch heißt: Der Schaden kann das Unternehmen in seiner Existenz bedrohen. Die Prüfungsaufgabe H21 verwendet für die niedrige Stufe die Bezeichnung „niedrig bis mittel“ beziehungsweise „mittel“; übernimm in der Antwort die vorgegebene Bezeichnung.<sup class="q"><a href="#b1-q7" title="BSI-Standard 200-2, Abschnitt Schutzbedarfsfeststellung: Kategorien normal, hoch, sehr hoch">7</a></sup></p>
 <p><strong>Die Prüfung</strong> gibt dir meist Anwendung, Schutzziel und Stufe vor und will die Begründung. Die Begründung muss die Schadenshöhe treffen, nicht das Schutzziel wiederholen. Herbst 2021 machte das an einer Arztpraxis vor.<sup class="q"><a href="#b1-q10" title="Lösungshinweise Herbst 2021, Aufgabe 4.3: 2 Punkte je Begründung">10</a></sup></p>
 <div class="tabelle"><table><caption>Schutzbedarf begründen, Beispiel Arztpraxis aus Herbst 2021</caption><thead><tr><th>Anwendung</th><th>Schutzziel</th><th>Stufe</th><th>Begründung, die zur Stufe passt</th></tr></thead><tbody><tr><td>Textverarbeitung</td><td>Verfügbarkeit</td><td>mittel</td><td>Fällt sie aus, werden Patientenbriefe und Rechnungen verspätet geschrieben. Ärgerlich, aber überschaubar.</td></tr><tr><td>Videosprechstunde</td><td>Vertraulichkeit</td><td>hoch</td><td>Werden Gespräche bekannt, sind die Betroffenen erheblich beeinträchtigt.</td></tr><tr class="hervor"><td>Patientendaten</td><td>Integrität</td><td>sehr hoch</td><td>Fehlerhafte Einträge können zu falschen Diagnosen und Behandlungen führen.</td></tr></tbody></table></div>
 <div class="merke" data-art="Typischer Fehler"><p>Als Begründung das Schutzziel wiederholen („weil die Daten vertraulich sind“). Das bringt keinen Punkt. Der Punkt steckt im Schaden: Wer wird wie stark getroffen, wenn es passiert?</p></div>
@@ -8030,7 +8035,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <h4 id="b1-k4">Kriterien eines sicheren Passworts</h4>
 <p><strong>Ein gutes Passwort</strong> ist vor allem lang, denn jedes Zeichen mehr vervielfacht die Zahl der Möglichkeiten, die ein Angreifer durchprobieren müsste. Es wird nur für einen Dienst verwendet, denn wird ein Dienst geknackt, probieren Angreifer dasselbe Passwort sofort überall sonst. Ein Passwortmanager merkt sich die vielen langen Passwörter. Ein routinemäßiger Wechsel ohne Anlass bringt nichts; geändert wird, wenn ein Verdacht besteht. Für wichtige Konten kommt ein zweiter Faktor dazu. Wie der Server das Passwort speichert, steht in <a href="#b2">B2</a>.<sup class="q"><a href="#b1-q5" title="Passwortregeln (Länge vor Komplexität, kein Zwang zum regelmäßigen Wechsel, Einsatz von Passwortmanagern)">5</a></sup></p>
 <p><strong>Was das ausmacht,</strong> zeigt Abb. B1-8: dasselbe Konto mit einem kurzen Passwort, mit einem langen und mit einem langen plus zweitem Faktor.<sup class="q"><a href="#b1-q5" title="Passwortregeln (Länge vor Komplexität, zweiter Faktor)">5</a></sup></p>
-<figure class="abb"><svg viewBox="0 0 640 262" role="img" aria-labelledby="b1-abb8-t"><title id="b1-abb8-t">Drei Passwörter in derselben Lage: was der Angreifer damit erreicht</title><text x="320" y="20" class="mitte t2">Ein Angreifer hat die Passwortliste des Dienstes und probiert automatisch durch.</text><text x="10" y="46" class="tb">1 · kurz, 8 Zeichen</text><rect class="f" x="10" y="54" width="14" height="20"/><rect class="f" x="27" y="54" width="14" height="20"/><rect class="f" x="44" y="54" width="14" height="20"/><rect class="f" x="61" y="54" width="14" height="20"/><rect class="f" x="78" y="54" width="14" height="20"/><rect class="f" x="95" y="54" width="14" height="20"/><rect class="f" x="112" y="54" width="14" height="20"/><rect class="f" x="129" y="54" width="14" height="20"/><rect class="d" x="146" y="54" width="14" height="20"/><rect class="d" x="163" y="54" width="14" height="20"/><rect class="d" x="180" y="54" width="14" height="20"/><rect class="d" x="197" y="54" width="14" height="20"/><rect class="d" x="214" y="54" width="14" height="20"/><rect class="d" x="231" y="54" width="14" height="20"/><rect class="d" x="248" y="54" width="14" height="20"/><rect class="d" x="265" y="54" width="14" height="20"/><rect class="d" x="282" y="54" width="14" height="20"/><rect class="d" x="299" y="54" width="14" height="20"/><rect class="d" x="316" y="54" width="14" height="20"/><rect class="d" x="333" y="54" width="14" height="20"/><rect class="a" x="10" y="54" width="133" height="20"/><text x="10" y="94" class="t2">Acht Zeichen probiert ein Rechner automatisch durch – der Angreifer kommt herein.</text><text x="10" y="122" class="tb">2 · lang, 20 Zeichen, je Dienst ein eigenes</text><rect class="f" x="10" y="130" width="14" height="20"/><rect class="f" x="27" y="130" width="14" height="20"/><rect class="f" x="44" y="130" width="14" height="20"/><rect class="f" x="61" y="130" width="14" height="20"/><rect class="f" x="78" y="130" width="14" height="20"/><rect class="f" x="95" y="130" width="14" height="20"/><rect class="f" x="112" y="130" width="14" height="20"/><rect class="f" x="129" y="130" width="14" height="20"/><rect class="f" x="146" y="130" width="14" height="20"/><rect class="f" x="163" y="130" width="14" height="20"/><rect class="f" x="180" y="130" width="14" height="20"/><rect class="f" x="197" y="130" width="14" height="20"/><rect class="f" x="214" y="130" width="14" height="20"/><rect class="f" x="231" y="130" width="14" height="20"/><rect class="f" x="248" y="130" width="14" height="20"/><rect class="f" x="265" y="130" width="14" height="20"/><rect class="f" x="282" y="130" width="14" height="20"/><rect class="f" x="299" y="130" width="14" height="20"/><rect class="f" x="316" y="130" width="14" height="20"/><rect class="f" x="333" y="130" width="14" height="20"/><text x="10" y="170" class="t2">Durchprobieren lohnt nicht mehr. Wer dasselbe Passwort woanders nutzt, verliert diesen Vorteil.</text><text x="10" y="198" class="tb">3 · lang plus zweiter Faktor</text><rect class="f" x="10" y="206" width="14" height="20"/><rect class="f" x="27" y="206" width="14" height="20"/><rect class="f" x="44" y="206" width="14" height="20"/><rect class="f" x="61" y="206" width="14" height="20"/><rect class="f" x="78" y="206" width="14" height="20"/><rect class="f" x="95" y="206" width="14" height="20"/><rect class="f" x="112" y="206" width="14" height="20"/><rect class="f" x="129" y="206" width="14" height="20"/><rect class="f" x="146" y="206" width="14" height="20"/><rect class="f" x="163" y="206" width="14" height="20"/><rect class="f" x="180" y="206" width="14" height="20"/><rect class="f" x="197" y="206" width="14" height="20"/><rect class="f" x="214" y="206" width="14" height="20"/><rect class="f" x="231" y="206" width="14" height="20"/><rect class="f" x="248" y="206" width="14" height="20"/><rect class="f" x="265" y="206" width="14" height="20"/><rect class="f" x="282" y="206" width="14" height="20"/><rect class="f" x="299" y="206" width="14" height="20"/><rect class="f" x="316" y="206" width="14" height="20"/><rect class="f" x="333" y="206" width="14" height="20"/><rect class="w" x="354" y="206" width="140" height="20"/><text x="424" y="221" class="mitte t2">Code vom Handy</text><text x="10" y="246" class="t2">Selbst mit dem richtigen Passwort fehlt dem Angreifer das Gerät für den Code.</text></svg><figcaption>Abb. B1-8: Eine Lage, drei Antworten. Der Akzent zeigt die Stelle, an der der Angreifer durchkommt: das kurze Passwort.</figcaption></figure>
+<figure class="abb"><svg viewBox="0 0 640 262" role="img" aria-labelledby="b1-abb8-t"><title id="b1-abb8-t">Drei Passwörter in derselben Lage: was der Angreifer damit erreicht</title><text x="320" y="20" class="mitte t2">Nach einem Datenleck versucht ein Angreifer, Passwörter zu erraten.</text><text x="10" y="46" class="tb">1 · kurz oder leicht zu erraten</text><rect class="f" x="10" y="54" width="14" height="20"/><rect class="f" x="27" y="54" width="14" height="20"/><rect class="f" x="44" y="54" width="14" height="20"/><rect class="f" x="61" y="54" width="14" height="20"/><rect class="f" x="78" y="54" width="14" height="20"/><rect class="f" x="95" y="54" width="14" height="20"/><rect class="f" x="112" y="54" width="14" height="20"/><rect class="f" x="129" y="54" width="14" height="20"/><rect class="d" x="146" y="54" width="14" height="20"/><rect class="d" x="163" y="54" width="14" height="20"/><rect class="d" x="180" y="54" width="14" height="20"/><rect class="d" x="197" y="54" width="14" height="20"/><rect class="d" x="214" y="54" width="14" height="20"/><rect class="d" x="231" y="54" width="14" height="20"/><rect class="d" x="248" y="54" width="14" height="20"/><rect class="d" x="265" y="54" width="14" height="20"/><rect class="d" x="282" y="54" width="14" height="20"/><rect class="d" x="299" y="54" width="14" height="20"/><rect class="d" x="316" y="54" width="14" height="20"/><rect class="d" x="333" y="54" width="14" height="20"/><rect class="a" x="10" y="54" width="133" height="20"/><text x="10" y="94" class="t2">Kurze oder verbreitete Passwörter lassen sich oft schneller erraten.</text><text x="10" y="122" class="tb">2 · lang, zufällig, für jeden Dienst einmalig</text><rect class="f" x="10" y="130" width="14" height="20"/><rect class="f" x="27" y="130" width="14" height="20"/><rect class="f" x="44" y="130" width="14" height="20"/><rect class="f" x="61" y="130" width="14" height="20"/><rect class="f" x="78" y="130" width="14" height="20"/><rect class="f" x="95" y="130" width="14" height="20"/><rect class="f" x="112" y="130" width="14" height="20"/><rect class="f" x="129" y="130" width="14" height="20"/><rect class="f" x="146" y="130" width="14" height="20"/><rect class="f" x="163" y="130" width="14" height="20"/><rect class="f" x="180" y="130" width="14" height="20"/><rect class="f" x="197" y="130" width="14" height="20"/><rect class="f" x="214" y="130" width="14" height="20"/><rect class="f" x="231" y="130" width="14" height="20"/><rect class="f" x="248" y="130" width="14" height="20"/><rect class="f" x="265" y="130" width="14" height="20"/><rect class="f" x="282" y="130" width="14" height="20"/><rect class="f" x="299" y="130" width="14" height="20"/><rect class="f" x="316" y="130" width="14" height="20"/><rect class="f" x="333" y="130" width="14" height="20"/><text x="10" y="170" class="t2">Länge und Zufall erschweren das Raten; Wiederverwendung schafft ein neues Risiko.</text><text x="10" y="198" class="tb">3 · zusätzlich ein zweiter Faktor</text><rect class="f" x="10" y="206" width="14" height="20"/><rect class="f" x="27" y="206" width="14" height="20"/><rect class="f" x="44" y="206" width="14" height="20"/><rect class="f" x="61" y="206" width="14" height="20"/><rect class="f" x="78" y="206" width="14" height="20"/><rect class="f" x="95" y="206" width="14" height="20"/><rect class="f" x="112" y="206" width="14" height="20"/><rect class="f" x="129" y="206" width="14" height="20"/><rect class="f" x="146" y="206" width="14" height="20"/><rect class="f" x="163" y="206" width="14" height="20"/><rect class="f" x="180" y="206" width="14" height="20"/><rect class="f" x="197" y="206" width="14" height="20"/><rect class="f" x="214" y="206" width="14" height="20"/><rect class="f" x="231" y="206" width="14" height="20"/><rect class="f" x="248" y="206" width="14" height="20"/><rect class="f" x="265" y="206" width="14" height="20"/><rect class="f" x="282" y="206" width="14" height="20"/><rect class="f" x="299" y="206" width="14" height="20"/><rect class="f" x="316" y="206" width="14" height="20"/><rect class="f" x="333" y="206" width="14" height="20"/><rect class="w" x="354" y="206" width="140" height="20"/><text x="424" y="221" class="mitte t2">Zusätzlicher Faktor</text><text x="10" y="246" class="t2">Ein zweiter Faktor erschwert den Missbrauch eines gestohlenen Passworts.</text></svg><figcaption>Abb. B1-8: Ein langes, zufälliges, einmaliges Passwort erschwert das Raten. Ein zusätzlicher Faktor senkt das Risiko bei Passwortdiebstahl; Phishing und Geräteverlust bleiben mögliche Angriffswege.</figcaption></figure>
 
   <p><strong>So fragt die IHK hier:</strong> H21 4.5 verlangt die Kriterien eines sicheren Passworts <em>mit Begründung</em>, H23 3.3 nur zwei Kriterien. Die Begründung ist immer dieselbe Richtung: Je mehr Möglichkeiten ein Angreifer durchprobieren muss, desto länger dauert das Raten. <sup class="q"><a href="#b1-q10" title="AP1 Herbst 2021">10</a></sup><sup class="q"><a href="#b1-q12" title="AP1 Herbst 2023">12</a></sup></p>
 <h4 id="b1-k16">Weniger Rechte, weniger Schaden</h4>
@@ -8119,7 +8124,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <section id="b1-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 27 Aufgaben</h3>
   <article class="aufgabe" id="b1-ihk-h21-4-1">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 4.1, 6 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b1-q10" title="AP1 Herbst 2021">10</a></sup></p>
@@ -8512,7 +8517,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <li>Wie begründest du ein Risiko vollständig?<p class="loesung-label">Lösung</p><div class="antwort"><p>Benenne Ursache, mögliche Handlung und Schaden am konkreten Gegenstand. Ordne danach Schutzziel und Gegenmaßnahme zu.</p></div></li></ol></section>
 
 <section id="b1-begriffe"><h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 9 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b1-begriff-schutzziele">Vertraulichkeit, Integrität und Verfügbarkeit</a><a href="#b1-begriff-authentizitaet">Authentizität und Nichtabstreitbarkeit</a><a href="#b1-begriff-identitaet">Authentifizierung und Autorisierung</a><a href="#b1-begriff-faktoren">Authentifizierungsfaktoren und Zwei-Faktor-Authentifizierung</a><a href="#b1-begriff-least-privilege">Least Privilege und Rollen</a><a href="#b1-begriff-kontrollen">Zutritt, Zugang und Zugriff</a><a href="#b1-begriff-haertung">Härtung, Patch und Segmentierung</a><a href="#b1-begriff-malware">Malware und Ransomware</a><a href="#b1-begriff-phishing">Phishing und Social Engineering</a></nav>
 <dl class="begriff" id="b1-begriff-schutzziele"><dt>Vertraulichkeit, Integrität und Verfügbarkeit</dt><dd><span class="label">Was es ist</span><p>Die drei Fragen der IT-Sicherheit: Liest jemand mit, der nicht darf (Vertraulichkeit)? Verändert jemand etwas unbemerkt (Integrität)? Kann ich arbeiten, wenn ich muss (Verfügbarkeit)?<sup class="q"><a href="#b1-q1" title="Glossar (Schutzziele C-I-A)">1</a></sup></p></dd>
@@ -8689,7 +8694,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <section id="b2-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 10 Aufgaben</h3>
   <article class="aufgabe" id="b2-ihk-f22-3-1">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 3.1, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b2-q21" title="AP1 Frühjahr 2022">21</a></sup></p>
@@ -8841,7 +8846,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <li>Was unterscheidet TLS bei E-Mail von Ende-zu-Ende-Verschlüsselung?<p class="loesung-label">Lösung</p><div class="antwort"><p>TLS schützt jeweils den Transport zwischen zwei Verbindungsendpunkten. Ende-zu-Ende-Verschlüsselung schützt den Inhalt bis zu den vorgesehenen Empfängern, auch gegenüber vermittelnden Mailservern.</p></div></li></ol></section>
 
 <section id="b2-begriffe"><h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 9 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b2-begriff-symmetrisch">Symmetrische Verschlüsselung</a><a href="#b2-begriff-asymmetrisch">Asymmetrische Verschlüsselung und Schlüsselpaar</a><a href="#b2-begriff-hybrid">Hybrides Verfahren</a><a href="#b2-begriff-hash">Hashwert und Kollision</a><a href="#b2-begriff-salt">Salt und Passwortspeicherung</a><a href="#b2-begriff-signatur">Digitale Signatur</a><a href="#b2-begriff-zertifikat">Zertifikat, CA und PKI</a><a href="#b2-begriff-tunnel">TLS/HTTPS, VPN und SSH</a><a href="#b2-begriff-wlan">WPA2/WPA3, Pre-Shared Key und RADIUS</a></nav><dl class="begriff" id="b2-begriff-symmetrisch"><dt>Symmetrische Verschlüsselung</dt><dd><span class="label">Was es ist</span><p>Ein Schlüssel für beide Seiten: Wer ihn hat, kann zu- und aufschließen, wie mit einem Haustürschlüssel. AES ist das übliche Verfahren dafür.<sup class="q"><a href="#b2-q1" title="Section 1–4 (Symmetrische Blockchiffre, Schlüssellängen 128, 192, 256 Bit)">1</a></sup></p></dd>
 <dd><span class="label">Wo es dir begegnet</span><p>Die SSD des Laptops ist so verschlüsselt; der Schlüssel liegt im TPM und wird beim Start per Passwort freigegeben.</p></dd>
@@ -8989,7 +8994,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <div class="merke" data-art="Prüfungsnotiz"><p>Nach einer Rechtsgrundlage gefragt: „DSGVO“ genügt, „DSGVO und BDSG“ ist die sichere Zweierantwort. Nach dem Zweck gefragt: Schutz personenbezogener Daten vor unbefugtem Zugriff, Veränderung und Weitergabe. Die IHK sagt oft noch „Datensparsamkeit“ und „Bundesdatenschutzgesetz“; antworte im Wortlaut der Aufgabe und ergänze den heutigen Begriff.<sup class="q"><a href="#b3-q7" title="AP1 Herbst 2023, Aufgabe 3.1">7</a></sup><sup class="q"><a href="#b3-q8" title="AP1 Frühjahr 2025, Aufgaben 2.1 und 2.2">8</a></sup></p></div>
 
-  <div class="merke" data-art="Auf einen Blick"><p><strong>Gesetze:</strong> DSGVO (EU, seit 25. Mai 2018) und BDSG (deutsche Ergänzung).</p><p><strong>Rollen:</strong> der Verantwortliche entscheidet über Zwecke, der Auftragsverarbeiter arbeitet auf Weisung, die betroffene Person richtet ihre Rechte an den Verantwortlichen.</p><p><strong>Rechtsgrundlage:</strong> immer Art. 6 (Einwilligung, Vertrag, Gesetz, berechtigtes Interesse); bei Gesundheitsdaten zusätzlich eine Ausnahme nach Art. 9.</p><p><strong>Anträge</strong> innerhalb eines Monats beantworten, Verlängerung höchstens zwei Monate.</p><p><strong>Datenpanne:</strong> dokumentieren, möglichst binnen 72 Stunden an die Aufsicht, bei hohem Risiko auch an die Betroffenen.</p><p><strong>Bußgeld:</strong> 10 Millionen Euro oder 2 Prozent und 20 Millionen Euro oder 4 Prozent, jeweils der höhere Betrag.</p></div>
+  <div class="merke" data-art="Auf einen Blick"><p><strong>Gesetze:</strong> DSGVO (EU, seit 25. Mai 2018) und BDSG (deutsche Ergänzung).</p><p><strong>Rollen:</strong> der Verantwortliche entscheidet über Zwecke, der Auftragsverarbeiter arbeitet auf Weisung, die betroffene Person richtet ihre Rechte an den Verantwortlichen.</p><p><strong>Rechtsgrundlage:</strong> immer Art. 6 (Einwilligung, Vertrag, Gesetz, berechtigtes Interesse); bei Gesundheitsdaten zusätzlich eine Ausnahme nach Art. 9.</p><p><strong>Anträge</strong> innerhalb eines Monats beantworten, Verlängerung höchstens zwei Monate.</p><p><strong>Datenpanne:</strong> immer dokumentieren; bei voraussichtlichem Risiko die Aufsicht möglichst binnen 72 Stunden informieren, bei hohem Risiko auch die Betroffenen.</p><p><strong>Bußgeld:</strong> 10 Millionen Euro oder 2 Prozent und 20 Millionen Euro oder 4 Prozent, jeweils der höhere Betrag.</p></div>
 
 </section>
 
@@ -9013,7 +9018,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <section id="b3-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 4 Aufgaben</h3>
   <article class="aufgabe" id="b3-ihk-h21-4-4">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 4.4, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b3-q9" title="AP1 Herbst 2021">9</a></sup></p>
@@ -9077,7 +9082,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <li>Darf eine Rechnung nach einer Löschanfrage sofort entfernt werden?<p class="loesung-label">Lösung</p><div class="antwort"><p>Zuerst sind Löschvoraussetzungen und Ausnahmen zu prüfen. Besteht eine gesetzliche Aufbewahrungspflicht, kann sie der sofortigen Löschung entgegenstehen; daraus folgt keine Erlaubnis zu beliebiger weiterer Verwendung.</p></div></li></ol></section>
 
 <section id="b3-begriffe"><h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 9 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b3-begriff-personenbezug">Personenbezogene Daten und Verarbeitung</a><a href="#b3-begriff-kategorien">Besondere Kategorien personenbezogener Daten</a><a href="#b3-begriff-pseudonym">Pseudonymisierung und Anonymisierung</a><a href="#b3-begriff-rollen">Verantwortlicher und Auftragsverarbeiter</a><a href="#b3-begriff-einwilligung">Rechtsgrundlage und Einwilligung</a><a href="#b3-begriff-grundsaetze">Zweckbindung und Datenminimierung</a><a href="#b3-begriff-rechte">Betroffenenrechte</a><a href="#b3-begriff-tom">Technische und organisatorische Maßnahmen (TOM)</a><a href="#b3-begriff-datenschutzbeauftragter">Datenschutzbeauftragter und Datenschutzverletzung</a></nav><dl class="begriff" id="b3-begriff-personenbezug"><dt>Personenbezogene Daten und Verarbeitung</dt><dd><span class="label">Was es ist</span><p>Personenbezogen ist jede Angabe, die zu einem bestimmten Menschen führt oder führen kann: Name, Kundennummer, IP-Adresse, Foto. Verarbeitung ist alles, was man mit Daten tut: erheben, speichern, ansehen, weitergeben, löschen, egal ob per Hand oder automatisch.<sup class="q"><a href="#b3-q1" title="Art. 4 Nr. 1 und 2">1</a></sup></p></dd>
 <dd><span class="label">Wo es dir begegnet</span><p>Eine Supportakte mit Name und Fehlerbeschreibung ist personenbezogen. Auch eine Benutzerkennung oder IP-Adresse kann Personenbezug haben, wenn eine Person darüber bestimmbar ist.</p></dd>
@@ -9310,7 +9315,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <section id="b4-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 13 Aufgaben</h3>
   <article class="aufgabe" id="b4-ihk-f22-2-1">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 2.1, 3 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b4-q13" title="AP1 Frühjahr 2022">13</a></sup></p>
@@ -9509,7 +9514,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <li>Warum kann ein Monitor an einer USB-C-Buchse dunkel bleiben?<p class="loesung-label">Lösung</p><div class="antwort"><p>Der Anschluss oder das Kabel unterstützt möglicherweise keine passende Bildausgabe; auch Dock und Adapter müssen geeignet sein. Die USB-C-Form allein garantiert kein Videosignal.</p></div></li></ol></section>
 
 <section id="b4-begriffe"><h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 9 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b4-begriff-cpu">CPU: Kern, Thread, Takt und Cache</a><a href="#b4-begriff-ram">RAM: DDR, DIMM und Dual Channel</a><a href="#b4-begriff-massenspeicher">HDD und SSD</a><a href="#b4-begriff-speicheranbindung">SATA, NVMe und M.2</a><a href="#b4-begriff-plattform">Mainboard, Netzteil und Grafikkarte</a><a href="#b4-begriff-usb">USB: Steckerform und Übertragungsstandard</a><a href="#b4-begriff-bildanschluss">HDMI, DisplayPort und Thunderbolt</a><a href="#b4-begriff-geraete">Desktop, Notebook, Thin Client und Docking-Station</a><a href="#b4-begriff-firmware">BIOS/UEFI, Firmware und Treiber</a></nav><dl class="begriff" id="b4-begriff-cpu"><dt>CPU: Kern, Thread, Takt und Cache</dt><dd><span class="label">Was es ist</span><p>Die CPU ist der Rechner im Rechner: Sie führt die Befehle aus. Ein Kern ist eine vollständige Recheneinheit, ein Thread ein zweiter Arbeitsstrang, den ein Kern zusätzlich bearbeitet. Der Takt sagt, wie viele Arbeitsschritte je Sekunde möglich sind. Der Cache ist der kleine, sehr schnelle Zwischenspeicher direkt am Kern.<sup class="q"><a href="#b4-q1" title="Kapitel 2 (Prozessoren, Befehlszyklen, Caches, Speicherhierarchie, Bussysteme)">1</a></sup></p></dd>
 <dd><span class="label">Wo es dir begegnet</span><p>Ein Build kann von mehreren Kernen profitieren, sofern die Arbeit parallel ausführbar ist. Ein interaktives Programm kann dagegen stärker von schneller Bearbeitung eines einzelnen Ausführungspfades abhängen.</p></dd>
@@ -9711,7 +9716,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <section id="b5-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 10 Aufgaben</h3>
   <article class="aufgabe" id="b5-ihk-f22-3-4">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 3.4, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b5-q17" title="AP1 Frühjahr 2022">17</a></sup></p>
@@ -9880,7 +9885,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <li>Womit prüfst du die Namensauflösung, womit den Weg zum Ziel?<p class="loesung-label">Lösung</p><div class="antwort"><p>Die Namensauflösung mit <code>nslookup</code>, den Weg über die Router mit <code>tracert</code>. Die reine Erreichbarkeit mit <code>ping</code>.</p></div></li></ol></section>
 
 <section id="b5-begriffe"><h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 10 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b5-begriff-osi">OSI-Schicht und Protokoll</a><a href="#b5-begriff-port">Port, TCP und UDP</a><a href="#b5-begriff-geraete">Aktive Netzgeräte und ihre Schicht</a><a href="#b5-begriff-dienste">DHCP, DNS und ARP</a><a href="#b5-begriff-mail">SMTP, IMAP und POP3</a><a href="#b5-begriff-verkabelung">Patchfeld, Kategorie und PoE</a><a href="#b5-begriff-wlan">SSID, Frequenzband und Kanal</a><a href="#b5-begriff-vlan">VLAN</a><a href="#b5-begriff-cloud">IaaS, PaaS und SaaS</a><a href="#b5-begriff-virtualisierung">Hypervisor und Container</a></nav><dl class="begriff" id="b5-begriff-osi"><dt>OSI-Schicht und Protokoll <span class="en">(layer, protocol)</span></dt><dd><span class="label">Was es ist</span><p>Das OSI-Referenzmodell teilt die Kommunikation in sieben Schichten. Jede Schicht nutzt den Dienst der Schicht darunter und bedient die Schicht darüber. Ein Protokoll ist der Regelsatz, nach dem zwei gleiche Schichten zweier Geräte miteinander sprechen.<sup class="q"><a href="#b5-q1" title="Abschnitt 6 und 7, Schichten 1 bis 7">1</a></sup></p></dd>
 <dd><span class="label">Wo es dir begegnet</span><p>Bei der Störungssuche gehst du hoch: Kabel, Verbindung zum Switch, IP-Adresse, Dienst am Server.</p></dd>
@@ -10003,8 +10008,8 @@ WHERE  Year(Vertragsbeginn) = 2024
 <p><strong>Innerhalb von Open Source</strong> trennst du zwei Familien, die Abb. B6-5 gegenüberstellt.<sup class="q"><a href="#b6-q2" title="Abschnitt 5 c): weitergegebene bearbeitete Fassungen stehen unter derselben Lizenz">2</a></sup><sup class="q"><a href="#b6-q3" title="Erlaubnis zu Nutzung, Änderung und Weitergabe, auch in proprietären Produkten, bei Erhalt des Lizenzhinweises">3</a></sup><sup class="q"><a href="#b6-q4" title="§ 69a UrhG: Computerprogramme genießen Schutz als Werke; geschützt sind alle Ausdrucksformen">4</a></sup></p>
 <figure class="abb"><svg viewBox="0 0 640 179" role="img" aria-labelledby="b6-abb5-t"><title id="b6-abb5-t">Zwei Familien innerhalb von Open Source</title><rect class="f" x="192" y="20" width="208" height="29"/><text x="296" y="42" class="tb mitte">Copyleft</text><rect class="f" x="412" y="20" width="208" height="29"/><text x="516" y="42" class="tb mitte">Permissiv</text><text x="20" y="78" class="t2 tb">Beispiel</text><rect class="w" x="192" y="57" width="208" height="31"/><text x="296" y="79" class="mitte">GNU GPL Version 3</text><rect class="w" x="412" y="57" width="208" height="31"/><text x="516" y="79" class="mitte">MIT-Lizenz</text><text x="20" y="117" class="t2 tb">Bedingung bei</text><text x="20" y="133" class="t2 tb">Weitergabe</text><rect class="w" x="192" y="96" width="208" height="65"/><text x="296" y="118" class="mitte">bearbeitete Fassung unter</text><text x="296" y="135" class="mitte">derselben Lizenz</text><rect class="w" x="412" y="96" width="208" height="65"/><text x="516" y="118" class="mitte">Lizenzhinweis erhalten,</text><text x="516" y="135" class="mitte">auch in geschlossenen</text><text x="516" y="152" class="mitte">Produkten</text></svg><figcaption>Abb. B6-5: Jedes Programm bleibt ein urheberrechtlich geschütztes Werk. Die Lizenz gibt Rechte, sie hebt den Schutz nicht auf.</figcaption></figure>
 <h4 id="b6-k10">Dynamische gegen statische Website</h4>
-<p><strong>Bei einer statischen Website</strong> sucht der Webserver die angeforderte Datei und schickt sie unverändert zurück. Bei einer dynamischen reicht er die Anfrage an ein Programm weiter, das Daten aus der Datenbank holt, daraus HTML zusammensetzt und es zurückgibt. Deshalb kann eine dynamische Seite je Benutzer, Uhrzeit oder Sucheingabe anders aussehen, ohne dass jemand eine Datei bearbeitet. Abb. B6-6 zeigt beide Wege.<sup class="q"><a href="#b6-q5" title="Abschnitt „Static sites“ und „Dynamic sites“: gespeicherte Datei gegenüber zur Laufzeit erzeugter Antwort">5</a></sup></p>
-<figure class="abb"><svg viewBox="0 0 640 310" role="img" aria-labelledby="b6-abb6-t"><title id="b6-abb6-t">Weg einer Anfrage bei statischer und dynamischer Website</title><text class="mitte tb" x="320" y="20">Statisch: die Seite liegt fertig auf dem Server</text><rect class="w" x="20" y="34" width="140" height="44"/><text class="mitte" x="90" y="61">Browser</text><line class="l" x1="164" y1="56" x2="204" y2="56" marker-end="url(#pfeil)"/><rect class="w" x="210" y="34" width="160" height="44"/><text class="mitte" x="290" y="61">Webserver</text><line class="l" x1="374" y1="56" x2="414" y2="56" marker-end="url(#pfeil)"/><rect class="w" x="420" y="34" width="200" height="44"/><text class="mitte" x="520" y="61">Fertige HTML-Datei</text><text class="mitte t2" x="320" y="100">Inhalt ändern heißt: Datei bearbeiten und neu hochladen.</text><line class="g" x1="20" y1="124" x2="620" y2="124"/><text class="mitte tb" x="320" y="152">Dynamisch: die Seite entsteht bei jeder Anfrage neu</text><rect class="a" x="336" y="166" width="296" height="72"/><rect class="w" x="28" y="176" width="125" height="44"/><text class="mitte" x="90" y="203">Browser</text><line class="l" x1="157" y1="198" x2="181" y2="198" marker-end="url(#pfeil)"/><rect class="w" x="185" y="176" width="125" height="44"/><text class="mitte" x="247" y="203">Webserver</text><line class="l" x1="314" y1="198" x2="334" y2="198" marker-end="url(#pfeil)"/><rect class="w" x="342" y="176" width="125" height="44"/><text class="mitte" x="404" y="203">Anwendung</text><line class="l" x1="471" y1="198" x2="495" y2="198" marker-end="url(#pfeil)"/><rect class="w" x="499" y="176" width="125" height="44"/><text class="mitte" x="561" y="203">Datenbank</text><text class="mitte ta" x="484" y="258">Hier entsteht der Inhalt bei jeder Anfrage</text><line class="l" x1="600" y1="282" x2="90" y2="282" marker-end="url(#pfeil)"/><text class="mitte t2" x="320" y="302">Antwort in beiden Fällen: fertiges HTML an den Browser</text></svg><figcaption>Abb. B6-6: Der Umweg über Anwendung und Datenbank ist der ganze Unterschied. Eine statische Seite geht ihn nicht und zeigt ohne Bearbeitung der Datei nichts Neues.</figcaption></figure>
+<p><strong>Bei einer rein statischen Website</strong> liefert der Webserver eine gespeicherte Datei aus. Bei einer serverseitig dynamischen Website erzeugt ein Programm aus Daten eine passende Antwort. So kann sich die Antwort je Benutzer oder Sucheingabe ändern. Auch eine statisch ausgelieferte Seite kann mit JavaScript aktuelle Daten nachladen; „statisch“ beschreibt dann nur die Auslieferung der Grunddatei. Abb. B6-6 zeigt beide Wege.<sup class="q"><a href="#b6-q5" title="Abschnitt „Static sites“ und „Dynamic sites“: gespeicherte Datei gegenüber zur Laufzeit erzeugter Antwort">5</a></sup></p>
+<figure class="abb"><svg viewBox="0 0 640 310" role="img" aria-labelledby="b6-abb6-t"><title id="b6-abb6-t">Weg einer Anfrage bei statischer und dynamischer Website</title><text class="mitte tb" x="320" y="20">Statisch: die Seite liegt fertig auf dem Server</text><rect class="w" x="20" y="34" width="140" height="44"/><text class="mitte" x="90" y="61">Browser</text><line class="l" x1="164" y1="56" x2="204" y2="56" marker-end="url(#pfeil)"/><rect class="w" x="210" y="34" width="160" height="44"/><text class="mitte" x="290" y="61">Webserver</text><line class="l" x1="374" y1="56" x2="414" y2="56" marker-end="url(#pfeil)"/><rect class="w" x="420" y="34" width="200" height="44"/><text class="mitte" x="520" y="61">Fertige HTML-Datei</text><text class="mitte t2" x="320" y="100">Hier: Inhalt ändern heißt Datei aktualisieren.</text><line class="g" x1="20" y1="124" x2="620" y2="124"/><text class="mitte tb" x="320" y="152">Serverseitig dynamisch: Antwort zur Laufzeit</text><rect class="a" x="336" y="166" width="296" height="72"/><rect class="w" x="28" y="176" width="125" height="44"/><text class="mitte" x="90" y="203">Browser</text><line class="l" x1="157" y1="198" x2="181" y2="198" marker-end="url(#pfeil)"/><rect class="w" x="185" y="176" width="125" height="44"/><text class="mitte" x="247" y="203">Webserver</text><line class="l" x1="314" y1="198" x2="334" y2="198" marker-end="url(#pfeil)"/><rect class="w" x="342" y="176" width="125" height="44"/><text class="mitte" x="404" y="203">Anwendung</text><line class="l" x1="471" y1="198" x2="495" y2="198" marker-end="url(#pfeil)"/><rect class="w" x="499" y="176" width="125" height="44"/><text class="mitte" x="561" y="203">Datenbank</text><text class="mitte ta" x="484" y="258">Hier entsteht HTML aus Daten</text><line class="l" x1="600" y1="282" x2="90" y2="282" marker-end="url(#pfeil)"/><text class="mitte t2" x="320" y="302">Antwort in beiden Fällen: fertiges HTML an den Browser</text></svg><figcaption>Abb. B6-6: Zwei typische Wege: gespeicherte HTML-Datei oder serverseitig erzeugte Antwort. Statisch ausgeliefertes JavaScript kann ebenfalls aktuelle Daten nachladen.</figcaption></figure>
   <p><strong>So fragt die IHK hier:</strong> F25 3.3 verlangt den Unterschied zwischen dynamischer und statischer Website. Der Kern ist, wann die Seite entsteht: beim Abruf aus Daten oder schon vorher als fertige Datei. <sup class="q"><a href="#b6-q13" title="AP1 Frühjahr 2025">13</a></sup></p>
 <h4 id="b6-k11">Frontend und Backend</h4>
 <p><strong>Eine Website hat zwei Seiten.</strong> Das <strong>Frontend</strong> ist alles, was im Browser des Besuchers läuft und sichtbar ist: HTML für den Inhalt, CSS für das Aussehen, JavaScript für Bewegung und Reaktion. Das <strong>Backend</strong> läuft auf dem Server, unsichtbar: das Programm, das Anfragen beantwortet, und die Datenbank mit den Terminen, Kunden oder Artikeln. Der Browser fragt, der Server antwortet; erst beide zusammen zeigen dem Handwerksmeister seine freien Termine.<sup class="q"><a href="#b6-q5" title="MDN: Dynamische Websites, Client- und Serverseite">5</a></sup></p>
@@ -10014,7 +10019,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <div class="merke" data-art="Prüfungsnotiz"><p>Frühjahr 2025 verlangte drei Programmiersprachen für dynamische Webinhalte; die Lösungsdatei nennt JavaScript, PHP, Python und C#. HTML und CSS sind Beschreibungssprachen und bringen hier keinen Punkt, SQL ist eine Abfragesprache. Nenne genau so viele Sprachen wie gefordert, denn nur die ersten Angaben werden gewertet.<sup class="q"><a href="#b6-q13" title="Frühjahr 2025, Aufgabe 3.4: drei Programmiersprachen für dynamische Webinhalte, je Sprache 1 Punkt">13</a></sup></p></div>
 
   <p><strong>So fragt die IHK hier:</strong> F25 3.4 verlangt drei Programmiersprachen für dynamische Webinhalte, je Sprache ein Punkt. Anerkannt sind unter anderem JavaScript, PHP, Python und C#. JavaScript läuft dabei im Browser, die übrigen auf dem Server. <sup class="q"><a href="#b6-q13" title="AP1 Frühjahr 2025">13</a></sup></p>
-  <div class="merke" data-art="Auf einen Blick"><p><strong>Schichten:</strong> jede nutzt die Dienste der Schicht darunter; fällt eine aus, suchst du darunter.</p><p><strong>FAT32:</strong> keine einzelne Datei erreicht 4 GiB, unabhängig vom freien Platz.</p><p><strong>Open Source</strong> beantwortet nur die Frage nach dem Quellcode, nicht die nach dem Preis.</p><p><strong>Copyleft</strong> verlangt dieselbe Lizenz weiter, <strong>permissiv</strong> nur den Lizenzhinweis.</p><p><strong>Dynamisch</strong> heißt: der Server lässt die Seite von einem Programm aus Datenbankdaten zusammensetzen.</p></div>
+  <div class="merke" data-art="Auf einen Blick"><p><strong>Schichten:</strong> jede nutzt die Dienste der Schicht darunter; fällt eine aus, suchst du darunter.</p><p><strong>FAT32:</strong> keine einzelne Datei erreicht 4 GiB, unabhängig vom freien Platz.</p><p><strong>Open Source</strong> beantwortet nur die Frage nach dem Quellcode, nicht die nach dem Preis.</p><p><strong>Copyleft</strong> verlangt dieselbe Lizenz weiter, <strong>permissiv</strong> nur den Lizenzhinweis.</p><p><strong>Serverseitig dynamisch</strong> heißt: Ein Programm erzeugt die Antwort zur Laufzeit, häufig mit Daten aus einer Datenbank.</p></div>
 
 </section>
 
@@ -10023,7 +10028,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <p>Punkte: 4 insgesamt, je genanntem Vorteil 1. „Jeweils zwei“ heißt zwei plus zwei; wer nur ein Lizenzmodell behandelt, verliert die Hälfte. Für Frühjahr 2025 liegt ein ausgefülltes Aufgabenheft vor, keine amtliche Musterlösung; die Aufteilung ist daraus abgeleitet.</p>
 </div></article>
 <article class="aufgabe" id="b6-original-2"><p class="herkunft">AP1 Frühjahr 2025, Aufgabe 3.3, 3 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b6-q13" title="4 Aufgaben, 100 Punkte, Berufsnummer 1201/1202">13</a></sup></p><div class="text"><p>Die künftige Website der Kanzlei soll dynamisch erstellt werden. Erläutere den Unterschied zu einer statischen Website.</p>
-</div><p class="loesung-label">Lösung mit Punktelogik</p><div class="antwort"><p>Eine statische Website zeigt immer denselben Inhalt, unabhängig vom Besucher. Eine Inhaltsänderung erfordert dort das Bearbeiten des Quelltextes und erneutes Hochladen. Eine dynamische Website erzeugt ihre Inhalte zur Laufzeit, abhängig von Benutzereingaben oder Datenbankabfragen, und aktualisiert sich beim Ändern der Daten selbst. Für die Kanzlei heißt das: Beiträge und freie Termine pflegt sie im Datenbestand, nicht im Quelltext.</p>
+</div><p class="loesung-label">Lösung mit Punktelogik</p><div class="antwort"><p>Bei der hier gemeinten rein statischen Lösung wird gespeichertes HTML unverändert ausgeliefert; neue Inhalte müssen in der Datei gepflegt werden. Die serverseitig dynamische Lösung erzeugt Antworten aus dem aktuellen Datenbestand. Technisch kann auch eine statisch ausgelieferte JavaScript-Seite aktuelle Daten abrufen. Für die Kanzlei heißt das: Beiträge und freie Termine pflegt sie im Datenbestand, nicht im Quelltext.</p>
 <p>Punkte: 3 insgesamt. Eine amtliche Aufteilung ist nicht belegt; aus der Musterlösung abgeleitet sind es drei Bestandteile: je eine Aussage zur statischen Seite, zur dynamischen Seite und zur Folge für die Pflege. Der Operator „erläutern“ verlangt beide Richtungen, nicht nur eine Definition.</p>
 </div></article>
 <article class="aufgabe" id="b6-original-3"><p class="herkunft">AP1 Frühjahr 2023, Aufgabe 3.1, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b6-q14" title="4 Aufgaben, 100 Punkte, Berufsnummer 1201/1202">14</a></sup></p><div class="text"><p>Die Funktionsebenen eines PCs werden häufig als Schichtenmodell dargestellt. In einem abgebildeten Modell ist die mittlere Schicht mit „Betriebssystem“ beschriftet. Benenne je eine Schicht oberhalb und eine unterhalb des Betriebssystems und beschreibe für beide benannten Schichten je eine Funktion.</p>
@@ -10038,7 +10043,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <p>Beachte die Symmetrie: zwei plus zwei Vorteile und ein plus ein Nachteil, also sechs Angaben. „Kostenlos“ und „keine Lizenzkosten“ sind derselbe Vorteil.</p>
 </div></article>
 <article class="aufgabe" id="b6-variante-2"><p class="herkunft">Variante zu Aufgabe 3.3 (Frühjahr 2025)</p><div class="text"><p>Ein Autohaus betreibt fünf feste HTML-Seiten. Künftig sollen Fahrzeugbestand und freie Werkstatttermine auf der Website erscheinen und sich täglich ändern. Begründe, warum eine statische Website dafür nicht genügt, und nenne die beteiligten Bausteine.</p>
-</div><p class="loesung-label">Lösung</p><div class="antwort"><p>Eine statische Seite liefert stets dieselbe gespeicherte Datei aus. Jede Änderung am Bestand müsste jemand im Quelltext nachziehen und erneut hochladen, täglich und für jedes Fahrzeug. Eine dynamische Website setzt die Seite bei jeder Anfrage neu zusammen. Beteiligt sind Browser mit HTML, CSS und JavaScript, Webserver, serverseitige Anwendung und die Datenbank mit Fahrzeugen und Terminen. Gepflegt wird der Datenbestand, nicht der Quelltext.</p>
+</div><p class="loesung-label">Lösung</p><div class="antwort"><p>Eine rein statische HTML-Seite zeigt in diesem Szenario den gespeicherten Stand; ohne Anbindung müssen Bestandsänderungen in der Datei nachgezogen werden. Eine serverseitig dynamische Website erzeugt ihre Antwort mit den aktuellen Daten. Beteiligt sind Browser mit HTML, CSS und JavaScript, Webserver, serverseitige Anwendung und die Datenbank mit Fahrzeugen und Terminen. Gepflegt wird der Datenbestand, nicht der Quelltext.</p>
 </div></article>
 <article class="aufgabe" id="b6-variante-3"><p class="herkunft">Variante zu Aufgabe 3.1 (Frühjahr 2023)</p><div class="text"><p>Ein neuer Etikettendrucker wird angeschlossen, aber die Lagersoftware findet ihn nicht. Ordne die Schichten Anwendungssoftware, Betriebssystem, Treiber und Hardware und nenne je Schicht eine Funktion. Erkläre, in welcher Schicht du zuerst suchst.</p>
 </div><p class="loesung-label">Lösung</p><div class="antwort"><p>Von oben nach unten: Anwendungssoftware erstellt die Etiketten; das Betriebssystem verwaltet Prozesse, Speicher, Dateien und Rechte; der Treiber übersetzt Druckaufträge in die Ansteuerung des Geräts; die Hardware druckt. Zuerst suchst du beim Treiber, denn die Anwendung spricht das Gerät nur über das Betriebssystem an. Erst danach prüfst du Kabel, Anschluss und Gerätefirmware.</p>
@@ -10047,7 +10052,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <section id="b6-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 5 Aufgaben</h3>
   <article class="aufgabe" id="b6-ihk-f22-4-1">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 4.1, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b6-q17" title="AP1 Frühjahr 2022">17</a></sup></p>
@@ -10127,7 +10132,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <li>Welche fünf Verwaltungsaufgaben hat ein Betriebssystem?<p class="loesung-label">Lösung</p><div class="antwort"><p>Prozess-, Speicher-, Geräte-, Datei- und Benutzerverwaltung. Produktnamen sind keine Antwort.</p></div></li></ol></section>
 
 <section id="b6-begriffe"><h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 10 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b6-begriff-ebenen">Systemsoftware, Anwendungssoftware, Firmware und Treiber</a><a href="#b6-begriff-herkunft">Standard-, Branchen- und Individualsoftware</a><a href="#b6-begriff-betriebssystem">Betriebssystem, Prozess und Thread</a><a href="#b6-begriff-dateisystem">Dateisystem und Partition</a><a href="#b6-begriff-lizenz">Lizenz und Endbenutzer-Lizenzvertrag</a><a href="#b6-begriff-opensource">Open Source und Copyleft</a><a href="#b6-begriff-modelle">OEM-Lizenz, Volumenlizenz und Abonnement</a><a href="#b6-begriff-website">Statische und dynamische Website</a><a href="#b6-begriff-frontend">Frontend, Backend und CMS</a><a href="#b6-begriff-betriebliche">ERP, CRM und DMS</a></nav><dl class="begriff" id="b6-begriff-ebenen"><dt>Systemsoftware, Anwendungssoftware, Firmware und Treiber</dt><dd><span class="label">Was es ist</span><p>Systemsoftware betreibt den Rechner selbst, Anwendungssoftware löst die fachliche Aufgabe des Benutzers. Firmware ist gerätenahe Software im nichtflüchtigen Speicher eines Geräts. Ein Treiber übersetzt Aufrufe des Betriebssystems in die Ansteuerung eines bestimmten Geräts.<sup class="q"><a href="#b6-q6" title="Kapitel 1 und 5: Aufgaben des Betriebssystems, Geräteverwaltung und Gerätetreiber">6</a></sup></p></dd>
 <dd><span class="label">Wo es dir begegnet</span><p>Nach dem Tausch eines Etikettendruckers fehlt der Treiber, deshalb erscheint das Gerät nicht in der Anwendung. Ein Firmwareupdate am Drucker behebt dagegen einen Fehler im Papiereinzug.</p></dd>
@@ -10157,7 +10162,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <dd><span class="label">Wo es dir begegnet</span><p>Zwölf Arbeitsplätze laufen über eine Volumenlizenz mit einem Schlüssel statt über Einzelkäufe. Beim Abonnement rechnet der Anbieter je Benutzer und Zeitraum ab.</p></dd>
 <dd><span class="label">Nicht verwechseln mit</span><p>OEM hängt am Gerät, die Volumenlizenz am Vertrag, das Abonnement an der Laufzeit. Zum Cloud-Modell hinter SaaS siehe <a href="#b5">B5</a>.</p></dd>
 <dd><span class="label">So fragt die IHK</span><p>Bei einem benannten Benutzer zählt die Person, bei gleichzeitigen Benutzern die Zahl der zeitgleichen Anmeldungen. Das entscheidet über die Lizenzmenge.</p></dd></dl>
-<dl class="begriff" id="b6-begriff-website"><dt>Statische und dynamische Website</dt><dd><span class="label">Was es ist</span><p>Eine statische Website liefert auf jede Anfrage dieselbe gespeicherte Datei aus. Eine dynamische Website setzt die Seite zur Laufzeit auf dem Server zusammen, meist aus Datenbankinhalten oder Benutzereingaben.<sup class="q"><a href="#b6-q5" title="Abschnitt „Static sites“ und „Dynamic sites“: gespeicherte Datei gegenüber zur Laufzeit erzeugter Antwort">5</a></sup></p></dd>
+<dl class="begriff" id="b6-begriff-website"><dt>Statische und dynamische Website</dt><dd><span class="label">Was es ist</span><p>Eine rein statisch ausgelieferte Website liefert gespeicherte Dateien. Bei serverseitig dynamischer Erzeugung entsteht die Antwort zur Laufzeit; JavaScript in statisch ausgelieferten Dateien kann ebenfalls Daten nachladen.<sup class="q"><a href="#b6-q5" title="Abschnitt „Static sites“ und „Dynamic sites“: gespeicherte Datei gegenüber zur Laufzeit erzeugter Antwort">5</a></sup></p></dd>
 <dd><span class="label">Wo es dir begegnet</span><p>Fünf feste Seiten mit Anfahrt und Impressum können statisch sein. Ein Mandantenportal mit Anmeldung und Terminliste muss dynamisch arbeiten.</p></dd>
 <dd><span class="label">Nicht verwechseln mit</span><p>Statisch heißt nicht bewegungslos; auch eine statische Seite darf im Browser animieren. Entscheidend ist, ob der Server den Inhalt neu zusammensetzt.</p></dd>
 <dd><span class="label">So fragt die IHK</span><p>„Erläutern“ verlangt beide Richtungen und die Folge für die Pflege: bei statischen Seiten ändert man den Quelltext, bei dynamischen den Datenbestand.</p></dd></dl>
@@ -10375,7 +10380,7 @@ Verfügbarkeit
 
 <section id="b7-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 4 Aufgaben</h3>
   <article class="aufgabe" id="b7-ihk-h21-4-6">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 4.6, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b7-q10" title="AP1 Herbst 2021">10</a></sup></p>
@@ -10444,7 +10449,7 @@ Verfügbarkeit
 <li>Ein Vertrag sichert 99,9&nbsp;% Verfügbarkeit zu. Wie viel Ausfall je Jahr ist das?<p class="loesung-label">Lösung</p><div class="antwort"><p>0,001&nbsp;×&nbsp;8.760&nbsp;h&nbsp;=&nbsp;8,76&nbsp;h, also etwa ein Arbeitstag. Bei 99,99&nbsp;% wären es 52,56&nbsp;min.</p></div></li></ol></section>
 
 <section id="b7-begriffe"><h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 10 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b7-begriff-vollsicherung">Vollsicherung</a><a href="#b7-begriff-differenziell">Differenzielle Sicherung</a><a href="#b7-begriff-inkrementell">Inkrementelle Sicherung</a><a href="#b7-begriff-generationen">Generationenprinzip</a><a href="#b7-begriff-321">3-2-1-Regel</a><a href="#b7-begriff-wiederherstellung">Wiederherstellung, RPO und RTO</a><a href="#b7-begriff-raid">RAID-Level und Nutzkapazität</a><a href="#b7-begriff-hotspare">Hot Spare</a><a href="#b7-begriff-verfuegbarkeit">Verfügbarkeit, MTBF und USV</a><a href="#b7-begriff-aufbewahrung">Aufbewahrungsfrist</a></nav>
 <dl class="begriff" id="b7-begriff-vollsicherung"><dt>Vollsicherung <span class="en">(full backup)</span></dt><dd><span class="label">Was es ist</span><p>Alles wird kopiert, egal ob sich etwas geändert hat. Sie ist die Basis, auf der alle anderen Sicherungen aufbauen.<sup class="q"><a href="#b7-q1" title="Sicherungsarten: Vollsicherung, differenzielle und inkrementelle Sicherung">1</a></sup></p></dd>
@@ -10613,7 +10618,7 @@ Verfügbarkeit
 
 <section id="b8-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 3 Aufgaben</h3>
   <article class="aufgabe" id="b8-ihk-h21-2-3">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 2.3, 3 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b8-q15" title="AP1 Herbst 2021">15</a></sup></p>
@@ -10665,7 +10670,7 @@ Verfügbarkeit
 <li>Was geschieht mit 20 ausgemusterten Rechnern?<p class="loesung-label">Lösung</p><div class="antwort"><p>Zuerst werden die Datenträger nachweislich gelöscht oder vernichtet. Danach gehen die Geräte getrennt erfasst an die Rücknahme des Herstellers oder an einen zertifizierten Entsorger. Sperrmüll und Restmüll sind unzulässig.</p></div></li></ol></section>
 
 <section id="b8-begriffe"><h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 10 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b8-begriff-bildschirmarbeitsplatz">Bildschirmarbeitsplatz und Ergonomie</a><a href="#b8-begriff-blendung">Blendung, Reflexion und Beleuchtungsstärke</a><a href="#b8-begriff-softwareergonomie">Softwareergonomie</a><a href="#b8-begriff-barrierefreiheit">Barrierefreiheit und BFSG</a><a href="#b8-begriff-wcag">WCAG und Kontrastverhältnis</a><a href="#b8-begriff-screenreader">Screenreader und Alternativtext</a><a href="#b8-begriff-greenit">Green IT</a><a href="#b8-begriff-label">Energieeffizienzlabel</a><a href="#b8-begriff-lebenszyklus">Lebenszyklus und Refurbished</a><a href="#b8-begriff-elektrog">ElektroG und Rücknahme</a></nav><dl class="begriff" id="b8-begriff-bildschirmarbeitsplatz"><dt>Bildschirmarbeitsplatz und Ergonomie</dt><dd><span class="label">Was es ist</span><p>Ein Bildschirmarbeitsplatz besteht aus Bildschirmgerät, Eingabemitteln, Software, Zubehör, Möbeln und der unmittelbaren Arbeitsumgebung. Die Arbeitsstättenverordnung stellt dafür in Anhang Nummer 6 eigene Anforderungen auf.<sup class="q"><a href="#b8-q1" title="Anhang Nummer 6 (Bildschirmaufstellung, Tastatur, Stuhl, Tisch, Beleuchtung, Reflexionsfreiheit)">1</a></sup> Ergonomie heißt: die Arbeit wird an den Menschen angepasst, nicht der Mensch an das Gerät.</p></dd>
 <dd><span class="label">Wo es dir begegnet</span><p>Beim Aufbau stellst du Stuhl, Tisch und Bildschirm in dieser Reihenfolge ein. Ein Notebook allein erfüllt die Anforderungen nicht.</p></dd>
@@ -11055,7 +11060,7 @@ Verfügbarkeit
 
 <section id="b9-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 10 Aufgaben</h3>
   <article class="aufgabe" id="b9-ihk-h21-1-1">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 1.1, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b9-q19" title="AP1 Herbst 2021">19</a></sup></p>
@@ -11220,7 +11225,7 @@ Verfügbarkeit
 
 <section id="b9-begriffe">
   <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 10 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b9-begriff-projekt">Projekt und magisches Dreieck</a><a href="#b9-begriff-stakeholder">Stakeholder, Kick-off und Meilenstein</a><a href="#b9-begriff-lastenheft">Lastenheft und Pflichtenheft</a><a href="#b9-begriff-anforderung">Anforderungen: funktional, nicht-funktional, Muss, Soll, Kann</a><a href="#b9-begriff-smart">SMART</a><a href="#b9-begriff-wasserfall">Wasserfallmodell und V-Modell</a><a href="#b9-begriff-scrum">Scrum</a><a href="#b9-begriff-kanban">Kanban</a><a href="#b9-begriff-teamphasen">Teamphasen nach Tuckman</a><a href="#b9-begriff-abnahme">Abnahme, Test und PDCA</a></nav>
 
@@ -11489,7 +11494,7 @@ Verfügbarkeit
 
 <section id="b10-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 13 Aufgaben</h3>
   <article class="aufgabe" id="b10-ihk-h21-3-4">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 3.4, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b10-q13" title="AP1 Herbst 2021">13</a></sup></p>
@@ -11684,7 +11689,7 @@ Verfügbarkeit
 <li>Eine Kanzlei stellt einen Chatbot auf ihre Webseite, der kostenlos Rechtsauskunft gibt. Nenne einen Vorteil und einen Nachteil aus Sicht der Kanzlei.<p class="loesung-label">Lösung</p><div class="antwort"><p>Vorteil: Er spricht Interessenten jederzeit an, beantwortet erste Fragen und gewinnt Mandanten; das entlastet die Kanzlei. Nachteil: Falsche oder missverständliche Auskünfte kosten Vertrauen und werfen Haftungsfragen auf; ein Mensch muss die Auskünfte prüfen.</p></div></li></ol></section>
 
 <section id="b10-begriffe"><h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 9 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b10-begriff-zuhoeren">Aktives Zuhören und Fragetechnik</a><a href="#b10-begriff-vier-seiten">Vier-Seiten-Modell</a><a href="#b10-begriff-feedback">Feedback und Störung</a><a href="#b10-begriff-zielgruppe">Zielgruppe</a><a href="#b10-begriff-schulung">Einweisung, Schulung und Key-User</a><a href="#b10-begriff-veraenderung">Veränderungsmanagement, Widerstand und Pilotphase</a><a href="#b10-begriff-chatbot">Chatbot und generative KI</a><a href="#b10-begriff-halluzination">Halluzination und Grenzen der KI</a><a href="#b10-begriff-ticket">Ticket, Support-Level und SLA</a></nav><dl class="begriff" id="b10-begriff-zuhoeren"><dt>Aktives Zuhören und Fragetechnik <span class="en">(active listening, open and closed questions)</span></dt><dd><span class="label">Was es ist</span><p>Aktives Zuhören heißt, das Gehörte in eigenen Worten zurückzugeben, das mitschwingende Gefühl zu benennen und nachzufragen, bevor du antwortest. Offene Fragen (was, wie, wann) lassen den Kunden erzählen; geschlossene Fragen lassen nur Ja oder Nein zu.<sup class="q"><a href="#b10-q2" title="Active Listening: Paraphrasieren, Gefühle verbalisieren, Nachfragen">2</a></sup></p></dd>
 <dd><span class="label">Wo es dir begegnet</span><p>Ein Kunde meldet „das Netz ist langsam". Offen: „Was genau dauert lange, seit wann?" Geschlossen zum Schluss: „Betrifft es alle Arbeitsplätze?"</p></dd>
@@ -11829,7 +11834,7 @@ Verfügbarkeit
 <p><strong>Auf dem Beleg</strong> ergeben 680,00&nbsp;€ mit 19&nbsp;% genau 129,20&nbsp;€ Steuer und 300,00&nbsp;€ mit 7&nbsp;% genau 21,00&nbsp;€, zusammen <mark>1.130,20&nbsp;€</mark> brutto.<sup class="q"><a href="#b11-q1" title="AP1 Herbst 2025, Aufgabe 1">1</a></sup> Skonto- und Rabattrechnung stehen in <a href="#a2">A2</a>.</p>
   <p><strong>So fragt die IHK hier:</strong> H25 1.1 verlangt kaufmännische Vorgänge mit Datum benannt, H25 1.2 die Kontrollvorgänge bei den Rechnungspositionen. Prüfe jede Zeile gegen Bestellung und Lieferschein: Menge, Artikel, Einzelpreis, Rechenergebnis. <sup class="q"><a href="#b11-q1" title="AP1 Herbst 2025">1</a></sup></p>
 <h4 id="b11-k3">Fälligkeit, Skonto und Verzug</h4>
-<p><strong>Die Zahlungsbedingungen</strong> setzen drei Marken; Abb. B11-2 zeigt sie. Bis zur Skontofrist darf der Kunde den Abzug ziehen, bis zum Zahlungsziel zahlt er ohne Abzug, danach ist er im Verzug, ohne dass eine Mahnung nötig wäre, weil die Zeit nach dem Kalender bestimmt ist.<sup class="q"><a href="#b11-q10" title="§ 286 Abs. 1 bis 3 BGB">10</a></sup></p>
+<p><strong>Bei einem wirksam vereinbarten, kalendermäßig bestimmten Zahlungsziel</strong> setzt der Vertrag drei Marken; Abb. B11-2 zeigt dieses Beispiel. Innerhalb der vereinbarten Skontofrist gilt der Nachlass, bis zur Fälligkeit ist der volle Betrag zu zahlen, danach kann Verzug ohne Mahnung eintreten. Eine einseitig aufgedruckte Frist auf einer Rechnung ersetzt die Vereinbarung nicht automatisch.<sup class="q"><a href="#b11-q10" title="§ 286 Abs. 1 bis 3 BGB">10</a></sup></p>
 <figure class="abb">
 <svg viewBox="0 0 640 196" role="img" aria-labelledby="b11-abb2-t">
 <title id="b11-abb2-t">Zeitstrahl einer Rechnung: Rechnungsdatum, Skontofrist, Zahlungsziel, Verzug</title>
@@ -11837,7 +11842,7 @@ Verfügbarkeit
 <text class="t2 mitte" x="151" y="50">14 Tage: 2 % Skonto</text>
 <line class="l" x1="250" y1="62" x2="450" y2="62"/><line class="l" x1="450" y1="56" x2="450" y2="68"/>
 <text class="t2 mitte" x="350" y="50">bis zum 30. Tag: voller Betrag</text>
-<text class="ta mitte" x="526" y="50">ab dem 31. Tag: Verzug</text>
+<text class="ta mitte" x="526" y="50">nach der Frist: Verzug</text>
 <line class="l" x1="40" y1="100" x2="600" y2="100"/>
 <line class="l" x1="60" y1="90" x2="60" y2="110"/>
 <line class="l" x1="242" y1="90" x2="242" y2="110"/>
@@ -11847,17 +11852,17 @@ Verfügbarkeit
 <text class="tb mitte" x="242" y="130">Skontofrist</text><text class="mono mitte" x="242" y="148">15.10.</text><text class="t2 mitte" x="242" y="166">Tag 14</text>
 <text class="tb mitte" x="450" y="130">Zahlungsziel</text><text class="mono mitte" x="450" y="148">31.10.</text><text class="t2 mitte" x="450" y="166">Tag 30, fällig</text>
 <text class="ta mitte" x="540" y="130">Verzug</text><text class="mono mitte" x="540" y="148">ab 01.11.</text><text class="t2 mitte" x="540" y="166">ohne Mahnung</text>
-<text class="t2 mitte" x="320" y="190">Ohne Zahlungsziel: Verzug spätestens 30 Tage nach Fälligkeit und Rechnungszugang, § 286 Abs. 3 BGB</text>
+<text class="t2 mitte" x="320" y="190">Ohne vereinbarte Frist: Mahnung oder § 286 Abs. 3 BGB prüfen</text>
 </svg>
-<figcaption>Abb. B11-2: Rechnung vom 1. Oktober mit 14 Tagen Skontofrist und 30 Tagen Zahlungsziel. Der Akzent zeigt, wo der Verzug beginnt: am Tag nach dem kalendermäßig bestimmten Zahlungsziel, ohne Mahnung.</figcaption>
+<figcaption>Abb. B11-2: Beispiel mit vereinbarter 14-tägiger Skontofrist und kalendermäßig bestimmter Fälligkeit am 31. Oktober. Bei ausbleibender Zahlung kann Verzug ab 1. November ohne Mahnung eintreten.</figcaption>
 </figure>
 <p><strong>Fehlt ein Zahlungsziel</strong>, gerät der Schuldner spätestens 30&nbsp;Tage nach Fälligkeit und Zugang der Rechnung in Verzug; gegenüber Verbrauchern nur, wenn die Rechnung darauf hinweist.<sup class="q"><a href="#b11-q10" title="§ 286 Abs. 1 bis 3 BGB">10</a></sup></p>
-<div class="merke" data-art="Typischer Fehler"><p>Die 30&nbsp;Tage aus § 286 Abs. 3 BGB werden als allgemeines Zahlungsziel gelesen. Sie sind die Obergrenze, ab der Verzug ohne Mahnung eintritt, wenn nichts anderes vereinbart ist. Steht auf der Rechnung ein Zahlungsziel, gilt dieses; steht dort ein kürzeres, beginnt der Verzug früher.</p></div>
+<div class="merke" data-art="Typischer Fehler"><p>Die 30 Tage aus § 286 Abs. 3 BGB sind kein allgemeines Zahlungsziel: Bei einer fälligen Entgeltforderung tritt Verzug spätestens 30 Tage nach Fälligkeit und Rechnungszugang ein; bei Verbrauchern nur mit besonderem Hinweis auf der Rechnung. Mahnung oder eine wirksam vereinbarte kalendermäßige Frist können den Verzug früher auslösen.</p></div>
 <h4 id="b11-k4">E-Rechnung, GiroCode und digitale Rechnungen</h4>
-<p><strong>Eine E-Rechnung</strong> ist kein PDF, sondern ein strukturierter Datensatz nach EN 16931, den ein Programm ohne Abtippen verarbeitet; zwischen inländischen Unternehmern ist sie Pflicht, mit Übergangsfristen für das Ausstellen.<sup class="q"><a href="#b11-q11" title="§ 14 Abs. 4 Nr. 1 bis 8 UStG">11</a></sup><sup class="q"><a href="#b11-q12" title="§ 27 Abs. 38 Nr. 1 und 2 UStG">12</a></sup></p>
+<p><strong>Eine E-Rechnung</strong> enthält strukturierte, maschinenlesbare Rechnungsdaten, etwa als XRechnung oder in einem geeigneten ZUGFeRD-Format mit PDF-Ansicht und eingebetteten XML-Daten. Ein einfaches PDF ohne strukturierte Daten genügt seit 2025 nicht. Für inländische B2B-Umsätze gelten Ausnahmen und Übergangsfristen für das Ausstellen; der Empfang muss seit 2025 möglich sein. <a href="https://www.bundesfinanzministerium.de/Content/DE/FAQ/e-rechnung.html">Aktuelle BMF-FAQ zur E-Rechnung</a>.<sup class="q"><a href="#b11-q11" title="§ 14 Abs. 4 Nr. 1 bis 8 UStG">11</a></sup><sup class="q"><a href="#b11-q12" title="§ 27 Abs. 38 Nr. 1 und 2 UStG">12</a></sup></p>
 <p><strong>Der GiroCode</strong> trägt fünf Angaben als EPC-QR-Code:<sup class="q"><a href="#b11-q14" title="EPC069-12, Datenfelder des EPC-QR-Codes">14</a></sup></p>
 <ol><li>Empfänger</li><li>IBAN</li><li>BIC</li><li>Betrag</li><li>Verwendungszweck</li></ol>
-<p><strong>Die Banking-App</strong> füllt die Überweisung fehlerfrei vor; der Rechnungssteller ordnet den Zahlungseingang automatisch zu.<sup class="q"><a href="#b11-q1" title="AP1 Herbst 2025, Aufgabe 1">1</a></sup></p>
+<p><strong>Die Banking-App</strong> kann die Überweisung aus dem Code vorausfüllen; mit geeignetem Buchungssystem kann der Rechnungssteller den Zahlungseingang leichter zuordnen.<sup class="q"><a href="#b11-q1" title="AP1 Herbst 2025, Aufgabe 1">1</a></sup></p>
 <p><strong>Dafür</strong> sprechen sechs Punkte:<sup class="q"><a href="#b11-q1" title="AP1 Herbst 2025, Aufgabe 1">1</a></sup></p>
 <ol><li>schnellere Bearbeitung</li><li>geringere Kosten</li><li>weniger Medienbrüche</li><li>leichterer Zugriff</li><li>bessere Nachvollziehbarkeit</li><li>Anbindung an andere Systeme</li></ol>
 <p><strong>Dagegen</strong> stehen vier:<sup class="q"><a href="#b11-q1" title="AP1 Herbst 2025, Aufgabe 1">1</a></sup></p>
@@ -11961,7 +11966,7 @@ Verfügbarkeit
 <div class="tabelle"><table><caption>Zwei Vollmachten mit unterschiedlicher Reichweite.</caption><thead><tr><th>Vollmacht</th><th>Deckt</th><th>Braucht besondere Ermächtigung</th></tr></thead><tbody><tr><td>Prokura</td><td>alle Geschäfte eines Handelsgewerbes, ausdrücklich erteilt</td><td>Grundstücke</td></tr><tr><td>Handlungsvollmacht</td><td>nur die gewöhnlichen Geschäfte</td><td>Grundstücke, Darlehen, Prozesse</td></tr></tbody></table></div>
 <p><strong>Die Aufbauorganisation</strong> zeigt das Organigramm: Linienstellen mit Weisungsrecht von oben nach unten, Stabsstellen, die beraten, ohne anzuweisen.<sup class="q"><a href="#b11-q17" title="Wöhe, Finanzierung: Leasing">17</a></sup></p>
 
-  <div class="merke" data-art="Auf einen Blick"><p><strong>Der Vertrag</strong> entsteht mit zwei übereinstimmenden Willenserklärungen: Bestellung ist Antrag, Lieferung Annahme.</p><p><strong>Verzug</strong> beginnt am Tag nach dem Zahlungsziel, ohne Mahnung.</p><p><strong>Gewährleistung</strong> ist Gesetz, <strong>Garantie</strong> ist Zusage; beim <strong>Leasing</strong> bleibt der Geber Eigentümer, der Nehmer wird Besitzer.</p></div>
+  <div class="merke" data-art="Auf einen Blick"><p><strong>Der Vertrag</strong> entsteht durch Angebot und passende Annahme; Bestellung und Lieferung können je nach Ablauf diese Rollen übernehmen.</p><p><strong>Verzug</strong> kann nach einer wirksam vereinbarten kalendermäßigen Frist ohne Mahnung eintreten; sonst § 286 BGB prüfen.</p><p><strong>Gewährleistung</strong> ist Gesetz, <strong>Garantie</strong> ist Zusage; beim <strong>Leasing</strong> bleibt der Geber Eigentümer, der Nehmer wird Besitzer.</p></div>
 
 </section>
 
@@ -12063,7 +12068,7 @@ Verfügbarkeit
 
 <section id="b11-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede Aufgabe aus den neun Prüfungen, die zu diesem Kapitel gehört, mit der Lösung aus den IHK-Lösungshinweisen und dem Link zu der Stelle im Kapitel, die den Weg dahin erklärt. Erst selbst rechnen oder schreiben, dann die Lösung aufklappen.</p>
+  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 17 Aufgaben</h3>
   <article class="aufgabe" id="b11-ihk-h22-1-1">
     <p class="herkunft">AP1 Herbst 2022, Aufgabe 1.1, 1 Punkt, sinngemäß wiedergegeben<sup class="q"><a href="#b11-q5" title="AP1 Herbst 2022">5</a></sup></p>
@@ -12301,8 +12306,8 @@ Verfügbarkeit
 <section id="b11-beispiele">
 <h3>Gelöste Kurzbeispiele</h3>
 <ol class="kurzbeispiele">
-<li>Ein Kunde zahlt eine Rechnung ohne Zahlungsziel 25&nbsp;Tage nach Zugang. Ist er im Verzug?
-<p class="loesung-label">Lösung</p><div class="antwort"><p>Nein, solange er nicht gemahnt wurde. Ohne Zahlungsziel tritt Verzug ohne Mahnung erst 30&nbsp;Tage nach Fälligkeit und Zugang der Rechnung ein. Eine Mahnung nach Fälligkeit hätte den Verzug früher ausgelöst.</p></div>
+<li>Ein Kunde zahlt eine fällige Rechnung ohne vereinbartes Zahlungsziel 25&nbsp;Tage nach Zugang. Es gab keine Mahnung und keine andere Ausnahme nach § 286 Abs. 2 BGB. Ist er schon im Verzug?
+<p class="loesung-label">Lösung</p><div class="antwort"><p>Unter diesen Voraussetzungen nein. Die 30-Tage-Regel des § 286 Abs. 3 BGB greift noch nicht; bei einem Verbraucher setzt sie zusätzlich einen besonderen Hinweis auf der Rechnung voraus. Eine Mahnung nach Fälligkeit hätte den Verzug früher auslösen können.</p></div>
 </li>
 <li>Was steht auf einer Rechnung, weil es Pflicht ist, und was nur, weil es üblich ist?
 <p class="loesung-label">Lösung</p><div class="antwort"><p>Pflicht: Name und Anschrift beider Seiten, Steuernummer oder USt-IdNr., Ausstellungsdatum, Rechnungsnummer, Menge und Art, Lieferzeitpunkt, Entgelt je Steuersatz, Steuersatz und Steuerbetrag. Nur üblich: Zahlungsziel, Skonto, Bankverbindung, GiroCode.</p></div>
@@ -12321,7 +12326,7 @@ Verfügbarkeit
 
 <section id="b11-begriffe">
 <h3>Begriffe zum Nachschlagen</h3>
-  <p class="unter">Nur zum Nachschlagen. Aufklappen, wenn dir ein Wort fehlt.</p>
+  <p class="unter">Nur zum Nachschlagen: Such den Begriff, wenn er dir im Kapitel begegnet.</p>
   <h3 class="sammelkopf">Begriffe zum Nachschlagen · 10 Begriffe</h3><div class="antwort">
 <nav class="begriffsliste" aria-label="Begriffe dieses Kapitels"><a href="#b11-begriff-vertragsarten">Kauf-, Werk- und Dienstvertrag</a><a href="#b11-begriff-angebot-annahme">Angebot und Annahme</a><a href="#b11-begriff-sachmangel">Sachmangel und Nacherfüllung</a><a href="#b11-begriff-gewaehrleistung-garantie">Gewährleistung und Garantie</a><a href="#b11-begriff-ruege-verzug">Mängelrüge und Verzug</a><a href="#b11-begriff-rechnung">Rechnung: Pflichtangaben, Fälligkeit, Zahlungsziel</a><a href="#b11-begriff-erechnung-girocode">E-Rechnung und GiroCode</a><a href="#b11-begriff-kauf-leasing-miete">Kauf, Leasing, Miete und Restwert</a><a href="#b11-begriff-make-or-buy-liquiditaet">Make-or-Buy und Liquidität</a><a href="#b11-begriff-rechtsform-vollmacht">Rechtsform, Prokura, Handlungsvollmacht, Organigramm</a></nav>
 
