@@ -210,6 +210,29 @@ marker#pfeil-g path{fill:var(--grau)}
 .lernarten{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 0}.lernart{padding:1.1rem 1.25rem;border-radius:12px;background:#fff;border:1px solid var(--linie)}.lernart strong{display:block;margin-bottom:.35rem;font-size:1rem}.lernart p{margin:0;color:var(--grau);font-size:.9rem}.lernart.rechnen{border-left:4px solid #247B68}.lernart.erklären{border-left:4px solid var(--akzent)}
 .lernstart-regel{margin:1.25rem 0 0;padding:.85rem 1rem;border-radius:10px;background:#0D0F14;color:#fff;font-size:.95rem}.lernstart-regel strong{color:#ffd6c2}.sammelkopf{margin:1.8rem 0 .8rem;padding:.75rem 0 .55rem;border-bottom:1px solid var(--linie);font-size:1rem;letter-spacing:0;text-transform:none;color:var(--tinte)}.loesung-label{margin:.9rem 0 .35rem;font-size:.72rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase;color:#247B68}.antwort{margin:.35rem 0 1rem;padding:.85rem 1rem;border-left:3px solid #247B68;border-radius:0 9px 9px 0;background:#EFF7F4}.antwort>*:last-child{margin-bottom:0}.kurzbeispiele>li{margin:0 0 .9rem;padding:.85rem 1rem;border:1px solid var(--linie);border-radius:10px;background:#fff}.kurzbeispiele .antwort{margin:.7rem 0 0}
 @media(max-width:1100px){.lernfolge{grid-template-columns:repeat(2,minmax(0,1fr))}.lernschritt:last-child{grid-column:1/-1}}@media(max-width:640px){.lernfolge,.lernarten{grid-template-columns:1fr}.lernschritt:last-child{grid-column:auto}}
+
+/* F26: die zehnte Prüfung als ruhiger eigener Atlas mit sichtbaren Lösungen. */
+.f26-ueberblick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin:2rem 0 1.45rem}
+.f26-ueberblick a{display:flex;flex-direction:column;min-width:0;min-height:7.1rem;padding:.9rem 1rem;border:1px solid var(--linie);border-top:4px solid var(--akzent);border-radius:11px;background:var(--papier);text-decoration:none;color:var(--tinte)}
+.f26-ueberblick a:hover{background:var(--akzent-hell);border-color:var(--akzent)}
+.f26-ueberblick span{font:.8rem var(--mono);color:var(--akzent);font-weight:800}
+.f26-ueberblick strong{margin:.55rem 0 .2rem;line-height:1.15}
+.f26-ueberblick small{margin-top:auto;color:var(--grau)}
+.f26-hinweis{padding:1.05rem 1.25rem;border:1px solid var(--linie);border-left:4px solid var(--akzent);border-radius:0 10px 10px 0;background:var(--akzent-hell);font-size:.9375rem}
+.f26 h3.f26-block{display:flex;gap:.9rem;align-items:baseline;margin:3.75rem 0 1.35rem;padding:1rem 1.2rem;border:0;border-radius:10px;background:var(--tinte);color:#fff}
+.f26-block span{color:#FFB493;font:.75rem var(--mono);white-space:nowrap}
+.f26-block em{margin-left:auto;font:750 .875rem var(--sans);white-space:nowrap;color:#FFB493}
+.f26 .aufgabe{max-width:min(68rem,100%);margin:1.15rem 0 1.65rem;background:var(--papier)}
+.f26 .aufgabe:target{border-color:var(--akzent);box-shadow:0 0 0 2px var(--akzent-hell)}
+.f26 .aufgabe .antwort{margin-bottom:0}
+.f26-weiter{margin:.95rem 0 0;color:var(--grau);font-size:.83rem}
+.f26 .aufgabe figure.abb{margin:1rem 0}
+.f26 .aufgabe .tabelle{margin:.8rem 0}
+.f26 .aufgabe pre.rechenweg{margin:.7rem 0 1.2rem}
+.f26-ende{max-width:none;padding:1.2rem 1.35rem;background:var(--tinte);border-radius:10px;color:#fff}
+@media(max-width:920px){.f26-ueberblick{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.f26-ueberblick{grid-template-columns:1fr}.f26 .aufgabe{padding:1.05rem}.f26-block{flex-wrap:wrap}.f26 figure.f26-abb{overflow-x:auto}.f26 figure.f26-abb svg{min-width:610px}}
+@media print{.f26 h3.f26-block,.f26-ende{color:#000;background:#fff;border:2px solid #000}.f26-block em,.f26-block span{color:#000}.f26 .aufgabe{break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -219,7 +242,8 @@ marker#pfeil-g path{fill:var(--grau)}
   <ol class="nav-schnell">
     <li><a href="#lernstart">Lernweg von null</a></li>
     <li><a href="#glossar">Stichwörter A–Z</a></li>
-    <li><a href="#pruefungen-einzeln">Die neun Prüfungen</a></li>
+    <li><a href="#pruefungen-einzeln">Die zehn Prüfungen</a></li>
+    <li><a href="#f26-loesungen">Frühjahr 2026 · Lösungen</a></li>
   </ol>
   <ol>
     <li><a href="#benutzung"><span class="nr">0</span>Wie du diese Datei benutzt</a></li>
@@ -271,7 +295,7 @@ marker#pfeil-g path{fill:var(--grau)}
   <p class="kapitel-nr">IHK-Abschlussprüfung Teil 1 · IT-Berufe</p>
   <h1>Einrichten eines IT-gestützten Arbeitsplatzes</h1>
   <p class="unter">Der Prüfungsstoff in 20 Kapiteln. Jedes Verfahren von Grund auf. Jede Aussage mit Quelle. Jede Sache an einer echten Prüfungsaufgabe und einer Variante geübt.</p>
-  <p class="unter klein">Stand 2026-09-22. Erstellt für die persönliche Prüfungsvorbereitung eines Auszubildenden (Fachinformatiker Systemintegration). Prüfungsaufgaben sind sinngemäß wiedergegeben, nicht wörtlich.</p>
+  <p class="unter klein">Stand 2026-09-23. Erstellt für die persönliche Prüfungsvorbereitung eines Auszubildenden (Fachinformatiker Systemintegration). Prüfungsaufgaben sind sinngemäß wiedergegeben, nicht wörtlich.</p>
 </header>
 
 <section class="lernstart" id="lernstart" aria-labelledby="lernstart-titel">
@@ -395,7 +419,7 @@ marker#pfeil-g path{fill:var(--grau)}
   <li><a href="#b5">B5 Netzwerk-Grundlagen</a> – danach, nicht davor: Es ordnet die Geräte und Adressen aus A1 in ein Suchraster für die Fehlersuche ein und beginnt deshalb mit dem Sieben-Schichten-Modell.</li>
   <li><a href="#b9">B9 Projekt, Anforderungen und Vorgehen</a> – woher die Vorgangsliste kommt, mit der A6 rechnet.</li>
   <li><a href="#a6">A6 Netzplan und Gantt</a> – Termine und Puffer ausrechnen.</li>
-  <li><a href="#a2">A2 Kaufmännisch rechnen</a> – Prozent, Rabatt, Skonto, Darlehen. Kommt in jeder Prüfung vor.</li>
+  <li><a href="#a2">A2 Kaufmännisch rechnen</a> – Prozent, Rabatt, Skonto, Darlehen. In neun von zehn Prüfungen ein eigener Aufgabenblock; im Frühjahr 2026 taucht Prozentrechnung als Teil einer Programmieraufgabe auf.</li>
   <li><a href="#a3">A3 Nutzwertanalyse</a> – Angebote vergleichbar machen.</li>
   <li><a href="#a4">A4 Einheiten, Speicher und Datenrate</a> – Bit, Byte und Übertragungszeit.</li>
   <li><a href="#a5">A5 Strom und Energiekosten</a></li>
@@ -430,15 +454,15 @@ marker#pfeil-g path{fill:var(--grau)}
 <tr><th>Merkmal</th><th>Gesetzliche Festlegung</th><th>Bedeutung für den Prüfling</th></tr>
 <tr><td>Prüfungsbereich</td><td>Einrichten eines IT-gestützten Arbeitsplatzes (§ 9 Abs. 1 FIAusbV)</td><td>Gemeinsamer Prüfungsbereich der Fachinformatik-Fachrichtungen</td></tr>
 <tr><td>Prüfungszeit</td><td>90 Minuten (§ 9 Abs. 4 FIAusbV)</td><td>Feste Bearbeitungsdauer für den gesamten Aufgabensatz</td></tr>
-<tr><td>Gesamtpunktzahl</td><td>100 Punkte in den neun ausgewerteten Heften (Deckblatt; nicht § 9 FIAusbV)</td><td>Vier Hauptaufgaben mit unterschiedlich gewichteten Teilaufgaben</td></tr>
+<tr><td>Gesamtpunktzahl</td><td>100 Punkte in den zehn ausgewerteten Heften (Deckblatt; nicht § 9 FIAusbV)</td><td>Vier Hauptaufgaben mit unterschiedlich gewichteten Teilaufgaben</td></tr>
 <tr><td>Gewichtung</td><td>20 Prozent der Gesamtnote (FISI: § 24 Abs. 1 Nr. 1 FIAusbV; weitere Fachrichtungen: §§ 16, 32 und 40, jeweils Abs. 1 Nr. 1)</td><td>Zählt in das Gesamtergebnis der Ausbildung</td></tr>
 <tr><td>Prüfungsform</td><td>Schriftliche Bearbeitung (§ 9 Abs. 3 FIAusbV)</td><td>In den hier ausgewerteten Heften: offene Teilaufgaben</td></tr>
 </table></div>
 
-<p>In den neun hier ausgewerteten Aufgabensätzen sind alle vier Hauptaufgaben Pflicht; ein Wahlteil ist auf den Deckblättern nicht vorgesehen<sup class="q"><a href="#pruefung-q4" title="Deckblatt">4</a></sup>. Die Aufgabenstellung bezieht sich durchgehend auf ein übergeordnetes, fiktives Unternehmensszenario, das die Rahmenbedingungen für alle Teilaufgaben liefert.</p>
+<p>In den zehn hier ausgewerteten Aufgabensätzen sind alle vier Hauptaufgaben Pflicht; ein Wahlteil ist auf den Deckblättern nicht vorgesehen<sup class="q"><a href="#pruefung-q4" title="Deckblatt">4</a></sup>. Die Aufgabenstellung bezieht sich durchgehend auf ein übergeordnetes, fiktives Unternehmensszenario, das die Rahmenbedingungen für alle Teilaufgaben liefert.</p>
 
 <div class="tabelle"><table>
-<caption>Aufgabenstruktur der neun ausgewerteten Prüfungen (Herbst 2021 bis Herbst 2025)</caption>
+<caption>Aufgabenstruktur der zehn ausgewerteten Prüfungen (Herbst 2021 bis Frühjahr 2026)</caption>
 <tr><th>Prüfungstermin</th><th>Aufgabe 1</th><th>Aufgabe 2</th><th>Aufgabe 3</th><th>Aufgabe 4</th><th>Gesamtpunkte</th></tr>
 <tr><td>Herbst 2021<sup class="q"><a href="#pruefung-q6" title="H21">6</a></sup></td><td class="z">25 P</td><td class="z">25 P</td><td class="z">26 P</td><td class="z">24 P</td><td class="z">100 P</td></tr>
 <tr><td>Frühjahr 2022<sup class="q"><a href="#pruefung-q7" title="F22">7</a></sup></td><td class="z">25 P</td><td class="z">24 P</td><td class="z">25 P</td><td class="z">26 P</td><td class="z">100 P</td></tr>
@@ -449,7 +473,8 @@ marker#pfeil-g path{fill:var(--grau)}
 <tr><td>Herbst 2024<sup class="q"><a href="#pruefung-q12" title="H24">12</a></sup></td><td class="z">25 P</td><td class="z">25 P</td><td class="z">24 P</td><td class="z">26 P</td><td class="z">100 P</td></tr>
 <tr><td>Frühjahr 2025<sup class="q"><a href="#pruefung-q13" title="F25">13</a></sup></td><td class="z">25 P</td><td class="z">20 P</td><td class="z">30 P</td><td class="z">25 P</td><td class="z">100 P</td></tr>
 <tr><td>Herbst 2025<sup class="q"><a href="#pruefung-q14" title="H25">14</a></sup></td><td class="z">25 P</td><td class="z">25 P</td><td class="z">26 P</td><td class="z">24 P</td><td class="z">100 P</td></tr>
-<tr class="summe"><td>Mittelwert</td><td class="z">25,0 P</td><td class="z">24,2 P</td><td class="z">25,4 P</td><td class="z">25,3 P</td><td class="z">100,0 P</td></tr>
+<tr><td><a href="#pruefung-f26">Frühjahr 2026</a></td><td class="z">25 P</td><td class="z">25 P</td><td class="z">25 P</td><td class="z">25 P</td><td class="z">100 P</td></tr>
+<tr class="summe"><td>Mittelwert</td><td class="z">25,0 P</td><td class="z">24,3 P</td><td class="z">25,4 P</td><td class="z">25,3 P</td><td class="z">100,0 P</td></tr>
 </table></div>
 
 <h3>Zugelassene Hilfsmittel</h3>
@@ -531,76 +556,77 @@ marker#pfeil-g path{fill:var(--grau)}
 <h2>Was wie oft drankam</h2>
 
 <div class="tabelle"><table>
-<caption>Punkteverteilung je Kapitel und Prüfungstermin (Herbst 2021 bis Herbst 2025)</caption>
-<tr><th>Kapitel</th><th>Titel</th><th>H21</th><th>F22</th><th>H22</th><th>F23</th><th>H23</th><th>F24</th><th>H24</th><th>F25</th><th>H25</th><th>Summe</th><th>in n von 9</th><th>Ø je Prüfung</th></tr>
-<tr><td><a href="#a1">A1</a></td><td><a href="#a1">IPv4, Subnetting und Netzkonfiguration</a></td><td class="z"></td><td class="z">8</td><td class="z">18</td><td class="z"></td><td class="z"></td><td class="z">11</td><td class="z">10</td><td class="z">2</td><td class="z">3</td><td class="z"><strong>52</strong></td><td class="z">6/9</td><td class="z">5.8</td></tr>
-<tr><td><a href="#a2">A2</a></td><td><a href="#a2">Kaufmännisch rechnen</a></td><td class="z">4</td><td class="z">5</td><td class="z">5</td><td class="z">16</td><td class="z">5</td><td class="z">7</td><td class="z">13</td><td class="z">7</td><td class="z">8</td><td class="z"><strong>70</strong></td><td class="z">9/9</td><td class="z">7.8</td></tr>
-<tr><td><a href="#a3">A3</a></td><td><a href="#a3">Nutzwertanalyse</a></td><td class="z"></td><td class="z"></td><td class="z">10</td><td class="z">22</td><td class="z"></td><td class="z">6</td><td class="z"></td><td class="z">7</td><td class="z"></td><td class="z"><strong>45</strong></td><td class="z">4/9</td><td class="z">5.0</td></tr>
-<tr><td><a href="#a4">A4</a></td><td><a href="#a4">Einheiten, Speicher und Datenrate</a></td><td class="z"></td><td class="z">5</td><td class="z">8</td><td class="z"></td><td class="z"></td><td class="z">18</td><td class="z"></td><td class="z"></td><td class="z">6</td><td class="z"><strong>37</strong></td><td class="z">4/9</td><td class="z">4.1</td></tr>
-<tr><td><a href="#a5">A5</a></td><td><a href="#a5">Strom und Energiekosten</a></td><td class="z">14</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z">7</td><td class="z"></td><td class="z"></td><td class="z">5</td><td class="z"><strong>26</strong></td><td class="z">3/9</td><td class="z">2.9</td></tr>
-<tr><td><a href="#a6">A6</a></td><td><a href="#a6">Netzplan und Gantt</a></td><td class="z">17</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z">12</td><td class="z"></td><td class="z"></td><td class="z">10</td><td class="z"></td><td class="z"><strong>39</strong></td><td class="z">3/9</td><td class="z">4.3</td></tr>
-<tr><td><a href="#a7">A7</a></td><td><a href="#a7">Programmlogik und Schreibtischtest</a></td><td class="z">8</td><td class="z">9</td><td class="z">7</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z">12</td><td class="z">14</td><td class="z">10</td><td class="z"><strong>60</strong></td><td class="z">6/9</td><td class="z">6.7</td></tr>
-<tr><td><a href="#a8">A8</a></td><td><a href="#a8">UML-Diagramme</a></td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z">8</td><td class="z">6</td><td class="z"></td><td class="z">5</td><td class="z"></td><td class="z">9</td><td class="z"><strong>28</strong></td><td class="z">4/9</td><td class="z">3.1</td></tr>
-<tr><td><a href="#a9">A9</a></td><td><a href="#a9">Datenmodell und ER-Diagramm</a></td><td class="z"></td><td class="z"></td><td class="z">17</td><td class="z">7</td><td class="z">13</td><td class="z"></td><td class="z">6</td><td class="z">4</td><td class="z">14</td><td class="z"><strong>61</strong></td><td class="z">6/9</td><td class="z">6.8</td></tr>
-<tr><td><a href="#b1">B1</a></td><td><a href="#b1">IT-Sicherheit I: Schutzziele, Zugang, Angriffe</a></td><td class="z">18</td><td class="z"></td><td class="z"></td><td class="z">16</td><td class="z">10</td><td class="z">15</td><td class="z">19</td><td class="z">8</td><td class="z">8</td><td class="z"><strong>94</strong></td><td class="z">7/9</td><td class="z">10.4</td></tr>
-<tr><td><a href="#b2">B2</a></td><td><a href="#b2">IT-Sicherheit II: Kryptografie und sichere Verbindungen</a></td><td class="z"></td><td class="z">5</td><td class="z"></td><td class="z"></td><td class="z">10</td><td class="z">2</td><td class="z"></td><td class="z">15</td><td class="z">4</td><td class="z"><strong>36</strong></td><td class="z">5/9</td><td class="z">4.0</td></tr>
-<tr><td><a href="#b3">B3</a></td><td><a href="#b3">Datenschutz: DSGVO und BDSG</a></td><td class="z">2</td><td class="z"></td><td class="z"></td><td class="z">4</td><td class="z">2</td><td class="z"></td><td class="z"></td><td class="z">3</td><td class="z">3</td><td class="z"><strong>14</strong></td><td class="z">5/9</td><td class="z">1.6</td></tr>
-<tr><td><a href="#b4">B4</a></td><td><a href="#b4">Hardware und Anschlüsse</a></td><td class="z"></td><td class="z">23</td><td class="z">4</td><td class="z">4</td><td class="z"></td><td class="z">4</td><td class="z">8</td><td class="z">4</td><td class="z"></td><td class="z"><strong>47</strong></td><td class="z">6/9</td><td class="z">5.2</td></tr>
-<tr><td><a href="#b5">B5</a></td><td><a href="#b5">Netzwerk-Grundlagen</a></td><td class="z"></td><td class="z">16</td><td class="z">3</td><td class="z"></td><td class="z"></td><td class="z">13</td><td class="z">5</td><td class="z">4</td><td class="z">3</td><td class="z"><strong>44</strong></td><td class="z">6/9</td><td class="z">4.9</td></tr>
-<tr><td><a href="#b6">B6</a></td><td><a href="#b6">Software, Lizenzen und Web</a></td><td class="z"></td><td class="z">4</td><td class="z"></td><td class="z">4</td><td class="z"></td><td class="z">5</td><td class="z">2</td><td class="z">10</td><td class="z"></td><td class="z"><strong>25</strong></td><td class="z">5/9</td><td class="z">2.8</td></tr>
-<tr><td><a href="#b7">B7</a></td><td><a href="#b7">Datensicherung und Verfügbarkeit</a></td><td class="z">11</td><td class="z"></td><td class="z">10</td><td class="z"></td><td class="z"></td><td class="z">3</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z"><strong>24</strong></td><td class="z">3/9</td><td class="z">2.7</td></tr>
-<tr><td><a href="#b8">B8</a></td><td><a href="#b8">Arbeitsplatz: Ergonomie, Barrierefreiheit, Nachhaltigkeit</a></td><td class="z">3</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z">16</td><td class="z"></td><td class="z">4</td><td class="z"></td><td class="z"></td><td class="z"><strong>23</strong></td><td class="z">3/9</td><td class="z">2.6</td></tr>
-<tr><td><a href="#b9">B9</a></td><td><a href="#b9">Projekt, Anforderungen und Vorgehen</a></td><td class="z">13</td><td class="z">7</td><td class="z">14</td><td class="z">6</td><td class="z">6</td><td class="z"></td><td class="z">6</td><td class="z"></td><td class="z"></td><td class="z"><strong>52</strong></td><td class="z">6/9</td><td class="z">5.8</td></tr>
-<tr><td><a href="#b10">B10</a></td><td><a href="#b10">Kunde, Kommunikation und Veränderung</a></td><td class="z">10</td><td class="z">18</td><td class="z"></td><td class="z">4</td><td class="z">14</td><td class="z"></td><td class="z"></td><td class="z">12</td><td class="z">10</td><td class="z"><strong>68</strong></td><td class="z">6/9</td><td class="z">7.6</td></tr>
-<tr><td><a href="#b11">B11</a></td><td><a href="#b11">Wirtschaft und Recht</a></td><td class="z"></td><td class="z"></td><td class="z">4</td><td class="z">9</td><td class="z">6</td><td class="z">9</td><td class="z">10</td><td class="z"></td><td class="z">17</td><td class="z"><strong>55</strong></td><td class="z">6/9</td><td class="z">6.1</td></tr>
-<tr class="summe"><td><strong>Summe</strong></td><td><strong>Alle 20 Kapitel</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>900</strong></td><td class="z"><strong>20/20</strong></td><td class="z"><strong>100,0</strong></td></tr>
+<caption>Punkteverteilung je Kapitel und Prüfungstermin (Herbst 2021 bis Frühjahr 2026)</caption>
+<tr><th>Kapitel</th><th>Titel</th><th>H21</th><th>F22</th><th>H22</th><th>F23</th><th>H23</th><th>F24</th><th>H24</th><th>F25</th><th>H25</th><th>F26</th><th>Summe</th><th>in n von 10</th><th>Ø je Prüfung</th></tr>
+<tr><td><a href="#a1">A1</a></td><td><a href="#a1">IPv4, Subnetting und Netzkonfiguration</a></td><td class="z"></td><td class="z">8</td><td class="z">18</td><td class="z"></td><td class="z"></td><td class="z">11</td><td class="z">10</td><td class="z">2</td><td class="z">3</td><td class="z">13</td><td class="z"><strong>65</strong></td><td class="z">7/10</td><td class="z">6.5</td></tr>
+<tr><td><a href="#a2">A2</a></td><td><a href="#a2">Kaufmännisch rechnen</a></td><td class="z">4</td><td class="z">5</td><td class="z">5</td><td class="z">16</td><td class="z">5</td><td class="z">7</td><td class="z">13</td><td class="z">7</td><td class="z">8</td><td class="z"></td><td class="z"><strong>70</strong></td><td class="z">9/10</td><td class="z">7.0</td></tr>
+<tr><td><a href="#a3">A3</a></td><td><a href="#a3">Nutzwertanalyse</a></td><td class="z"></td><td class="z"></td><td class="z">10</td><td class="z">22</td><td class="z"></td><td class="z">6</td><td class="z"></td><td class="z">7</td><td class="z"></td><td class="z"></td><td class="z"><strong>45</strong></td><td class="z">4/10</td><td class="z">4.5</td></tr>
+<tr><td><a href="#a4">A4</a></td><td><a href="#a4">Einheiten, Speicher und Datenrate</a></td><td class="z"></td><td class="z">5</td><td class="z">8</td><td class="z"></td><td class="z"></td><td class="z">18</td><td class="z"></td><td class="z"></td><td class="z">6</td><td class="z">9</td><td class="z"><strong>46</strong></td><td class="z">5/10</td><td class="z">4.6</td></tr>
+<tr><td><a href="#a5">A5</a></td><td><a href="#a5">Strom und Energiekosten</a></td><td class="z">14</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z">7</td><td class="z"></td><td class="z"></td><td class="z">5</td><td class="z">4</td><td class="z"><strong>30</strong></td><td class="z">4/10</td><td class="z">3.0</td></tr>
+<tr><td><a href="#a6">A6</a></td><td><a href="#a6">Netzplan und Gantt</a></td><td class="z">17</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z">12</td><td class="z"></td><td class="z"></td><td class="z">10</td><td class="z"></td><td class="z">6</td><td class="z"><strong>45</strong></td><td class="z">4/10</td><td class="z">4.5</td></tr>
+<tr><td><a href="#a7">A7</a></td><td><a href="#a7">Programmlogik und Schreibtischtest</a></td><td class="z">8</td><td class="z">9</td><td class="z">7</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z">12</td><td class="z">14</td><td class="z">10</td><td class="z">12</td><td class="z"><strong>72</strong></td><td class="z">7/10</td><td class="z">7.2</td></tr>
+<tr><td><a href="#a8">A8</a></td><td><a href="#a8">UML-Diagramme</a></td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z">8</td><td class="z">6</td><td class="z"></td><td class="z">5</td><td class="z"></td><td class="z">9</td><td class="z">5</td><td class="z"><strong>33</strong></td><td class="z">5/10</td><td class="z">3.3</td></tr>
+<tr><td><a href="#a9">A9</a></td><td><a href="#a9">Datenmodell und ER-Diagramm</a></td><td class="z"></td><td class="z"></td><td class="z">17</td><td class="z">7</td><td class="z">13</td><td class="z"></td><td class="z">6</td><td class="z">4</td><td class="z">14</td><td class="z">8</td><td class="z"><strong>69</strong></td><td class="z">7/10</td><td class="z">6.9</td></tr>
+<tr><td><a href="#b1">B1</a></td><td><a href="#b1">IT-Sicherheit I: Schutzziele, Zugang, Angriffe</a></td><td class="z">18</td><td class="z"></td><td class="z"></td><td class="z">16</td><td class="z">10</td><td class="z">15</td><td class="z">19</td><td class="z">8</td><td class="z">8</td><td class="z">4</td><td class="z"><strong>98</strong></td><td class="z">8/10</td><td class="z">9.8</td></tr>
+<tr><td><a href="#b2">B2</a></td><td><a href="#b2">IT-Sicherheit II: Kryptografie und sichere Verbindungen</a></td><td class="z"></td><td class="z">5</td><td class="z"></td><td class="z"></td><td class="z">10</td><td class="z">2</td><td class="z"></td><td class="z">15</td><td class="z">4</td><td class="z"></td><td class="z"><strong>36</strong></td><td class="z">5/10</td><td class="z">3.6</td></tr>
+<tr><td><a href="#b3">B3</a></td><td><a href="#b3">Datenschutz: DSGVO und BDSG</a></td><td class="z">2</td><td class="z"></td><td class="z"></td><td class="z">4</td><td class="z">2</td><td class="z"></td><td class="z"></td><td class="z">3</td><td class="z">3</td><td class="z">2</td><td class="z"><strong>16</strong></td><td class="z">6/10</td><td class="z">1.6</td></tr>
+<tr><td><a href="#b4">B4</a></td><td><a href="#b4">Hardware und Anschlüsse</a></td><td class="z"></td><td class="z">23</td><td class="z">4</td><td class="z">4</td><td class="z"></td><td class="z">4</td><td class="z">8</td><td class="z">4</td><td class="z"></td><td class="z">8</td><td class="z"><strong>55</strong></td><td class="z">7/10</td><td class="z">5.5</td></tr>
+<tr><td><a href="#b5">B5</a></td><td><a href="#b5">Netzwerk-Grundlagen</a></td><td class="z"></td><td class="z">16</td><td class="z">3</td><td class="z"></td><td class="z"></td><td class="z">13</td><td class="z">5</td><td class="z">4</td><td class="z">3</td><td class="z">11</td><td class="z"><strong>55</strong></td><td class="z">7/10</td><td class="z">5.5</td></tr>
+<tr><td><a href="#b6">B6</a></td><td><a href="#b6">Software, Lizenzen und Web</a></td><td class="z"></td><td class="z">4</td><td class="z"></td><td class="z">4</td><td class="z"></td><td class="z">5</td><td class="z">2</td><td class="z">10</td><td class="z"></td><td class="z"></td><td class="z"><strong>25</strong></td><td class="z">5/10</td><td class="z">2.5</td></tr>
+<tr><td><a href="#b7">B7</a></td><td><a href="#b7">Datensicherung und Verfügbarkeit</a></td><td class="z">11</td><td class="z"></td><td class="z">10</td><td class="z"></td><td class="z"></td><td class="z">3</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z"><strong>24</strong></td><td class="z">3/10</td><td class="z">2.4</td></tr>
+<tr><td><a href="#b8">B8</a></td><td><a href="#b8">Arbeitsplatz: Ergonomie, Barrierefreiheit, Nachhaltigkeit</a></td><td class="z">3</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z">16</td><td class="z"></td><td class="z">4</td><td class="z"></td><td class="z"></td><td class="z">4</td><td class="z"><strong>27</strong></td><td class="z">4/10</td><td class="z">2.7</td></tr>
+<tr><td><a href="#b9">B9</a></td><td><a href="#b9">Projekt, Anforderungen und Vorgehen</a></td><td class="z">13</td><td class="z">7</td><td class="z">14</td><td class="z">6</td><td class="z">6</td><td class="z"></td><td class="z">6</td><td class="z"></td><td class="z"></td><td class="z"></td><td class="z"><strong>52</strong></td><td class="z">6/10</td><td class="z">5.2</td></tr>
+<tr><td><a href="#b10">B10</a></td><td><a href="#b10">Kunde, Kommunikation und Veränderung</a></td><td class="z">10</td><td class="z">18</td><td class="z"></td><td class="z">4</td><td class="z">14</td><td class="z"></td><td class="z"></td><td class="z">12</td><td class="z">10</td><td class="z">10</td><td class="z"><strong>78</strong></td><td class="z">7/10</td><td class="z">7.8</td></tr>
+<tr><td><a href="#b11">B11</a></td><td><a href="#b11">Wirtschaft und Recht</a></td><td class="z"></td><td class="z"></td><td class="z">4</td><td class="z">9</td><td class="z">6</td><td class="z">9</td><td class="z">10</td><td class="z"></td><td class="z">17</td><td class="z">4</td><td class="z"><strong>59</strong></td><td class="z">7/10</td><td class="z">5.9</td></tr>
+<tr class="summe"><td><strong>Summe</strong></td><td><strong>Alle 20 Kapitel</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>100</strong></td><td class="z"><strong>1000</strong></td><td class="z"><strong>20/20</strong></td><td class="z"><strong>100,0</strong></td></tr>
 </table></div>
 
 <div class="tabelle"><table>
 <caption>Chronologische Auflistung aller Teilaufgaben nach Kapiteln</caption>
 <tr><th>Kapitel</th><th>Thema</th><th>Aufgaben in den Prüfungen</th><th>Anzahl</th><th>Punkte</th></tr>
-<tr><td><a href="#a1">A1</a></td><td><a href="#a1">IPv4, Subnetting und Netzkonfiguration</a></td><td>F22 3.5 (2 P), F22 3.6 (2 P), F22 3.7 (1 P), F22 3.8 (3 P), H22 3.1 (2 P), H22 3.2 (4 P), H22 3.3 (2 P), H22 3.4 (6 P), H22 3.5 (2 P), H22 3.6 (2 P), F24 2.3 (5 P), F24 2.4 (2 P), F24 2.7 (4 P), H24 1.4 (2 P), H24 1.5 (4 P), H24 1.7 (4 P), F25 1.6 (2 P), H25 3.7 (3 P)</td><td class="z">18</td><td class="z">52 P</td></tr>
-<tr><td><a href="#a2">A2</a></td><td><a href="#a2">Kaufmännisch rechnen</a></td><td>H21 3.2 (2 P), H21 3.3 (2 P), F22 4.3 (5 P), H22 1.6 (5 P), F23 2.1 (10 P), F23 2.2 (3 P), F23 2.4 (3 P), H23 2.5 (5 P), F24 1.3 (7 P), H24 2.6 (6 P), H24 3.1 (7 P), F25 1.3 (3 P), F25 4.3 (4 P), H25 1.3 (2 P), H25 1.4 (4 P), H25 2.6 (2 P)</td><td class="z">16</td><td class="z">70 P</td></tr>
-<tr><td><a href="#a3">A3</a></td><td><a href="#a3">Nutzwertanalyse</a></td><td>H22 3.7 (10 P), F23 1.2 (16 P), F23 1.3 (4 P), F23 1.4 (2 P), F24 1.1 (4 P), F24 1.2 (2 P), F25 1.1 (6 P), F25 1.2 (1 P)</td><td class="z">8</td><td class="z">45 P</td></tr>
-<tr><td><a href="#a4">A4</a></td><td><a href="#a4">Einheiten, Speicher und Datenrate</a></td><td>F22 2.11 (1 P), F22 4.5 (4 P), H22 2.1 (2 P), H22 2.2 (4 P), H22 2.3 (2 P), F24 3.3 (4 P), F24 3.4 (3 P), F24 3.5 (2 P), F24 3.6 (3 P), F24 4.7 (6 P), H25 2.4 (3 P), H25 2.5 (3 P)</td><td class="z">12</td><td class="z">37 P</td></tr>
-<tr><td><a href="#a5">A5</a></td><td><a href="#a5">Strom und Energiekosten</a></td><td>H21 2.1 (6 P), H21 2.2 (4 P), H21 2.4 (4 P), F24 3.7 (4 P), F24 3.8 (3 P), H25 3.5 (2 P), H25 3.6 (3 P)</td><td class="z">7</td><td class="z">26 P</td></tr>
-<tr><td><a href="#a6">A6</a></td><td><a href="#a6">Netzplan und Gantt</a></td><td>H21 1.3 (14 P), H21 1.4 (1 P), H21 1.5 (2 P), H23 4.1 (4 P), H23 4.3 (6 P), H23 4.4 (1 P), H23 4.5 (1 P), F25 3.1 (9 P), F25 3.2 (1 P)</td><td class="z">9</td><td class="z">39 P</td></tr>
-<tr><td><a href="#a7">A7</a></td><td><a href="#a7">Programmlogik und Schreibtischtest</a></td><td>H21 2.5 (8 P), F22 4.4 (9 P), H22 4.4 (7 P), H24 2.2 (3 P), H24 2.3 (3 P), H24 2.5 (6 P), F25 3.5 (6 P), F25 3.6 (8 P), H25 4.5 (3 P), H25 4.6 (2 P), H25 4.7 (3 P), H25 4.8 (2 P)</td><td class="z">12</td><td class="z">60 P</td></tr>
-<tr><td><a href="#a8">A8</a></td><td><a href="#a8">UML-Diagramme</a></td><td>F23 4.4 (8 P), H23 1.1 (6 P), H24 2.4 (5 P), H25 2.2 (9 P)</td><td class="z">4</td><td class="z">28 P</td></tr>
-<tr><td><a href="#a9">A9</a></td><td><a href="#a9">Datenmodell und ER-Diagramm</a></td><td>H22 4.1 (3 P), H22 4.2 (4 P), H22 4.3 (4 P), H22 4.5 (6 P), F23 4.5 (3 P), F23 4.6 (4 P), H23 4.6 (5 P), H23 4.7 (2 P), H23 4.8 (3 P), H23 4.9 (3 P), H24 4.2 (6 P), F25 4.7 (2 P), F25 4.8 (2 P), H25 4.1 (2 P), H25 4.2 (2 P), H25 4.3 (2 P), H25 4.4 (8 P)</td><td class="z">17</td><td class="z">61 P</td></tr>
-<tr><td><a href="#b1">B1</a></td><td><a href="#b1">IT-Sicherheit I: Schutzziele, Zugang, Angriffe</a></td><td>H21 4.1 (6 P), H21 4.2 (2 P), H21 4.3 (6 P), H21 4.5 (4 P), F23 3.2 (2 P), F23 3.3 (2 P), F23 3.4 (2 P), F23 3.5 (2 P), F23 3.6 (4 P), F23 3.7 (4 P), H23 3.2 (4 P), H23 3.3 (2 P), H23 3.5 (4 P), F24 4.1 (6 P), F24 4.4 (3 P), F24 4.5 (3 P), F24 4.6 (3 P), H24 1.1 (3 P), H24 1.2 (3 P), H24 1.3 (4 P), H24 3.5 (2 P), H24 3.6 (3 P), H24 3.7 (2 P), H24 3.8 (2 P), F25 1.7 (4 P), F25 1.8 (3 P), F25 2.4 (1 P), H25 3.2 (4 P), H25 3.3 (2 P), H25 3.4 (2 P)</td><td class="z">30</td><td class="z">94 P</td></tr>
-<tr><td><a href="#b2">B2</a></td><td><a href="#b2">IT-Sicherheit II: Kryptografie und sichere Verbindungen</a></td><td>F22 3.1 (2 P), F22 3.2 (3 P), H23 3.4 (3 P), H23 3.6 (2 P), H23 3.7 (2 P), H23 3.8 (3 P), F24 4.2 (2 P), F25 2.3 (4 P), F25 2.5 (2 P), F25 2.7 (4 P), F25 4.5 (3 P), F25 4.6 (2 P), H25 3.9 (4 P)</td><td class="z">13</td><td class="z">36 P</td></tr>
-<tr><td><a href="#b3">B3</a></td><td><a href="#b3">Datenschutz: DSGVO und BDSG</a></td><td>H21 4.4 (2 P), F23 3.8 (4 P), H23 3.1 (2 P), F25 2.1 (1 P), F25 2.2 (2 P), H25 3.1 (3 P)</td><td class="z">6</td><td class="z">14 P</td></tr>
-<tr><td><a href="#b4">B4</a></td><td><a href="#b4">Hardware und Anschlüsse</a></td><td>F22 2.1 (3 P), F22 2.2 (2 P), F22 2.3 (2 P), F22 2.4 (3 P), F22 2.5 (2 P), F22 2.6 (3 P), F22 2.7 (2 P), F22 2.8 (2 P), F22 2.9 (2 P), F22 2.10 (2 P), H22 2.8 (4 P), F23 1.1 (4 P), F24 1.4 (4 P), H24 3.2 (3 P), H24 3.3 (2 P), H24 3.4 (3 P), F25 1.4 (4 P)</td><td class="z">17</td><td class="z">47 P</td></tr>
-<tr><td><a href="#b5">B5</a></td><td><a href="#b5">Netzwerk-Grundlagen</a></td><td>F22 3.3 (6 P), F22 3.4 (4 P), F22 3.9 (2 P), F22 4.2 (4 P), H22 2.7 (3 P), F24 2.1 (4 P), F24 2.2 (4 P), F24 2.5 (3 P), F24 2.6 (2 P), H24 1.6 (5 P), F25 1.5 (2 P), F25 2.8 (2 P), H25 3.8 (3 P)</td><td class="z">13</td><td class="z">44 P</td></tr>
-<tr><td><a href="#b6">B6</a></td><td><a href="#b6">Software, Lizenzen und Web</a></td><td>F22 4.1 (4 P), F23 3.1 (4 P), F24 3.1 (3 P), F24 3.2 (2 P), H24 2.1 (2 P), F25 2.6 (4 P), F25 3.3 (3 P), F25 3.4 (3 P)</td><td class="z">8</td><td class="z">25 P</td></tr>
-<tr><td><a href="#b7">B7</a></td><td><a href="#b7">Datensicherung und Verfügbarkeit</a></td><td>H21 3.6 (7 P), H21 4.6 (2 P), H21 4.7 (2 P), H22 2.4 (4 P), H22 2.5 (2 P), H22 2.6 (4 P), F24 4.3 (3 P)</td><td class="z">7</td><td class="z">24 P</td></tr>
-<tr><td><a href="#b8">B8</a></td><td><a href="#b8">Arbeitsplatz: Ergonomie, Barrierefreiheit, Nachhaltigkeit</a></td><td>H21 2.3 (3 P), H23 2.1 (4 P), H23 2.2 (4 P), H23 2.3 (4 P), H23 2.4 (4 P), H24 4.5 (4 P)</td><td class="z">6</td><td class="z">23 P</td></tr>
-<tr><td><a href="#b9">B9</a></td><td><a href="#b9">Projekt, Anforderungen und Vorgehen</a></td><td>H21 1.1 (4 P), H21 1.2 (4 P), H21 3.1 (5 P), F22 1.4 (6 P), F22 1.5 (1 P), H22 1.3 (6 P), H22 1.4 (3 P), H22 1.5 (5 P), F23 4.2 (4 P), F23 4.3 (2 P), H23 1.4 (3 P), H23 4.2 (3 P), H24 4.1 (6 P)</td><td class="z">13</td><td class="z">52 P</td></tr>
-<tr><td><a href="#b10">B10</a></td><td><a href="#b10">Kunde, Kommunikation und Veränderung</a></td><td>H21 3.4 (4 P), H21 3.5 (6 P), F22 1.1 (6 P), F22 1.2 (3 P), F22 1.3 (9 P), F23 4.1 (4 P), H23 1.2 (4 P), H23 1.3 (2 P), H23 1.8 (4 P), H23 2.6 (4 P), F25 4.1 (6 P), F25 4.2 (2 P), F25 4.4 (4 P), H25 1.7 (2 P), H25 1.8 (4 P), H25 2.3 (4 P)</td><td class="z">16</td><td class="z">68 P</td></tr>
-<tr><td><a href="#b11">B11</a></td><td><a href="#b11">Wirtschaft und Recht</a></td><td>H22 1.1 (1 P), H22 1.2 (1 P), H22 1.7 (2 P), F23 2.3 (4 P), F23 2.5 (3 P), F23 2.6 (2 P), H23 1.5 (1 P), H23 1.6 (1 P), H23 1.7 (4 P), F24 1.5 (2 P), F24 1.6 (3 P), F24 1.7 (2 P), F24 1.8 (2 P), H24 4.3 (6 P), H24 4.4 (4 P), H25 1.1 (3 P), H25 1.2 (6 P), H25 1.5 (2 P), H25 1.6 (2 P), H25 2.1 (4 P)</td><td class="z">20</td><td class="z">55 P</td></tr>
-<tr class="summe"><td><strong>Summe</strong></td><td><strong>Gesamtbestand</strong></td><td><strong>252 Teilaufgaben in 9 Prüfungen</strong></td><td class="z"><strong>252</strong></td><td class="z"><strong>900 P</strong></td></tr>
+<tr><td><a href="#a1">A1</a></td><td><a href="#a1">IPv4, Subnetting und Netzkonfiguration</a></td><td>F22 3.5 (2 P), F22 3.6 (2 P), F22 3.7 (1 P), F22 3.8 (3 P), H22 3.1 (2 P), H22 3.2 (4 P), H22 3.3 (2 P), H22 3.4 (6 P), H22 3.5 (2 P), H22 3.6 (2 P), F24 2.3 (5 P), F24 2.4 (2 P), F24 2.7 (4 P), H24 1.4 (2 P), H24 1.5 (4 P), H24 1.7 (4 P), F25 1.6 (2 P), H25 3.7 (3 P), F26 2.a (4 P), F26 2.c (4 P), F26 2.d (3 P), F26 3.da (2 P)</td><td class="z">22</td><td class="z">65 P</td></tr>
+<tr><td><a href="#a2">A2</a></td><td><a href="#a2">Kaufmännisch rechnen</a></td><td>H21 3.2 (2 P), H21 3.3 (2 P), F22 4.3 (5 P), H22 1.6 (5 P), F23 2.1 (10 P), F23 2.2 (3 P), F23 2.4 (3 P), H23 2.5 (5 P), F24 1.3 (7 P), H24 2.6 (6 P), H24 3.1 (7 P), F25 1.3 (3 P), F25 4.3 (4 P), H25 1.3 (2 P), H25 1.4 (4 P), H25 2.6 (2 P), </td><td class="z">16</td><td class="z">70 P</td></tr>
+<tr><td><a href="#a3">A3</a></td><td><a href="#a3">Nutzwertanalyse</a></td><td>H22 3.7 (10 P), F23 1.2 (16 P), F23 1.3 (4 P), F23 1.4 (2 P), F24 1.1 (4 P), F24 1.2 (2 P), F25 1.1 (6 P), F25 1.2 (1 P), </td><td class="z">8</td><td class="z">45 P</td></tr>
+<tr><td><a href="#a4">A4</a></td><td><a href="#a4">Einheiten, Speicher und Datenrate</a></td><td>F22 2.11 (1 P), F22 4.5 (4 P), H22 2.1 (2 P), H22 2.2 (4 P), H22 2.3 (2 P), F24 3.3 (4 P), F24 3.4 (3 P), F24 3.5 (2 P), F24 3.6 (3 P), F24 4.7 (6 P), H25 2.4 (3 P), H25 2.5 (3 P), F26 1.ad (4 P), F26 1.b (5 P)</td><td class="z">14</td><td class="z">46 P</td></tr>
+<tr><td><a href="#a5">A5</a></td><td><a href="#a5">Strom und Energiekosten</a></td><td>H21 2.1 (6 P), H21 2.2 (4 P), H21 2.4 (4 P), F24 3.7 (4 P), F24 3.8 (3 P), H25 3.5 (2 P), H25 3.6 (3 P), F26 1.ac (4 P)</td><td class="z">8</td><td class="z">30 P</td></tr>
+<tr><td><a href="#a6">A6</a></td><td><a href="#a6">Netzplan und Gantt</a></td><td>H21 1.3 (14 P), H21 1.4 (1 P), H21 1.5 (2 P), H23 4.1 (4 P), H23 4.3 (6 P), H23 4.4 (1 P), H23 4.5 (1 P), F25 3.1 (9 P), F25 3.2 (1 P), F26 2.e (6 P)</td><td class="z">10</td><td class="z">45 P</td></tr>
+<tr><td><a href="#a7">A7</a></td><td><a href="#a7">Programmlogik und Schreibtischtest</a></td><td>H21 2.5 (8 P), F22 4.4 (9 P), H22 4.4 (7 P), H24 2.2 (3 P), H24 2.3 (3 P), H24 2.5 (6 P), F25 3.5 (6 P), F25 3.6 (8 P), H25 4.5 (3 P), H25 4.6 (2 P), H25 4.7 (3 P), H25 4.8 (2 P), F26 4.a (2 P), F26 4.bb (10 P)</td><td class="z">14</td><td class="z">72 P</td></tr>
+<tr><td><a href="#a8">A8</a></td><td><a href="#a8">UML-Diagramme</a></td><td>F23 4.4 (8 P), H23 1.1 (6 P), H24 2.4 (5 P), H25 2.2 (9 P), F26 4.ba (5 P)</td><td class="z">5</td><td class="z">33 P</td></tr>
+<tr><td><a href="#a9">A9</a></td><td><a href="#a9">Datenmodell und ER-Diagramm</a></td><td>H22 4.1 (3 P), H22 4.2 (4 P), H22 4.3 (4 P), H22 4.5 (6 P), F23 4.5 (3 P), F23 4.6 (4 P), H23 4.6 (5 P), H23 4.7 (2 P), H23 4.8 (3 P), H23 4.9 (3 P), H24 4.2 (6 P), F25 4.7 (2 P), F25 4.8 (2 P), H25 4.1 (2 P), H25 4.2 (2 P), H25 4.3 (2 P), H25 4.4 (8 P), F26 4.c (8 P)</td><td class="z">18</td><td class="z">69 P</td></tr>
+<tr><td><a href="#b1">B1</a></td><td><a href="#b1">IT-Sicherheit I: Schutzziele, Zugang, Angriffe</a></td><td>H21 4.1 (6 P), H21 4.2 (2 P), H21 4.3 (6 P), H21 4.5 (4 P), F23 3.2 (2 P), F23 3.3 (2 P), F23 3.4 (2 P), F23 3.5 (2 P), F23 3.6 (4 P), F23 3.7 (4 P), H23 3.2 (4 P), H23 3.3 (2 P), H23 3.5 (4 P), F24 4.1 (6 P), F24 4.4 (3 P), F24 4.5 (3 P), F24 4.6 (3 P), H24 1.1 (3 P), H24 1.2 (3 P), H24 1.3 (4 P), H24 3.5 (2 P), H24 3.6 (3 P), H24 3.7 (2 P), H24 3.8 (2 P), F25 1.7 (4 P), F25 1.8 (3 P), F25 2.4 (1 P), H25 3.2 (4 P), H25 3.3 (2 P), H25 3.4 (2 P), F26 1.aa (4 P)</td><td class="z">31</td><td class="z">98 P</td></tr>
+<tr><td><a href="#b2">B2</a></td><td><a href="#b2">IT-Sicherheit II: Kryptografie und sichere Verbindungen</a></td><td>F22 3.1 (2 P), F22 3.2 (3 P), H23 3.4 (3 P), H23 3.6 (2 P), H23 3.7 (2 P), H23 3.8 (3 P), F24 4.2 (2 P), F25 2.3 (4 P), F25 2.5 (2 P), F25 2.7 (4 P), F25 4.5 (3 P), F25 4.6 (2 P), H25 3.9 (4 P), </td><td class="z">13</td><td class="z">36 P</td></tr>
+<tr><td><a href="#b3">B3</a></td><td><a href="#b3">Datenschutz: DSGVO und BDSG</a></td><td>H21 4.4 (2 P), F23 3.8 (4 P), H23 3.1 (2 P), F25 2.1 (1 P), F25 2.2 (2 P), H25 3.1 (3 P), F26 3.a (2 P)</td><td class="z">7</td><td class="z">16 P</td></tr>
+<tr><td><a href="#b4">B4</a></td><td><a href="#b4">Hardware und Anschlüsse</a></td><td>F22 2.1 (3 P), F22 2.2 (2 P), F22 2.3 (2 P), F22 2.4 (3 P), F22 2.5 (2 P), F22 2.6 (3 P), F22 2.7 (2 P), F22 2.8 (2 P), F22 2.9 (2 P), F22 2.10 (2 P), H22 2.8 (4 P), F23 1.1 (4 P), F24 1.4 (4 P), H24 3.2 (3 P), H24 3.3 (2 P), H24 3.4 (3 P), F25 1.4 (4 P), F26 1.ab (2 P), F26 1.ca (1 P), F26 1.cb (3 P), F26 1.cc (2 P)</td><td class="z">21</td><td class="z">55 P</td></tr>
+<tr><td><a href="#b5">B5</a></td><td><a href="#b5">Netzwerk-Grundlagen</a></td><td>F22 3.3 (6 P), F22 3.4 (4 P), F22 3.9 (2 P), F22 4.2 (4 P), H22 2.7 (3 P), F24 2.1 (4 P), F24 2.2 (4 P), F24 2.5 (3 P), F24 2.6 (2 P), H24 1.6 (5 P), F25 1.5 (2 P), F25 2.8 (2 P), H25 3.8 (3 P), F26 2.b (8 P), F26 3.db (3 P)</td><td class="z">15</td><td class="z">55 P</td></tr>
+<tr><td><a href="#b6">B6</a></td><td><a href="#b6">Software, Lizenzen und Web</a></td><td>F22 4.1 (4 P), F23 3.1 (4 P), F24 3.1 (3 P), F24 3.2 (2 P), H24 2.1 (2 P), F25 2.6 (4 P), F25 3.3 (3 P), F25 3.4 (3 P), </td><td class="z">8</td><td class="z">25 P</td></tr>
+<tr><td><a href="#b7">B7</a></td><td><a href="#b7">Datensicherung und Verfügbarkeit</a></td><td>H21 3.6 (7 P), H21 4.6 (2 P), H21 4.7 (2 P), H22 2.4 (4 P), H22 2.5 (2 P), H22 2.6 (4 P), F24 4.3 (3 P), </td><td class="z">7</td><td class="z">24 P</td></tr>
+<tr><td><a href="#b8">B8</a></td><td><a href="#b8">Arbeitsplatz: Ergonomie, Barrierefreiheit, Nachhaltigkeit</a></td><td>H21 2.3 (3 P), H23 2.1 (4 P), H23 2.2 (4 P), H23 2.3 (4 P), H23 2.4 (4 P), H24 4.5 (4 P), F26 3.ec (4 P)</td><td class="z">7</td><td class="z">27 P</td></tr>
+<tr><td><a href="#b9">B9</a></td><td><a href="#b9">Projekt, Anforderungen und Vorgehen</a></td><td>H21 1.1 (4 P), H21 1.2 (4 P), H21 3.1 (5 P), F22 1.4 (6 P), F22 1.5 (1 P), H22 1.3 (6 P), H22 1.4 (3 P), H22 1.5 (5 P), F23 4.2 (4 P), F23 4.3 (2 P), H23 1.4 (3 P), H23 4.2 (3 P), H24 4.1 (6 P), </td><td class="z">13</td><td class="z">52 P</td></tr>
+<tr><td><a href="#b10">B10</a></td><td><a href="#b10">Kunde, Kommunikation und Veränderung</a></td><td>H21 3.4 (4 P), H21 3.5 (6 P), F22 1.1 (6 P), F22 1.2 (3 P), F22 1.3 (9 P), F23 4.1 (4 P), H23 1.2 (4 P), H23 1.3 (2 P), H23 1.8 (4 P), H23 2.6 (4 P), F25 4.1 (6 P), F25 4.2 (2 P), F25 4.4 (4 P), H25 1.7 (2 P), H25 1.8 (4 P), H25 2.3 (4 P), F26 3.ba (3 P), F26 3.cb (2 P), F26 3.ea (3 P), F26 3.eb (2 P)</td><td class="z">20</td><td class="z">78 P</td></tr>
+<tr><td><a href="#b11">B11</a></td><td><a href="#b11">Wirtschaft und Recht</a></td><td>H22 1.1 (1 P), H22 1.2 (1 P), H22 1.7 (2 P), F23 2.3 (4 P), F23 2.5 (3 P), F23 2.6 (2 P), H23 1.5 (1 P), H23 1.6 (1 P), H23 1.7 (4 P), F24 1.5 (2 P), F24 1.6 (3 P), F24 1.7 (2 P), F24 1.8 (2 P), H24 4.3 (6 P), H24 4.4 (4 P), H25 1.1 (3 P), H25 1.2 (6 P), H25 1.5 (2 P), H25 1.6 (2 P), H25 2.1 (4 P), F26 3.bb (2 P), F26 3.ca (2 P)</td><td class="z">22</td><td class="z">59 P</td></tr>
+<tr class="summe"><td><strong>Summe</strong></td><td><strong>Gesamtbestand</strong></td><td><strong>279 Teilaufgaben in 10 Prüfungen</strong></td><td class="z"><strong>279</strong></td><td class="z"><strong>1000 P</strong></td></tr>
 </table></div>
 
 <h3>Entwicklung und thematische Trends</h3>
-<p><strong>Zunahme seit 2024:</strong></p>
+<p>Die folgenden Beobachtungen beschreiben diese zehn Hefte, keine Vorhersage. Frühjahr 2026 bringt Netzplan, Ergonomie und Speicherrechnung zugleich zurück.</p>
+<p><strong>Häufige Schwerpunkte in den Jahren 2024–2025:</strong></p>
 <ul>
   <li>Künstliche Intelligenz und betriebliche Prozessautomatisierung: Fragen zu Chancen, Risiken wie Halluzinationen oder Datenschutz und dem konkreten Nutzen traten 2025 mit hohem Punktgewicht auf (Frühjahr 2025 Aufgabe 4.1 und 4.4 mit zehn Punkten, Herbst 2025 Aufgabe 2.3 mit vier Punkten).</li>
   <li>Digitalisierung kaufmännischer Abläufe und E-Rechnung: Strukturierte Rechnungsstellung, Pflichtangaben im B2B-Geschäft und GiroCodes (EPC-QR) bildeten in den letzten drei Prüfungen geschlossene Aufgabenschwerpunkte (Herbst 2024 Aufgabe 4.3 mit sechs Punkten, Herbst 2025 Aufgaben 1 und 2 mit zusammen 38 Punkten).</li>
   <li>Praktische Programmlogik mit Schreibtischtests: Aufgaben mit Code-Verfolgung, Akkumulatoren und Fehleranalysen fordern in Herbst 2024 (zwölf Punkte), Frühjahr 2025 (14 Punkte) und Herbst 2025 (zehn Punkte) fundierte algorithmische Routine.</li>
   <li>Härtung und Zugriffsschutz: Statt allgemeiner Sicherheitsthemen verlangen neuere Prüfungen konkrete Maßnahmen zur Mehrfaktor-Authentifizierung, Passwortrichtlinien und Schutzkonzepte gegen Angriffsformen wie Phishing oder Ransomware.</li>
 </ul>
-<p><strong>Rückgang oder Entfall seit 2023:</strong></p>
+<p><strong>Seltenere Themen und Verschiebungen:</strong></p>
 <ul>
-  <li>Reine Ergonomieabfragen: Detailfragen zu Abmessungen von Schreibtischen oder Stuhlmechanik wurden nach Herbst 2023 (16 Punkte) nicht mehr in dieser Form gestellt; Herbst 2024 behandelte lediglich Green-IT-Aspekte, 2025 entfiel das Thema.</li>
+  <li>Ergonomie kehrte im Frühjahr 2026 zurück: Nach dem Block von Herbst 2023, den Green-IT-Fragen 2024 und ohne Ergonomie-Aufgaben 2025 fragt 2026 Aufgabe 3 e) ec) wieder vier konkrete Verbesserungen am Notebookarbeitsplatz.</li>
   <li>Reine Backup- und RAID-Rechnungen: Großvater-Vater-Sohn-Zyklen und RAID-Formeln bildeten 2021 und 2022 feste Blöcke, traten nach Frühjahr 2024 (drei Punkte) jedoch nicht mehr auf.</li>
   <li>Mechanische Hardware-Montage: Aufgaben zur Bestückung von Mainboards und zum Auftragen von Wärmeleitpaste (Schwerpunkt Frühjahr 2022 mit 23 Punkten) wurden durch Schnittstellen- und Kompatibilitätsfragen ersetzt.</li>
   <li>Starre Phasenmodelle: Reine Begriffsabfragen zu klassischen Wasserfall-Projektphasen wurden zugunsten agiler Vorgehensweisen und der konkreten Gegenüberstellung von Lastenheft und Pflichtenheft zurückgedrängt.</li>
 </ul>
 
-<h3 id="pruefungen-einzeln">Die neun Prüfungen im Einzelnen</h3>
+<h3 id="pruefungen-einzeln">Die zehn Prüfungen im Einzelnen</h3>
 <p class="unter">Löse eine Prüfung auf Papier. Hängst du bei einer Aufgabe, führt der Link in der letzten Spalte zu dem Kapitel, das genau diese Sache erklärt – dort steht die Aufgabe auch in der Zeile „Kam dran“.</p>
-<p><a href="#pruefung-h21">Herbst 2021</a> · <a href="#pruefung-f22">Frühjahr 2022</a> · <a href="#pruefung-h22">Herbst 2022</a> · <a href="#pruefung-f23">Frühjahr 2023</a> · <a href="#pruefung-h23">Herbst 2023</a> · <a href="#pruefung-f24">Frühjahr 2024</a> · <a href="#pruefung-h24">Herbst 2024</a> · <a href="#pruefung-f25">Frühjahr 2025</a> · <a href="#pruefung-h25">Herbst 2025</a></p>
+<p><a href="#pruefung-h21">Herbst 2021</a> · <a href="#pruefung-f22">Frühjahr 2022</a> · <a href="#pruefung-h22">Herbst 2022</a> · <a href="#pruefung-f23">Frühjahr 2023</a> · <a href="#pruefung-h23">Herbst 2023</a> · <a href="#pruefung-f24">Frühjahr 2024</a> · <a href="#pruefung-h24">Herbst 2024</a> · <a href="#pruefung-f25">Frühjahr 2025</a> · <a href="#pruefung-h25">Herbst 2025</a> · <a href="#pruefung-f26">Frühjahr 2026</a></p>
 <h4 id="pruefung-h21">AP1 Herbst 2021</h4>
 <div class="tabelle"><table>
   <caption>AP1 Herbst 2021: 23 Teilaufgaben, 100 Punkte, mit dem Kapitel, das sie erklärt</caption>
@@ -915,6 +941,188 @@ marker#pfeil-g path{fill:var(--grau)}
   <tr id="p-h25-4-8" data-weg="Herbst 2025, Aufgabe 4.8"><td>4.8</td><td>Fehlerhafte Akkumulationszeile korrigieren</td><td>Erklären</td><td class="z">2</td><td><span class="kap">A7</span><a href="#a7-k6">Erst lernen: Baustein 5: Ein Akkumulator sammelt über alle Durchläufe</a><br><a href="#a7-ihk-h25-4-8">Dann prüfen: Diese Aufgabe gelöst, mit Punkten</a></td></tr>
   <tr class="summe"><td></td><td>Summe</td><td></td><td class="z">100</td><td></td></tr>
 </table></div>
+<h4 id="pruefung-f26">AP1 Frühjahr 2026 · Zusatzheft</h4>
+<p class="klein">Scan mit roten Bearbeitungen; <a href="#f26-loesungen">unabhängig hergeleitete Lösungen zu allen 27 Teilaufgaben</a>.</p>
+<div class="tabelle"><table><caption>AP1 Frühjahr 2026: 27 Teilaufgaben, 100 Punkte, mit Grundlagen und Lösungen</caption>
+<tr><th>Nr.</th><th>Gegenstand</th><th>Operator</th><th class="z">Punkte</th><th>Weg zum Lernabschnitt und zur Lösung</th></tr>
+<tr id="p-f26-1-aa" data-weg="Frühjahr 2026, Aufgabe 1.aa"><td>1.aa</td><td>Standardpasswörter: Folgen</td><td>Erklären</td><td class="z">4</td><td><span class="kap">B1</span><a href="#b1-k7">Erst lernen: B1</a><br><a href="#f26-1-aa">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-1-ab" data-weg="Frühjahr 2026, Aufgabe 1.ab"><td>1.ab</td><td>Infrarot und Heizung</td><td>Erklären</td><td class="z">2</td><td><span class="kap">B4</span><a href="#b4-k1">Erst lernen: B4</a><br><a href="#f26-1-ab">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-1-ac" data-weg="Frühjahr 2026, Aufgabe 1.ac"><td>1.ac</td><td>PoE-Standard und Strom</td><td>Rechnen</td><td class="z">4</td><td><span class="kap">A5</span><a href="#a5-k2">Erst lernen: A5</a><br><a href="#f26-1-ac">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-1-ad" data-weg="Frühjahr 2026, Aufgabe 1.ad"><td>1.ad</td><td>Datenrate eines Videostreams</td><td>Rechnen</td><td class="z">4</td><td><span class="kap">A4</span><a href="#a4-k10">Erst lernen: A4</a><br><a href="#f26-1-ad">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-1-b" data-weg="Frühjahr 2026, Aufgabe 1.b"><td>1.b</td><td>Speicherbedarf für vier Kameras</td><td>Rechnen</td><td class="z">5</td><td><span class="kap">A4</span><a href="#a4-k4">Erst lernen: A4</a><br><a href="#f26-1-b">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-1-ca" data-weg="Frühjahr 2026, Aufgabe 1.ca"><td>1.ca</td><td>Vorteil einer Monitor-Reihenschaltung</td><td>Erklären</td><td class="z">1</td><td><span class="kap">B4</span><a href="#b4-k2">Erst lernen: B4</a><br><a href="#f26-1-ca">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-1-cb" data-weg="Frühjahr 2026, Aufgabe 1.cb"><td>1.cb</td><td>Daisy-Chain-Voraussetzungen</td><td>Erklären</td><td class="z">3</td><td><span class="kap">B4</span><a href="#b4-k2">Erst lernen: B4</a><br><a href="#f26-1-cb">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-1-cc" data-weg="Frühjahr 2026, Aufgabe 1.cc"><td>1.cc</td><td>Vier Monitore verbinden</td><td>Zeichnen</td><td class="z">2</td><td><span class="kap">B4</span><a href="#b4-k2">Erst lernen: B4</a><br><a href="#f26-1-cc">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-2-a" data-weg="Frühjahr 2026, Aufgabe 2.a"><td>2.a</td><td>Netzadresse, Maske, Broadcast</td><td>Rechnen</td><td class="z">4</td><td><span class="kap">A1</span><a href="#a1-k5">Erst lernen: A1</a><br><a href="#f26-2-a">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-2-b" data-weg="Frühjahr 2026, Aufgabe 2.b"><td>2.b</td><td>Vier Fehlerquellen im Netzwerk</td><td>Erklären</td><td class="z">8</td><td><span class="kap">B5</span><a href="#b5-k2">Erst lernen: B5</a><br><a href="#f26-2-b">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-2-c" data-weg="Frühjahr 2026, Aufgabe 2.c"><td>2.c</td><td>IPv4 und IPv6 unterscheiden</td><td>Erklären</td><td class="z">4</td><td><span class="kap">A1</span><a href="#a1-k11">Erst lernen: A1</a><br><a href="#f26-2-c">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-2-d" data-weg="Frühjahr 2026, Aufgabe 2.d"><td>2.d</td><td>Dual Stack beschreiben</td><td>Erklären</td><td class="z">3</td><td><span class="kap">A1</span><a href="#a1-k11">Erst lernen: A1</a><br><a href="#f26-2-d">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-2-e" data-weg="Frühjahr 2026, Aufgabe 2.e"><td>2.e</td><td>Drei Fehler im Netzplan</td><td>Rechnen</td><td class="z">6</td><td><span class="kap">A6</span><a href="#a6-k3">Erst lernen: A6</a><br><a href="#f26-2-e">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-3-a" data-weg="Frühjahr 2026, Aufgabe 3.a"><td>3.a</td><td>Kameraüberwachung und Information</td><td>Erklären</td><td class="z">2</td><td><span class="kap">B3</span><a href="#b3-k5">Erst lernen: B3</a><br><a href="#f26-3-a">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-3-ba" data-weg="Frühjahr 2026, Aufgabe 3.ba"><td>3.ba</td><td>Kennzeichen automatisch erkennen</td><td>Erklären</td><td class="z">3</td><td><span class="kap">B10</span><a href="#b10-k7">Erst lernen: B10</a><br><a href="#f26-3-ba">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-3-bb" data-weg="Frühjahr 2026, Aufgabe 3.bb"><td>3.bb</td><td>Wirtschaftlicher Nutzen der Einfahrt</td><td>Erklären</td><td class="z">2</td><td><span class="kap">B11</span><a href="#b11-k10">Erst lernen: B11</a><br><a href="#f26-3-bb">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-3-ca" data-weg="Frühjahr 2026, Aufgabe 3.ca"><td>3.ca</td><td>Recht bei Lieferverzug</td><td>Erklären</td><td class="z">2</td><td><span class="kap">B11</span><a href="#b11-k5">Erst lernen: B11</a><br><a href="#f26-3-ca">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-3-cb" data-weg="Frühjahr 2026, Aufgabe 3.cb"><td>3.cb</td><td>Imageschaden: wirtschaftliche Folgen</td><td>Erklären</td><td class="z">2</td><td><span class="kap">B10</span><a href="#b10-k10">Erst lernen: B10</a><br><a href="#f26-3-cb">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-3-da" data-weg="Frühjahr 2026, Aufgabe 3.da"><td>3.da</td><td>Kameras mit privaten IPv4-Adressen</td><td>Erklären</td><td class="z">2</td><td><span class="kap">A1</span><a href="#a1-k2">Erst lernen: A1</a><br><a href="#f26-3-da">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-3-db" data-weg="Frühjahr 2026, Aufgabe 3.db"><td>3.db</td><td>Ping: Latenz und Paketverlust</td><td>Auswerten</td><td class="z">3</td><td><span class="kap">B5</span><a href="#b5-k2">Erst lernen: B5</a><br><a href="#f26-3-db">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-3-ea" data-weg="Frühjahr 2026, Aufgabe 3.ea"><td>3.ea</td><td>Anlässe für Change Management</td><td>Erklären</td><td class="z">3</td><td><span class="kap">B10</span><a href="#b10-k5">Erst lernen: B10</a><br><a href="#f26-3-ea">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-3-eb" data-weg="Frühjahr 2026, Aufgabe 3.eb"><td>3.eb</td><td>Risiko bei direkter Umstellung</td><td>Erklären</td><td class="z">2</td><td><span class="kap">B10</span><a href="#b10-k5">Erst lernen: B10</a><br><a href="#f26-3-eb">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-3-ec" data-weg="Frühjahr 2026, Aufgabe 3.ec"><td>3.ec</td><td>Ergonomie am Notebook</td><td>Erklären</td><td class="z">4</td><td><span class="kap">B8</span><a href="#b8-k2">Erst lernen: B8</a><br><a href="#f26-3-ec">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-4-a" data-weg="Frühjahr 2026, Aufgabe 4.a"><td>4.a</td><td>Vorteile von Objektorientierung</td><td>Erklären</td><td class="z">2</td><td><span class="kap">A7</span><a href="#a7-k2">Erst lernen: A7</a><br><a href="#f26-4-a">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-4-ba" data-weg="Frühjahr 2026, Aufgabe 4.ba"><td>4.ba</td><td>UML-Klasse ShippingCalculator</td><td>Zeichnen</td><td class="z">5</td><td><span class="kap">A8</span><a href="#a8-k5">Erst lernen: A8</a><br><a href="#f26-4-ba">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-4-bb" data-weg="Frühjahr 2026, Aufgabe 4.bb"><td>4.bb</td><td>Versandkosten mit Rabatt</td><td>Rechnen</td><td class="z">10</td><td><span class="kap">A7</span><a href="#a7-k3">Erst lernen: A7</a><br><a href="#f26-4-bb">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr id="p-f26-4-c" data-weg="Frühjahr 2026, Aufgabe 4.c"><td>4.c</td><td>ER-Modell Artikel und LKW</td><td>Zeichnen</td><td class="z">8</td><td><span class="kap">A9</span><a href="#a9-k7">Erst lernen: A9</a><br><a href="#f26-4-c">Dann lesen: vollständiger Lösungsweg</a></td></tr>
+<tr class="summe"><td></td><td>Summe</td><td></td><td class="z">100</td><td></td></tr>
+</table></div>
+</section>
+
+<section class="teil f26" id="f26-loesungen" aria-labelledby="f26-titel">
+<p class="kapitel-nr">Zusatzheft · Frühjahr 2026 · 100 Punkte</p>
+<h2 id="f26-titel">Ein Prüfungsheft, vollständig durchgerechnet</h2>
+<p class="unter">Vier Hauptaufgaben, 27 Teilaufgaben: Kamera und Netzwerktechnik, Recht und Veränderung, Programmlogik und Datenmodell. Jeder Lösungsweg steht direkt unter seiner Aufgabe.</p>
+<div class="f26-ueberblick" aria-label="Vier Hauptaufgaben mit je 25 Punkten">
+<a href="#f26-block-1"><span>01</span><strong>Kameras &amp; Monitore</strong><small>25 Punkte</small></a>
+<a href="#f26-block-2"><span>02</span><strong>Netz &amp; Netzplan</strong><small>25 Punkte</small></a>
+<a href="#f26-block-3"><span>03</span><strong>Betrieb &amp; Recht</strong><small>25 Punkte</small></a>
+<a href="#f26-block-4"><span>04</span><strong>Code &amp; Daten</strong><small>25 Punkte</small></a>
+</div>
+<p class="f26-hinweis"><strong>Materiallage:</strong> Grundlage ist das zusätzlich bereitgestellte, gescannte Prüfungsheft „AP1 Frühjahr 2026“ (Fachinformatiker/in Systemintegration, Kennziffer 1202, Seiten 2–12). Aufgaben sind sinngemäß wiedergegeben. Die handschriftlichen roten Einträge im Scan sind Bearbeitungen, keine amtlichen Lösungshinweise. Die Antworten hier wurden aus den Aufgabendaten hergeleitet; Annahmen sind jeweils genannt.</p>
+
+<h3 id="f26-block-1" class="f26-block"><span>01 / 04</span> Kameras und Monitore <em>25 P</em></h3>
+<article class="aufgabe" id="f26-1-aa"><p class="herkunft">1 a) aa) · 4 Punkte · Sicherheit</p>
+<div class="text"><p>Im Datenblatt einer Netzwerkkamera steht, dass keine Standardpasswörter verwendet werden. Nenne zwei mögliche Folgen voreingestellter Herstellerkennwörter.</p></div>
+<p class="loesung-label">Erklärung und Antwort</p><div class="antwort"><p>Ein Passwort ist nur dann ein Geheimnis, wenn ein Angreifer es nicht kennt. Ein überall gleiches Herstellerkennwort kann öffentlich dokumentiert sein oder nach einem Datenleck bekannt werden. <strong>Folge 1:</strong> Fremde melden sich an, sehen Livebilder oder rufen Aufnahmen ab (Vertraulichkeit). <strong>Folge 2:</strong> Sie verändern die Konfiguration, sperren Berechtigte aus oder schalten die Kamera ab (Integrität und Verfügbarkeit). Ein eigenes, einzigartiges Kennwort muss bei der Einrichtung gesetzt und sicher verwahrt werden.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b1-k3">B1 · Anmelden</a> und <a href="#b1-k7">Härtung</a>.</p></article>
+<article class="aufgabe" id="f26-1-ab"><p class="herkunft">1 a) ab) · 2 Punkte · Kameraeigenschaften</p>
+<div class="text"><p>Wozu dienen Infrarotbeleuchtung und Heizung bei einer Außenkamera?</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p><strong>Infrarot:</strong> Beleuchtet die Szene bei wenig sichtbarem Licht, damit die Kamera auch nachts aufzeichnen kann. <strong>Heizung:</strong> hält Gehäuse oder Sichtfenster bei Kälte funktionsfähig und beugt Beschlag oder Frost vor.</p></div>
+<p class="f26-weiter">Einordnung: <a href="#b4">B4 · Hardware</a>.</p></article>
+<article class="aufgabe" id="f26-1-ac"><p class="herkunft">1 a) ac) · 4 Punkte · PoE und Stromstärke</p>
+<div class="text"><p>Mit IR und Heizung benötigt eine Kamera 24 W bei 48 V. Wähle anhand der im Heft angegebenen Leistungsbereiche 802.3af oder 802.3at und berechne die Stromstärke.</p></div>
+<p class="loesung-label">Rechenweg und Antwort</p><div class="antwort"><p><strong>Standard:</strong> 24 W liegen oberhalb der im Heft genannten nutzbaren Leistung von 802.3af (bis 12,95 W), aber innerhalb von 802.3at (bis 25,5 W). Daher <strong>IEEE 802.3at (PoE+)</strong>. Leistung = Spannung × Stromstärke: <code>P = U · I</code>. Umgestellt: <code>I = 24 W / 48 V = 0,5 A = 500 mA</code>. Für vier Kameras muss der PoE-Switch zusammen mindestens 96 W Geräteleistung zuzüglich angemessener Reserve bereitstellen.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a5-k2">A5 · P, U und I</a> und <a href="#b5-k8">B5 · PoE</a>.</p></article>
+<article class="aufgabe" id="f26-1-ad"><p class="herkunft">1 a) ad) · 4 Punkte · Videodatenrate</p>
+<div class="text"><p>Ein Videobild hat 1.920 × 1.080 Pixel und 24 Bit Farbtiefe; es gibt 30 Bilder pro Sekunde. Nach der Kompression bleiben 30 % der ursprünglichen Daten. Berechne die Datenrate in Mbit/s.</p></div>
+<p class="loesung-label">Rechenweg und Antwort</p><div class="antwort"><p><strong>Bit pro Bild:</strong> <code>1.920 × 1.080 × 24 = 49.766.400 bit</code>. <strong>Bit pro Sekunde:</strong> <code>49.766.400 × 30 = 1.492.992.000 bit/s</code>. Auf 30 % komprimiert heißt mal <code>0,30</code>: <code>447.897.600 bit/s ÷ 1.000.000 = 447,8976 Mbit/s</code>. Gerundet <strong>448 Mbit/s</strong>. Die feste Kompressionsquote ist ein Rechenmodell und keine Zusage für alle realen Videoinhalte.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a4-k10">A4 · Pixel und Farbtiefe</a> und <a href="#a4-k3">Bit und Byte</a>.</p></article>
+<article class="aufgabe" id="f26-1-b"><p class="herkunft">1 b) · 5 Punkte · Speicherbedarf</p>
+<div class="text"><p>Vier Kameras zeichnen je 72 Stunden mit der zuvor berechneten Datenrate auf. Wie viele TiB werden benötigt? Im Heft darf ersatzweise mit 482 Mbit/s pro Kamera gerechnet werden, falls Teilaufgabe a) ad) nicht gelöst wurde.</p></div>
+<p class="loesung-label">Rechenweg und Antwort</p><div class="antwort"><p>Vier Kameras × 72 Stunden × 3.600 s/h = <strong>1.036.800 Kamerasekunden</strong>. Mit gerundeten 448 Mbit/s: <code>448.000.000 bit/s × 1.036.800 s ÷ 8 = 58.060.800.000.000 Byte</code>. Ein TiB hat <code>1.024⁴ = 1.099.511.627.776 Byte</code>. Somit <code>58.060.800.000.000 ÷ 1.099.511.627.776 ≈ 52,81 TiB</code> → <strong>53 TiB</strong>, wenn auf ganze TiB aufgerundet wird. Mit der ungerundeten Rate sind es ≈ 52,79 TiB, ebenso 53 TiB. Dateisystem, RAID, Reserve und variable Kodierung verändern die reale Dimensionierung.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a4-k4">A4 · Speicherbedarf</a> und <a href="#a4-k8">Kompression</a>.</p></article>
+<article class="aufgabe" id="f26-1-ca"><p class="herkunft">1 c) ca) · 1 Punkt · Daisy Chain</p>
+<div class="text"><p>Nenne einen Vorteil, vier Displays in Reihe an den Rechner anzuschließen.</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p><strong>Weniger Leitungen und Ausgänge am PC:</strong> Ein Videoausgang führt zu Display 1; weitere Leitungen gehen jeweils vom vorherigen zum nächsten Monitor. Das vereinfacht die Kabelführung und lässt andere Grafikausgänge frei.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b4-k2">B4 · Anschlüsse</a>.</p></article>
+<article class="aufgabe" id="f26-1-cb"><p class="herkunft">1 c) cb) · 3 Punkte · Voraussetzungen</p>
+<div class="text"><p>Was müssen PC, Monitore und Verbindung können, damit vier Monitore per Daisy Chain laufen?</p></div>
+<p class="loesung-label">Antwort in drei Teilen</p><div class="antwort"><ol><li><strong>Quelle:</strong> Grafikausgang und Treiber unterstützen DisplayPort Multi-Stream Transport (MST) oder eine geeignete Thunderbolt-Lösung.</li><li><strong>Zwischenmonitore:</strong> Displays 1 bis 3 haben DP-Eingang und DP-Ausgang und unterstützen Weitergabe per MST; am letzten genügt ein geeigneter Eingang.</li><li><strong>Kapazität:</strong> Auflösung, Bildfrequenz und Farbtiefe aller Streams passen zur verfügbaren Bandbreite der Verbindung. Die Steckerform allein garantiert keine vier Bildschirme.</li></ol></div>
+<p class="f26-weiter">Grundlage: <a href="#b4-k2">B4 · Anschlüsse</a>; <a href="https://www.displayport.org/cables/driving-multiple-displays-from-a-single-displayport-output/">DisplayPort-Konsortium zu MST</a>.</p></article>
+<article class="aufgabe" id="f26-1-cc"><p class="herkunft">1 c) cc) · 2 Punkte · Anschlussskizze</p>
+<div class="text"><p>Zeichne die Verbindung zwischen PC und vier Displays in Reihe.</p></div>
+<p class="loesung-label">Skizze und Erklärung</p><div class="antwort"><figure class="abb f26-abb"><svg viewBox="0 0 860 150" role="img" aria-labelledby="f26-dp-t f26-dp-d"><title id="f26-dp-t">DisplayPort-Reihenschaltung</title><desc id="f26-dp-d">PC DP Ausgang zu Monitor 1 Eingang und Ausgang, dann Monitor 2, Monitor 3 und Monitor 4 mit letztem Eingang.</desc><rect class="f" x="10" y="35" width="115" height="76" rx="9"/><text x="67" y="64" class="mitte tb">PC</text><text x="67" y="87" class="mitte t2">DP OUT</text><path class="a" d="M126 73 H175" marker-end="url(#pfeil-a)"/><rect class="w" x="180" y="35" width="140" height="76" rx="9"/><text x="250" y="62" class="mitte tb">Monitor 1</text><text x="250" y="88" class="mitte t2">DP IN → OUT</text><path class="a" d="M321 73 H370" marker-end="url(#pfeil-a)"/><rect class="w" x="375" y="35" width="140" height="76" rx="9"/><text x="445" y="62" class="mitte tb">Monitor 2</text><text x="445" y="88" class="mitte t2">DP IN → OUT</text><path class="a" d="M516 73 H565" marker-end="url(#pfeil-a)"/><rect class="w" x="570" y="35" width="140" height="76" rx="9"/><text x="640" y="62" class="mitte tb">Monitor 3</text><text x="640" y="88" class="mitte t2">DP IN → OUT</text><path class="a" d="M711 73 H755" marker-end="url(#pfeil-a)"/><rect class="f" x="760" y="35" width="94" height="76" rx="9"/><text x="807" y="62" class="mitte tb">Monitor 4</text><text x="807" y="88" class="mitte t2">DP IN</text></svg><figcaption>PC → 1 → 2 → 3 → 4. Die ersten drei Monitore leiten den Stream weiter; Monitor 4 schließt die Kette ab.</figcaption></figure></div></article>
+
+<h3 id="f26-block-2" class="f26-block"><span>02 / 04</span> Netz und Netzplan <em>25 P</em></h3>
+<article class="aufgabe" id="f26-2-a"><p class="herkunft">2 a) · 4 Punkte · Subnetz</p>
+<div class="text"><p>Gegeben ist <code>192.168.16.52/25</code>. Bestimme dezimale Maske, nutzbare Geräteadressen, Netz- und Broadcastadresse.</p></div>
+<p class="loesung-label">Rechenweg und Antwort</p><div class="antwort"><p><code>/25 = 24 + 1</code> Netzbits, also <code>255.255.255.128</code>; <code>32 − 25 = 7</code> Hostbits. Ein Block enthält <code>2⁷ = 128</code> Adressen, klassisch <code>128 − 2 = 126</code> nutzbare Hosts. Im letzten Oktett beginnen /25-Blöcke bei <code>0</code> und <code>128</code>. Die <code>.52</code> gehört zum ersten: <strong>Netz <code>192.168.16.0</code></strong>, <strong>Broadcast <code>192.168.16.127</code></strong>, nutzbar <code>.1</code> bis <code>.126</code>.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a1-k4">A1 · Maske</a> und <a href="#a1-k5">Netz und Broadcast</a>.</p></article>
+<article class="aufgabe" id="f26-2-b"><p class="herkunft">2 b) · 8 Punkte · Vier Fehlerquellen</p>
+<div class="text"><p>Ein Laptop erreicht einen Dienst nicht. Als Ursachen stehen defektes Patchkabel, falsche Netzadresse oder Maske, ungepatchte Netzwerkdose und fehlerhafte DNS-Auflösung im Raum. Beschreibe je einen Test und eine Abhilfe.</p></div>
+<p class="loesung-label">Diagnose und Maßnahme</p><div class="antwort"><div class="tabelle"><table><caption>Je Ursache prüfen und beheben</caption><thead><tr><th>Verdacht</th><th>Prüfung</th><th>Abhilfe</th></tr></thead><tbody><tr><td>Patchkabel</td><td>Linkanzeige und Verbindung mit bekannt funktionsfähigem Kabel vergleichen; bei Bedarf Kabeltester.</td><td>Defektes Kabel ersetzen.</td></tr><tr><td>IP/Netzbereich</td><td>Mit <code>ipconfig /all</code> Adresse, Maske und Gateway lesen und die eigene Netz-ID gegen das vorgesehene Subnetz prüfen.</td><td>IP, Maske oder DHCP-Zuweisung entsprechend dem Netzplan korrigieren.</td></tr><tr><td>Netzwerkdose</td><td>Beschriftung bis Patchpanel verfolgen oder Leitung durchmessen; Verbindung am zugehörigen Switchport prüfen.</td><td>Panelport passend mit Switch verbinden oder fehlerhafte Aufschaltung reparieren.</td></tr><tr><td>DNS</td><td><code>nslookup</code> für den Namen ausführen; Erreichbarkeit unter bekannter IP getrennt prüfen.</td><td>Korrekte DNS-Serveradresse eintragen oder DNS-Zone beziehungsweise Dienst beheben.</td></tr></tbody></table></div><p>Ein ausgefallener Link kann auch erklären, weshalb spätere DNS-Tests scheitern. „DNS kaputt“ folgt nicht allein daraus, dass eine Webseite nicht lädt.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b5-k2">B5 · Fehlersuche</a>, <a href="#b5-k6">Patchpanel</a> und <a href="#a1-k7">IP-Konfiguration</a>.</p></article>
+<article class="aufgabe" id="f26-2-c"><p class="herkunft">2 c) · 4 Punkte · IPv4 und IPv6</p>
+<div class="text"><p>Nenne zwei Unterschiede zwischen IPv4- und IPv6-Adressen.</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p><strong>Länge:</strong> IPv4 hat 32 Bit, IPv6 hat 128 Bit; der IPv6-Adressraum ist erheblich größer. <strong>Schreibweise:</strong> IPv4 wird üblicherweise mit vier Dezimalgruppen und Punkten geschrieben (<code>192.0.2.8</code>), IPv6 mit Doppelpunkt-getrennten Hexadezimalgruppen (<code>2001:db8::8</code>). Eine zusammenhängende Nullgruppe darf in IPv6 einmal zu <code>::</code> gekürzt werden.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a1-k2">A1 · IPv4</a> und <a href="#a1-k11">IPv6</a>.</p></article>
+<article class="aufgabe" id="f26-2-d"><p class="herkunft">2 d) · 3 Punkte · Dual Stack</p>
+<div class="text"><p>Beschreibe, wie ein lokales Netz gleichzeitig IPv4 und IPv6 verwendet.</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p>Bei <strong>Dual Stack</strong> betreiben Geräte beide Protokollstapel parallel: Sie erhalten IPv4- und IPv6-Adressen und sprechen passende Ziele mit dem jeweiligen Protokoll an. Das Netz braucht die zugehörige Adressvergabe, Router-Konfiguration und gegebenenfalls DNS-A-/AAAA-Einträge. Beide Wege müssen tatsächlich funktionieren; die Protokolle sind nicht bloß zwei Schreibweisen derselben Pakete.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a1-k11">A1 · IPv6</a> und <a href="#b5">B5 · Netzwerk</a>.</p></article>
+<article class="aufgabe" id="f26-2-e"><p class="herkunft">2 e) · 6 Punkte · Netzplanfehler</p>
+<div class="text"><p>Prüfe den Vorgangsnetzplan zu A (7 Tage), B (2 Tage, nach A), C (6 Tage, nach B), D (1 Tag, nach B), E (5 Tage, nach C und D), F (3 Tage, nach D), G (1 Tag, nach E und F). Der zu spät eingetragene früheste Start von B ist im Heft bereits als Beispiel auf 7 korrigiert. Finde die drei weiteren falschen Werte.</p></div>
+<p class="loesung-label">Vorwärts, rückwärts, Fehler finden</p><div class="antwort"><p><strong>Vorwärtsrechnung:</strong> A 0–7; B 7–9; C 9–15; D 9–10. E darf erst nach <em>beiden</em> Vorgängern beginnen: <code>max(15, 10) = 15</code> und endet bei 20. F geht von 10 bis 13. G beginnt bei <code>max(20, 13) = 20</code> und endet bei 21.</p><p><strong>Rückwärtsrechnung:</strong> G 20–21; E 15–20; F 17–20; C 9–15. D muss für E <em>und</em> F rechtzeitig fertig sein: <code>min(15, 17) = 15</code>, also D 14–15. B 7–9, A 0–7.</p><div class="tabelle"><table><caption>Vollständiger Netzplan; Zeiten sind Grenzen, keine Kalendertage</caption><thead><tr><th>Vorgang</th><th class="z">Dauer</th><th class="z">FAZ</th><th class="z">FEZ</th><th class="z">SAZ</th><th class="z">SEZ</th><th class="z">GP</th></tr></thead><tbody><tr><td>A</td><td class="z">7</td><td class="z">0</td><td class="z">7</td><td class="z">0</td><td class="z">7</td><td class="z">0</td></tr><tr><td>B</td><td class="z">2</td><td class="z">7</td><td class="z">9</td><td class="z">7</td><td class="z">9</td><td class="z">0</td></tr><tr><td>C</td><td class="z">6</td><td class="z">9</td><td class="z">15</td><td class="z">9</td><td class="z">15</td><td class="z">0</td></tr><tr class="hervor"><td>D</td><td class="z">1</td><td class="z">9</td><td class="z">10</td><td class="z">14</td><td class="z">15</td><td class="z">5</td></tr><tr><td>E</td><td class="z">5</td><td class="z">15</td><td class="z">20</td><td class="z">15</td><td class="z">20</td><td class="z">0</td></tr><tr class="hervor"><td>F</td><td class="z">3</td><td class="z">10</td><td class="z">13</td><td class="z">17</td><td class="z">20</td><td class="z">7</td></tr><tr><td>G</td><td class="z">1</td><td class="z">20</td><td class="z">21</td><td class="z">20</td><td class="z">21</td><td class="z">0</td></tr></tbody></table></div><p><strong>Die drei weiteren Korrekturen im gedruckten Diagramm:</strong> D: <code>GP 6 → 5</code>; F: <code>SAZ 15 → 17</code> und <code>SEZ 18 → 20</code>. C: FAZ 9, D: FAZ 9 und E: FAZ 15 stehen bereits richtig da. Kritischer Pfad: <strong>A–B–C–E–G, 21 Tage</strong>.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a6-k3">A6 · Vorwärts</a>, <a href="#a6-k4">Rückwärts</a> und <a href="#a6-k5">Puffer</a>.</p></article>
+<h3 id="f26-block-3" class="f26-block"><span>03 / 04</span> Betrieb, Recht und Menschen <em>25 P</em></h3>
+<article class="aufgabe" id="f26-3-a"><p class="herkunft">3 a) · 2 Punkte · Videoüberwachung</p>
+<div class="text"><p>Eine Firma will Einfahrt und Wartebereich per Kamera überwachen. Was ist gegenüber betroffenen Personen zu beachten?</p></div>
+<p class="loesung-label">Antwort und rechtliche Einordnung</p><div class="antwort"><p>Betroffene müssen <strong>vor Betreten des überwachten Bereichs klar erkennen</strong> können, dass gefilmt wird, wer verantwortlich ist, zu welchem Zweck die Verarbeitung erfolgt und wo weitere Informationen stehen. Zudem braucht die Überwachung eine tragfähige Rechtsgrundlage und muss auf das erforderliche Maß begrenzt sein; ein Schild allein legalisiert keine beliebige Aufnahme. Bei öffentlich zugänglichen Bereichen ist <a href="https://www.gesetze-im-internet.de/bdsg_2018/__4.html">§ 4 BDSG</a> zu prüfen; Transparenzpflichten ergeben sich aus <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj">Art. 12–13 DSGVO</a>.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b3-k3">B3 · Rechtsgrundlage</a> und <a href="#b3-k5">Information</a>.</p></article>
+<article class="aufgabe" id="f26-3-ba"><p class="herkunft">3 b) ba) · 3 Punkte · Automatisierte Einfahrt</p>
+<div class="text"><p>Beschreibe, wie automatische Kennzeichenerkennung die Abfertigung erwarteter Lieferfahrzeuge unterstützen kann.</p></div>
+<p class="loesung-label">Antwort als Ablauf</p><div class="antwort"><p>Eine Kamera erfasst das Kennzeichen; Erkennungssoftware wandelt das Bild in Zeichen um. Das System gleicht das Ergebnis mit <strong>erwarteten Lieferungen und einem gültigen Zeitfenster</strong> ab. Nur bei Übereinstimmung informiert es Mitarbeitende oder gibt das Tor frei. Fehlablesungen benötigen einen manuellen Klärungsweg; für Speicherung und Zugriff auf Kennzeichen gelten Datenschutzregeln.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b10-k7">B10 · Automatisierung</a> und <a href="#b3-k3">B3 · Datenverarbeitung</a>.</p></article>
+<article class="aufgabe" id="f26-3-bb"><p class="herkunft">3 b) bb) · 2 Punkte · Wirtschaftlicher Nutzen</p>
+<div class="text"><p>Nenne zwei betriebswirtschaftliche Vorteile eines zügigen Einfahrtprozesses.</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p><strong>1. Weniger Personalzeit je Fahrzeug:</strong> Standardschritte werden automatisch abgeglichen. <strong>2. Kürzere Warte- und Standzeiten:</strong> Das kann die Abfertigungskapazität erhöhen und Kosten für Verzögerungen senken. Die tatsächliche Einsparung hängt von Fehlerrate, Fahrzeugmenge und Systemkosten ab.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b11-k10">B11 · Unternehmensziele</a> und <a href="#a2-k12">A2 · Kosten</a>.</p></article>
+<article class="aufgabe" id="f26-3-ca"><p class="herkunft">3 c) ca) · 2 Punkte · Lieferverzug</p>
+<div class="text"><p>Die Lieferung eines vereinbarten Produkts verspätet sich. Welches Recht kann der Käufer ausüben, wenn eine angemessene Nachfrist erfolglos verstrichen ist?</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p>Der Käufer kann <strong>vom Vertrag zurücktreten</strong>, wenn die Voraussetzungen erfüllt sind und eine angemessene Frist zur Leistung erfolglos abläuft (§ 323 BGB). In gesetzlich geregelten Fällen kann eine Nachfrist entbehrlich sein, beispielsweise bei bestimmten Fixgeschäften. „Bei jeder Verspätung sofort Rücktritt“ wäre zu pauschal.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b11-k5">B11 · Kaufvertragsstörungen</a>; <a href="https://www.gesetze-im-internet.de/bgb/__323.html">§ 323 BGB</a>.</p></article>
+<article class="aufgabe" id="f26-3-cb"><p class="herkunft">3 c) cb) · 2 Punkte · Imageschaden</p>
+<div class="text"><p>Erkläre zwei wirtschaftliche Auswirkungen, wenn der Betrieb durch schlechte Serviceerfahrungen einen Imageschaden erleidet.</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p><strong>Bestehende Kunden</strong> bestellen seltener oder wechseln zur Konkurrenz; wiederkehrender Umsatz sinkt. <strong>Neue Kunden</strong> nehmen wegen negativer Erfahrungen oder Bewertungen seltener Kontakt auf; Akquisition und Umsatzwachstum leiden.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b10-k10">B10 · Servicequalität</a>.</p></article>
+<article class="aufgabe" id="f26-3-da"><p class="herkunft">3 d) da) · 2 Punkte · Private IP</p>
+<div class="text"><p>Die Kameras haben Adressen aus <code>192.168.178.0/24</code>. Warum lassen sie sich aus dem öffentlichen Internet nicht unmittelbar unter diesen Adressen erreichen?</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p><code>192.168.178.x</code> liegt im privaten IPv4-Adressbereich <code>192.168.0.0/16</code>. Diese Adresse wird <strong>im öffentlichen Internet nicht als Ziel geroutet</strong>; sie identifiziert die Kamera nur im jeweiligen privaten Netz. Berechtigter Fernzugriff benötigt eine kontrollierte Vermittlung, etwa VPN oder einen Proxy. NAT mit Portweiterleitung ist eine mögliche Technik, aber nicht die einzige.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a1-k2">A1 · Private IPv4-Adressen</a> und <a href="#b2-k8">B2 · VPN</a>.</p></article>
+<article class="aufgabe" id="f26-3-db"><p class="herkunft">3 d) db) · 3 Punkte · Ping auswerten</p>
+<div class="text"><p>Vergleiche drei Ping-Ausgaben der Kameras <code>.100</code>, <code>.104</code> und <code>.107</code>. Welche Störung ist aus den angegebenen Werten ableitbar?</p></div>
+<p class="loesung-label">Daten lesen, dann deuten</p><div class="antwort"><div class="tabelle"><table><caption>Vier Echoantworten je Kamera laut Scan</caption><thead><tr><th>Kamera</th><th>Antwortzeiten</th><th class="z">Mittel</th><th class="z">Verlust</th></tr></thead><tbody><tr><td><code>.100</code></td><td>4–9 ms</td><td class="z">6 ms</td><td class="z">0 %</td></tr><tr><td><code>.104</code></td><td>18–26 ms</td><td class="z">22 ms</td><td class="z">0 %</td></tr><tr class="hervor"><td><code>.107</code></td><td>39–863 ms</td><td class="z">466 ms</td><td class="z">0 %</td></tr></tbody></table></div><p><strong>.107</strong> fällt durch hohe und stark schwankende Latenz auf; Videobilder können dadurch verzögert oder ruckelig ankommen. Die Ausgaben melden bei allen drei Kameras <strong>0 % Paketverlust</strong> für die jeweils vier geprüften Echo-Pakete. Ping allein ermittelt weder die Ursache noch die Qualität jedes Videopakets. Weitere Messungen von Link, Auslastung und Videoübertragung sind die nächste Diagnose.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b5-k2">B5 · Netzwerkdiagnose</a>.</p></article>
+<article class="aufgabe" id="f26-3-ea"><p class="herkunft">3 e) ea) · 3 Punkte · Change Management</p>
+<div class="text"><p>Der Text im Heft beschreibt Anpassungen im Unternehmen. Nenne drei Anlässe für Change Management.</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p><strong>1.</strong> Umstrukturierung verändert Zuständigkeiten. <strong>2.</strong> Geschäftsprozesse oder Systeme werden neu zugeschnitten. <strong>3.</strong> Eine neue digitale Technologie wird eingeführt oder eine bestehende grundlegend weiterentwickelt. Change Management begleitet Menschen und Arbeitsabläufe: informieren, beteiligen, qualifizieren, Rückmeldungen aufnehmen.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b10-k5">B10 · Veränderungen</a> und <a href="#b9-k6">B9 · Projektschritte</a>.</p></article>
+<article class="aufgabe" id="f26-3-eb"><p class="herkunft">3 e) eb) · 2 Punkte · Direkte Umstellung</p>
+<div class="text"><p>Welchen Nachteil hat ein direkter Wechsel vom alten zum neuen System gegenüber einem zeitlich parallelen Betrieb?</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p>Wenn das neue System direkt nach der Umstellung ausfällt oder zentrale Funktionen fehlen, steht das alte <strong>nicht mehr als laufende Ausweichlösung</strong> bereit. Der Betrieb kann unterbrochen werden, bis der Fehler behoben oder ein geplanter Rückweg umgesetzt ist. Vorherige Tests und ein Rückfallplan begrenzen dieses Risiko.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b10-k5">B10 · Veränderung</a> und <a href="#b9-k8">B9 · Vorgehen</a>.</p></article>
+<article class="aufgabe" id="f26-3-ec"><p class="herkunft">3 e) ec) · 4 Punkte · Ergonomie</p>
+<div class="text"><p>Auf dem Bild arbeitet eine Person längere Zeit an einem Notebook auf niedriger Fläche. Nenne vier konkrete Verbesserungen.</p></div>
+<p class="loesung-label">Vier unterschiedliche Maßnahmen</p><div class="antwort"><ol><li><strong>Stuhl</strong> mit geeigneter Sitzhöhe und Rückenstütze einstellen, sodass Füße stabil stehen und Arme entspannt liegen.</li><li><strong>Externe Eingabegeräte</strong> anschließen: Tastatur und Maus schaffen Abstand zum Bildschirm und eine günstigere Handhaltung.</li><li><strong>Bildschirm</strong> über externen Monitor oder Notebookständer auf geeignete Höhe und Entfernung bringen.</li><li><strong>Licht und Aufstellung</strong> so anpassen, dass das Display blendfrei steht und die Arbeitsfläche ausreichend beleuchtet ist.</li></ol><p>Bei dauerhaftem Arbeiten gehört auch eine sichere Kabelführung dazu. Tastatur und Maus bilden hier zusammen eine Eingabegerät-Maßnahme; die vier Antworten betreffen vier verschiedene Stellschrauben.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#b8-k2">B8 · Arbeitsplatz einstellen</a> und <a href="#b8-k3">Notebookarbeit</a>.</p></article>
+
+<h3 id="f26-block-4" class="f26-block"><span>04 / 04</span> Code und Daten <em>25 P</em></h3>
+<article class="aufgabe" id="f26-4-a"><p class="herkunft">4 a) · 2 Punkte · Objektorientierung</p>
+<div class="text"><p>Nenne zwei Vorteile einer objektorientierten Struktur gegenüber einer rein prozeduralen Lösung für Versandsoftware.</p></div>
+<p class="loesung-label">Antwort</p><div class="antwort"><p><strong>Kapselung:</strong> Versandregeln und Daten bleiben in klar abgegrenzten Klassen; Änderungen lassen sich an einer verantwortlichen Stelle vornehmen. <strong>Wiederverwendung/Erweiterbarkeit:</strong> Eine sauber definierte Berechnung kann in mehreren Abläufen verwendet und durch geeignete neue Typen ergänzt werden. Objektorientierung macht Code nicht automatisch schneller.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a8-k5">A8 · Klassen</a>.</p></article>
+<article class="aufgabe" id="f26-4-ba"><p class="herkunft">4 b) ba) · 5 Punkte · UML-Klasse</p>
+<div class="text"><p>Ergänze <code>ShippingCalculator</code> um vier private Attribute: Maximalgewicht, Expresszuschlag sowie Grundpreise bis und über 10 kg. Eine öffentliche Methode mit Paketliste und Rückgabewert <code>double</code> ist vorgegeben.</p></div>
+<p class="loesung-label">Klassendiagramm</p><div class="antwort"><figure class="abb f26-abb"><svg viewBox="0 0 650 260" role="img" aria-labelledby="f26-uml-t f26-uml-d"><title id="f26-uml-t">UML-Klasse ShippingCalculator</title><desc id="f26-uml-d">Vier private Attribute mit Minuszeichen: maxWeight, expressSurcharge, upTo10kg und above10kg als double. Öffentliche Methode calculateShippingCost mit Paketliste, Rückgabe double.</desc><rect class="w" x="5" y="5" width="640" height="248" rx="8"/><path class="l" d="M5 52 H645 M5 181 H645"/><text x="325" y="36" class="mitte tb" style="font-size:20px">ShippingCalculator</text><text x="24" y="80" class="mono">− maxWeight: double</text><text x="24" y="109" class="mono">− expressSurcharge: double</text><text x="24" y="138" class="mono">− upTo10kg: double</text><text x="24" y="167" class="mono">− above10kg: double</text><text x="24" y="215" class="mono">+ calculateShippingCost(packages: List&lt;Package&gt;): double</text></svg><figcaption>In UML bedeutet <code>−</code> privat und <code>+</code> öffentlich. Sichtbarkeit, Datentypen und Rückgabetyp gehören in die Zeichnung.</figcaption></figure><p>Sinngemäß andere Bezeichner sind möglich. Das <strong>Minuszeichen vor jedem privaten Attribut</strong> ist gefordert; ohne Sichtbarkeitsangabe fehlt ein Teil der Lösung.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a8-k5">A8 · Klassendiagramm</a>.</p></article>
+<article class="aufgabe" id="f26-4-bb"><p class="herkunft">4 b) bb) · 10 Punkte · Versandberechnung</p>
+<div class="text"><p>Lies die vorgegebene Versandfunktion und berechne die Preise der drei Pakete sowie den Gesamtpreis: maximal 31,5 kg pro Paket; Grundpreis bis einschließlich 10 kg 6,98 €, darüber 13,98 €; bei Express 12,95 € Zuschlag; ab 40 € Zwischensumme 12,5 % Rabatt. Gegeben sind 3,2 kg Express, 8,0 kg normal und 12,0 kg Express.</p></div>
+<p class="loesung-label">Pseudocode, Schreibtischtest, Ergebnis</p><div class="antwort"><pre class="rechenweg">summe ← 0
+für jedes paket in pakete:
+    wenn paket.gewicht &gt; 31,5:
+        fahre mit dem nächsten paket fort
+    wenn paket.gewicht &lt;= 10:
+        preis ← 6,98
+    sonst:
+        preis ← 13,98
+    wenn paket.express:
+        preis ← preis + 12,95
+    summe ← summe + preis
+wenn summe &gt;= 40:
+    summe ← summe × (1 − 0,125)
+gib summe zurück</pre><p>Die gültigen Pakete ergeben <code>6,98 + 12,95 = 19,93 €</code>, <code>6,98 €</code> und <code>13,98 + 12,95 = 26,93 €</code>. Zwischensumme: <code>19,93 + 6,98 + 26,93 = 53,84 €</code>. Da <code>53,84 ≥ 40</code>, bleiben <code>53,84 × 0,875 = 47,11 €</code>. <strong>Gesamtkosten: 47,11 €.</strong> Genau 10 kg fallen in den kleinen Tarif; bei genau 40 € greift der Rabatt. Ein Paket über 31,5 kg wird in der Aufgabenlogik übersprungen und darf keinen uninitialisierten Preis zur Summe addieren.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a7-k3">A7 · Bedingungen</a>, <a href="#a7-k5">Schleifen</a>, <a href="#a7-k6">Akkumulator</a> und <a href="#a2-k2">A2 · Prozent</a>.</p></article>
+<article class="aufgabe" id="f26-4-c"><p class="herkunft">4 c) · 8 Punkte · ER-Modell</p>
+<div class="text"><p>Artikel werden auf mehreren LKW verladen. Zu speichern sind AID, Bezeichnung und Einzelgewicht pro Artikel sowie LID, Kennzeichen und LKW-Typ pro Fahrzeug; zur Verladung gehören Zeitpunkt und Menge pro Artikel. Ergänze das vorgegebene ER-Diagramm samt Primärschlüsseln.</p></div>
+<p class="loesung-label">Modell und relationale Umsetzung</p><div class="antwort"><figure class="abb f26-abb"><svg viewBox="0 0 950 355" role="img" aria-labelledby="f26-er-t f26-er-d"><title id="f26-er-t">ER-Modell Artikel und LKW in Chen-Notation</title><desc id="f26-er-d">Links die Entität Artikel mit Schlüssel AID, Bezeichnung und Einzelgewicht. Rechts LKW mit Schlüssel LID, Kennzeichen und LKW-Typ. Dazwischen die m:n-Beziehung wird verladen, zu ihr gehören Zeitpunkt und Menge.</desc>
+<rect class="f" x="15" y="93" width="235" height="185" rx="9"/><text x="132" y="126" class="mitte tb" style="font-size:18px">ARTIKEL</text><path class="g" d="M15 140 H250"/><text x="40" y="167" class="mono" text-decoration="underline">AID</text><text x="92" y="167" class="t2">(PK)</text><text x="40" y="202">Bezeichnung</text><text x="40" y="237">Einzelgewicht</text>
+<path class="a" d="M251 187 H366"/><text x="314" y="172" class="mitte ta">n</text>
+<polygon class="w" points="368,187 476,119 584,187 476,255"/><text x="476" y="193" class="mitte tb">wird_verladen</text>
+<path class="a" d="M585 187 H700"/><text x="640" y="172" class="mitte ta">m</text>
+<rect class="f" x="702" y="93" width="235" height="185" rx="9"/><text x="819" y="126" class="mitte tb" style="font-size:18px">LKW</text><path class="g" d="M702 140 H937"/><text x="727" y="167" class="mono" text-decoration="underline">LID</text><text x="779" y="167" class="t2">(PK)</text><text x="727" y="202">Kennzeichen</text><text x="727" y="237">LKW-Typ</text>
+<path class="l" d="M462 247 L396 289 M490 247 L556 289"/><rect class="w" x="311" y="288" width="174" height="49" rx="24"/><text x="398" y="318" class="mitte">Verladezeit</text><rect class="w" x="508" y="288" width="96" height="49" rx="24"/><text x="556" y="318" class="mitte">Menge</text>
+</svg><figcaption>Chen-Darstellung: unterstrichene Primärschlüssel AID und LID, n:m zwischen Artikel und LKW. Verladezeit und Menge beschreiben die Beziehung, nicht den Artikelstammsatz oder den LKW.</figcaption></figure><p>Die Entitäten tragen ihre Stammdaten: <strong>Artikel</strong> mit AID, Bezeichnung und Einzelgewicht; <strong>LKW</strong> mit LID, Kennzeichen und LKW-Typ. Zeitpunkt und Menge können für dieselbe Artikelnummer bei verschiedenen Verladungen unterschiedlich sein, deshalb gehören sie an die Beziehung. In Tabellen wird n:m durch eine <strong>Verbindungstabelle</strong> aufgelöst: <code>Artikel(AID PK, …)</code>, <code>LKW(LID PK, …)</code>, <code>Verladung(AID FK, LID FK, Verladezeit, Menge)</code>. Falls derselbe Artikel mehrfach auf denselben LKW geladen werden darf, ist etwa <code>(AID, LID, Verladezeit)</code> ein möglicher zusammengesetzter Schlüssel, <em>sofern</em> der Zeitpunkt die Wiederholungen eindeutig unterscheidet; sonst braucht die Verladung eine eigene ID. Bei genau einer Verladung pro Artikel-LKW-Paar genügen AID und LID als Schlüssel. Die Geschäftsregel muss festgelegt werden.</p></div>
+<p class="f26-weiter">Grundlage: <a href="#a9-k4">A9 · Entitäten und Schlüssel</a>, <a href="#a9-k5">Kardinalitäten</a> und <a href="#a9-k7">Verbindungstabelle</a>.</p></article>
+
+<p class="f26-ende"><strong>Wenn der Scan widerspricht:</strong> Rechne aus den Vorgängerbeziehungen und Ping-Zahlen selbst. Ein rotes Kreuz ist eine Markierung, kein Beleg. Im Netzplan 2 e) sind die noch zu findenden Fehler <strong>D GP, F SAZ und F SEZ</strong>; bei 3 d) db) beträgt der beobachtete Paketverlust <strong>0 %</strong>.</p>
 </section>
 
 <section class="kapitel" id="a1" data-gruppe="A">
@@ -923,7 +1131,7 @@ marker#pfeil-g path{fill:var(--grau)}
   <p class="kapitel-nr">A1 · Verfahren</p>
   <h2>IPv4, Subnetting und Netzkonfiguration</h2>
   <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a1-worum">Worum es geht</a><a href="#a1-kern">Das Verfahren</a><a href="#a1-original">So hat die IHK gefragt</a><a href="#a1-variante">Jetzt du</a><a href="#a1-beispiele">Gelöste Beispiele</a><a href="#a1-begriffe">Begriffe</a><a href="#a1-quellen">Quellen</a></nav>
-  <p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2022, 3.5 bis 3.8 (8 P)</span> · <span>AP1 Herbst 2022, 3.1 bis 3.6 (18 P)</span> · <span>AP1 Frühjahr 2024, 2.3, 2.4, 2.7 (11 P)</span> · <span>AP1 Herbst 2024, 1.4, 1.5, 1.7 (10 P)</span> · <span>AP1 Frühjahr 2025, 1.6 (2 P)</span> · <span>AP1 Herbst 2025, 3.7 (3 P)</span></p>
+  <p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2022, 3.5 bis 3.8 (8 P)</span> · <span>AP1 Herbst 2022, 3.1 bis 3.6 (18 P)</span> · <span>AP1 Frühjahr 2024, 2.3, 2.4, 2.7 (11 P)</span> · <span>AP1 Herbst 2024, 1.4, 1.5, 1.7 (10 P)</span> · <span>AP1 Frühjahr 2025, 1.6 (2 P)</span> · <span>AP1 Herbst 2025, 3.7 (3 P)</span> · <span>AP1 Frühjahr 2026, 2.a, 2.c, 2.d, 3.da (13 P)</span></p>
 </header>
 
 <section id="a1-worum">
@@ -1472,8 +1680,9 @@ H24 1.5   Netz 192.168.20.0/24, Router .1, DHCP vergibt .20 bis .254
 </section>
 
 <section id="a1-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-2-a">2.a Netzadresse, Maske, Broadcast</a> · <a href="#f26-2-c">2.c IPv4 und IPv6 unterscheiden</a> · <a href="#f26-2-d">2.d Dual Stack beschreiben</a> · <a href="#f26-3-da">3.da Kameras mit privaten IPv4-Adressen</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 16 Aufgaben</h3>
   <article class="aufgabe" id="a1-ihk-f22-3-5">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 3.5, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a1-q15" title="AP1 Frühjahr 2022">15</a></sup></p>
@@ -1863,7 +2072,7 @@ H24 1.5   Netz 192.168.20.0/24, Router .1, DHCP vergibt .20 bis .254
 
 <section id="a2-worum">
   <h3>Worum es geht</h3>
-  <p>Ein IT-Systemhaus beschafft für das Rechenzentrum eines Mandanten 20 neue Serverracks. Der Projektleiter muss vor der Auftragsvergabe Angebote verschiedener Distributoren vergleichen, Skonto- und Rabattvereinbarungen einrechnen und entscheiden, ob eine Finanzierung per Bankkredit oder über ein Leasingmodell wirtschaftlicher ist. Kaufmännische Fehlkalkulationen gefährden die Rentabilität des gesamten IT-Projekts. In der IHK-Abschlussprüfung ist das kaufmännische Rechnen das einzige Verfahren, das ausnahmslos in jeder einzelnen Prüfung vorkommt. Verlangt werden fehlerfreie Bezugskalkulationen, Darlehensberechnungen, mehrjährige Kostenvergleiche und Deckungsbeitragsanalysen.<sup class="q"><a href="#a2-q1" title="Wöhe ABWL">1</a></sup></p>
+  <p>Ein IT-Systemhaus beschafft für das Rechenzentrum eines Mandanten 20 neue Serverracks. Der Projektleiter muss vor der Auftragsvergabe Angebote verschiedener Distributoren vergleichen, Skonto- und Rabattvereinbarungen einrechnen und entscheiden, ob eine Finanzierung per Bankkredit oder über ein Leasingmodell wirtschaftlicher ist. Kaufmännische Fehlkalkulationen gefährden die Rentabilität des gesamten IT-Projekts. In den ausgewerteten Prüfungen 2021–2025 kam kaufmännisches Rechnen nach der Hauptzuordnung in allen neun Heften vor. Im Frühjahr 2026 wurde eine Rabattrechnung innerhalb der Programmieraufgabe geprüft. Verlangt werden fehlerfreie Bezugskalkulationen, Darlehensberechnungen, mehrjährige Kostenvergleiche und Deckungsbeitragsanalysen.<sup class="q"><a href="#a2-q1" title="Wöhe ABWL">1</a></sup></p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 16 Aufgaben</h3>
   <nav aria-label="Prüfungsaufgaben dieses Kapitels"><div class="tabelle"><table>
     <caption>Wo die Antwort steht</caption>
@@ -1893,7 +2102,7 @@ H24 1.5   Netz 192.168.20.0/24, Router .1, DHCP vergibt .20 bis .254
 
   <h4 id="a2-k1">Das Problem: Der Listenpreis sagt noch nichts</h4>
   <p><strong>Zwei Angebote</strong> über dieselben Serverracks stehen nebeneinander. Das eine nennt 10.000,00&nbsp;EUR, das andere 9.400,00&nbsp;EUR. Welches ist billiger? Das weiß noch niemand. Der eine Händler gibt 15&nbsp;% Rabatt, der andere gar keinen. Der eine liefert frei Haus, der andere stellt 250,00&nbsp;EUR Fracht in Rechnung. Erst wenn all das eingerechnet ist, stehen zwei Zahlen da, die man vergleichen darf.</p>
-  <p><strong>Das kaufmännische Rechnen</strong> ist genau diese Arbeit: einen genannten Preis Stufe für Stufe in den Betrag verwandeln, der am Ende wirklich vom Konto geht. Dieselbe Bewegung steckt hinter allen Aufgaben des Kapitels, ob es um einen Einkauf, einen Kredit oder eine Absatzmenge geht. In der Prüfung kommt dieses Verfahren ausnahmslos in jeder Prüfung vor.<sup class="q"><a href="#a2-q1" title="Wöhe ABWL">1</a></sup></p>
+  <p><strong>Das kaufmännische Rechnen</strong> ist genau diese Arbeit: einen genannten Preis Stufe für Stufe in den Betrag verwandeln, der am Ende wirklich vom Konto geht. Dieselbe Bewegung steckt hinter allen Aufgaben des Kapitels, ob es um einen Einkauf, einen Kredit oder eine Absatzmenge geht. Als eigener Aufgabenblock kam es in neun der zehn ausgewerteten Prüfungen vor; die zehnte enthält Prozentrechnung innerhalb einer Programmieraufgabe.<sup class="q"><a href="#a2-q1" title="Wöhe ABWL">1</a></sup></p>
 
   <h4 id="a2-k2">Baustein: Prozent heißt „von hundert“</h4>
   <p><strong>Ein Prozentsatz</strong> ist ein Anteil von hundert Teilen. 15&nbsp;% sind fünfzehn von hundert, als Zahl geschrieben 0,15. Den Anteil rechnest du aus, indem du den Grundwert mit dieser Zahl malnimmst: 10.000,00&nbsp;* 0,15 = 1.500,00&nbsp;EUR. Willst du den Rest nach dem Abzug direkt haben, nimmst du gleich mit dem übrigen Teil mal: 100&nbsp;% minus 15&nbsp;% sind 85&nbsp;%, also 10.000,00&nbsp;* 0,85 = 8.500,00&nbsp;EUR. Beide Wege führen zum selben Ergebnis; der zweite spart einen Schritt.</p>
@@ -2272,7 +2481,7 @@ H21 3.3   Gesamtdauer     20 · 2 h            = 40 h
 
 <section id="a2-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 14 Aufgaben</h3>
   <article class="aufgabe" id="a2-ihk-h21-3-2">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 3.2, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a2-q10" title="AP1 Herbst 2021">10</a></sup></p>
@@ -2909,7 +3118,7 @@ Gesamtnutzwert  = 1,80 + 2,25 + 1,50 + 1,60 = 7,15 Punkte (Rang 2)</pre>
 
 <section id="a3-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 5 Aufgaben</h3>
   <article class="aufgabe" id="a3-ihk-h22-3-7">
     <p class="herkunft">AP1 Herbst 2022, Aufgabe 3.7, 10 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a3-q7" title="AP1 Herbst 2022">7</a></sup></p>
@@ -3089,7 +3298,7 @@ Gesamtnutzwert  = 1,80 + 2,25 + 1,50 + 1,60 = 7,15 Punkte (Rang 2)</pre>
   <p class="kapitel-nr">A4 · Verfahren</p>
   <h2>Einheiten, Speicher und Datenrate</h2>
   <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a4-worum">Worum es geht</a><a href="#a4-kern">Das Verfahren</a><a href="#a4-original">So hat die IHK gefragt</a><a href="#a4-variante">Jetzt du</a><a href="#a4-beispiele">Gelöste Beispiele</a><a href="#a4-begriffe">Begriffe</a><a href="#a4-quellen">Quellen</a></nav>
-  <p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2022, 2.11, 4.5 (5 P)</span> · <span>AP1 Herbst 2022, 2.1 bis 2.3 (8 P)</span> · <span>AP1 Frühjahr 2024, 3.3 bis 3.6, 4.7 (18 P)</span> · <span>AP1 Herbst 2025, 2.4, 2.5 (6 P)</span></p>
+  <p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2022, 2.11, 4.5 (5 P)</span> · <span>AP1 Herbst 2022, 2.1 bis 2.3 (8 P)</span> · <span>AP1 Frühjahr 2024, 3.3 bis 3.6, 4.7 (18 P)</span> · <span>AP1 Herbst 2025, 2.4, 2.5 (6 P)</span> · <span>AP1 Frühjahr 2026, 1.ad, 1.b (9 P)</span></p>
 </header>
 
 <section id="a4-worum">
@@ -3619,8 +3828,9 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 </section>
 
 <section id="a4-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-1-ad">1.ad Datenrate eines Videostreams</a> · <a href="#f26-1-b">1.b Speicherbedarf für vier Kameras</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 10 Aufgaben</h3>
   <article class="aufgabe" id="a4-ihk-f22-2-11">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 2.11, 1 Punkt, sinngemäß wiedergegeben<sup class="q"><a href="#a4-q10" title="AP1 Frühjahr 2022">10</a></sup></p>
@@ -3881,7 +4091,7 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
   <p class="kapitel-nr">A5 · Verfahren</p>
   <h2>Strom und Energiekosten</h2>
   <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a5-worum">Worum es geht</a><a href="#a5-kern">Das Verfahren</a><a href="#a5-original">So hat die IHK gefragt</a><a href="#a5-variante">Jetzt du</a><a href="#a5-beispiele">Gelöste Beispiele</a><a href="#a5-begriffe">Begriffe</a><a href="#a5-quellen">Quellen</a></nav>
-  <p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 2.1, 2.2, 2.4 (14 P)</span> · <span>AP1 Frühjahr 2024, 3.7, 3.8 (7 P)</span> · <span>AP1 Herbst 2025, 3.5, 3.6 (5 P)</span></p>
+  <p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 2.1, 2.2, 2.4 (14 P)</span> · <span>AP1 Frühjahr 2024, 3.7, 3.8 (7 P)</span> · <span>AP1 Herbst 2025, 3.5, 3.6 (5 P)</span> · <span>AP1 Frühjahr 2026, 1.ac (4 P)</span></p>
 </header>
 
 <section id="a5-worum">
@@ -4226,8 +4436,9 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 </section>
 
 <section id="a5-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-1-ac">1.ac PoE-Standard und Strom</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 4 Aufgaben</h3>
   <article class="aufgabe" id="a5-ihk-h21-2-4">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 2.4, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a5-q7" title="AP1 Herbst 2021">7</a></sup></p>
@@ -4401,12 +4612,12 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
   <p class="kapitel-nr">A6 · Verfahren</p>
   <h2>Netzplan und Gantt</h2>
   <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a6-worum">Worum es geht</a><a href="#a6-kern">Das Verfahren</a><a href="#a6-original">So hat die IHK gefragt</a><a href="#a6-variante">Jetzt du</a><a href="#a6-beispiele">Gelöste Beispiele</a><a href="#a6-begriffe">Begriffe</a><a href="#a6-quellen">Quellen</a></nav>
-  <p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 1.3 bis 1.5 (17 P)</span> · <span>AP1 Herbst 2023, 4.1, 4.3 bis 4.5 (12 P)</span> · <span>AP1 Frühjahr 2025, 3.1, 3.2 (10 P)</span></p>
+  <p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 1.3 bis 1.5 (17 P)</span> · <span>AP1 Herbst 2023, 4.1, 4.3 bis 4.5 (12 P)</span> · <span>AP1 Frühjahr 2025, 3.1, 3.2 (10 P)</span> · <span>AP1 Frühjahr 2026, 2.e (6 P)</span></p>
 </header>
 
 <section id="a6-worum">
   <h3>Worum es geht</h3>
-  <p>Ein Steuerbüro mit zwölf Arbeitsplätzen zieht in ein anderes Gebäude. Dein Systemhaus übernimmt die Technik: Bestand aufnehmen, Hardware bestellen, Netzwerkdosen setzen, Patchfeld auflegen, Rechner aufbauen, Abnahme. Der Kunde will nur eines wissen: ab wann wieder gearbeitet werden kann. Eine Liste mit Dauern reicht dafür nicht, denn manche Arbeiten laufen gleichzeitig und andere warten aufeinander. Der Netzplan ist die Zeichnung, mit der du diese Frage ausrechnest, ohne dich zu verzählen.<sup class="q"><a href="#a6-q1" title="DIN 69900">1</a></sup> Er liefert den frühesten Endtermin, zeigt, welche Arbeiten keinen Spielraum haben, und sagt, wie viel Verspätung eine einzelne Arbeit verträgt. Der Balkenplan macht dasselbe Ergebnis für den Kunden lesbar. Die IHK fragt das Verfahren punktreich ab: in drei der neun ausgewerteten Prüfungen zusammen 39&nbsp;Punkte.</p>
+  <p>Ein Steuerbüro mit zwölf Arbeitsplätzen zieht in ein anderes Gebäude. Dein Systemhaus übernimmt die Technik: Bestand aufnehmen, Hardware bestellen, Netzwerkdosen setzen, Patchfeld auflegen, Rechner aufbauen, Abnahme. Der Kunde will nur eines wissen: ab wann wieder gearbeitet werden kann. Eine Liste mit Dauern reicht dafür nicht, denn manche Arbeiten laufen gleichzeitig und andere warten aufeinander. Der Netzplan ist die Zeichnung, mit der du diese Frage ausrechnest, ohne dich zu verzählen.<sup class="q"><a href="#a6-q1" title="DIN 69900">1</a></sup> Er liefert den frühesten Endtermin, zeigt, welche Arbeiten keinen Spielraum haben, und sagt, wie viel Verspätung eine einzelne Arbeit verträgt. Der Balkenplan macht dasselbe Ergebnis für den Kunden lesbar. Die IHK fragt das Verfahren punktreich ab: in vier der zehn ausgewerteten Prüfungen zusammen 45&nbsp;Punkte.</p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 9 Aufgaben</h3>
   <nav aria-label="Prüfungsaufgaben dieses Kapitels"><div class="tabelle"><table>
     <caption>Wo die Antwort steht</caption>
@@ -5083,8 +5294,9 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
 </section>
 
 <section id="a6-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-2-e">2.e Drei Fehler im Netzplan</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 4 Aufgaben</h3>
   <article class="aufgabe" id="a6-ihk-h23-4-1">
     <p class="herkunft">AP1 Herbst 2023, Aufgabe 4.1, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a6-q6" title="AP1 Herbst 2023">6</a></sup></p>
@@ -5258,12 +5470,12 @@ Ersatzwert 50.000 KiB je Tag:  50.000 · 365 = 18.250.000 KiB
   <p class="kapitel-nr">A7 · Verfahren</p>
   <h2>Programmlogik und Schreibtischtest</h2>
   <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a7-worum">Worum es geht</a><a href="#a7-kern">Das Verfahren</a><a href="#a7-original">So hat die IHK gefragt</a><a href="#a7-variante">Jetzt du</a><a href="#a7-beispiele">Gelöste Beispiele</a><a href="#a7-begriffe">Begriffe</a><a href="#a7-quellen">Quellen</a></nav>
-  <p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 2.5 (8 P)</span> · <span>AP1 Frühjahr 2022, 4.4 (9 P)</span> · <span>AP1 Herbst 2022, 4.4 (7 P)</span> · <span>AP1 Herbst 2024, 2.2, 2.3, 2.5 (12 P)</span> · <span>AP1 Frühjahr 2025, 3.5, 3.6 (14 P)</span> · <span>AP1 Herbst 2025, 4.5 bis 4.8 (10 P)</span></p>
+  <p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 2.5 (8 P)</span> · <span>AP1 Frühjahr 2022, 4.4 (9 P)</span> · <span>AP1 Herbst 2022, 4.4 (7 P)</span> · <span>AP1 Herbst 2024, 2.2, 2.3, 2.5 (12 P)</span> · <span>AP1 Frühjahr 2025, 3.5, 3.6 (14 P)</span> · <span>AP1 Herbst 2025, 4.5 bis 4.8 (10 P)</span> · <span>AP1 Frühjahr 2026, 4.a, 4.bb (12 P)</span></p>
 </header>
 
 <section id="a7-worum">
   <h3>Worum es geht</h3>
-  <p>Ein Autohaus ruft im Systemhaus an. Die selbst geschriebene Auswertung der Werkstattaufträge meldet für jeden Monat einen Gesamtumsatz von 0,00&nbsp;€. Du öffnest den Quelltext. Die Schleife läuft sauber über alle Aufträge, aber die Summe wird multipliziert statt addiert. Weil sie bei 0 startet, bleibt sie bei 0. Wer so etwas findet, kann ein Programm lesen, ohne es auszuführen: Zeile für Zeile, Variable für Variable, Durchlauf für Durchlauf. Genau das ist ein Schreibtischtest. Die Prüfung fragt es in dieser Form ab: Rückgabewerte bestimmen, Struktogramme ergänzen, Fehler benennen und korrigieren. In sechs der neun ausgewerteten Prüfungen hingen daran 60 Punkte.<sup class="q"><a href="#a7-q5" title="IHK-Konvention Schreibtischtest">5</a></sup></p>
+  <p>Ein Autohaus ruft im Systemhaus an. Die selbst geschriebene Auswertung der Werkstattaufträge meldet für jeden Monat einen Gesamtumsatz von 0,00&nbsp;€. Du öffnest den Quelltext. Die Schleife läuft sauber über alle Aufträge, aber die Summe wird multipliziert statt addiert. Weil sie bei 0 startet, bleibt sie bei 0. Wer so etwas findet, kann ein Programm lesen, ohne es auszuführen: Zeile für Zeile, Variable für Variable, Durchlauf für Durchlauf. Genau das ist ein Schreibtischtest. Die Prüfung fragt es in dieser Form ab: Rückgabewerte bestimmen, Struktogramme ergänzen, Fehler benennen und korrigieren. In sieben der zehn ausgewerteten Prüfungen hingen daran 72 Punkte.<sup class="q"><a href="#a7-q5" title="IHK-Konvention Schreibtischtest">5</a></sup></p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 12 Aufgaben</h3>
   <nav aria-label="Prüfungsaufgaben dieses Kapitels"><div class="tabelle"><table>
     <caption>Wo die Antwort steht</caption>
@@ -5850,8 +6062,9 @@ else
 </section>
 
 <section id="a7-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-4-a">4.a Vorteile von Objektorientierung</a> · <a href="#f26-4-bb">4.bb Versandkosten mit Rabatt</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 9 Aufgaben</h3>
   <article class="aufgabe" id="a7-ihk-f22-4-4">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 4.4, 9 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a7-q13" title="AP1 Frühjahr 2022">13</a></sup></p>
@@ -6158,7 +6371,7 @@ else
   <p class="kapitel-nr">A8 · Verfahren</p>
   <h2>UML-Diagramme</h2>
   <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a8-worum">Worum es geht</a><a href="#a8-kern">Das Verfahren</a><a href="#a8-original">So hat die IHK gefragt</a><a href="#a8-variante">Jetzt du</a><a href="#a8-beispiele">Gelöste Beispiele</a><a href="#a8-begriffe">Begriffe</a><a href="#a8-quellen">Quellen</a></nav>
-  <p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2023, 4.4 (8 P)</span> · <span>AP1 Herbst 2023, 1.1 (6 P)</span> · <span>AP1 Herbst 2024, 2.4 (5 P)</span> · <span>AP1 Herbst 2025, 2.2 (9 P)</span></p>
+  <p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2023, 4.4 (8 P)</span> · <span>AP1 Herbst 2023, 1.1 (6 P)</span> · <span>AP1 Herbst 2024, 2.4 (5 P)</span> · <span>AP1 Herbst 2025, 2.2 (9 P)</span> · <span>AP1 Frühjahr 2026, 4.ba (5 P)</span></p>
 </header>
 
 <section id="a8-worum">
@@ -6804,8 +7017,9 @@ Klassendiagramm
 </section>
 
 <section id="a8-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-4-ba">4.ba UML-Klasse ShippingCalculator</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 0 Aufgaben</h3>
 
   
@@ -6930,12 +7144,12 @@ Klassendiagramm
   <p class="kapitel-nr">A9 · Verfahren</p>
   <h2>Datenmodell und ER-Diagramm</h2>
   <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#a9-worum">Worum es geht</a><a href="#a9-kern">Das Verfahren</a><a href="#a9-original">So hat die IHK gefragt</a><a href="#a9-variante">Jetzt du</a><a href="#a9-beispiele">Gelöste Beispiele</a><a href="#a9-begriffe">Begriffe</a><a href="#a9-quellen">Quellen</a></nav>
-  <p class="kam-dran">Kam dran: <span>AP1 Herbst 2022, 4.1 bis 4.3, 4.5 (17 P)</span> · <span>AP1 Frühjahr 2023, 4.5, 4.6 (7 P)</span> · <span>AP1 Herbst 2023, 4.6 bis 4.9 (13 P)</span> · <span>AP1 Herbst 2024, 4.2 (6 P)</span> · <span>AP1 Frühjahr 2025, 4.7, 4.8 (4 P)</span> · <span>AP1 Herbst 2025, 4.1 bis 4.4 (14 P)</span></p>
+  <p class="kam-dran">Kam dran: <span>AP1 Herbst 2022, 4.1 bis 4.3, 4.5 (17 P)</span> · <span>AP1 Frühjahr 2023, 4.5, 4.6 (7 P)</span> · <span>AP1 Herbst 2023, 4.6 bis 4.9 (13 P)</span> · <span>AP1 Herbst 2024, 4.2 (6 P)</span> · <span>AP1 Frühjahr 2025, 4.7, 4.8 (4 P)</span> · <span>AP1 Herbst 2025, 4.1 bis 4.4 (14 P)</span> · <span>AP1 Frühjahr 2026, 4.c (8 P)</span></p>
 </header>
 
 <section id="a9-worum">
   <h3>Worum es geht</h3>
-  <p>Ein Systemhaus speichert Kundenanschriften in jeder Ticketzeile erneut. Nach einem Umzug bleibt die alte Adresse in vierzehn Zeilen stehen; der Monteur fährt falsch. Ein sauberes Datenmodell vermeidet solche widersprüchlichen Kopien. Du musst aus einem Sachtext Entitäten, Attribute und Beziehungen herauslesen, Kardinalitäten bestimmen, Primär- und Fremdschlüssel setzen, eine n:m-Beziehung über eine Beziehungstabelle auflösen und das Ergebnis zeichnen. Dazu kommen kurze SQL-Abfragen auf dieses Modell. Die Prüfung fragt das häufig: In sechs der neun ausgewerteten Prüfungen standen dafür zusammen 61 Punkte.<sup class="q"><a href="#a9-q3" title="Kemper/Eickler">3</a></sup></p>
+  <p>Ein Systemhaus speichert Kundenanschriften in jeder Ticketzeile erneut. Nach einem Umzug bleibt die alte Adresse in vierzehn Zeilen stehen; der Monteur fährt falsch. Ein sauberes Datenmodell vermeidet solche widersprüchlichen Kopien. Du musst aus einem Sachtext Entitäten, Attribute und Beziehungen herauslesen, Kardinalitäten bestimmen, Primär- und Fremdschlüssel setzen, eine n:m-Beziehung über eine Beziehungstabelle auflösen und das Ergebnis zeichnen. Dazu kommen kurze SQL-Abfragen auf dieses Modell. Die Prüfung fragt das häufig: In sieben der zehn ausgewerteten Prüfungen standen dafür zusammen 69 Punkte.<sup class="q"><a href="#a9-q3" title="Kemper/Eickler">3</a></sup></p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 17 Aufgaben</h3>
   <nav aria-label="Prüfungsaufgaben dieses Kapitels"><div class="tabelle"><table>
     <caption>Wo die Antwort steht</caption>
@@ -7629,8 +7843,9 @@ WHERE  Year(Vertragsbeginn) = 2024
 </section>
 
 <section id="a9-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-4-c">4.c ER-Modell Artikel und LKW</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 14 Aufgaben</h3>
   <article class="aufgabe" id="a9-ihk-h22-4-1">
     <p class="herkunft">AP1 Herbst 2022, Aufgabe 4.1, 3 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#a9-q10" title="AP1 Herbst 2022">10</a></sup></p>
@@ -7953,7 +8168,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <section class="kapitel" id="b1" data-gruppe="B">
 
 <header class="kapitel-kopf"><p class="kapitel-nr">B1 · Erklären</p><h2>IT-Sicherheit I: Schutzziele, Zugang, Angriffe</h2>
-  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b1-worum">Worum es geht</a><a href="#b1-kern">Die Sache</a><a href="#b1-original">So hat die IHK gefragt</a><a href="#b1-variante">Jetzt du</a><a href="#b1-beispiele">Gelöste Beispiele</a><a href="#b1-begriffe">Begriffe</a><a href="#b1-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 4.1, 4.2, 4.3, 4.5 (18 P)</span> · <span>AP1 Frühjahr 2023, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7 (16 P)</span> · <span>AP1 Herbst 2023, 3.2, 3.3, 3.5 (10 P)</span> · <span>AP1 Frühjahr 2024, 4.1, 4.4, 4.5, 4.6 (15 P)</span> · <span>AP1 Herbst 2024, 1.1, 1.2, 1.3, 3.5, 3.6, 3.7, 3.8 (19 P)</span> · <span>AP1 Frühjahr 2025, 1.7, 1.8, 2.4 (8 P)</span> · <span>AP1 Herbst 2025, 3.2, 3.3, 3.4 (8 P)</span></p></header>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b1-worum">Worum es geht</a><a href="#b1-kern">Die Sache</a><a href="#b1-original">So hat die IHK gefragt</a><a href="#b1-variante">Jetzt du</a><a href="#b1-beispiele">Gelöste Beispiele</a><a href="#b1-begriffe">Begriffe</a><a href="#b1-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 4.1, 4.2, 4.3, 4.5 (18 P)</span> · <span>AP1 Frühjahr 2023, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7 (16 P)</span> · <span>AP1 Herbst 2023, 3.2, 3.3, 3.5 (10 P)</span> · <span>AP1 Frühjahr 2024, 4.1, 4.4, 4.5, 4.6 (15 P)</span> · <span>AP1 Herbst 2024, 1.1, 1.2, 1.3, 3.5, 3.6, 3.7, 3.8 (19 P)</span> · <span>AP1 Frühjahr 2025, 1.7, 1.8, 2.4 (8 P)</span> · <span>AP1 Herbst 2025, 3.2, 3.3, 3.4 (8 P)</span> · <span>AP1 Frühjahr 2026, 1.aa (4 P)</span></p></header>
 
 <section id="b1-worum"><h3>Worum es geht</h3><p>Ein Kunde meldet, dass sein neues Zeiterfassungsterminal von außen erreichbar ist. Zugleich bekommen Beschäftigte eine Mail, die angeblich zur Einrichtung des Terminals ihr Firmenpasswort verlangt. Du sollst die Anlage freigeben und den Umgang mit der Nachricht klären. Dafür musst du technische und menschliche Angriffsmöglichkeiten auseinanderhalten: Welche Daten sollen geschützt werden, wer darf das Gerät benutzen, welche Verbindungen braucht es wirklich? Die Antwort besteht aus begründeten Maßnahmen. Eine Liste von Sicherheitswörtern hilft dem Kunden erst, wenn du erklärst, welchen Schaden jede Maßnahme verhindert und wie sie im Betrieb umgesetzt wird.<sup class="q"><a href="#b1-q1" title="Glossar (Schutzziele C-I-A); Bausteine ORP.4 (Identitäts- und Berechtigungsmanagement), SYS.2.1 (Allgemeiner Client), NET.1.1 (Netzarchitektur und Segmentierung)">1</a></sup></p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 30 Aufgaben</h3>
@@ -8123,8 +8338,9 @@ WHERE  Year(Vertragsbeginn) = 2024
 </section>
 
 <section id="b1-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-1-aa">1.aa Standardpasswörter: Folgen</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 27 Aufgaben</h3>
   <article class="aufgabe" id="b1-ihk-h21-4-1">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 4.1, 6 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b1-q10" title="AP1 Herbst 2021">10</a></sup></p>
@@ -8694,7 +8910,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <section id="b2-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 10 Aufgaben</h3>
   <article class="aufgabe" id="b2-ihk-f22-3-1">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 3.1, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b2-q21" title="AP1 Frühjahr 2022">21</a></sup></p>
@@ -8898,7 +9114,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <section class="kapitel" id="b3" data-gruppe="B">
 
 <header class="kapitel-kopf"><p class="kapitel-nr">B3 · Erklären</p><h2>Datenschutz: DSGVO und BDSG</h2>
-  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b3-worum">Worum es geht</a><a href="#b3-kern">Die Sache</a><a href="#b3-original">So hat die IHK gefragt</a><a href="#b3-variante">Jetzt du</a><a href="#b3-beispiele">Gelöste Beispiele</a><a href="#b3-begriffe">Begriffe</a><a href="#b3-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 4.4 (2 P)</span> · <span>AP1 Frühjahr 2023, 3.8 (4 P)</span> · <span>AP1 Herbst 2023, 3.1 (2 P)</span> · <span>AP1 Frühjahr 2025, 2.1, 2.2 (3 P)</span> · <span>AP1 Herbst 2025, 3.1 (3 P)</span></p></header>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b3-worum">Worum es geht</a><a href="#b3-kern">Die Sache</a><a href="#b3-original">So hat die IHK gefragt</a><a href="#b3-variante">Jetzt du</a><a href="#b3-beispiele">Gelöste Beispiele</a><a href="#b3-begriffe">Begriffe</a><a href="#b3-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 4.4 (2 P)</span> · <span>AP1 Frühjahr 2023, 3.8 (4 P)</span> · <span>AP1 Herbst 2023, 3.1 (2 P)</span> · <span>AP1 Frühjahr 2025, 2.1, 2.2 (3 P)</span> · <span>AP1 Herbst 2025, 3.1 (3 P)</span> · <span>AP1 Frühjahr 2026, 3.a (2 P)</span></p></header>
 
 <section id="b3-worum"><h3>Worum es geht</h3><p>Ein Systemhaus betreut die Kundendatenbank eines Händlers, richtet das Terminportal einer Arztpraxis ein und soll die E-Mails einer Anwaltskanzlei absichern. Überall dieselbe zweite Frage neben der Technik: Darf man diese Daten so verarbeiten, und welches Gesetz sagt das? Die IHK fragt dazu kurz und wörtlich: zwei Gesetze nennen, den Zweck der DSGVO beschreiben, besonders geschützte Daten erkennen, Regeln für Protokolle erklären. Dieses Kapitel baut das von null auf: erst die Rollen, dann die Gesetze, dann die Regeln.<sup class="q"><a href="#b3-q1" title="Art. 1, Art. 5 und Art. 32">1</a></sup></p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 6 Aufgaben</h3>
@@ -9017,8 +9233,9 @@ WHERE  Year(Vertragsbeginn) = 2024
 </section>
 
 <section id="b3-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-3-a">3.a Kameraüberwachung und Information</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 4 Aufgaben</h3>
   <article class="aufgabe" id="b3-ihk-h21-4-4">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 4.4, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b3-q9" title="AP1 Herbst 2021">9</a></sup></p>
@@ -9130,7 +9347,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 <section class="kapitel" id="b4" data-gruppe="B">
 
 <header class="kapitel-kopf"><p class="kapitel-nr">B4 · Erklären</p><h2>Hardware und Anschlüsse</h2>
-  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b4-worum">Worum es geht</a><a href="#b4-kern">Die Sache</a><a href="#b4-original">So hat die IHK gefragt</a><a href="#b4-variante">Jetzt du</a><a href="#b4-beispiele">Gelöste Beispiele</a><a href="#b4-begriffe">Begriffe</a><a href="#b4-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2022, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10 (23 P)</span> · <span>AP1 Herbst 2022, 2.8 (4 P)</span> · <span>AP1 Frühjahr 2023, 1.1 (4 P)</span> · <span>AP1 Frühjahr 2024, 1.4 (4 P)</span> · <span>AP1 Herbst 2024, 3.2, 3.3, 3.4 (8 P)</span> · <span>AP1 Frühjahr 2025, 1.4 (4 P)</span></p></header>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b4-worum">Worum es geht</a><a href="#b4-kern">Die Sache</a><a href="#b4-original">So hat die IHK gefragt</a><a href="#b4-variante">Jetzt du</a><a href="#b4-beispiele">Gelöste Beispiele</a><a href="#b4-begriffe">Begriffe</a><a href="#b4-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2022, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10 (23 P)</span> · <span>AP1 Herbst 2022, 2.8 (4 P)</span> · <span>AP1 Frühjahr 2023, 1.1 (4 P)</span> · <span>AP1 Frühjahr 2024, 1.4 (4 P)</span> · <span>AP1 Herbst 2024, 3.2, 3.3, 3.4 (8 P)</span> · <span>AP1 Frühjahr 2025, 1.4 (4 P)</span> · <span>AP1 Frühjahr 2026, 1.ab, 1.ca, 1.cb, 1.cc (8 P)</span></p></header>
 
 <section id="b4-worum"><h3>Worum es geht</h3><p>Ein Entwickler will 32&nbsp;GB Arbeitsspeicher statt 16, ein neues Multifunktionsgerät soll angeschlossen werden, und für zwölf Standardarbeitsplätze sind Prozessor, Speicher und Laufwerk selbst einzubauen. Dafür musst du wissen, was in einem Rechner steckt, wie die Teile zusammenspielen und woran du einen Anschluss erkennst. Dieses Kapitel baut das von null auf.<sup class="q"><a href="#b4-q1" title="Tanenbaum, Structured Computer Organization, Kap. 2">1</a></sup></p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 17 Aufgaben</h3>
@@ -9314,8 +9531,9 @@ WHERE  Year(Vertragsbeginn) = 2024
 </section>
 
 <section id="b4-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-1-ab">1.ab Infrarot und Heizung</a> · <a href="#f26-1-ca">1.ca Vorteil einer Monitor-Reihenschaltung</a> · <a href="#f26-1-cb">1.cb Daisy-Chain-Voraussetzungen</a> · <a href="#f26-1-cc">1.cc Vier Monitore verbinden</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 13 Aufgaben</h3>
   <article class="aufgabe" id="b4-ihk-f22-2-1">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 2.1, 3 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b4-q13" title="AP1 Frühjahr 2022">13</a></sup></p>
@@ -9562,11 +9780,11 @@ WHERE  Year(Vertragsbeginn) = 2024
 <section class="kapitel" id="b5" data-gruppe="B">
 
 <header class="kapitel-kopf"><p class="kapitel-nr">B5 · Erklären</p><h2>Netzwerk-Grundlagen</h2>
-  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b5-worum">Worum es geht</a><a href="#b5-kern">Die Sache</a><a href="#b5-original">So hat die IHK gefragt</a><a href="#b5-variante">Jetzt du</a><a href="#b5-beispiele">Gelöste Beispiele</a><a href="#b5-begriffe">Begriffe</a><a href="#b5-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2022, 3.3, 3.4, 3.9, 4.2 (16 P)</span> · <span>AP1 Herbst 2022, 2.7 (3 P)</span> · <span>AP1 Frühjahr 2024, 2.1, 2.2, 2.5, 2.6 (13 P)</span> · <span>AP1 Herbst 2024, 1.6 (5 P)</span> · <span>AP1 Frühjahr 2025, 1.5, 2.8 (4 P)</span> · <span>AP1 Herbst 2025, 3.8 (3 P)</span></p></header>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b5-worum">Worum es geht</a><a href="#b5-kern">Die Sache</a><a href="#b5-original">So hat die IHK gefragt</a><a href="#b5-variante">Jetzt du</a><a href="#b5-beispiele">Gelöste Beispiele</a><a href="#b5-begriffe">Begriffe</a><a href="#b5-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Frühjahr 2022, 3.3, 3.4, 3.9, 4.2 (16 P)</span> · <span>AP1 Herbst 2022, 2.7 (3 P)</span> · <span>AP1 Frühjahr 2024, 2.1, 2.2, 2.5, 2.6 (13 P)</span> · <span>AP1 Herbst 2024, 1.6 (5 P)</span> · <span>AP1 Frühjahr 2025, 1.5, 2.8 (4 P)</span> · <span>AP1 Herbst 2025, 3.8 (3 P)</span> · <span>AP1 Frühjahr 2026, 2.b, 3.db (11 P)</span></p></header>
 
 <section id="b5-worum"><h3>Worum es geht</h3><p>Im Besprechungsraum einer Steuerkanzlei bleibt der neue Präsentationsrechner ohne Netzwerk. An der Wand sitzt eine unbeschriftete Doppeldose, im Technikraum stehen Patchfeld und Switch. Raten hilft hier nicht. Ein Netz prüfst du von unten nach oben: Kabel, Verbindung zum Switch, Adresse, Dienst.</p>
 <p>Dafür musst du die Schichten mit Protokoll, Adressart und Gerät verbinden, die üblichen Portnummern kennen, TCP von UDP unterscheiden und eine Dose bis zum Switch verfolgen. Dazu kommen Funknetz, VLAN, Cloud und Virtualisierung.</p>
-<p>Die Prüfung greift dieses Feld in sechs der neun ausgewerteten Durchgänge auf, meist als Zuordnungstabelle oder als Beschreibung eines Vorgehens. Die Adressrechnung selbst steht in <a href="#a1">A1</a>.</p>
+<p>Die Prüfung greift dieses Feld in sieben der zehn ausgewerteten Durchgänge auf, meist als Zuordnungstabelle oder als Beschreibung eines Vorgehens. Die Adressrechnung selbst steht in <a href="#a1">A1</a>.</p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 13 Aufgaben</h3>
   <nav aria-label="Prüfungsaufgaben dieses Kapitels"><div class="tabelle"><table>
     <caption>Wo die Antwort steht</caption>
@@ -9715,8 +9933,9 @@ WHERE  Year(Vertragsbeginn) = 2024
 </section>
 
 <section id="b5-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-2-b">2.b Vier Fehlerquellen im Netzwerk</a> · <a href="#f26-3-db">3.db Ping: Latenz und Paketverlust</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 10 Aufgaben</h3>
   <article class="aufgabe" id="b5-ihk-f22-3-4">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 3.4, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b5-q17" title="AP1 Frühjahr 2022">17</a></sup></p>
@@ -10052,7 +10271,7 @@ WHERE  Year(Vertragsbeginn) = 2024
 
 <section id="b6-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 5 Aufgaben</h3>
   <article class="aufgabe" id="b6-ihk-f22-4-1">
     <p class="herkunft">AP1 Frühjahr 2022, Aufgabe 4.1, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b6-q17" title="AP1 Frühjahr 2022">17</a></sup></p>
@@ -10380,7 +10599,7 @@ Verfügbarkeit
 
 <section id="b7-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 4 Aufgaben</h3>
   <article class="aufgabe" id="b7-ihk-h21-4-6">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 4.6, 2 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b7-q10" title="AP1 Herbst 2021">10</a></sup></p>
@@ -10502,7 +10721,7 @@ Verfügbarkeit
 <section class="kapitel" id="b8" data-gruppe="B">
 
 <header class="kapitel-kopf"><p class="kapitel-nr">B8 · Erklären</p><h2>Arbeitsplatz: Ergonomie, Barrierefreiheit, Nachhaltigkeit</h2>
-  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b8-worum">Worum es geht</a><a href="#b8-kern">Die Sache</a><a href="#b8-original">So hat die IHK gefragt</a><a href="#b8-variante">Jetzt du</a><a href="#b8-beispiele">Gelöste Beispiele</a><a href="#b8-begriffe">Begriffe</a><a href="#b8-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 2.3 (3 P)</span> · <span>AP1 Herbst 2023, 2.1 bis 2.4 (16 P)</span> · <span>AP1 Herbst 2024, 4.5 (4 P)</span></p></header>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b8-worum">Worum es geht</a><a href="#b8-kern">Die Sache</a><a href="#b8-original">So hat die IHK gefragt</a><a href="#b8-variante">Jetzt du</a><a href="#b8-beispiele">Gelöste Beispiele</a><a href="#b8-begriffe">Begriffe</a><a href="#b8-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 2.3 (3 P)</span> · <span>AP1 Herbst 2023, 2.1 bis 2.4 (16 P)</span> · <span>AP1 Herbst 2024, 4.5 (4 P)</span> · <span>AP1 Frühjahr 2026, 3.ec (4 P)</span></p></header>
 
 <section id="b8-worum"><h3>Worum es geht</h3><p>Eine Steuerkanzlei lässt vier Arbeitsplätze einrichten. Der Kunde hat die Tische mit Blick zum Fenster gestellt, arbeitet an Notebooks ohne externe Tastatur und will die alten Rechner auf den Sperrmüll geben. Das sind drei Fehler auf einmal: Blendung, Zwangshaltung und eine unzulässige Entsorgung. Wer einen Arbeitsplatz einrichtet, entscheidet über Gesundheit, über Zugang für Menschen mit Behinderung und über den Ressourcenverbrauch eines Geräts.</p>
 <p>Du musst die Anforderungen der Arbeitsstättenverordnung an einen Bildschirmarbeitsplatz nennen und auf einen konkreten Fall anwenden, Barrierefreiheit an Maßnahmen festmachen und ökologische Gesichtspunkte einer Beschaffung beschreiben. Die Prüfung fragt das als Fließtext ohne Rechnung: nennen, beschreiben, erläutern. Punkte entstehen dort über Anzahl und Begründung, nicht über ein Ergebnis.</p>
@@ -10617,8 +10836,9 @@ Verfügbarkeit
 </section>
 
 <section id="b8-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-3-ec">3.ec Ergonomie am Notebook</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 3 Aufgaben</h3>
   <article class="aufgabe" id="b8-ihk-h21-2-3">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 2.3, 3 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b8-q15" title="AP1 Herbst 2021">15</a></sup></p>
@@ -10731,7 +10951,7 @@ Verfügbarkeit
 <section id="b9-worum">
   <h3>Worum es geht</h3>
   <p>Ein Steuerbüro ruft an. Die Kanzlei will ihre Papierakten loswerden, „am besten bis zum Jahreswechsel, und teuer darf es nicht werden“. Mehr weiß niemand: nicht, wie viele Akten es sind, nicht, wer später damit arbeitet, nicht, ob der alte Server bleibt. Dein Chef legt dir den Fall auf den Tisch, weil du das Erstgespräch führst und das Angebot vorbereitest.</p>
-  <p>Du musst dafür wissen, was ein Vorhaben zum Projekt macht, wie aus einem vagen Wunsch prüfbare Anforderungen werden, wer das Lastenheft und wer das Pflichtenheft schreibt und nach welchem Vorgehensmodell das Team arbeitet. Die Prüfung fragt das in sechs von neun ausgewerteten Sätzen, fast immer als „Nennen und erläutern Sie“: Jeder Aspekt ist ein Punkt, jede Erläuterung ein zweiter.<sup class="q"><a href="#b9-q15" title="Allgemeine Korrekturhinweise: Dimension der Aufgabenstellung, geforderte Anzahl">15</a></sup></p>
+  <p>Du musst dafür wissen, was ein Vorhaben zum Projekt macht, wie aus einem vagen Wunsch prüfbare Anforderungen werden, wer das Lastenheft und wer das Pflichtenheft schreibt und nach welchem Vorgehensmodell das Team arbeitet. Die Prüfung fragt das in sechs von zehn ausgewerteten Sätzen, fast immer als „Nennen und erläutern Sie“: Jeder Aspekt ist ein Punkt, jede Erläuterung ein zweiter.<sup class="q"><a href="#b9-q15" title="Allgemeine Korrekturhinweise: Dimension der Aufgabenstellung, geforderte Anzahl">15</a></sup></p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 13 Aufgaben</h3>
   <nav aria-label="Prüfungsaufgaben dieses Kapitels"><div class="tabelle"><table>
     <caption>Wo die Antwort steht</caption>
@@ -11060,7 +11280,7 @@ Verfügbarkeit
 
 <section id="b9-geloest">
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 10 Aufgaben</h3>
   <article class="aufgabe" id="b9-ihk-h21-1-1">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 1.1, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b9-q19" title="AP1 Herbst 2021">19</a></sup></p>
@@ -11343,7 +11563,7 @@ Verfügbarkeit
 <section class="kapitel" id="b10" data-gruppe="B">
 
 <header class="kapitel-kopf"><p class="kapitel-nr">B10 · Erklären</p><h2>Kunde, Kommunikation und Veränderung</h2>
-  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b10-worum">Worum es geht</a><a href="#b10-kern">Die Sache</a><a href="#b10-original">So hat die IHK gefragt</a><a href="#b10-variante">Jetzt du</a><a href="#b10-beispiele">Gelöste Beispiele</a><a href="#b10-begriffe">Begriffe</a><a href="#b10-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 3.4, 3.5 (10 P)</span> · <span>AP1 Frühjahr 2022, 1.1 bis 1.3 (18 P)</span> · <span>AP1 Frühjahr 2023, 4.1 (4 P)</span> · <span>AP1 Herbst 2023, 1.2, 1.3, 1.8, 2.6 (14 P)</span> · <span>AP1 Frühjahr 2025, 4.1, 4.2, 4.4 (12 P)</span> · <span>AP1 Herbst 2025, 1.7, 1.8, 2.3 (10 P)</span></p></header>
+  <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b10-worum">Worum es geht</a><a href="#b10-kern">Die Sache</a><a href="#b10-original">So hat die IHK gefragt</a><a href="#b10-variante">Jetzt du</a><a href="#b10-beispiele">Gelöste Beispiele</a><a href="#b10-begriffe">Begriffe</a><a href="#b10-quellen">Quellen</a></nav><p class="kam-dran">Kam dran: <span>AP1 Herbst 2021, 3.4, 3.5 (10 P)</span> · <span>AP1 Frühjahr 2022, 1.1 bis 1.3 (18 P)</span> · <span>AP1 Frühjahr 2023, 4.1 (4 P)</span> · <span>AP1 Herbst 2023, 1.2, 1.3, 1.8, 2.6 (14 P)</span> · <span>AP1 Frühjahr 2025, 4.1, 4.2, 4.4 (12 P)</span> · <span>AP1 Herbst 2025, 1.7, 1.8, 2.3 (10 P)</span> · <span>AP1 Frühjahr 2026, 3.ba, 3.cb, 3.ea, 3.eb (10 P)</span></p></header>
 
 <section id="b10-worum"><h3>Worum es geht</h3><p>Ein Systemhaus stellt einer Steuerkanzlei ein neues Dokumentenmanagement bereit. Technisch läuft alles. Am dritten Tag ruft die Kanzleileiterin an: „Seit eurem Programm kommt hier keiner mehr zum Arbeiten." Der Techniker prüft Server und Clients und findet keinen Fehler. Der Fehler liegt nicht im System. Niemand hat die Mitarbeitenden eingewiesen, die Ablage ist ungewohnt, und zwei Kolleginnen fürchten, dass die automatische Belegerkennung ihre Aufgabe überflüssig macht.</p>
 <p>Du musst deshalb dreierlei können. Erstens zuhören und eine Kundenaussage auf allen vier Seiten lesen. Zweitens eine Neuerung so einführen, dass Menschen sie annehmen: informieren, schulen, beteiligen. Drittens beurteilen, wo Künstliche Intelligenz <span class="en">(artificial intelligence, KI)</span> in einem Ablauf hilft und wo ihre Grenzen liegen. Die Prüfung fragt genau das, seit 2025 mit deutlichem Gewicht auf KI und Veränderung, und vergibt je Aspekt einen bis zwei Punkte.<sup class="q"><a href="#b10-q11" title="Aufgaben 1.7, 1.8 und 2.3 mit Lösungshinweisen">11</a></sup></p>
@@ -11493,8 +11713,9 @@ Verfügbarkeit
 </section>
 
 <section id="b10-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-3-ba">3.ba Kennzeichen automatisch erkennen</a> · <a href="#f26-3-cb">3.cb Imageschaden: wirtschaftliche Folgen</a> · <a href="#f26-3-ea">3.ea Anlässe für Change Management</a> · <a href="#f26-3-eb">3.eb Risiko bei direkter Umstellung</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 13 Aufgaben</h3>
   <article class="aufgabe" id="b10-ihk-h21-3-4">
     <p class="herkunft">AP1 Herbst 2021, Aufgabe 3.4, 4 Punkte, sinngemäß wiedergegeben<sup class="q"><a href="#b10-q13" title="AP1 Herbst 2021">13</a></sup></p>
@@ -11740,13 +11961,13 @@ Verfügbarkeit
 <p class="kapitel-nr">B11 · Erklären</p>
 <h2>Wirtschaft und Recht</h2>
   <nav class="kapitel-wege" aria-label="Abschnitte dieses Kapitels"><a href="#b11-worum">Worum es geht</a><a href="#b11-kern">Die Sache</a><a href="#b11-original">So hat die IHK gefragt</a><a href="#b11-variante">Jetzt du</a><a href="#b11-beispiele">Gelöste Beispiele</a><a href="#b11-begriffe">Begriffe</a><a href="#b11-quellen">Quellen</a></nav>
-<p class="kam-dran">Kam dran: <span>AP1 Herbst 2022, 1.1, 1.2, 1.7 (4 P)</span> · <span>AP1 Frühjahr 2023, 2.3, 2.5, 2.6 (9 P)</span> · <span>AP1 Herbst 2023, 1.5 bis 1.7 (6 P)</span> · <span>AP1 Frühjahr 2024, 1.5 bis 1.8 (9 P)</span> · <span>AP1 Herbst 2024, 4.3, 4.4 (10 P)</span> · <span>AP1 Herbst 2025, 1.1, 1.2, 1.5, 1.6, 2.1 (17 P)</span></p>
+<p class="kam-dran">Kam dran: <span>AP1 Herbst 2022, 1.1, 1.2, 1.7 (4 P)</span> · <span>AP1 Frühjahr 2023, 2.3, 2.5, 2.6 (9 P)</span> · <span>AP1 Herbst 2023, 1.5 bis 1.7 (6 P)</span> · <span>AP1 Frühjahr 2024, 1.5 bis 1.8 (9 P)</span> · <span>AP1 Herbst 2024, 4.3, 4.4 (10 P)</span> · <span>AP1 Herbst 2025, 1.1, 1.2, 1.5, 1.6, 2.1 (17 P)</span> · <span>AP1 Frühjahr 2026, 3.bb, 3.ca (4 P)</span></p>
 </header>
 
 <section id="b11-worum">
 <h3>Worum es geht</h3>
 <p>Eine Steuerkanzlei bestellt bei deinem Systemhaus zwölf Monitore. Eine Auftragsbestätigung schickt niemand, die Ware kommt trotzdem, die Rechnung folgt zwei Tage später. Ein Monitor flackert. Der Kunde fragt, ob überhaupt ein Vertrag besteht, wer den Defekt beheben muss und bis wann er zahlen muss, um Skonto zu ziehen. Drei Fragen, drei Rechtsgebiete: Vertragsschluss, Gewährleistung, Zahlungsbedingungen.</p>
-<p>Du musst die Vertragsarten unterscheiden, eine Rechnung auf Pflichtangaben und Positionen prüfen, Fristen auf einen Zeitstrahl legen und begründen, ob Kauf oder Leasing zu einem Betrieb passt. Die Prüfung fragt das in kleinen Portionen, aber in sechs von neun Prüfungen; im Herbst 2025 hing eine ganze Aufgabe an einer einzigen Eingangsrechnung.<sup class="q"><a href="#b11-q1" title="AP1 Herbst 2025, Aufgabe 1">1</a></sup> Punkte gibt es hier für Begriff plus Begründung, nicht für ein Rechenergebnis.</p>
+<p>Du musst die Vertragsarten unterscheiden, eine Rechnung auf Pflichtangaben und Positionen prüfen, Fristen auf einen Zeitstrahl legen und begründen, ob Kauf oder Leasing zu einem Betrieb passt. Die Prüfung fragt das in kleinen Portionen, aber in sieben von zehn Prüfungen; im Herbst 2025 hing eine ganze Aufgabe an einer einzigen Eingangsrechnung.<sup class="q"><a href="#b11-q1" title="AP1 Herbst 2025, Aufgabe 1">1</a></sup> Punkte gibt es hier für Begriff plus Begründung, nicht für ein Rechenergebnis.</p>
   <h3 class="sammelkopf">Originalaufgaben aus den Prüfungen · 20 Aufgaben</h3>
   <nav aria-label="Prüfungsaufgaben dieses Kapitels"><div class="tabelle"><table>
     <caption>Wo die Antwort steht</caption>
@@ -12067,8 +12288,9 @@ Verfügbarkeit
 </section>
 
 <section id="b11-geloest">
+<div class="merke" data-art="Neu: Frühjahr 2026"><p><a href="#f26-3-bb">3.bb Wirtschaftlicher Nutzen der Einfahrt</a> · <a href="#f26-3-ca">3.ca Recht bei Lieferverzug</a></p></div>
   <h3>Alle Prüfungsaufgaben zu diesem Kapitel, gelöst</h3>
-  <p>Hier steht jede zugeordnete Teilaufgabe aus den neun Prüfungen, sinngemäß wiedergegeben, mit Lösungsweg und dem passenden Lernabschnitt. Lies zuerst die Aufgabe, rechne auf Papier und vergleiche anschließend mit der sichtbaren Lösung.</p>
+  <p>Hier stehen die Aufgaben aus den neun Heften 2021–2025 mit Lösungsweg und Lernabschnitt. Die zusätzlichen Teilaufgaben von Frühjahr 2026 sind vollständig <a href="#f26-loesungen">im neuen Prüfungsheft</a> gelöst.</p>
   <h3 class="sammelkopf">Gelöste Aufgaben · 17 Aufgaben</h3>
   <article class="aufgabe" id="b11-ihk-h22-1-1">
     <p class="herkunft">AP1 Herbst 2022, Aufgabe 1.1, 1 Punkt, sinngemäß wiedergegeben<sup class="q"><a href="#b11-q5" title="AP1 Herbst 2022">5</a></sup></p>
