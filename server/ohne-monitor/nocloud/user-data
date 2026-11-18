@@ -1,0 +1,17 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: de_DE.UTF-8
+  keyboard:
+    layout: de
+  identity:
+    hostname: heimserver
+    username: chef
+    password: "HIER_DEN_PASSWORT_HASH_EINTRAGEN"
+  ssh:
+    install-server: true
+    allow-pw: true
+  storage:
+    layout:
+      name: direct
+  shutdown: poweroff
