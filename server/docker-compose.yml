@@ -1,0 +1,90 @@
+# Heim-Server: Grundausstattung fuer den Sprachroboter.
+# Start:            docker compose up -d
+# Mit Zusatz:       docker compose --profile extras up -d
+# Alle Daten liegen in Unterordnern neben dieser Datei.
+
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: homeassistant
+    restart: unless-stopped
+    privileged: true
+    network_mode: host            # Oberflaeche: http://SERVER:8123
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - ./homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+
+  # Sprache zu Text. Modell an die CPU anpassen: tiny-int8 < base-int8 < small-int8 < medium-int8
+  whisper:
+    image: rhasspy/wyoming-whisper
+    container_name: whisper
+    restart: unless-stopped
+    command: --model small-int8 --language de
+    ports:
+      - "10300:10300"
+    volumes:
+      - ./whisper:/data
+
+  # Text zu Sprache
+  piper:
+    image: rhasspy/wyoming-piper
+    container_name: piper
+    restart: unless-stopped
+    command: --voice de_DE-thorsten-medium
+    ports:
+      - "10200:10200"
+    volumes:
+      - ./piper:/data
+
+  # Musik (Spotify) an den Lautsprecher im Roboter
+  music-assistant:
+    image: ghcr.io/music-assistant/server:latest
+    container_name: music-assistant
+    restart: unless-stopped
+    network_mode: host            # Oberflaeche: http://SERVER:8095
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - ./music-assistant:/data
+
+  # Firmware fuer die ESP-Boards bauen und per WLAN aufspielen
+  esphome:
+    image: ghcr.io/esphome/esphome
+    container_name: esphome
+    restart: unless-stopped
+    network_mode: host            # Oberflaeche: http://SERVER:6052
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - ./esphome:/config
+      - /etc/localtime:/etc/localtime:ro
+
+  # ---- Zusatz: erst starten, wenn der Rest laeuft ----
+
+  # Werbeblocker fuers Heimnetz. Im Einrichtungsdialog die Oberflaeche auf Port 3000 lassen.
+  adguardhome:
+    image: adguard/adguardhome
+    container_name: adguardhome
+    restart: unless-stopped
+    profiles: ["extras"]
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "3000:3000/tcp"           # Oberflaeche: http://SERVER:3000
+    volumes:
+      - ./adguard/work:/opt/adguardhome/work
+      - ./adguard/conf:/opt/adguardhome/conf
+
+  # Passwort-Tresor. Die Web-Oberflaeche verlangt HTTPS, also ueber Tailscale oder Cloudflare-Tunnel oeffnen.
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    profiles: ["extras"]
+    ports:
+      - "8222:80"
+    volumes:
+      - ./vaultwarden:/data
