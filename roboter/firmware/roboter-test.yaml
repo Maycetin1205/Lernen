@@ -1,0 +1,127 @@
+# Testfirmware fuer den Roboter: prueft Lautsprecher, Mikrofon und beide Servos.
+# Laeuft ohne Server. Nach dem Flashen im Browser oeffnen: http://roboter-test.local
+#
+# Verkabelung (ESP32-S3-DevKitC-1 N16R8)
+#   Mikrofon INMP441     SCK -> GPIO4    WS  -> GPIO5    SD  -> GPIO6    L/R -> GND   VDD -> 3V3   GND -> GND
+#   Verstaerker MAX98357 BCLK -> GPIO16  LRC -> GPIO17   DIN -> GPIO15                VIN -> 5V    GND -> GND
+#   Servo Kopf drehen    Signal -> GPIO1                                              rot -> 5V    braun -> GND
+#   Servo Kopf nicken    Signal -> GPIO2                                              rot -> 5V    braun -> GND
+#   Reserviert fuer die Displays: GPIO9 bis GPIO14.  Nicht benutzen: GPIO35, 36, 37.
+
+esphome:
+  name: roboter-test
+  friendly_name: Roboter Test
+
+esp32:
+  board: esp32-s3-devkitc-1
+  flash_size: 16MB
+  framework:
+    type: esp-idf
+
+psram:
+  mode: octal
+  speed: 80MHz
+
+logger:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: "Roboter-Test"
+
+captive_portal:
+
+ota:
+  - platform: esphome
+
+web_server:
+  port: 80
+
+i2s_audio:
+  - id: i2s_mikro
+    i2s_bclk_pin: GPIO4
+    i2s_lrclk_pin: GPIO5
+  - id: i2s_ton
+    i2s_bclk_pin: GPIO16
+    i2s_lrclk_pin: GPIO17
+
+microphone:
+  - platform: i2s_audio
+    id: mikro
+    i2s_audio_id: i2s_mikro
+    i2s_din_pin: GPIO6
+    adc_type: external
+    pdm: false
+    channel: left
+    sample_rate: 16000
+    bits_per_sample: 32bit
+
+speaker:
+  - platform: i2s_audio
+    id: lautsprecher
+    i2s_audio_id: i2s_ton
+    i2s_dout_pin: GPIO15
+    dac_type: external
+    channel: mono
+
+rtttl:
+  id: melodie
+  speaker: lautsprecher
+  gain: 0.4
+
+sensor:
+  - platform: sound_level
+    microphone: mikro
+    passive: false
+    measurement_duration: 500ms
+    rms:
+      name: "Mikrofon Pegel"
+    peak:
+      name: "Mikrofon Spitze"
+
+output:
+  - platform: ledc
+    id: pwm_drehen
+    pin: GPIO1
+    frequency: 50Hz
+  - platform: ledc
+    id: pwm_nicken
+    pin: GPIO2
+    frequency: 50Hz
+
+servo:
+  - id: servo_drehen
+    output: pwm_drehen
+  - id: servo_nicken
+    output: pwm_nicken
+
+button:
+  - platform: template
+    name: "Melodie spielen"
+    on_press:
+      - rtttl.play: "test:d=8,o=5,b=140:c,e,g,c6,p,g,c6"
+
+number:
+  - platform: template
+    name: "Kopf drehen"
+    min_value: -100
+    max_value: 100
+    step: 5
+    initial_value: 0
+    optimistic: true
+    set_action:
+      - servo.write:
+          id: servo_drehen
+          level: !lambda "return x / 100.0;"
+  - platform: template
+    name: "Kopf nicken"
+    min_value: -100
+    max_value: 100
+    step: 5
+    initial_value: 0
+    optimistic: true
+    set_action:
+      - servo.write:
+          id: servo_nicken
+          level: !lambda "return x / 100.0;"
